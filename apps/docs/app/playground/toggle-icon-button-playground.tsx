@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Button } from '@kushagradhawan/kookie-ui';
-import { Plus } from 'lucide-react';
+import { ToggleIconButton } from '@kushagradhawan/kookie-ui';
+import { Star } from 'lucide-react';
 import Playground from '@/components/playground';
 
 const accentColors = [
@@ -38,20 +38,15 @@ const variants = ['classic', 'solid', 'soft', 'surface', 'outline', 'ghost'] as 
 const sizes = ['1', '2', '3', '4'] as const;
 const radiusOptions = ['none', 'small', 'medium', 'large', 'full'] as const;
 const materials = ['solid', 'translucent'] as const;
-const states = ['default', 'disabled', 'loading'] as const;
 
-export default function ButtonPlayground() {
-  const [variant, setVariant] = React.useState<string>('solid');
+export default function ToggleIconButtonPlayground() {
+  const [variant, setVariant] = React.useState<string>('soft');
   const [color, setColor] = React.useState<string>('theme');
   const [radius, setRadius] = React.useState<string>('theme');
-  const [size, setSize] = React.useState<string>('3');
-  const [highContrast, setHighContrast] = React.useState<boolean>(false);
+  const [size, setSize] = React.useState<string>('2');
+  const [highContrast, setHighContrast] = React.useState<boolean>(true);
   const [material, setMaterial] = React.useState<string>('theme');
-  const [state, setState] = React.useState<string>('default');
-  const [iconPosition, setIconPosition] = React.useState<string>('none');
-
-  const isDisabled = state === 'disabled';
-  const isLoading = state === 'loading';
+  const [pressed, setPressed] = React.useState<boolean>(false);
 
   const items = [
     {
@@ -99,6 +94,13 @@ export default function ButtonPlayground() {
       onChange: setHighContrast,
     },
     {
+      id: 'pressed',
+      label: 'Pressed',
+      type: 'switch' as const,
+      value: pressed,
+      onChange: setPressed,
+    },
+    {
       id: 'material',
       label: 'Material',
       type: 'select' as const,
@@ -107,87 +109,45 @@ export default function ButtonPlayground() {
       options: [{ label: 'Theme', value: 'theme' }, ...materials.map((m) => ({ label: m, value: m }))],
       placeholder: 'Theme',
     },
-    {
-      id: 'state',
-      label: 'State',
-      type: 'select' as const,
-      value: state,
-      onChange: setState,
-      options: states.map((s) => ({ label: s, value: s })),
-      placeholder: 'Select state',
-    },
-    {
-      id: 'icon-position',
-      label: 'Icon',
-      type: 'select' as const,
-      value: iconPosition,
-      onChange: setIconPosition,
-      options: [
-        { label: 'None', value: 'none' },
-        { label: 'Left', value: 'left' },
-        { label: 'Right', value: 'right' },
-        { label: 'Both', value: 'both' },
-      ],
-      placeholder: 'Select icon position',
-    },
   ];
 
-  // Generate elegant code string with all props (except theme values)
   const generateCode = () => {
-    const props = [`variant="${variant}"`, `size="${size}"`];
+    const props = [`variant="${variant}"`, `size="${size}"`, 'aria-label="Toggle star"'];
 
-    // Add non-theme props
     if (color !== 'theme') props.push(`color="${color}"`);
     if (radius !== 'theme') props.push(`radius="${radius}"`);
     if (material !== 'theme') props.push(`material="${material}"`);
-
-    // Add boolean props
     if (highContrast) props.push('highContrast');
-    if (isDisabled) props.push('disabled');
-    if (isLoading) props.push('loading');
+    if (pressed) props.push('pressed');
 
-    // Generate button content with icons
-    const iconLeft = iconPosition === 'left' || iconPosition === 'both';
-    const iconRight = iconPosition === 'right' || iconPosition === 'both';
-
-    let content = 'Button';
-    if (iconLeft && iconRight) {
-      content = '<Plus />\n  Button\n  <Plus />';
-    } else if (iconLeft) {
-      content = '<Plus />\n  Button';
-    } else if (iconRight) {
-      content = 'Button\n  <Plus />';
-    }
-
-    // Format props nicely
     const propsString = props.length > 0 ? `\n  ${props.join('\n  ')}` : '';
 
-    return `<Button${propsString}>
-  ${content}
-</Button>`;
+    return `<ToggleIconButton${propsString}>
+  <Star />
+</ToggleIconButton>`;
   };
 
   return (
     <Playground
       component={
-        <Button
+        <ToggleIconButton
           size={size as any}
           variant={variant as any}
-          color={color === 'theme' ? ('' as any) : (color as any)}
+          color={color === 'theme' ? undefined : (color as any)}
           radius={radius === 'theme' ? undefined : (radius as any)}
-          highContrast={highContrast || undefined}
           material={material === 'theme' ? undefined : (material as any)}
-          disabled={isDisabled}
-          loading={isLoading}
+          highContrast={highContrast || undefined}
+          pressed={pressed}
+          onPressedChange={setPressed}
+          aria-label="Toggle star"
         >
-          {iconPosition === 'left' || iconPosition === 'both' ? <Plus /> : null}
-          Button
-          {iconPosition === 'right' || iconPosition === 'both' ? <Plus /> : null}
-        </Button>
+          <Star />
+        </ToggleIconButton>
       }
       code={generateCode()}
       items={items}
       showBackground={material === 'translucent'}
+      hint={material === 'translucent' ? 'Translucent material is best observed with soft or surface variants.' : undefined}
     />
   );
 }

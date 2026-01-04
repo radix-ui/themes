@@ -1,0 +1,190 @@
+---
+title: Badge
+description: A compact label component for categorization, status, and metadata display.
+source: https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/badge.tsx
+---
+
+import { Callout, Box } from '@kushagradhawan/kookie-ui';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Alert02Icon } from '@hugeicons/core-free-icons';
+
+<Box mb="6">
+  <Callout.Root color="gray" variant="outline" highContrast>
+    <Callout.Icon>
+      <HugeiconsIcon icon={Alert02Icon} strokeWidth={1.75} />
+    </Callout.Icon>
+    <Callout.Text>This component's API and documentation are under review and may change. Use with caution in production.</Callout.Text>
+  </Callout.Root>
+</Box>
+
+Badge is a small, inline element used to display labels, statuses, counts, or categories. It supports multiple variants, colors, and can include tooltips for additional context.
+
+This is an enhanced version of the Badge from [Radix Themes](https://www.radix-ui.com/themes/docs/components/badge).
+
+## Playground
+
+import BadgePlayground from '../../playground/badge-playground';
+
+<BadgePlayground />
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-ui
+```
+
+## Usage
+
+```tsx
+import { Badge, Flex } from '@kushagradhawan/kookie-ui';
+
+export function MyBadges() {
+  return (
+    <Flex gap="2">
+      <Badge>Default</Badge>
+      <Badge color="green">Published</Badge>
+      <Badge color="amber">Pending</Badge>
+      <Badge color="red">Failed</Badge>
+    </Flex>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `size` | `'1' \| '2' \| '3' \| '4'` | `'1'` | Controls the size of the badge. Supports responsive values. |
+| `variant` | `'solid' \| 'soft' \| 'surface' \| 'outline' \| 'ghost' \| 'classic'` | `'soft'` | The visual style of the badge. |
+| `color` | `AccentColor` | - | The accent color. Uses theme accent if not specified. |
+| `radius` | `'none' \| 'small' \| 'medium' \| 'large' \| 'full'` | - | Override the default border radius. |
+| `highContrast` | `boolean` | `false` | Increases color contrast for better visibility. |
+| `material` | `'solid' \| 'translucent'` | - | Controls material appearance with translucent adding blur. |
+| `tooltip` | `React.ReactNode` | - | Content to display in a tooltip on hover. |
+| `tooltipSide` | `'top' \| 'right' \| 'bottom' \| 'left'` | `'top'` | Position of the tooltip. |
+| `tooltipAlign` | `'start' \| 'center' \| 'end'` | `'center'` | Alignment of the tooltip. |
+| `asChild` | `boolean` | `false` | Merge props onto the child element. |
+
+## Variants
+
+### Solid
+
+Bold, filled background for high emphasis.
+
+```tsx
+<Badge variant="solid" color="blue">Solid</Badge>
+```
+
+### Soft
+
+The default variant with a subtle tinted background.
+
+```tsx
+<Badge variant="soft" color="blue">Soft</Badge>
+```
+
+### Surface
+
+Elevated appearance with subtle background.
+
+```tsx
+<Badge variant="surface" color="blue">Surface</Badge>
+```
+
+### Outline
+
+Bordered with transparent background.
+
+```tsx
+<Badge variant="outline" color="blue">Outline</Badge>
+```
+
+### Ghost
+
+Minimal styling, no background or border.
+
+```tsx
+<Badge variant="ghost" color="blue">Ghost</Badge>
+```
+
+### Classic
+
+A refined, subtle appearance.
+
+```tsx
+<Badge variant="classic" color="blue">Classic</Badge>
+```
+
+## Colors
+
+Badges support all accent colors for semantic meaning.
+
+```tsx
+<Flex gap="2" wrap="wrap">
+  <Badge color="gray">Neutral</Badge>
+  <Badge color="blue">Info</Badge>
+  <Badge color="green">Success</Badge>
+  <Badge color="amber">Warning</Badge>
+  <Badge color="red">Error</Badge>
+  <Badge color="violet">New</Badge>
+</Flex>
+```
+
+## Sizes
+
+Control badge size with the `size` prop.
+
+```tsx
+<Flex gap="2" align="center">
+  <Badge size="1">Size 1</Badge>
+  <Badge size="2">Size 2</Badge>
+  <Badge size="3">Size 3</Badge>
+  <Badge size="4">Size 4</Badge>
+</Flex>
+```
+
+## High Contrast
+
+Use `highContrast` for better visibility on complex backgrounds.
+
+```tsx
+<Flex gap="2">
+  <Badge color="blue">Normal</Badge>
+  <Badge color="blue" highContrast>High Contrast</Badge>
+</Flex>
+```
+
+## With Tooltip
+
+Add tooltips to provide additional context.
+
+```tsx
+<Badge
+  color="amber"
+  tooltip="This item requires your attention before proceeding"
+  tooltipSide="right"
+>
+  Pending Review
+</Badge>
+```
+
+## Status Indicators
+
+Common pattern for displaying status with badges.
+
+```tsx
+<Flex direction="column" gap="2">
+  <Flex align="center" gap="2">
+    <Badge color="green">Published</Badge>
+    <Text size="2">Article is live</Text>
+  </Flex>
+  <Flex align="center" gap="2">
+    <Badge color="amber">Draft</Badge>
+    <Text size="2">Work in progress</Text>
+  </Flex>
+  <Flex align="center" gap="2">
+    <Badge color="red">Archived</Badge>
+    <Text size="2">No longer visible</Text>
+  </Flex>
+</Flex>
+```

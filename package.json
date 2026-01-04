@@ -15,19 +15,21 @@
     "clean": "turbo run clean && rm -rf node_modules .turbo"
   },
   "devDependencies": {
-    "@types/node": "^20.16.10",
-    "@types/react": "^19.0.2",
-    "@types/react-dom": "^19.0.2",
-    "prettier": "^3.4.2",
-    "turbo": "^2.3.3",
-    "typescript": "^5.7.2"
+    "@types/node": "^20.19.27",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "prettier": "^3.7.4",
+    "turbo": "^2.7.2",
+    "typescript": "^5.9.3"
   },
   "pnpm": {
     "overrides": {
-      "string-width": "4.2.3"
+      "string-width": "4.2.3",
+      "@types/react": "^19.2.7",
+      "@types/react-dom": "^19.2.3"
     }
   },
   "dependencies": {
-    "@kushagradhawan/kookie-blocks": "^0.1.28"
+    "@kushagradhawan/kookie-blocks": "^0.1.30"
   }
 }

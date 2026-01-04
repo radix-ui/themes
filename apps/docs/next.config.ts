@@ -43,6 +43,14 @@ const nextConfig = {
   env: {
     KOOKIE_UI_VERSION: packageJson.version,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https' as const,
+        hostname: 'images.unsplash.com',
+      },
+    ],
+  },
 }
 
 export default withMDX(nextConfig)

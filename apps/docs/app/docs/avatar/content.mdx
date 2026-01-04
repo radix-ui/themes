@@ -1,0 +1,183 @@
+---
+title: Avatar
+description: A component for displaying user profile images with fallback initials or icons.
+source: https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/avatar.tsx
+---
+
+import { Callout, Box } from '@kushagradhawan/kookie-ui';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Alert02Icon } from '@hugeicons/core-free-icons';
+
+<Box mb="6">
+  <Callout.Root color="gray" variant="outline" highContrast>
+    <Callout.Icon>
+      <HugeiconsIcon icon={Alert02Icon} strokeWidth={1.75} />
+    </Callout.Icon>
+    <Callout.Text>This component's API and documentation are under review and may change. Use with caution in production.</Callout.Text>
+  </Callout.Root>
+</Box>
+
+Avatar displays a user's profile image with graceful fallback to initials or an icon when the image fails to load. It supports multiple sizes, variants, and colors for various contexts.
+
+This is an enhanced version of the Avatar from [Radix Themes](https://www.radix-ui.com/themes/docs/components/avatar), built on [Radix UI Avatar](https://www.radix-ui.com/primitives/docs/components/avatar).
+
+## Playground
+
+import AvatarPlayground from '../../playground/avatar-playground';
+
+<AvatarPlayground />
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-ui
+```
+
+## Usage
+
+```tsx
+import { Avatar, Flex } from '@kushagradhawan/kookie-ui';
+
+export function MyAvatars() {
+  return (
+    <Flex gap="3">
+      <Avatar src="/profile.jpg" fallback="JD" />
+      <Avatar fallback="AB" />
+      <Avatar fallback="CD" color="violet" />
+    </Flex>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `src` | `string` | - | The image source URL. |
+| `fallback` | `React.ReactNode` | *required* | Content to display when the image fails to load. |
+| `size` | `'1' \| '2' \| '3' \| ... \| '12'` | `'3'` | Controls the size. Supports responsive values. |
+| `variant` | `'classic' \| 'solid' \| 'soft' \| 'surface' \| 'outline'` | `'soft'` | The visual style of the fallback. |
+| `color` | `AccentColor` | - | The accent color for the fallback. |
+| `radius` | `'none' \| 'small' \| 'medium' \| 'large' \| 'full'` | - | Override the border radius. |
+| `highContrast` | `boolean` | `false` | Increases fallback color contrast. |
+| `material` | `'solid' \| 'translucent'` | - | Material appearance for the fallback. |
+| `status` | `AccentColor` | - | Status indicator color. Renders a colored dot at bottom-right. |
+| `badge` | `React.ReactNode` | - | Custom badge content. Renders at bottom-right. |
+| `onLoadingStatusChange` | `function` | - | Callback when image loading status changes. |
+| `asChild` | `boolean` | `false` | Merge props onto the child element. |
+
+## With Image
+
+Display a user's profile image.
+
+```tsx
+<Avatar
+  src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453"
+  fallback="JD"
+  size="4"
+/>
+```
+
+## Fallback
+
+When no image is provided or it fails to load, the fallback content is displayed.
+
+```tsx
+<Flex gap="3">
+  <Avatar fallback="JD" />
+  <Avatar fallback="AB" color="violet" />
+  <Avatar fallback="CD" color="green" />
+</Flex>
+```
+
+## Sizes
+
+Avatars support 12 sizes from compact (1) to large (12).
+
+```tsx
+<Flex gap="3" align="center">
+  <Avatar size="1" fallback="1" />
+  <Avatar size="2" fallback="2" />
+  <Avatar size="3" fallback="3" />
+  <Avatar size="4" fallback="4" />
+  <Avatar size="5" fallback="5" />
+  <Avatar size="6" fallback="6" />
+</Flex>
+```
+
+## Variants
+
+Control the fallback appearance with variants.
+
+```tsx
+<Flex gap="3">
+  <Avatar fallback="CL" variant="classic" />
+  <Avatar fallback="SO" variant="solid" />
+  <Avatar fallback="SF" variant="soft" />
+  <Avatar fallback="SU" variant="surface" />
+  <Avatar fallback="OL" variant="outline" />
+</Flex>
+```
+
+## Colors
+
+Use colors to differentiate users or roles.
+
+```tsx
+<Flex gap="3">
+  <Avatar fallback="JD" color="blue" />
+  <Avatar fallback="AB" color="green" />
+  <Avatar fallback="CD" color="violet" />
+  <Avatar fallback="EF" color="pink" />
+  <Avatar fallback="GH" color="amber" />
+</Flex>
+```
+
+## Radius
+
+Customize the border radius.
+
+```tsx
+<Flex gap="3">
+  <Avatar fallback="JD" radius="none" />
+  <Avatar fallback="JD" radius="small" />
+  <Avatar fallback="JD" radius="medium" />
+  <Avatar fallback="JD" radius="large" />
+  <Avatar fallback="JD" radius="full" />
+</Flex>
+```
+
+## Status
+
+Add a status indicator dot to show presence or state.
+
+```tsx
+<Flex gap="3">
+  <Avatar fallback="JD" status="green" />
+  <Avatar fallback="AB" status="amber" />
+  <Avatar fallback="CD" status="gray" />
+</Flex>
+```
+
+The status indicator scales automatically with the avatar size.
+
+```tsx
+<Flex gap="3" align="center">
+  <Avatar fallback="JD" size="3" status="green" />
+  <Avatar fallback="AB" size="5" status="green" />
+  <Avatar fallback="CD" size="7" status="green" />
+</Flex>
+```
+
+## Badge
+
+Use the `badge` prop for custom indicator content like icons or notification counts.
+
+```tsx
+<Flex gap="3">
+  <Avatar fallback="JD" badge={<Badge size="1">3</Badge>} />
+  <Avatar fallback="AB" badge={<HugeiconsIcon icon={CheckmarkCircle02Icon} />} />
+</Flex>
+```
+
+Note: `status` and `badge` cannot be used together. If both are provided, `badge` takes precedence and a warning is logged in development.

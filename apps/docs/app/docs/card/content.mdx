@@ -1,0 +1,165 @@
+---
+title: Card
+description: A container component for grouping related content with consistent styling and spacing.
+source: https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/card.tsx
+---
+
+import { Callout, Box } from '@kushagradhawan/kookie-ui';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Alert02Icon } from '@hugeicons/core-free-icons';
+
+<Box mb="6">
+  <Callout.Root color="gray" variant="outline" highContrast>
+    <Callout.Icon>
+      <HugeiconsIcon icon={Alert02Icon} strokeWidth={1.75} />
+    </Callout.Icon>
+    <Callout.Text>This component's API and documentation are under review and may change. Use with caution in production.</Callout.Text>
+  </Callout.Root>
+</Box>
+
+Card is a versatile container component for grouping related content. It provides consistent styling, spacing, and visual hierarchy through its variant and size props.
+
+This is an enhanced version of the Card from [Radix Themes](https://www.radix-ui.com/themes/docs/components/card).
+
+## Playground
+
+import CardPlayground from '../../playground/card-playground';
+
+<CardPlayground />
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-ui
+```
+
+## Usage
+
+```tsx
+import { Card, Text, Heading, Flex, Button } from '@kushagradhawan/kookie-ui';
+
+export function MyCard() {
+  return (
+    <Card>
+      <Flex direction="column" gap="2">
+        <Heading size="3">Card Title</Heading>
+        <Text size="2">Card content goes here.</Text>
+        <Button size="2">Action</Button>
+      </Flex>
+    </Card>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `size` | `'1' \| '2' \| '3' \| '4' \| '5'` | `'1'` | Controls the padding and spacing inside the card. Supports responsive values. |
+| `variant` | `'surface' \| 'outline' \| 'classic' \| 'ghost' \| 'soft'` | `'outline'` | The visual style of the card. |
+| `material` | `'solid' \| 'translucent'` | - | Controls the material appearance. Translucent adds backdrop blur. |
+| `flush` | `boolean` | `false` | When true, removes padding for full-bleed content. |
+| `asChild` | `boolean` | `false` | Merge props onto the child element using Radix Slot. |
+
+## Variants
+
+### Surface
+
+A subtle elevated card with a light background.
+
+```tsx
+<Card variant="surface">
+  <Text>Surface variant with subtle elevation</Text>
+</Card>
+```
+
+### Outline
+
+The default variant with a visible border.
+
+```tsx
+<Card variant="outline">
+  <Text>Outline variant with visible border</Text>
+</Card>
+```
+
+### Classic
+
+A solid, opaque card with subtle shadow.
+
+```tsx
+<Card variant="classic">
+  <Text>Classic variant with solid background</Text>
+</Card>
+```
+
+### Ghost
+
+No visible container, useful for grouping content without visual boundaries.
+
+```tsx
+<Card variant="ghost">
+  <Text>Ghost variant with no visible container</Text>
+</Card>
+```
+
+### Soft
+
+A muted background with no border.
+
+```tsx
+<Card variant="soft">
+  <Text>Soft variant with muted background</Text>
+</Card>
+```
+
+## Sizes
+
+Cards support sizes from 1 to 5, controlling padding and internal spacing.
+
+```tsx
+<Flex direction="column" gap="4">
+  <Card size="1"><Text>Size 1 - Compact</Text></Card>
+  <Card size="2"><Text>Size 2 - Default</Text></Card>
+  <Card size="3"><Text>Size 3 - Comfortable</Text></Card>
+  <Card size="4"><Text>Size 4 - Spacious</Text></Card>
+  <Card size="5"><Text>Size 5 - Generous</Text></Card>
+</Flex>
+```
+
+## Material
+
+Use the `material` prop to control the card's material appearance.
+
+```tsx
+<Card material="translucent">
+  <Text>Translucent card with backdrop blur</Text>
+</Card>
+```
+
+## Flush Content
+
+Use the `flush` prop for full-bleed content like images.
+
+```tsx
+<Card flush>
+  <img src="/image.jpg" alt="Full bleed image" />
+</Card>
+```
+
+## Interactive Cards
+
+Use `asChild` to make the entire card interactive.
+
+```tsx
+import { Link } from 'react-router-dom';
+
+<Card asChild>
+  <Link to="/details">
+    <Flex direction="column" gap="2">
+      <Heading size="3">Clickable Card</Heading>
+      <Text size="2">Click anywhere to navigate</Text>
+    </Flex>
+  </Link>
+</Card>
+```

@@ -12,7 +12,7 @@ This is an enhanced version of the Button component from [Radix Themes](https://
 
 ## Playground
 
-import ButtonPlayground from '../../playground/ButtonPlayground';
+import ButtonPlayground from '../../playground/button-playground';
 
 <ButtonPlayground /> 
 
@@ -20,7 +20,7 @@ import ButtonPlayground from '../../playground/ButtonPlayground';
 
 ## Playground
 
-import ButtonPlayground from '../../playground/ButtonPlayground';
+import ButtonPlayground from '../../playground/button-playground';
 
 <ButtonPlayground /> 
 
@@ -196,7 +196,13 @@ Override the theme's material for a button when you need a specific effect. Tran
 
 ```tsx
 <Theme material="solid">
-  <Button material="translucent" size="3" color="gray" highContrast variant="soft">
+  <Button
+    material="translucent"
+    size="3"
+    color="gray"
+    highContrast
+    variant="soft"
+  >
     Button
   </Button>
 </Theme>

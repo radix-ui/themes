@@ -61,12 +61,12 @@ const getCountryLabel = (value: string | null) => allCountries.find((c) => c.val
 
 export default function ComboBoxPlayground() {
   const [size, setSize] = React.useState<(typeof sizes)[number]>('2');
-  const [variant, setVariant] = React.useState<(typeof variants)[number]>('surface');
-  const [contentVariant, setContentVariant] = React.useState<(typeof contentVariants)[number]>('solid');
-  const [inputVariant, setInputVariant] = React.useState<(typeof inputVariants)[number]>('surface');
+  const [variant, setVariant] = React.useState<(typeof variants)[number]>('soft');
+  const [contentVariant, setContentVariant] = React.useState<(typeof contentVariants)[number]>('soft');
+  const [inputVariant, setInputVariant] = React.useState<(typeof inputVariants)[number]>('soft');
   const [color, setColor] = React.useState<(typeof accentColors)[number]>('theme');
   const [disabled, setDisabled] = React.useState(false);
-  const [highContrast, setHighContrast] = React.useState(false);
+  const [highContrast, setHighContrast] = React.useState(true);
   const [triggerWidth, setTriggerWidth] = React.useState<(typeof triggerWidths)[number]>('240px');
   const [loop, setLoop] = React.useState(true);
   const [value, setValue] = React.useState<string | null>('france');
@@ -178,15 +178,7 @@ ${listMarkup}
   };
 
   const component = (
-    <Combobox.Root
-      size={size}
-      value={value}
-      onValueChange={setValue}
-      loop={loop}
-      disabled={disabled}
-      highContrast={highContrast}
-      displayValue={getCountryLabel}
-    >
+    <Combobox.Root size={size} value={value} onValueChange={setValue} loop={loop} disabled={disabled} highContrast={highContrast} displayValue={getCountryLabel}>
       <Combobox.Trigger variant={variant} color={color === 'theme' ? undefined : (color as any)} width={triggerWidth === 'fit-content' ? undefined : triggerWidth}>
         <Combobox.Value placeholder="Select a country" />
       </Combobox.Trigger>

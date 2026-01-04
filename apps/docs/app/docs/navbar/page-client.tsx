@@ -4,7 +4,7 @@ import { useState } from "react";
 import { TableOfContents } from "@kushagradhawan/kookie-blocks";
 import { Tabs } from "@kushagradhawan/kookie-ui";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { BookOpen01Icon, CodeIcon } from "@hugeicons/core-free-icons";
+import { BookOpen01Icon, EyeIcon } from "@hugeicons/core-free-icons";
 import { SiteDocsPage } from "@/components/site-docs-page";
 import ContentMDX from "./content.mdx";
 import { NavbarExamples } from "./examples";
@@ -31,7 +31,7 @@ export default function NavbarPageClient({ metadata }: NavbarPageClientProps) {
               Documentation
             </Tabs.Trigger>
             <Tabs.Trigger value="examples">
-              <HugeiconsIcon icon={CodeIcon} strokeWidth={1.75} />
+              <HugeiconsIcon icon={EyeIcon} strokeWidth={1.75} />
               Examples
             </Tabs.Trigger>
           </Tabs.List>

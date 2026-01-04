@@ -1,0 +1,160 @@
+---
+title: Heading
+description: A semantic heading component for titles and section headers with consistent styling.
+source: https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/heading.tsx
+---
+
+Heading is a semantic typography component for titles and section headers. It provides consistent sizing, weight, and color options while maintaining proper HTML heading hierarchy for accessibility.
+
+This is an enhanced version of the Heading from [Radix Themes](https://www.radix-ui.com/themes/docs/components/heading).
+
+## Playground
+
+import HeadingPlayground from '../../playground/heading-playground';
+
+<HeadingPlayground />
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-ui
+```
+
+## Usage
+
+```tsx
+import { Heading, Flex } from '@kushagradhawan/kookie-ui';
+
+export function MyHeadings() {
+  return (
+    <Flex direction="column" gap="4">
+      <Heading size="8">Page Title</Heading>
+      <Heading size="6">Section Title</Heading>
+      <Heading size="4">Subsection</Heading>
+    </Flex>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `as` | `'h1' \| 'h2' \| 'h3' \| 'h4' \| 'h5' \| 'h6'` | `'h1'` | The HTML heading element to render. |
+| `size` | `'0' \| '1' \| '2' \| '3' \| ... \| '9'` | `'6'` | The font size. Supports responsive values. |
+| `weight` | `'thin' \| 'extralight' \| 'light' \| 'regular' \| 'medium' \| 'semibold' \| 'bold' \| 'extrabold'` | - | The font weight. Supports responsive values. |
+| `color` | `AccentColor` | - | The text color. Uses theme color if not specified. |
+| `highContrast` | `boolean` | `false` | Increases color contrast. |
+| `align` | `'left' \| 'center' \| 'right'` | - | Text alignment. Supports responsive values. |
+| `truncate` | `boolean` | `false` | Truncate text with ellipsis when it overflows. |
+| `wrap` | `'wrap' \| 'nowrap' \| 'pretty' \| 'balance'` | - | Text wrapping behavior. |
+| `leadingTrim` | `boolean` | `false` | Remove leading trim for precise vertical alignment. |
+| `asChild` | `boolean` | `false` | Merge props onto the child element. |
+
+## Sizes
+
+Heading supports sizes from 0 (smallest) to 9 (largest hero text).
+
+```tsx
+<Flex direction="column" gap="3">
+  <Heading size="9">Size 9 - Hero (60px)</Heading>
+  <Heading size="8">Size 8 - Page title (48px)</Heading>
+  <Heading size="7">Size 7 - Section (36px)</Heading>
+  <Heading size="6">Size 6 - Subsection (28px)</Heading>
+  <Heading size="5">Size 5 - Card title (24px)</Heading>
+  <Heading size="4">Size 4 - Subtitle (20px)</Heading>
+  <Heading size="3">Size 3 - Label (18px)</Heading>
+</Flex>
+```
+
+## Semantic Levels
+
+Use the `as` prop to maintain proper heading hierarchy.
+
+```tsx
+<article>
+  <Heading as="h1" size="8">Article Title</Heading>
+  <section>
+    <Heading as="h2" size="6">Section One</Heading>
+    <Heading as="h3" size="4">Subsection</Heading>
+  </section>
+  <section>
+    <Heading as="h2" size="6">Section Two</Heading>
+  </section>
+</article>
+```
+
+## Weights
+
+Control heading weight with the `weight` prop.
+
+```tsx
+<Flex direction="column" gap="3">
+  <Heading size="6" weight="light">Light weight</Heading>
+  <Heading size="6" weight="regular">Regular weight</Heading>
+  <Heading size="6" weight="medium">Medium weight</Heading>
+  <Heading size="6" weight="semibold">Semibold weight</Heading>
+  <Heading size="6" weight="bold">Bold weight</Heading>
+</Flex>
+```
+
+## Colors
+
+Use colors sparingly for headings to maintain hierarchy.
+
+```tsx
+<Flex direction="column" gap="3">
+  <Heading size="6">Default color</Heading>
+  <Heading size="6" color="gray">Gray heading</Heading>
+  <Heading size="6" color="blue">Blue heading</Heading>
+  <Heading size="6" color="violet">Violet heading</Heading>
+</Flex>
+```
+
+## Text Alignment
+
+Align headings horizontally.
+
+```tsx
+<Flex direction="column" gap="3" width="100%">
+  <Heading size="5" align="left">Left aligned</Heading>
+  <Heading size="5" align="center">Center aligned</Heading>
+  <Heading size="5" align="right">Right aligned</Heading>
+</Flex>
+```
+
+## Truncation
+
+Truncate long headings with ellipsis.
+
+```tsx
+<Heading size="5" truncate style={{ maxWidth: 300 }}>
+  This is a very long heading that will be truncated
+</Heading>
+```
+
+## Responsive Sizing
+
+Size supports responsive values for different breakpoints.
+
+```tsx
+<Heading size={{ initial: '5', sm: '6', md: '7', lg: '8' }}>
+  Responsive heading that grows on larger screens
+</Heading>
+```
+
+## Text Wrapping
+
+Control how headings wrap with the `wrap` prop.
+
+```tsx
+// Balance text for centered headings
+<Heading size="7" align="center" wrap="balance">
+  Create Beautiful Interfaces with Kookie UI
+</Heading>
+
+// Pretty wrap for better line breaks
+<Heading size="6" wrap="pretty">
+  A heading with prettier line breaks for optimal reading
+</Heading>
+```

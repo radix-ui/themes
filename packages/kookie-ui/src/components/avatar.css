@@ -720,3 +720,89 @@
   --avatar-image-hover-filter: brightness(1.05) saturate(1.05);
   --avatar-image-active-filter: brightness(1.1) saturate(1.1);
 }
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * STATUS INDICATOR & BADGE                                                                        *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.rt-AvatarStatus,
+.rt-AvatarBadge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  /* Indicator partially leaks out of avatar corner */
+  transform: translate(25%, 25%);
+}
+
+/* Status indicator - colored dot */
+.rt-AvatarStatus {
+  width: var(--avatar-status-size);
+  height: var(--avatar-status-size);
+  border-radius: 50%;
+  background-color: var(--accent-9);
+  border: var(--avatar-status-border-width) solid var(--color-background);
+  box-sizing: content-box;
+}
+
+/* Badge container - for custom content */
+.rt-AvatarBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--avatar-badge-min-size);
+  min-height: var(--avatar-badge-min-size);
+}
+
+/* Status/Badge size scaling based on avatar size */
+@breakpoints {
+  .rt-AvatarRoot {
+    &:where(.rt-r-size-1) {
+      --avatar-status-size: 6px;
+      --avatar-status-border-width: 1.5px;
+      --avatar-badge-min-size: 10px;
+    }
+    &:where(.rt-r-size-2) {
+      --avatar-status-size: 8px;
+      --avatar-status-border-width: 2px;
+      --avatar-badge-min-size: 12px;
+    }
+    &:where(.rt-r-size-3) {
+      --avatar-status-size: 10px;
+      --avatar-status-border-width: 2px;
+      --avatar-badge-min-size: 14px;
+    }
+    &:where(.rt-r-size-4) {
+      --avatar-status-size: 12px;
+      --avatar-status-border-width: 2px;
+      --avatar-badge-min-size: 16px;
+    }
+    &:where(.rt-r-size-5) {
+      --avatar-status-size: 14px;
+      --avatar-status-border-width: 2px;
+      --avatar-badge-min-size: 18px;
+    }
+    &:where(.rt-r-size-6) {
+      --avatar-status-size: 16px;
+      --avatar-status-border-width: 3px;
+      --avatar-badge-min-size: 20px;
+    }
+    &:where(.rt-r-size-7) {
+      --avatar-status-size: 18px;
+      --avatar-status-border-width: 3px;
+      --avatar-badge-min-size: 22px;
+    }
+    &:where(.rt-r-size-8) {
+      --avatar-status-size: 20px;
+      --avatar-status-border-width: 3px;
+      --avatar-badge-min-size: 24px;
+    }
+    &:where(.rt-r-size-9) {
+      --avatar-status-size: 24px;
+      --avatar-status-border-width: 4px;
+      --avatar-badge-min-size: 28px;
+    }
+  }
+}

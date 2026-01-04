@@ -1,5 +1,5 @@
 import { asChildPropDef } from '../props/as-child.prop.js';
-import { accentColorPropDef } from '../props/color.prop.js';
+import { accentColorPropDef, accentColors } from '../props/color.prop.js';
 import { highContrastPropDef } from '../props/high-contrast.prop.js';
 import { radiusPropDef } from '../props/radius.prop.js';
 
@@ -23,12 +23,24 @@ const avatarPropDefs = {
    * @deprecated Use `material` prop instead. This prop will be removed in a future version.
    */
   panelBackground: { type: 'enum', values: panelBackgrounds, default: undefined },
+  /**
+   * Status indicator color. Renders a small colored dot at the bottom-right corner.
+   * Cannot be used together with `badge`.
+   */
+  status: { type: 'enum', values: accentColors, default: undefined },
+  /**
+   * Custom badge content. Renders at the bottom-right corner.
+   * Cannot be used together with `status`.
+   */
+  badge: { type: 'ReactNode', default: undefined },
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
   variant: PropDef<(typeof variants)[number]>;
   fallback: PropDef<React.ReactNode>;
   material: PropDef<(typeof materials)[number] | undefined>;
   panelBackground: PropDef<(typeof panelBackgrounds)[number] | undefined>;
+  status: PropDef<(typeof accentColors)[number] | undefined>;
+  badge: PropDef<React.ReactNode>;
 };
 
 export { avatarPropDefs };

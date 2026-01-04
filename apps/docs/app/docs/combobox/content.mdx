@@ -4,9 +4,28 @@ description: A searchable dropdown that combines select functionality with power
 source: https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/combobox.tsx
 ---
 
+import { Callout, Box } from '@kushagradhawan/kookie-ui';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Alert02Icon } from '@hugeicons/core-free-icons';
+
+<Box mb="6">
+  <Callout.Root color="gray" variant="outline" highContrast>
+    <Callout.Icon>
+      <HugeiconsIcon icon={Alert02Icon} strokeWidth={1.75} />
+    </Callout.Icon>
+    <Callout.Text>This component's API and documentation are under review and may change. Use with caution in production.</Callout.Text>
+  </Callout.Root>
+</Box>
+
 A searchable dropdown that combines select functionality with powerful filtering. Perfect for finding options in large lists, building command palettes, or when users need quick access through search.
 
 Built on top of [cmdk](https://cmdk.paco.me/) for search and filtering, and [Radix Popover](https://www.radix-ui.com/primitives/docs/components/popover) for positioning and focus management.
+
+## Playground
+
+import ComboboxPlayground from '@/app/playground/combobox-playground';
+
+<ComboboxPlayground />
 
 ## Installation
 

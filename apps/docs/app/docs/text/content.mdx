@@ -1,0 +1,171 @@
+---
+title: Text
+description: A foundational typography component for rendering inline and block text.
+source: https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/text.tsx
+---
+
+Text is the foundational typography component for rendering inline and block text. It provides consistent sizing, weight, and color options following the design system's type scale.
+
+This is an enhanced version of the Text from [Radix Themes](https://www.radix-ui.com/themes/docs/components/text).
+
+## Playground
+
+import TextPlayground from '../../playground/text-playground';
+
+<TextPlayground />
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-ui
+```
+
+## Usage
+
+```tsx
+import { Text, Flex } from '@kushagradhawan/kookie-ui';
+
+export function MyText() {
+  return (
+    <Flex direction="column" gap="2">
+      <Text size="3">Regular body text</Text>
+      <Text size="2" color="gray">Secondary text</Text>
+      <Text size="1" weight="medium">Small label</Text>
+    </Flex>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `as` | `'span' \| 'div' \| 'label' \| 'p'` | `'span'` | The HTML element to render. |
+| `size` | `'0' \| '1' \| '2' \| '3' \| ... \| '9'` | - | The font size. Supports responsive values. |
+| `weight` | `'thin' \| 'extralight' \| 'light' \| 'regular' \| 'medium' \| 'semibold' \| 'bold' \| 'extrabold'` | - | The font weight. Supports responsive values. |
+| `color` | `AccentColor` | - | The text color. Uses theme color if not specified. |
+| `highContrast` | `boolean` | `false` | Increases color contrast. |
+| `align` | `'left' \| 'center' \| 'right'` | - | Text alignment. Supports responsive values. |
+| `truncate` | `boolean` | `false` | Truncate text with ellipsis when it overflows. |
+| `wrap` | `'wrap' \| 'nowrap' \| 'pretty' \| 'balance'` | - | Text wrapping behavior. |
+| `leadingTrim` | `boolean` | `false` | Remove leading trim for precise vertical alignment. |
+| `asChild` | `boolean` | `false` | Merge props onto the child element. |
+
+## Sizes
+
+Text supports sizes from 0 (smallest) to 9 (largest).
+
+```tsx
+<Flex direction="column" gap="2">
+  <Text size="1">Size 1 - Fine print (12px)</Text>
+  <Text size="2">Size 2 - UI text (14px)</Text>
+  <Text size="3">Size 3 - Body text (16px)</Text>
+  <Text size="4">Size 4 - Large body (18px)</Text>
+  <Text size="5">Size 5 - Lead text (20px)</Text>
+</Flex>
+```
+
+## Weights
+
+Control text weight with the `weight` prop.
+
+```tsx
+<Flex direction="column" gap="2">
+  <Text weight="light">Light weight</Text>
+  <Text weight="regular">Regular weight</Text>
+  <Text weight="medium">Medium weight</Text>
+  <Text weight="semibold">Semibold weight</Text>
+  <Text weight="bold">Bold weight</Text>
+</Flex>
+```
+
+## Colors
+
+Use semantic colors for different text purposes.
+
+```tsx
+<Flex direction="column" gap="2">
+  <Text>Default text color</Text>
+  <Text color="gray">Secondary text</Text>
+  <Text color="blue">Link or info text</Text>
+  <Text color="green">Success text</Text>
+  <Text color="red">Error text</Text>
+</Flex>
+```
+
+## High Contrast
+
+Use `highContrast` for better visibility.
+
+```tsx
+<Flex direction="column" gap="2">
+  <Text color="gray">Normal gray text</Text>
+  <Text color="gray" highContrast>High contrast gray text</Text>
+</Flex>
+```
+
+## Semantic Elements
+
+Use the `as` prop to render appropriate HTML elements.
+
+```tsx
+// Paragraph
+<Text as="p" size="3">
+  This renders as a paragraph element.
+</Text>
+
+// Label
+<Text as="label" size="2" htmlFor="email">
+  Email address
+</Text>
+
+// Div for block content
+<Text as="div" size="2">
+  Block-level text content
+</Text>
+```
+
+## Truncation
+
+Truncate long text with ellipsis.
+
+```tsx
+<Text truncate style={{ maxWidth: 200 }}>
+  This is a very long text that will be truncated with an ellipsis
+</Text>
+```
+
+## Text Alignment
+
+Align text horizontally.
+
+```tsx
+<Flex direction="column" gap="2" width="100%">
+  <Text align="left">Left aligned text</Text>
+  <Text align="center">Center aligned text</Text>
+  <Text align="right">Right aligned text</Text>
+</Flex>
+```
+
+## Responsive Props
+
+Size and weight support responsive values.
+
+```tsx
+<Text
+  size={{ initial: '2', sm: '3', md: '4' }}
+  weight={{ initial: 'regular', md: 'medium' }}
+>
+  Responsive text that grows on larger screens
+</Text>
+```
+
+## Polymorphic Usage
+
+Use `asChild` for custom elements while keeping Text styles.
+
+```tsx
+<Text asChild size="2" color="blue">
+  <a href="/settings">Go to settings</a>
+</Text>
+```

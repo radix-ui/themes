@@ -24,8 +24,20 @@ const Avatar = React.forwardRef<AvatarImplElement, AvatarProps>((props, forwarde
     radius,
     material,
     panelBackground,
+    status,
+    badge,
     ...imageProps
   } = extractProps(props, avatarPropDefs, marginPropDefs);
+
+  // Warn if both status and badge are provided
+  if (process.env.NODE_ENV !== 'production') {
+    if (status !== undefined && badge !== undefined) {
+      console.warn(
+        'Avatar: Cannot use both `status` and `badge` props together. ' +
+          'The `badge` prop will be used and `status` will be ignored.'
+      );
+    }
+  }
 
   // Check if children contain a disabled element
   const isDisabled = React.useMemo(() => {
@@ -40,6 +52,9 @@ const Avatar = React.forwardRef<AvatarImplElement, AvatarProps>((props, forwarde
     return false;
   }, [asChild, children]);
 
+  // Determine if we need to render an indicator (badge takes precedence)
+  const hasIndicator = badge !== undefined || status !== undefined;
+
   return (
     // TODO as a rule, should we rather spread the props on root?
     <AvatarPrimitive.Root
@@ -48,11 +63,17 @@ const Avatar = React.forwardRef<AvatarImplElement, AvatarProps>((props, forwarde
       data-material={material}
       data-panel-background={panelBackground}
       data-disabled={isDisabled || undefined}
+      data-has-indicator={hasIndicator || undefined}
       className={classNames('rt-reset', 'rt-AvatarRoot', className)}
       style={style}
       asChild={asChild}
     >
       {getSubtree({ asChild, children }, <AvatarImpl ref={forwardedRef} {...imageProps} />)}
+      {badge !== undefined ? (
+        <span className="rt-AvatarBadge">{badge}</span>
+      ) : status !== undefined ? (
+        <span className="rt-AvatarStatus" data-accent-color={status} />
+      ) : null}
     </AvatarPrimitive.Root>
   );
 });
