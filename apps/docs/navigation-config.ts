@@ -14,6 +14,13 @@ import {
   DropdownFieldTypeIcon,
   Image01Icon,
   Asterisk02Icon,
+  UserCircleIcon,
+  Tag01Icon,
+  Alert02Icon,
+  SquareIcon,
+  Heading01Icon,
+  TextIcon,
+  MessageEdit01Icon,
 } from '@hugeicons/core-free-icons';
 
 export const docsNavigation: DocsNavigationConfig = {
@@ -38,15 +45,51 @@ export const docsNavigation: DocsNavigationConfig = {
       label: 'Components',
       items: [
         {
+          href: '/docs/avatar',
+          title: 'Avatar',
+          icon: UserCircleIcon,
+          badge: { content: 'Development', color: 'gray', size: '1', highContrast: true },
+        },
+        {
+          href: '/docs/badge',
+          title: 'Badge',
+          icon: Tag01Icon,
+          badge: { content: 'Development', color: 'gray', size: '1', highContrast: true },
+        },
+        {
           href: '/docs/button',
           title: 'Button',
           icon: Asterisk02Icon,
           badge: { content: 'Alpha', size: '1', highContrast: true },
         },
         {
+          href: '/docs/callout',
+          title: 'Callout',
+          icon: Alert02Icon,
+          badge: { content: 'Development', color: 'gray', size: '1', highContrast: true },
+        },
+        {
+          href: '/docs/card',
+          title: 'Card',
+          icon: SquareIcon,
+          badge: { content: 'Development', color: 'gray', size: '1', highContrast: true },
+        },
+        {
+          href: '/docs/chatbar',
+          title: 'Chatbar',
+          icon: MessageEdit01Icon,
+          badge: { content: 'Development', color: 'gray', size: '1', highContrast: true },
+        },
+        {
           href: '/docs/combobox',
           title: 'Combobox',
           icon: DropdownFieldTypeIcon,
+          badge: { content: 'Development', color: 'gray', size: '1', highContrast: true },
+        },
+        {
+          href: '/docs/heading',
+          title: 'Heading',
+          icon: Heading01Icon,
           badge: { content: 'Alpha', size: '1', highContrast: true },
         },
         {
@@ -77,6 +120,12 @@ export const docsNavigation: DocsNavigationConfig = {
           href: '/docs/shell',
           title: 'Shell',
           icon: LayoutIcon,
+          badge: { content: 'Alpha', size: '1', highContrast: true },
+        },
+        {
+          href: '/docs/text',
+          title: 'Text',
+          icon: TextIcon,
           badge: { content: 'Alpha', size: '1', highContrast: true },
         },
         {
