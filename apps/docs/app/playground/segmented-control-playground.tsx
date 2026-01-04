@@ -6,12 +6,10 @@ import Playground from '@/components/playground';
 
 const sizes = ['1', '2', '3', '4'] as const;
 const radiusOptions = ['none', 'small', 'medium', 'large', 'full'] as const;
-const materials = ['solid', 'translucent'] as const;
 
 export default function SegmentedControlPlayground() {
   const [size, setSize] = React.useState<string>('2');
   const [radius, setRadius] = React.useState<string>('theme');
-  const [material, setMaterial] = React.useState<string>('theme');
   const [disabled, setDisabled] = React.useState<boolean>(false);
   const [value, setValue] = React.useState<string>('grid');
 
@@ -35,15 +33,6 @@ export default function SegmentedControlPlayground() {
       placeholder: 'Theme',
     },
     {
-      id: 'material',
-      label: 'Material',
-      type: 'select' as const,
-      value: material,
-      onChange: setMaterial,
-      options: [{ label: 'Theme', value: 'theme' }, ...materials.map((m) => ({ label: m, value: m }))],
-      placeholder: 'Theme',
-    },
-    {
       id: 'disabled',
       label: 'Disabled',
       type: 'switch' as const,
@@ -56,7 +45,6 @@ export default function SegmentedControlPlayground() {
     const props = [`size="${size}"`, 'defaultValue="grid"'];
 
     if (radius !== 'theme') props.push(`radius="${radius}"`);
-    if (material !== 'theme') props.push(`material="${material}"`);
     if (disabled) props.push('disabled');
 
     const propsString = props.length > 0 ? `\n  ${props.join('\n  ')}` : '';
@@ -74,7 +62,6 @@ export default function SegmentedControlPlayground() {
         <SegmentedControl.Root
           size={size as any}
           radius={radius === 'theme' ? undefined : (radius as any)}
-          material={material === 'theme' ? undefined : (material as any)}
           disabled={disabled}
           value={value}
           onValueChange={setValue}
@@ -86,8 +73,6 @@ export default function SegmentedControlPlayground() {
       }
       code={generateCode()}
       items={items}
-      showBackground={material === 'translucent'}
-      hint={material === 'translucent' ? 'Translucent material adds backdrop blur for depth over complex backgrounds.' : undefined}
     />
   );
 }
