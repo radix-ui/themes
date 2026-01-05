@@ -91,17 +91,7 @@ h6 {
   scroll-margin-top: 120px;
 }
 
-/* Playground: Hide copy button by default, show on hover */
+/* Playground container */
 .playground-container {
   position: relative;
-}
-
-.playground-copy-button {
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
-}
-
-.playground-container:hover .playground-copy-button,
-.playground-container .playground-copy-button:focus-within {
-  opacity: 1;
 }
