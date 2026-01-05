@@ -5,11 +5,7 @@ import * as ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import { composeRefs } from 'radix-ui/internal';
 
-import {
-  textFieldRootPropDefs,
-  textFieldSlotPropDefs,
-  type TextFieldSlotScrubProps,
-} from './text-field.props.js';
+import { textFieldRootPropDefs, textFieldSlotPropDefs, type TextFieldSlotScrubProps } from './text-field.props.js';
 import { extractProps } from '../helpers/extract-props.js';
 import { marginPropDefs } from '../props/margin.props.js';
 
@@ -22,363 +18,398 @@ type TextFieldRootElement = React.ElementRef<'input'>;
 type TextFieldRootOwnProps = GetPropDefTypes<typeof textFieldRootPropDefs> & {
   defaultValue?: string | number;
   value?: string | number;
-  type?:
-    | 'date'
-    | 'datetime-local'
-    | 'email'
-    | 'hidden'
-    | 'month'
-    | 'number'
-    | 'password'
-    | 'search'
-    | 'tel'
-    | 'text'
-    | 'time'
-    | 'url'
-    | 'week';
+  type?: 'date' | 'datetime-local' | 'email' | 'hidden' | 'month' | 'number' | 'password' | 'search' | 'tel' | 'text' | 'time' | 'url' | 'week';
 };
-type TextFieldInputProps = ComponentPropsWithout<
-  'input',
-  NotInputTextualAttributes | 'color' | 'defaultValue' | 'size' | 'type' | 'value'
->;
+type TextFieldInputProps = ComponentPropsWithout<'input', NotInputTextualAttributes | 'color' | 'defaultValue' | 'size' | 'type' | 'value'>;
 interface TextFieldRootProps extends TextFieldInputProps, MarginProps, TextFieldRootOwnProps {}
-const TextFieldRoot = React.forwardRef<TextFieldRootElement, TextFieldRootProps>(
-  (props, forwardedRef) => {
-    const inputRef = React.useRef<HTMLInputElement>(null);
-    const { children, className, color, radius, panelBackground, material, style, ...inputProps } =
-      extractProps(props, textFieldRootPropDefs, marginPropDefs);
-    const effectiveMaterial = material || panelBackground;
+const TextFieldRoot = React.forwardRef<TextFieldRootElement, TextFieldRootProps>((props, forwardedRef) => {
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  const { children, className, color, radius, panelBackground, material, style, ...inputProps } = extractProps(props, textFieldRootPropDefs, marginPropDefs);
+  const effectiveMaterial = material || panelBackground;
 
-    // Generate unique IDs for accessibility
-    const errorId = React.useId();
+  // Generate unique IDs for accessibility
+  const errorId = React.useId();
 
-    // Determine invalid state
-    const isInvalid = inputProps.error || inputProps.isInvalid;
+  // Determine invalid state
+  const isInvalid = inputProps.error || inputProps.isInvalid;
 
-    const { 'aria-describedby': ariaDescribedby, 'aria-labelledby': ariaLabelledby } = inputProps;
+  const { 'aria-describedby': ariaDescribedby, 'aria-labelledby': ariaLabelledby } = inputProps;
 
-    // Build aria-describedby string
-    const describedBy = React.useMemo(() => {
-      const parts = [];
-      if (inputProps.errorMessage) parts.push(errorId);
-      if (ariaDescribedby) parts.push(ariaDescribedby);
-      return parts.length > 0 ? parts.join(' ') : undefined;
-    }, [inputProps.errorMessage, ariaDescribedby, errorId]);
+  // Build aria-describedby string
+  const describedBy = React.useMemo(() => {
+    const parts = [];
+    if (inputProps.errorMessage) parts.push(errorId);
+    if (ariaDescribedby) parts.push(ariaDescribedby);
+    return parts.length > 0 ? parts.join(' ') : undefined;
+  }, [inputProps.errorMessage, ariaDescribedby, errorId]);
 
-    // Build aria attributes
-    const ariaProps = React.useMemo(
-      () => ({
-        'aria-invalid': isInvalid,
-        'aria-describedby': describedBy,
-        'aria-labelledby': ariaLabelledby,
-      }),
-      [isInvalid, describedBy, ariaLabelledby],
-    );
+  // Build aria attributes
+  const ariaProps = React.useMemo(
+    () => ({
+      'aria-invalid': isInvalid,
+      'aria-describedby': describedBy,
+      'aria-labelledby': ariaLabelledby,
+    }),
+    [isInvalid, describedBy, ariaLabelledby],
+  );
 
-    // Filter out our custom props to avoid DOM warnings
-    const {
-      error,
-      errorMessage,
-      isInvalid: _isInvalid,
-      required,
-      'aria-describedby': _ariaDescribedby,
-      'aria-labelledby': _ariaLabelledby,
-      ...nativeInputProps
-    } = inputProps;
+  // Filter out our custom props to avoid DOM warnings
+  const { error, errorMessage, isInvalid: _isInvalid, required, 'aria-describedby': _ariaDescribedby, 'aria-labelledby': _ariaLabelledby, ...nativeInputProps } = inputProps;
 
-    // Memoized pointer event handler
-    const handlePointerDown = React.useCallback((event: React.PointerEvent) => {
-      const target = event.target as HTMLElement;
-      if (target.closest('input, button, a')) return;
+  // Memoized pointer event handler
+  const handlePointerDown = React.useCallback((event: React.PointerEvent) => {
+    const target = event.target as HTMLElement;
+    if (target.closest('input, button, a')) return;
 
-      const input = inputRef.current;
-      if (!input) return;
+    const input = inputRef.current;
+    if (!input) return;
 
-      // Same selector as in the CSS to find the right slot
-      const isRightSlot = target.closest(`
+    // Same selector as in the CSS to find the right slot
+    const isRightSlot = target.closest(`
         .rt-TextFieldSlot[data-side='right'],
         .rt-TextFieldSlot:not([data-side='right']) ~ .rt-TextFieldSlot:not([data-side='left'])
       `);
 
-      const cursorPosition = isRightSlot ? input.value.length : 0;
+    const cursorPosition = isRightSlot ? input.value.length : 0;
 
-      requestAnimationFrame(() => {
-        // Only some input types support this, browsers will throw an error if not supported
-        // See: https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange#:~:text=Note%20that%20according,not%20support%20selection%22.
-        try {
-          input.setSelectionRange(cursorPosition, cursorPosition);
-        } catch {}
-        input.focus();
-      });
-    }, []);
+    requestAnimationFrame(() => {
+      // Only some input types support this, browsers will throw an error if not supported
+      // See: https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange#:~:text=Note%20that%20according,not%20support%20selection%22.
+      try {
+        input.setSelectionRange(cursorPosition, cursorPosition);
+      } catch {}
+      input.focus();
+    });
+  }, []);
 
-    return (
-      <div
-        data-accent-color={color}
-        data-radius={radius}
-        data-panel-background={effectiveMaterial}
-        data-material={effectiveMaterial}
-        style={style}
-        className={classNames('rt-TextFieldRoot', className, {
-          'rt-error': isInvalid,
-        })}
-        onPointerDown={handlePointerDown}
-      >
-        <input
-          spellCheck="false"
-          {...nativeInputProps}
-          {...ariaProps}
-          ref={composeRefs(inputRef, forwardedRef)}
-          className="rt-reset rt-TextFieldInput"
-        />
-        {children}
-        {inputProps.errorMessage && (
-          <div id={errorId} className="rt-TextFieldErrorMessage" role="alert" aria-live="polite">
-            {inputProps.errorMessage}
-          </div>
-        )}
-      </div>
-    );
-  },
-);
+  return (
+    <div
+      data-accent-color={color}
+      data-radius={radius}
+      data-panel-background={effectiveMaterial}
+      data-material={effectiveMaterial}
+      style={style}
+      className={classNames('rt-TextFieldRoot', className, {
+        'rt-error': isInvalid,
+      })}
+      onPointerDown={handlePointerDown}
+    >
+      <input spellCheck="false" {...nativeInputProps} {...ariaProps} ref={composeRefs(inputRef, forwardedRef)} className="rt-reset rt-TextFieldInput" />
+      {children}
+      {inputProps.errorMessage && (
+        <div id={errorId} className="rt-TextFieldErrorMessage" role="alert" aria-live="polite">
+          {inputProps.errorMessage}
+        </div>
+      )}
+    </div>
+  );
+});
 TextFieldRoot.displayName = 'TextField.Root';
 
 type TextFieldSlotElement = React.ElementRef<'div'>;
 type TextFieldSlotOwnProps = GetPropDefTypes<typeof textFieldSlotPropDefs> & TextFieldSlotScrubProps;
-interface TextFieldSlotProps
-  extends ComponentPropsWithout<'div', RemovedProps>,
-    TextFieldSlotOwnProps {}
-const TextFieldSlot = React.forwardRef<TextFieldSlotElement, TextFieldSlotProps>(
-  (props, forwardedRef) => {
-    // Extract scrub props first (not part of PropDef system)
-    const {
-      scrub,
-      scrubValue,
-      scrubStep = 1,
-      scrubSensitivity = 1,
-      scrubMin,
-      scrubMax,
-      scrubShiftMultiplier = 10,
-      scrubAltMultiplier = 0.1,
-      onScrub,
-      ...restProps
-    } = props;
+interface TextFieldSlotProps extends ComponentPropsWithout<'div', RemovedProps>, TextFieldSlotOwnProps {}
 
-    // Then extract styling props
-    const { className, color, side, ...slotProps } = extractProps(restProps, textFieldSlotPropDefs);
+// Detect if we should use pointer capture instead of pointer lock
+// Safari and Firefox show intrusive browser warnings with pointer lock
+const usePointerCapture = (() => {
+  if (typeof navigator === 'undefined') return false;
+  const ua = navigator.userAgent;
+  const isSafari = /^((?!chrome|android).)*safari/i.test(ua);
+  const isFirefox = /firefox/i.test(ua);
+  return isSafari || isFirefox;
+})();
 
-    const slotRef = React.useRef<HTMLDivElement>(null);
-    const [isScrubbing, setIsScrubbing] = React.useState(false);
-    // Virtual cursor position - X wraps around viewport, Y follows mouse
-    const [cursorPosition, setCursorPosition] = React.useState({ x: 0, y: 0 });
+const TextFieldSlot = React.forwardRef<TextFieldSlotElement, TextFieldSlotProps>((props, forwardedRef) => {
+  // Extract scrub props first (not part of PropDef system)
+  const { scrub, scrubValue, scrubStep = 1, scrubSensitivity = 1, scrubMin, scrubMax, scrubShiftMultiplier = 10, scrubAltMultiplier = 0.1, onScrub, ...restProps } = props;
 
-    // Track accumulated sub-step movement for precision
-    const accumulatedMovement = React.useRef(0);
-    // Track current value for clamping (initialized to scrubValue when scrubbing starts)
-    const currentValue = React.useRef(0);
-    // Track virtual X position for wrap-around (separate from rendered position)
-    const virtualX = React.useRef(0);
+  // Then extract styling props
+  const { className, color, side, ...slotProps } = extractProps(restProps, textFieldSlotPropDefs);
 
-    // Store scrub config in refs so document handlers can access latest values
-    const scrubConfigRef = React.useRef({
-      scrubValue,
-      scrubStep,
-      scrubSensitivity,
-      scrubMin,
-      scrubMax,
-      scrubShiftMultiplier,
-      scrubAltMultiplier,
-      onScrub,
-    });
-    scrubConfigRef.current = {
-      scrubValue,
-      scrubStep,
-      scrubSensitivity,
-      scrubMin,
-      scrubMax,
-      scrubShiftMultiplier,
-      scrubAltMultiplier,
-      onScrub,
+  const slotRef = React.useRef<HTMLDivElement>(null);
+  const [isScrubbing, setIsScrubbing] = React.useState(false);
+  // Virtual cursor position - X wraps around viewport, Y follows mouse
+  const [cursorPosition, setCursorPosition] = React.useState({ x: 0, y: 0 });
+
+  // Track accumulated sub-step movement for precision
+  const accumulatedMovement = React.useRef(0);
+  // Track current value for clamping (initialized to scrubValue when scrubbing starts)
+  const currentValue = React.useRef(0);
+  // Track virtual X position for wrap-around (separate from rendered position)
+  const virtualX = React.useRef(0);
+  // Track pointer ID for capture mode
+  const pointerIdRef = React.useRef<number | null>(null);
+  // Track last X position for capture mode (movementX calculation)
+  const lastXRef = React.useRef(0);
+
+  // Store scrub config in refs so document handlers can access latest values
+  const scrubConfigRef = React.useRef({
+    scrubValue,
+    scrubStep,
+    scrubSensitivity,
+    scrubMin,
+    scrubMax,
+    scrubShiftMultiplier,
+    scrubAltMultiplier,
+    onScrub,
+  });
+  scrubConfigRef.current = {
+    scrubValue,
+    scrubStep,
+    scrubSensitivity,
+    scrubMin,
+    scrubMax,
+    scrubShiftMultiplier,
+    scrubAltMultiplier,
+    onScrub,
+  };
+
+  const handlePointerDown = React.useCallback(
+    (event: React.PointerEvent) => {
+      if (!scrub) return;
+
+      // Don't start scrubbing if clicking on interactive elements
+      const target = event.target as HTMLElement;
+      if (target.closest('input, button, a')) return;
+
+      event.preventDefault();
+      accumulatedMovement.current = 0;
+      // Initialize to current value so min/max clamping works correctly
+      currentValue.current = scrubValue ?? 0;
+
+      // Initialize virtual cursor at actual mouse position
+      virtualX.current = event.clientX;
+      setCursorPosition({ x: event.clientX, y: event.clientY });
+
+      const slot = slotRef.current;
+      if (!slot) return;
+
+      if (usePointerCapture) {
+        // Safari/Firefox: Use pointer capture (no browser warning)
+        pointerIdRef.current = event.pointerId;
+        lastXRef.current = event.clientX;
+        slot.setPointerCapture(event.pointerId);
+        setIsScrubbing(true);
+      } else {
+        // Chrome: Use pointer lock for infinite movement
+        slot.requestPointerLock();
+      }
+    },
+    [scrub, scrubValue],
+  );
+
+  // Handle pointer lock state changes (Chrome only)
+  React.useEffect(() => {
+    if (usePointerCapture) return;
+
+    const handlePointerLockChange = () => {
+      const isLocked = document.pointerLockElement === slotRef.current;
+      setIsScrubbing(isLocked);
+      if (!isLocked) {
+        // Fire callback with isChanging = false when scrubbing ends
+        scrubConfigRef.current.onScrub?.(0, false);
+        accumulatedMovement.current = 0;
+        currentValue.current = 0;
+      }
     };
 
-    const handlePointerDown = React.useCallback(
-      (event: React.PointerEvent) => {
-        if (!scrub) return;
+    document.addEventListener('pointerlockchange', handlePointerLockChange);
+    return () => {
+      document.removeEventListener('pointerlockchange', handlePointerLockChange);
+    };
+  }, []);
 
-        // Don't start scrubbing if clicking on interactive elements
-        const target = event.target as HTMLElement;
-        if (target.closest('input, button, a')) return;
+  // Shared scrub calculation logic
+  const processScrubMovement = React.useCallback((movementX: number, movementY: number, shiftKey: boolean, altKey: boolean) => {
+    const config = scrubConfigRef.current;
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
 
-        event.preventDefault();
-        accumulatedMovement.current = 0;
-        // Initialize to current value so min/max clamping works correctly
-        currentValue.current = scrubValue ?? 0;
+    // Update virtual position with wrap-around at viewport edges
+    virtualX.current += movementX;
+    if (virtualX.current > viewportWidth) {
+      virtualX.current = virtualX.current % viewportWidth;
+    } else if (virtualX.current < 0) {
+      virtualX.current = viewportWidth + (virtualX.current % viewportWidth);
+    }
 
-        // Initialize virtual cursor at actual mouse position
-        virtualX.current = event.clientX;
-        setCursorPosition({ x: event.clientX, y: event.clientY });
+    // Also track Y with wrap-around
+    setCursorPosition((prev) => {
+      let newY = prev.y + movementY;
+      if (newY > viewportHeight) {
+        newY = newY % viewportHeight;
+      } else if (newY < 0) {
+        newY = viewportHeight + (newY % viewportHeight);
+      }
+      return { x: virtualX.current, y: newY };
+    });
 
-        // Request pointer lock for infinite movement (cursor won't hit screen edges)
-        const slot = slotRef.current;
-        if (slot) {
-          slot.requestPointerLock();
-        }
-      },
-      [scrub, scrubValue],
-    );
+    // Accumulate movement for sensitivity calculation
+    accumulatedMovement.current += movementX;
 
-    // Handle pointer lock state changes
-    React.useEffect(() => {
-      const handlePointerLockChange = () => {
-        const isLocked = document.pointerLockElement === slotRef.current;
-        setIsScrubbing(isLocked);
-        if (!isLocked) {
-          // Fire callback with isChanging = false when scrubbing ends
-          scrubConfigRef.current.onScrub?.(0, false);
-          accumulatedMovement.current = 0;
-          currentValue.current = 0;
-        }
-      };
+    // Calculate how many steps we've moved
+    const stepsFromMovement = accumulatedMovement.current / config.scrubSensitivity;
 
-      document.addEventListener('pointerlockchange', handlePointerLockChange);
-      return () => {
-        document.removeEventListener('pointerlockchange', handlePointerLockChange);
-      };
-    }, []);
+    if (Math.abs(stepsFromMovement) >= 1) {
+      // Determine modifier multiplier
+      let multiplier = 1;
+      if (shiftKey) {
+        multiplier = config.scrubShiftMultiplier;
+      } else if (altKey) {
+        multiplier = config.scrubAltMultiplier;
+      }
 
-    // Attach document-level listeners when scrubbing starts
-    React.useEffect(() => {
-      if (!isScrubbing) return;
+      // Calculate delta
+      const wholeSteps = Math.trunc(stepsFromMovement);
+      const delta = wholeSteps * config.scrubStep * multiplier;
 
-      const handleMouseMove = (event: MouseEvent) => {
-        const config = scrubConfigRef.current;
-        const movementX = event.movementX;
-        const movementY = event.movementY;
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
+      // Apply min/max clamping if bounds are set
+      let clampedDelta = delta;
+      if (config.scrubMin !== undefined || config.scrubMax !== undefined) {
+        const newValue = currentValue.current + delta;
+        const clampedValue = Math.max(config.scrubMin ?? -Infinity, Math.min(config.scrubMax ?? Infinity, newValue));
+        clampedDelta = clampedValue - currentValue.current;
+        currentValue.current = clampedValue;
+      } else {
+        currentValue.current += delta;
+      }
 
-        // Update virtual position with wrap-around at viewport edges
-        virtualX.current += movementX;
-        if (virtualX.current > viewportWidth) {
-          virtualX.current = virtualX.current % viewportWidth;
-        } else if (virtualX.current < 0) {
-          virtualX.current = viewportWidth + (virtualX.current % viewportWidth);
-        }
+      // Fire callback with clamped delta (isChanging = true during drag)
+      if (clampedDelta !== 0) {
+        config.onScrub?.(clampedDelta, true);
+      }
 
-        // Also track Y with wrap-around
-        setCursorPosition((prev) => {
-          let newY = prev.y + movementY;
-          if (newY > viewportHeight) {
-            newY = newY % viewportHeight;
-          } else if (newY < 0) {
-            newY = viewportHeight + (newY % viewportHeight);
-          }
-          return { x: virtualX.current, y: newY };
-        });
+      // Keep the fractional remainder for smooth sub-pixel accumulation
+      accumulatedMovement.current = (stepsFromMovement - wholeSteps) * config.scrubSensitivity;
+    }
+  }, []);
 
-        // Accumulate movement for sensitivity calculation
-        accumulatedMovement.current += movementX;
+  // End scrubbing helper
+  const endScrubbing = React.useCallback(() => {
+    scrubConfigRef.current.onScrub?.(0, false);
+    accumulatedMovement.current = 0;
+    currentValue.current = 0;
+    pointerIdRef.current = null;
+    setIsScrubbing(false);
+  }, []);
 
-        // Calculate how many steps we've moved
-        const stepsFromMovement = accumulatedMovement.current / config.scrubSensitivity;
+  // Handle pointer capture mode events (Safari/Firefox)
+  const handlePointerMove = React.useCallback(
+    (event: React.PointerEvent) => {
+      if (!isScrubbing || !usePointerCapture) return;
 
-        if (Math.abs(stepsFromMovement) >= 1) {
-          // Determine modifier multiplier
-          let multiplier = 1;
-          if (event.shiftKey) {
-            multiplier = config.scrubShiftMultiplier;
-          } else if (event.altKey) {
-            multiplier = config.scrubAltMultiplier;
-          }
+      const movementX = event.clientX - lastXRef.current;
+      lastXRef.current = event.clientX;
 
-          // Calculate delta
-          const wholeSteps = Math.trunc(stepsFromMovement);
-          const delta = wholeSteps * config.scrubStep * multiplier;
+      processScrubMovement(movementX, event.movementY, event.shiftKey, event.altKey);
+    },
+    [isScrubbing, processScrubMovement],
+  );
 
-          // Apply min/max clamping if bounds are set
-          let clampedDelta = delta;
-          if (config.scrubMin !== undefined || config.scrubMax !== undefined) {
-            const newValue = currentValue.current + delta;
-            const clampedValue = Math.max(
-              config.scrubMin ?? -Infinity,
-              Math.min(config.scrubMax ?? Infinity, newValue),
-            );
-            clampedDelta = clampedValue - currentValue.current;
-            currentValue.current = clampedValue;
-          } else {
-            currentValue.current += delta;
-          }
+  const handlePointerUp = React.useCallback(
+    (event: React.PointerEvent) => {
+      if (!usePointerCapture || pointerIdRef.current !== event.pointerId) return;
 
-          // Fire callback with clamped delta (isChanging = true during drag)
-          if (clampedDelta !== 0) {
-            config.onScrub?.(clampedDelta, true);
-          }
+      const slot = slotRef.current;
+      if (slot && pointerIdRef.current !== null) {
+        slot.releasePointerCapture(pointerIdRef.current);
+      }
+      endScrubbing();
+    },
+    [endScrubbing],
+  );
 
-          // Keep the fractional remainder for smooth sub-pixel accumulation
-          accumulatedMovement.current = (stepsFromMovement - wholeSteps) * config.scrubSensitivity;
-        }
-      };
+  const handleLostPointerCapture = React.useCallback(() => {
+    if (usePointerCapture && isScrubbing) {
+      endScrubbing();
+    }
+  }, [isScrubbing, endScrubbing]);
 
-      const handleMouseUp = () => {
-        // Exit pointer lock to end scrubbing
-        document.exitPointerLock();
-      };
+  // Attach document-level listeners for pointer lock mode (Chrome)
+  React.useEffect(() => {
+    if (!isScrubbing || usePointerCapture) return;
 
-      // Use mousemove for pointer lock (pointermove doesn't work well with pointer lock)
-      document.addEventListener('mousemove', handleMouseMove);
-      document.addEventListener('mouseup', handleMouseUp);
+    const handleMouseMove = (event: MouseEvent) => {
+      processScrubMovement(event.movementX, event.movementY, event.shiftKey, event.altKey);
+    };
 
-      // Disable text selection during scrubbing
-      document.body.style.userSelect = 'none';
+    const handleMouseUp = () => {
+      // Exit pointer lock to end scrubbing
+      document.exitPointerLock();
+    };
 
-      return () => {
-        document.removeEventListener('mousemove', handleMouseMove);
-        document.removeEventListener('mouseup', handleMouseUp);
-        document.body.style.userSelect = '';
-      };
-    }, [isScrubbing]);
+    // Use mousemove for pointer lock (pointermove doesn't work well with pointer lock)
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
 
-    // Render virtual cursor via portal to body so it's not clipped
-    // Using a data URI of ew-resize cursor for a native look
-    const virtualCursor = isScrubbing
-      ? ReactDOM.createPortal(
-          <img
-            className="rt-TextFieldSlotScrubCursor"
-            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='black' stroke='white' stroke-width='1' d='M0 12 L5 7 L5 10 L19 10 L19 7 L24 12 L19 17 L19 14 L5 14 L5 17 Z'/%3E%3C/svg%3E"
-            alt=""
-            style={{
-              position: 'fixed',
-              left: cursorPosition.x,
-              top: cursorPosition.y,
-              transform: 'translate(-50%, -50%)',
-              pointerEvents: 'none',
-              zIndex: 99999,
-              width: 24,
-              height: 24,
-            }}
-            aria-hidden="true"
-          />,
-          document.body,
-        )
-      : null;
+    // Disable text selection during scrubbing
+    document.body.style.userSelect = 'none';
 
-    return (
-      <div
-        data-accent-color={color}
-        data-side={side}
-        data-scrub={scrub || undefined}
-        data-scrubbing={isScrubbing || undefined}
-        {...slotProps}
-        ref={composeRefs(slotRef, forwardedRef)}
-        className={classNames('rt-TextFieldSlot', className)}
-        onPointerDown={scrub ? handlePointerDown : undefined}
-      >
-        {slotProps.children}
-        {virtualCursor}
-      </div>
-    );
-  },
-);
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+      document.body.style.userSelect = '';
+    };
+  }, [isScrubbing, processScrubMovement]);
+
+  // Hide native cursor and disable text selection during pointer capture scrubbing
+  React.useEffect(() => {
+    if (!isScrubbing || !usePointerCapture) return;
+
+    // Create a style element to hide cursor globally during scrub
+    const style = document.createElement('style');
+    style.textContent = '* { cursor: none !important; user-select: none !important; }';
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, [isScrubbing]);
+
+  // Render virtual cursor via portal to body so it's not clipped
+  // Using a data URI of ew-resize cursor for a native look
+  const virtualCursor = isScrubbing
+    ? ReactDOM.createPortal(
+        <img
+          className="rt-TextFieldSlotScrubCursor"
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='black' stroke='white' stroke-width='1' d='M0 12 L5 7 L5 10 L19 10 L19 7 L24 12 L19 17 L19 14 L5 14 L5 17 Z'/%3E%3C/svg%3E"
+          alt=""
+          style={{
+            position: 'fixed',
+            left: cursorPosition.x,
+            top: cursorPosition.y,
+            transform: 'translate(-50%, -50%)',
+            pointerEvents: 'none',
+            zIndex: 99999,
+            width: 24,
+            height: 24,
+          }}
+          aria-hidden="true"
+        />,
+        document.body,
+      )
+    : null;
+
+  return (
+    <div
+      data-accent-color={color}
+      data-side={side}
+      data-scrub={scrub || undefined}
+      data-scrubbing={isScrubbing || undefined}
+      {...slotProps}
+      ref={composeRefs(slotRef, forwardedRef)}
+      className={classNames('rt-TextFieldSlot', className)}
+      onPointerDown={scrub ? handlePointerDown : undefined}
+      onPointerMove={scrub ? handlePointerMove : undefined}
+      onPointerUp={scrub ? handlePointerUp : undefined}
+      onLostPointerCapture={scrub ? handleLostPointerCapture : undefined}
+    >
+      {slotProps.children}
+      {virtualCursor}
+    </div>
+  );
+});
 TextFieldSlot.displayName = 'TextField.Slot';
 
 export { TextFieldRoot as Root, TextFieldSlot as Slot };
