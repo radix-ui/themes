@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { DocsPage } from "@kushagradhawan/kookie-blocks";
-import type { DocsPageMeta } from "@kushagradhawan/kookie-blocks";
-import type { ReactNode } from "react";
+import { DocsPage } from '@kushagradhawan/kookie-blocks';
+import type { DocsPageMeta } from '@kushagradhawan/kookie-blocks';
+import type { ReactNode } from 'react';
 
 interface SiteDocsPageProps {
   children: ReactNode;
@@ -22,11 +22,12 @@ interface SiteDocsPageProps {
 export function SiteDocsPage(props: SiteDocsPageProps) {
   return (
     <DocsPage
+      containerSize="2"
       {...props}
       showFooter
       footerCopyright={{
-        name: "Kushagra Dhawan",
-        url: "https://www.kushagradhawan.com"
+        name: 'Kushagra Dhawan',
+        url: 'https://www.kushagradhawan.com',
       }}
       githubUrl="https://github.com/KushagraDhawan1997/kookie-ui"
     />

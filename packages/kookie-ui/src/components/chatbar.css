@@ -18,7 +18,7 @@
   min-width: 0;
   resize: none;
   border: 0;
-  outline: 0;
+  outline: none;
   background: transparent;
   padding: 0;
   margin: 0;
@@ -27,6 +27,10 @@
   line-height: inherit;
   text-align: start;
   transition: height 150ms ease-out;
+}
+.rt-ChatbarInput:focus,
+.rt-ChatbarInput:focus-visible {
+  outline: none;
 }
 
 /* Main container - flex layout */

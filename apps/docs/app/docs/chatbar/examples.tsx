@@ -1,107 +1,14 @@
 'use client';
 
-import * as React from 'react';
 import { PreviewBlock, CodeBlock, SectionHeader, Hero } from '@kushagradhawan/kookie-blocks';
-import { Flex, Chatbar, IconButton, Separator, Text, Card, Avatar, Skeleton } from '@kushagradhawan/kookie-ui';
+import { Flex, Chatbar, IconButton, Separator, Text } from '@kushagradhawan/kookie-ui';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { Attachment01Icon, SmileIcon, Mic01Icon, SparklesIcon, AiBrain01Icon } from '@hugeicons/core-free-icons';
 
 export function ChatbarExamples() {
-  const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [messageValue, setMessageValue] = React.useState('');
-
-  const handleSubmit = () => {
-    if (!messageValue.trim()) return;
-    setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setMessageValue('');
-    }, 1500);
-  };
-
   return (
     <Flex direction="column" gap="9">
-      {/* Example 1: Message Composition */}
-      <Flex direction="column" gap="4">
-        <SectionHeader.Root>
-          <SectionHeader.Content>
-            <SectionHeader.Title>Message Composition</SectionHeader.Title>
-            <SectionHeader.Description>
-              The classic variant commands attention for primary messaging interfaces. Type a message and click send to see the submission flow with loading state.
-            </SectionHeader.Description>
-          </SectionHeader.Content>
-        </SectionHeader.Root>
-        <PreviewBlock background="none" height="30rem">
-          <Card variant="classic" size="2" style={{ width: '100%', maxWidth: 500 }}>
-            <Flex direction="column" gap="3" p="1">
-              <Flex gap="2" align="start">
-                <Avatar size="2" fallback="AI" color="blue" />
-                <Flex direction="column" gap="1" style={{ flex: 1 }}>
-                  <Skeleton width="200px" height="12px" />
-                  <Skeleton width="140px" height="12px" />
-                </Flex>
-              </Flex>
-              <Chatbar.Root maxLines={16} minLines={3} variant="soft" size="2" color="gray" sendMode="always" value={messageValue} onValueChange={setMessageValue} onSubmit={handleSubmit}>
-                <Chatbar.Textarea aria-label="Message" placeholder="Type a message..." submitOnEnter />
-                <Chatbar.InlineEnd>
-                  <Chatbar.Send size="2" loading={isSubmitting} highContrast />
-                </Chatbar.InlineEnd>
-                <Chatbar.Row>
-                  <Chatbar.RowStart />
-                  <Chatbar.RowEnd>
-                    <Chatbar.Send size="2" loading={isSubmitting} highContrast />
-                  </Chatbar.RowEnd>
-                </Chatbar.Row>
-              </Chatbar.Root>
-            </Flex>
-          </Card>
-        </PreviewBlock>
-        <CodeBlock
-          code={`<Card variant="classic" size="2">
-  <Flex direction="column" gap="3" p="1">
-    <Flex gap="2" align="start">
-      <Avatar size="2" fallback="AI" color="blue" />
-      <Flex direction="column" gap="1" style={{ flex: 1 }}>
-        <Text size="2">Previous message content...</Text>
-      </Flex>
-    </Flex>
-    <Chatbar.Root
-      variant="soft"
-      size="2"
-      color="gray"
-      sendMode="always"
-      minLines={3}
-      maxLines={16}
-      value={messageValue}
-      onValueChange={setMessageValue}
-      onSubmit={handleSubmit}
-    >
-      <Chatbar.Textarea
-        aria-label="Message"
-        placeholder="Type a message..."
-        submitOnEnter
-      />
-      <Chatbar.InlineEnd>
-        <Chatbar.Send loading={isSubmitting} highContrast />
-      </Chatbar.InlineEnd>
-      <Chatbar.Row>
-        <Chatbar.RowStart />
-        <Chatbar.RowEnd>
-          <Chatbar.Send loading={isSubmitting} highContrast />
-        </Chatbar.RowEnd>
-      </Chatbar.Row>
-    </Chatbar.Root>
-  </Flex>
-</Card>`}
-          language="tsx"
-          showLineNumbers={true}
-          collapsible={false}
-        />
-      </Flex>
-
-      <Separator size="4" />
-
-      {/* Example 2: File Upload Flow */}
+      {/* Example 1: File Upload Flow */}
       <Flex direction="column" gap="4">
         <SectionHeader.Root>
           <SectionHeader.Content>
@@ -212,7 +119,7 @@ export function ChatbarExamples() {
 
       <Separator size="4" />
 
-      {/* Example 3: AI Assistant Interface */}
+      {/* Example 2: AI Assistant Interface */}
       <Flex direction="column" gap="4">
         <SectionHeader.Root>
           <SectionHeader.Content>
@@ -317,7 +224,7 @@ export function ChatbarExamples() {
 
       <Separator size="4" />
 
-      {/* Example 4: Translucent Hero Chat */}
+      {/* Example 3: Translucent Hero Chat */}
       <Flex direction="column" gap="4">
         <SectionHeader.Root>
           <SectionHeader.Content>
