@@ -19,7 +19,7 @@ export function CalloutExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="auto">
+        <PreviewBlock background="none" height="30rem">
           <Card variant="classic" size="3" style={{ maxWidth: 520 }}>
             <Flex direction="column" gap="4">
               <Text size="3" weight="medium">
@@ -67,7 +67,7 @@ export function CalloutExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="auto">
+        <PreviewBlock background="none" height="30rem">
           <Flex direction="column" gap="4" style={{ maxWidth: 440 }}>
             <Callout.Root color="green">
               <Callout.Icon>
@@ -121,7 +121,7 @@ export function CalloutExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="auto">
+        <PreviewBlock background="none" height="30rem">
           <Flex direction="column" gap="4" style={{ maxWidth: 480 }}>
             <Callout.Root color="violet">
               <Callout.Icon>
@@ -167,7 +167,7 @@ export function CalloutExamples() {
             <SectionHeader.Description>Amber callouts signal caution without the severity of red. Use highContrast for critical warnings that require immediate attention.</SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="auto">
+        <PreviewBlock background="none" height="30rem">
           <Card variant="classic" size="3" style={{ maxWidth: 480 }}>
             <Flex direction="column" gap="4">
               <Text size="3" weight="medium">
@@ -216,7 +216,7 @@ export function CalloutExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="auto">
+        <PreviewBlock background="none" height="30rem">
           <Card variant="classic" size="3" style={{ maxWidth: 520 }}>
             <Flex direction="column" gap="4" align="start">
               <Code size="3" highContrast>
@@ -262,7 +262,7 @@ export function CalloutExamples() {
             <SectionHeader.Description>Size 1 callouts work as subtle inline banners. The gray color keeps informational messages unobtrusive while still visible.</SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="auto">
+        <PreviewBlock background="none" height="30rem">
           <Flex direction="column" gap="4" style={{ maxWidth: 500 }}>
             <Callout.Root color="gray" size="1">
               <Callout.Icon>
@@ -299,7 +299,7 @@ export function CalloutExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="auto">
+        <PreviewBlock background="none" height="30rem">
           <Card variant="classic" size="3" style={{ maxWidth: 400 }}>
             <Flex direction="column" gap="3">
               <Text size="2" weight="medium">
@@ -337,7 +337,8 @@ export function CalloutExamples() {
           showThemeToggle={false}
           appearance="dark"
           variant="ghost"
-          height="20rem"
+          height="30rem"
+          p="0"
           background={{
             backgroundImage:
               'url(https://images.unsplash.com/photo-1765572446249-a583906255f0?q=80&w=1341&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',

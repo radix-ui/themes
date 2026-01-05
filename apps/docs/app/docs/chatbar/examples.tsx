@@ -31,7 +31,7 @@ export function ChatbarExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none">
+        <PreviewBlock background="none" height="30rem">
           <Card variant="classic" size="2" style={{ width: '100%', maxWidth: 500 }}>
             <Flex direction="column" gap="3" p="1">
               <Flex gap="2" align="start">
@@ -111,7 +111,7 @@ export function ChatbarExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none">
+        <PreviewBlock background="none" height="30rem">
           <Chatbar.Root
             variant="classic"
             size="2"
@@ -222,7 +222,7 @@ export function ChatbarExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="50rem">
+        <PreviewBlock background="none" height="30rem">
           <Hero.Root style={{ width: '100%', maxWidth: 600 }}>
             <Hero.Meta>
               <HugeiconsIcon icon={SparklesIcon} strokeWidth={1.75} />
@@ -332,6 +332,7 @@ export function ChatbarExamples() {
           appearance="dark"
           variant="ghost"
           height="30rem"
+          p="0"
           background={{
             backgroundImage:
               'url(https://images.unsplash.com/photo-1765684145185-387b6c69bef1?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
