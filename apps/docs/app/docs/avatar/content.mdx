@@ -125,11 +125,26 @@ Use colors to differentiate users or roles.
 
 ```tsx
 <Flex gap="3">
-  <Avatar fallback="JD" color="blue" />
-  <Avatar fallback="AB" color="green" />
-  <Avatar fallback="CD" color="violet" />
-  <Avatar fallback="EF" color="pink" />
-  <Avatar fallback="GH" color="amber" />
+  <Avatar
+    fallback="JD"
+    color="blue"
+  />
+  <Avatar
+    fallback="AB"
+    color="green"
+  />
+  <Avatar
+    fallback="CD"
+    color="violet"
+  />
+  <Avatar
+    fallback="EF"
+    color="pink"
+  />
+  <Avatar
+    fallback="GH"
+    color="amber"
+  />
 </Flex>
 ```
 
@@ -163,9 +178,21 @@ The status indicator scales automatically with the avatar size.
 
 ```tsx
 <Flex gap="3" align="center">
-  <Avatar fallback="JD" size="3" status="green" />
-  <Avatar fallback="AB" size="5" status="green" />
-  <Avatar fallback="CD" size="7" status="green" />
+  <Avatar
+    fallback="JD"
+    size="3"
+    status="green"
+  />
+  <Avatar
+    fallback="AB"
+    size="5"
+    status="green"
+  />
+  <Avatar
+    fallback="CD"
+    size="7"
+    status="green"
+  />
 </Flex>
 ```
 
@@ -175,8 +202,14 @@ Use the `badge` prop for custom indicator content like icons or notification cou
 
 ```tsx
 <Flex gap="3">
-  <Avatar fallback="JD" badge={<Badge size="1">3</Badge>} />
-  <Avatar fallback="AB" badge={<HugeiconsIcon icon={CheckmarkCircle02Icon} />} />
+  <Avatar
+    fallback="JD"
+    badge={<Badge size="1">3</Badge>}
+  />
+  <Avatar
+    fallback="AB"
+    badge={<HugeiconsIcon icon={CheckmarkCircle02Icon} />}
+  />
 </Flex>
 ```
 

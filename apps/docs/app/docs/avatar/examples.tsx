@@ -34,12 +34,17 @@ export function AvatarExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="auto">
+        <PreviewBlock background="none" height="30rem">
           <Card variant="classic" size="2" style={{ minWidth: 320, maxWidth: 400 }}>
             <Flex direction="column" gap="3">
               <Flex justify="between" align="center">
                 <Flex gap="3" align="center">
-                  <Avatar size="4" fallback="SK" color="violet" variant="solid" />
+                  <Avatar
+                    size="4"
+                    fallback="SK"
+                    color="violet"
+                    variant="solid"
+                  />
                   <Flex direction="column" gap="0">
                     <Text size="2" weight="medium">Sarah Kim</Text>
                     <Text size="1" color="gray">Product Lead</Text>
@@ -50,7 +55,12 @@ export function AvatarExamples() {
               <Separator size="4" />
               <Flex justify="between" align="center">
                 <Flex gap="3" align="center">
-                  <Avatar size="4" fallback="JD" color="blue" variant="solid" />
+                  <Avatar
+                    size="4"
+                    fallback="JD"
+                    color="blue"
+                    variant="solid"
+                  />
                   <Flex direction="column" gap="0">
                     <Text size="2" weight="medium">John Doe</Text>
                     <Text size="1" color="gray">Engineer</Text>
@@ -61,7 +71,12 @@ export function AvatarExamples() {
               <Separator size="4" />
               <Flex justify="between" align="center">
                 <Flex gap="3" align="center">
-                  <Avatar size="4" fallback="AL" color="green" variant="solid" />
+                  <Avatar
+                    size="4"
+                    fallback="AL"
+                    color="green"
+                    variant="solid"
+                  />
                   <Flex direction="column" gap="0">
                     <Text size="2" weight="medium">Alex Lee</Text>
                     <Text size="1" color="gray">Designer</Text>
@@ -77,7 +92,12 @@ export function AvatarExamples() {
   <Flex direction="column" gap="3">
     <Flex justify="between" align="center">
       <Flex gap="3" align="center">
-        <Avatar size="4" fallback="SK" color="violet" variant="solid" />
+        <Avatar
+          size="4"
+          fallback="SK"
+          color="violet"
+          variant="solid"
+        />
         <Flex direction="column" gap="0">
           <Text size="2" weight="medium">Sarah Kim</Text>
           <Text size="1" color="gray">Product Lead</Text>
@@ -105,11 +125,16 @@ export function AvatarExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="auto">
+        <PreviewBlock background="none" height="30rem">
           <Card variant="classic" size="2" style={{ maxWidth: 440 }}>
             <Flex direction="column" gap="4">
               <Flex gap="3" align="start">
-                <Avatar size="3" fallback="MJ" color="blue" variant="soft" />
+                <Avatar
+                  size="3"
+                  fallback="MJ"
+                  color="blue"
+                  variant="soft"
+                />
                 <Flex direction="column" gap="0" style={{ flex: 1 }}>
                   <Flex justify="between" align="center">
                     <Flex gap="2" align="center">
@@ -125,7 +150,12 @@ export function AvatarExamples() {
               </Flex>
               <Separator size="4" />
               <Flex gap="3" align="start">
-                <Avatar size="3" fallback="EW" color="pink" variant="soft" />
+                <Avatar
+                  size="3"
+                  fallback="EW"
+                  color="pink"
+                  variant="soft"
+                />
                 <Flex direction="column" gap="0" style={{ flex: 1 }}>
                   <Flex justify="between" align="center">
                     <Flex gap="2" align="center">
@@ -144,7 +174,12 @@ export function AvatarExamples() {
         </PreviewBlock>
         <CodeBlock
           code={`<Flex gap="3" align="start">
-  <Avatar size="3" fallback="MJ" color="blue" variant="soft" />
+  <Avatar
+    size="3"
+    fallback="MJ"
+    color="blue"
+    variant="soft"
+  />
   <Flex direction="column" gap="0" style={{ flex: 1 }}>
     <Flex justify="between" align="center">
       <Flex gap="2" align="center">
@@ -176,10 +211,15 @@ export function AvatarExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="auto">
+        <PreviewBlock background="none" height="30rem">
           <Card variant="classic" size="3" style={{ maxWidth: 360 }}>
             <Flex direction="column" gap="5" align="center" p="1" style={{ textAlign: 'center' }}>
-              <Avatar size="6" fallback="SK" color="violet" variant="solid" />
+              <Avatar
+                size="6"
+                fallback="SK"
+                color="violet"
+                variant="solid"
+              />
               <Flex direction="column" gap="1">
                 <Flex align="center" justify="center" gap="2">
                   <Heading size="4">Sarah Kim</Heading>
@@ -206,7 +246,12 @@ export function AvatarExamples() {
         <CodeBlock
           code={`<Card variant="classic" size="3">
   <Flex direction="column" gap="5" align="center" p="1">
-    <Avatar size="6" fallback="SK" color="violet" variant="solid" />
+    <Avatar
+      size="6"
+      fallback="SK"
+      color="violet"
+      variant="solid"
+    />
     <Flex direction="column" gap="1">
       <Flex align="center" justify="center" gap="2">
         <Heading size="4">Sarah Kim</Heading>
@@ -243,12 +288,17 @@ export function AvatarExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="auto">
+        <PreviewBlock background="none" height="30rem">
           <Card variant="classic" size="2" style={{ maxWidth: 340 }}>
             <Flex direction="column" gap="3">
               <Flex justify="between" align="center">
                 <Flex gap="3" align="center">
-                  <Avatar size="4" fallback="JD" variant="soft" status="green" />
+                  <Avatar
+                    size="4"
+                    fallback="JD"
+                    variant="soft"
+                    status="green"
+                  />
                   <Flex direction="column" gap="0">
                     <Text size="2" weight="medium">John Doe</Text>
                     <Text size="1" color="green">Online</Text>
@@ -258,7 +308,12 @@ export function AvatarExamples() {
               <Separator size="4" />
               <Flex justify="between" align="center">
                 <Flex gap="3" align="center">
-                  <Avatar size="4" fallback="AB" variant="soft" status="amber" />
+                  <Avatar
+                    size="4"
+                    fallback="AB"
+                    variant="soft"
+                    status="amber"
+                  />
                   <Flex direction="column" gap="0">
                     <Text size="2" weight="medium">Alice Brown</Text>
                     <Text size="1" color="amber">Away</Text>
@@ -268,7 +323,12 @@ export function AvatarExamples() {
               <Separator size="4" />
               <Flex justify="between" align="center">
                 <Flex gap="3" align="center">
-                  <Avatar size="4" fallback="CD" variant="soft" status="gray" />
+                  <Avatar
+                    size="4"
+                    fallback="CD"
+                    variant="soft"
+                    status="gray"
+                  />
                   <Flex direction="column" gap="0">
                     <Text size="2" weight="medium">Chris Davis</Text>
                     <Text size="1" color="gray">Offline</Text>
@@ -279,9 +339,24 @@ export function AvatarExamples() {
           </Card>
         </PreviewBlock>
         <CodeBlock
-          code={`<Avatar size="4" fallback="JD" variant="soft" status="green" />
-<Avatar size="4" fallback="AB" variant="soft" status="amber" />
-<Avatar size="4" fallback="CD" variant="soft" status="gray" />`}
+          code={`<Avatar
+  size="4"
+  fallback="JD"
+  variant="soft"
+  status="green"
+/>
+<Avatar
+  size="4"
+  fallback="AB"
+  variant="soft"
+  status="amber"
+/>
+<Avatar
+  size="4"
+  fallback="CD"
+  variant="soft"
+  status="gray"
+/>`}
           language="tsx"
           showLineNumbers={true}
           collapsible={false}
@@ -300,7 +375,7 @@ export function AvatarExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="8rem">
+        <PreviewBlock background="none" height="30rem">
           <Avatar
             size="5"
             fallback="JD"
@@ -341,11 +416,26 @@ export function AvatarExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="8rem">
+        <PreviewBlock background="none" height="30rem">
           <Flex gap="3" align="center">
-            <Avatar size="4" fallback="JD" variant="soft" radius="full" />
-            <Avatar size="4" fallback="SK" variant="soft" radius="full" />
-            <Avatar size="4" fallback="AL" variant="soft" radius="full" />
+            <Avatar
+              size="4"
+              fallback="JD"
+              variant="soft"
+              radius="full"
+            />
+            <Avatar
+              size="4"
+              fallback="SK"
+              variant="soft"
+              radius="full"
+            />
+            <Avatar
+              size="4"
+              fallback="AL"
+              variant="soft"
+              radius="full"
+            />
             <IconButton
               size="4"
               variant="outline"
@@ -359,9 +449,24 @@ export function AvatarExamples() {
         </PreviewBlock>
         <CodeBlock
           code={`<Flex gap="3" align="center">
-  <Avatar size="4" fallback="JD" variant="soft" radius="full" />
-  <Avatar size="4" fallback="SK" variant="soft" radius="full" />
-  <Avatar size="4" fallback="AL" variant="soft" radius="full" />
+  <Avatar
+    size="4"
+    fallback="JD"
+    variant="soft"
+    radius="full"
+  />
+  <Avatar
+    size="4"
+    fallback="SK"
+    variant="soft"
+    radius="full"
+  />
+  <Avatar
+    size="4"
+    fallback="AL"
+    variant="soft"
+    radius="full"
+  />
   <IconButton
     size="4"
     variant="outline"
