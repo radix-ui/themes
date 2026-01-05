@@ -322,6 +322,53 @@ export function CalloutExamples() {
           collapsible={false}
         />
       </Flex>
+
+      <Separator size="4" />
+
+      {/* Example 8: Translucent Callout */}
+      <Flex direction="column" gap="4">
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Translucent Callout</SectionHeader.Title>
+            <SectionHeader.Description>The translucent material creates depth over dynamic backgrounds. Use highContrast for maximum readability on complex surfaces.</SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
+        <PreviewBlock
+          showThemeToggle={false}
+          appearance="dark"
+          variant="ghost"
+          height="20rem"
+          background={{
+            backgroundImage:
+              'url(https://images.unsplash.com/photo-1765572446249-a583906255f0?q=80&w=1341&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          <Callout.Root color="blue" material="translucent" highContrast style={{ maxWidth: 440 }}>
+            <Callout.Icon>
+              <HugeiconsIcon icon={InformationCircleIcon} strokeWidth={1.75} />
+            </Callout.Icon>
+            <Callout.Text>Translucent callouts blend seamlessly with dynamic backgrounds while maintaining readability.</Callout.Text>
+          </Callout.Root>
+        </PreviewBlock>
+        <CodeBlock
+          code={`<Theme appearance="dark">
+  <Callout.Root color="blue" material="translucent" highContrast>
+    <Callout.Icon>
+      <HugeiconsIcon icon={InformationCircleIcon} />
+    </Callout.Icon>
+    <Callout.Text>
+      Translucent callouts blend seamlessly with dynamic
+      backgrounds while maintaining readability.
+    </Callout.Text>
+  </Callout.Root>
+</Theme>`}
+          language="tsx"
+          showLineNumbers={true}
+          collapsible={false}
+        />
+      </Flex>
     </Flex>
   );
 }
