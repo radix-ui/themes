@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { TextField } from '@kushagradhawan/kookie-ui';
+import { TextField, Text } from '@kushagradhawan/kookie-ui';
 import { Search } from 'lucide-react';
 import Playground from '@/components/playground';
 
@@ -18,6 +18,9 @@ export default function TextFieldPlayground() {
   const [disabled, setDisabled] = React.useState<boolean>(false);
   const [error, setError] = React.useState<boolean>(false);
   const [showIcon, setShowIcon] = React.useState<boolean>(false);
+  const [scrub, setScrub] = React.useState<boolean>(false);
+  const [scrubValue, setScrubValue] = React.useState<number>(100);
+  const [textValue, setTextValue] = React.useState<string>('');
 
   const items = [
     {
@@ -77,10 +80,25 @@ export default function TextFieldPlayground() {
       value: error,
       onChange: setError,
     },
+    {
+      id: 'scrub',
+      label: 'Scrub',
+      type: 'switch' as const,
+      value: scrub,
+      onChange: setScrub,
+    },
   ];
 
   const generateCode = () => {
-    const props = [`variant="${variant}"`, `size="${size}"`, 'placeholder="Enter text"'];
+    const props = [`variant="${variant}"`, `size="${size}"`];
+
+    if (scrub) {
+      props.push('type="number"');
+      props.push('value={value}');
+      props.push('onChange={(e) => setValue(Number(e.target.value) || 0)}');
+    } else {
+      props.push('placeholder="Enter text"');
+    }
 
     if (radius !== 'theme') props.push(`radius="${radius}"`);
     if (material !== 'theme') props.push(`material="${material}"`);
@@ -88,6 +106,20 @@ export default function TextFieldPlayground() {
     if (error) props.push('error');
 
     const propsString = props.length > 0 ? `\n  ${props.join('\n  ')}` : '';
+
+    if (scrub) {
+      return `<TextField.Root${propsString}>
+  <TextField.Slot
+    scrub
+    scrubValue={value}
+    scrubMin={0}
+    scrubMax={1000}
+    onScrub={(delta) => setValue((prev) => prev + delta)}
+  >
+    <Text size="${size}" weight="medium">Value</Text>
+  </TextField.Slot>
+</TextField.Root>`;
+    }
 
     if (showIcon) {
       return `<TextField.Root${propsString}>
@@ -110,10 +142,32 @@ export default function TextFieldPlayground() {
           material={material === 'theme' ? undefined : (material as any)}
           disabled={disabled}
           error={error}
-          placeholder="Enter text"
+          type={scrub ? 'number' : 'text'}
+          value={scrub ? scrubValue : textValue}
+          onChange={(e) => {
+            if (scrub) {
+              setScrubValue(Number((e.target as HTMLInputElement).value) || 0);
+            } else {
+              setTextValue(e.target.value);
+            }
+          }}
+          placeholder={scrub ? undefined : 'Enter text'}
           style={{ width: 240 }}
         >
-          {showIcon && (
+          {scrub && (
+            <TextField.Slot
+              scrub
+              scrubValue={scrubValue}
+              scrubMin={0}
+              scrubMax={1000}
+              onScrub={(delta) => setScrubValue((prev) => prev + delta)}
+            >
+              <Text size={size as any} weight="medium">
+                Value
+              </Text>
+            </TextField.Slot>
+          )}
+          {showIcon && !scrub && (
             <TextField.Slot>
               <Search size={16} />
             </TextField.Slot>
@@ -123,7 +177,13 @@ export default function TextFieldPlayground() {
       code={generateCode()}
       items={items}
       showBackground={material === 'translucent'}
-      hint={material === 'translucent' ? 'Translucent material adds backdrop blur for depth over complex backgrounds.' : undefined}
+      hint={
+        scrub
+          ? 'Drag the label horizontally to adjust the value. Hold Shift for 10x speed, Alt/Option for fine control.'
+          : material === 'translucent'
+            ? 'Translucent material adds backdrop blur for depth over complex backgrounds.'
+            : undefined
+      }
     />
   );
 }
