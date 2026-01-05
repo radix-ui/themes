@@ -215,6 +215,19 @@
   }
 }
 
+/* Reduced radius when collapsed (scale down by 1) */
+@breakpoints {
+  .rt-ChatbarRoot:where([data-state='closed'].rt-r-size-1) .rt-ChatbarBox {
+    border-radius: min(var(--radius-5), calc(var(--radius-1) + var(--space-1)));
+  }
+  .rt-ChatbarRoot:where([data-state='closed'].rt-r-size-2) .rt-ChatbarBox {
+    border-radius: min(var(--radius-6), calc(var(--radius-2) + var(--space-2)));
+  }
+  .rt-ChatbarRoot:where([data-state='closed'].rt-r-size-3) .rt-ChatbarBox {
+    border-radius: min(var(--radius-6), calc(var(--radius-2) + var(--space-2)));
+  }
+}
+
 /* Variants copied from TextArea */
 /* outline */
 .rt-ChatbarBox:where(.rt-variant-outline) {

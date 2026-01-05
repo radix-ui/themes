@@ -1,10 +1,10 @@
 'use client';
 
 import * as React from 'react';
-import { PreviewBlock, CodeBlock, SectionHeader } from '@kushagradhawan/kookie-blocks';
-import { Flex, Chatbar, IconButton, Separator, Text, Card, Heading, Avatar, Skeleton } from '@kushagradhawan/kookie-ui';
+import { PreviewBlock, CodeBlock, SectionHeader, Hero } from '@kushagradhawan/kookie-blocks';
+import { Flex, Chatbar, IconButton, Separator, Text, Card, Avatar, Skeleton } from '@kushagradhawan/kookie-ui';
 import { HugeiconsIcon } from '@hugeicons/react';
-import { Attachment01Icon, SmileIcon, Mic01Icon, SparklesIcon } from '@hugeicons/core-free-icons';
+import { Attachment01Icon, SmileIcon, Mic01Icon, SparklesIcon, AiBrain01Icon } from '@hugeicons/core-free-icons';
 
 export function ChatbarExamples() {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
@@ -31,7 +31,7 @@ export function ChatbarExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="10rem">
+        <PreviewBlock background="none">
           <Card variant="classic" size="2" style={{ width: '100%', maxWidth: 500 }}>
             <Flex direction="column" gap="3" p="1">
               <Flex gap="2" align="start">
@@ -41,18 +41,17 @@ export function ChatbarExamples() {
                   <Skeleton width="140px" height="12px" />
                 </Flex>
               </Flex>
-              <Chatbar.Root
-                variant="soft"
-                size="2"
-                color="gray"
-                value={messageValue}
-                onValueChange={setMessageValue}
-                onSubmit={handleSubmit}
-              >
+              <Chatbar.Root maxLines={16} minLines={3} variant="soft" size="2" color="gray" sendMode="always" value={messageValue} onValueChange={setMessageValue} onSubmit={handleSubmit}>
                 <Chatbar.Textarea aria-label="Message" placeholder="Type a message..." submitOnEnter />
                 <Chatbar.InlineEnd>
-                  <Chatbar.Send loading={isSubmitting} highContrast />
+                  <Chatbar.Send size="2" loading={isSubmitting} highContrast />
                 </Chatbar.InlineEnd>
+                <Chatbar.Row>
+                  <Chatbar.RowStart />
+                  <Chatbar.RowEnd>
+                    <Chatbar.Send size="2" loading={isSubmitting} highContrast />
+                  </Chatbar.RowEnd>
+                </Chatbar.Row>
               </Chatbar.Root>
             </Flex>
           </Card>
@@ -70,6 +69,9 @@ export function ChatbarExamples() {
       variant="soft"
       size="2"
       color="gray"
+      sendMode="always"
+      minLines={3}
+      maxLines={16}
       value={messageValue}
       onValueChange={setMessageValue}
       onSubmit={handleSubmit}
@@ -82,6 +84,12 @@ export function ChatbarExamples() {
       <Chatbar.InlineEnd>
         <Chatbar.Send loading={isSubmitting} highContrast />
       </Chatbar.InlineEnd>
+      <Chatbar.Row>
+        <Chatbar.RowStart />
+        <Chatbar.RowEnd>
+          <Chatbar.Send loading={isSubmitting} highContrast />
+        </Chatbar.RowEnd>
+      </Chatbar.Row>
     </Chatbar.Root>
   </Flex>
 </Card>`}
@@ -103,10 +111,13 @@ export function ChatbarExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="12rem">
+        <PreviewBlock background="none">
           <Chatbar.Root
             variant="classic"
             size="2"
+            sendMode="always"
+            minLines={3}
+            maxLines={16}
             accept="image/*,.pdf,.doc,.docx"
             maxAttachments={5}
             maxFileSize={10 * 1024 * 1024}
@@ -133,7 +144,9 @@ export function ChatbarExamples() {
                 </IconButton>
               </Chatbar.RowStart>
               <Chatbar.RowEnd>
-                <Text size="1" color="gray">Shift+Enter for new line</Text>
+                <Text size="1" color="gray">
+                  Shift+Enter for new line
+                </Text>
                 <Chatbar.Send />
               </Chatbar.RowEnd>
             </Chatbar.Row>
@@ -143,6 +156,9 @@ export function ChatbarExamples() {
           code={`<Chatbar.Root
   variant="classic"
   size="2"
+  sendMode="always"
+  minLines={3}
+  maxLines={16}
   accept="image/*,.pdf,.doc,.docx"
   maxAttachments={5}
   maxFileSize={10 * 1024 * 1024}
@@ -206,55 +222,93 @@ export function ChatbarExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="14rem">
-          <Flex direction="column" gap="4" style={{ width: '100%', maxWidth: 600 }}>
-            <Flex direction="column" align="center" gap="2" py="4">
-              <Flex align="center" gap="2">
-                <HugeiconsIcon icon={SparklesIcon} strokeWidth={1.75} style={{ color: 'var(--blue-9)' }} />
-                <Heading size="4" weight="medium">How can I help you today?</Heading>
-              </Flex>
-              <Text size="2" color="gray">Ask me anything about your projects, code, or ideas.</Text>
+        <PreviewBlock background="none" height="50rem">
+          <Hero.Root style={{ width: '100%', maxWidth: 600 }}>
+            <Hero.Meta>
+              <HugeiconsIcon icon={SparklesIcon} strokeWidth={1.75} />
+            </Hero.Meta>
+            <Flex direction="column" gap="2">
+              <Hero.Title size="8">What are you working on today?</Hero.Title>
+              <Hero.Description color="gray">Ask me anything about your projects, code, or ideas.</Hero.Description>
             </Flex>
-            <Chatbar.Root
-              variant="surface"
-              size="3"
-              color="blue"
-              onSubmit={({ value }) => console.log('Ask:', value)}
-            >
+            <Chatbar.Root open variant="soft" size="2" sendMode="always" minLines={3} maxLines={16} style={{ width: '100%' }} onSubmit={({ value }) => console.log('Ask:', value)}>
               <Chatbar.Textarea aria-label="Ask anything" placeholder="Ask me anything..." submitOnEnter />
-              <Chatbar.InlineEnd>
-                <Chatbar.Send highContrast />
-              </Chatbar.InlineEnd>
+              <Chatbar.Row>
+                <Chatbar.RowStart>
+                  <Chatbar.AttachTrigger asChild>
+                    <IconButton variant="ghost" size="2" highContrast aria-label="Attach file" tooltip="Attach file">
+                      <HugeiconsIcon icon={Attachment01Icon} strokeWidth={1.75} />
+                    </IconButton>
+                  </Chatbar.AttachTrigger>
+                  <IconButton variant="ghost" size="2" highContrast aria-label="Select model" tooltip="Select model">
+                    <HugeiconsIcon icon={AiBrain01Icon} strokeWidth={1.75} />
+                  </IconButton>
+                </Chatbar.RowStart>
+                <Chatbar.RowEnd>
+                  <Chatbar.Send highContrast />
+                </Chatbar.RowEnd>
+              </Chatbar.Row>
             </Chatbar.Root>
-          </Flex>
+          </Hero.Root>
         </PreviewBlock>
         <CodeBlock
-          code={`<Flex direction="column" gap="4">
-  <Flex direction="column" align="center" gap="2" py="4">
-    <Flex align="center" gap="2">
-      <HugeiconsIcon icon={SparklesIcon} strokeWidth={1.75} />
-      <Heading size="4" weight="medium">How can I help you today?</Heading>
-    </Flex>
-    <Text size="2" color="gray">
+          code={`<Hero.Root>
+  <Hero.Meta>
+    <HugeiconsIcon icon={SparklesIcon} strokeWidth={1.75} />
+  </Hero.Meta>
+  <Flex direction="column" gap="4">
+    <Hero.Title>How can I help you today?</Hero.Title>
+    <Hero.Description color="gray">
       Ask me anything about your projects, code, or ideas.
-    </Text>
+    </Hero.Description>
   </Flex>
   <Chatbar.Root
-    variant="surface"
-    size="3"
+    open
+    variant="soft"
+    size="2"
     color="blue"
-    onSubmit={({ value }) => streamResponse(value)}
+    sendMode="always"
+    minLines={3}
+    maxLines={16}
+    style={{ width: '100%' }}
+    onSubmit={handleSubmit}
   >
     <Chatbar.Textarea
       aria-label="Ask anything"
       placeholder="Ask me anything..."
       submitOnEnter
     />
-    <Chatbar.InlineEnd>
-      <Chatbar.Send highContrast />
-    </Chatbar.InlineEnd>
+    <Chatbar.Row>
+      <Chatbar.RowStart>
+        <Chatbar.AttachTrigger asChild>
+          <IconButton
+            variant="ghost"
+            size="2"
+            color="gray"
+            highContrast
+            aria-label="Attach file"
+            tooltip="Attach file"
+          >
+            <HugeiconsIcon icon={Attachment01Icon} strokeWidth={1.75} />
+          </IconButton>
+        </Chatbar.AttachTrigger>
+        <IconButton
+          variant="ghost"
+          size="2"
+          color="gray"
+          highContrast
+          aria-label="Select model"
+          tooltip="Select model"
+        >
+          <HugeiconsIcon icon={AiBrain01Icon} strokeWidth={1.75} />
+        </IconButton>
+      </Chatbar.RowStart>
+      <Chatbar.RowEnd>
+        <Chatbar.Send highContrast />
+      </Chatbar.RowEnd>
+    </Chatbar.Row>
   </Chatbar.Root>
-</Flex>`}
+</Hero.Root>`}
           language="tsx"
           showLineNumbers={true}
           collapsible={false}
@@ -263,86 +317,7 @@ export function ChatbarExamples() {
 
       <Separator size="4" />
 
-      {/* Example 4: Comment Reply */}
-      <Flex direction="column" gap="4">
-        <SectionHeader.Root>
-          <SectionHeader.Content>
-            <SectionHeader.Title>Comment Reply</SectionHeader.Title>
-            <SectionHeader.Description>
-              Size 1 with soft variant fits compact reply interfaces. The expandOn="focus" behavior keeps the UI minimal until the user starts typing.
-            </SectionHeader.Description>
-          </SectionHeader.Content>
-        </SectionHeader.Root>
-        <PreviewBlock background="none" height="12rem">
-          <Card variant="classic" size="1" style={{ width: '100%', maxWidth: 400 }}>
-            <Flex direction="column" gap="3" p="2">
-              <Flex gap="2" align="start">
-                <Avatar size="1" fallback="JD" />
-                <Flex direction="column" gap="1" style={{ flex: 1 }}>
-                  <Flex gap="2" align="center">
-                    <Text size="1" weight="medium">Jane Doe</Text>
-                    <Text size="1" color="gray">2 hours ago</Text>
-                  </Flex>
-                  <Text size="2">This looks great! Can we add more details about the implementation?</Text>
-                </Flex>
-              </Flex>
-              <Chatbar.Root
-                variant="soft"
-                size="1"
-                color="gray"
-                expandOn="focus"
-                onSubmit={({ value }) => console.log('Reply:', value)}
-              >
-                <Chatbar.Textarea aria-label="Reply" placeholder="Write a reply..." submitOnEnter />
-                <Chatbar.InlineEnd>
-                  <Chatbar.Send />
-                </Chatbar.InlineEnd>
-              </Chatbar.Root>
-            </Flex>
-          </Card>
-        </PreviewBlock>
-        <CodeBlock
-          code={`<Card variant="classic" size="1">
-  <Flex direction="column" gap="3" p="2">
-    <Flex gap="2" align="start">
-      <Avatar size="1" fallback="JD" />
-      <Flex direction="column" gap="1" style={{ flex: 1 }}>
-        <Flex gap="2" align="center">
-          <Text size="1" weight="medium">Jane Doe</Text>
-          <Text size="1" color="gray">2 hours ago</Text>
-        </Flex>
-        <Text size="2">
-          This looks great! Can we add more details about the implementation?
-        </Text>
-      </Flex>
-    </Flex>
-    <Chatbar.Root
-      variant="soft"
-      size="1"
-      color="gray"
-      expandOn="focus"
-      onSubmit={({ value }) => postReply(value)}
-    >
-      <Chatbar.Textarea
-        aria-label="Reply"
-        placeholder="Write a reply..."
-        submitOnEnter
-      />
-      <Chatbar.InlineEnd>
-        <Chatbar.Send />
-      </Chatbar.InlineEnd>
-    </Chatbar.Root>
-  </Flex>
-</Card>`}
-          language="tsx"
-          showLineNumbers={true}
-          collapsible={false}
-        />
-      </Flex>
-
-      <Separator size="4" />
-
-      {/* Example 5: Translucent Hero Chat */}
+      {/* Example 4: Translucent Hero Chat */}
       <Flex direction="column" gap="4">
         <SectionHeader.Root>
           <SectionHeader.Content>
@@ -353,56 +328,92 @@ export function ChatbarExamples() {
           </SectionHeader.Content>
         </SectionHeader.Root>
         <PreviewBlock
-          height="16rem"
           showThemeToggle={false}
           appearance="dark"
           variant="ghost"
+          height="30rem"
           background={{
-            backgroundColor: 'hsl(220, 20%, 10%)',
             backgroundImage:
-              'radial-gradient(circle at 30% 20%, hsl(280, 60%, 25%) 0%, transparent 50%), radial-gradient(circle at 70% 80%, hsl(200, 60%, 20%) 0%, transparent 50%)',
-            borderRadius: 'var(--radius-3)',
+              'url(https://images.unsplash.com/photo-1765684145185-387b6c69bef1?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
           }}
         >
-          <Flex direction="column" gap="4" align="center" style={{ width: '100%', maxWidth: 500 }}>
-            <Heading size="5" weight="medium" align="center" style={{ color: 'white' }}>
-              What would you like to create?
-            </Heading>
-            <Chatbar.Root
-              variant="classic"
-              size="2"
-              material="translucent"
-              style={{ width: '100%' }}
-              onSubmit={({ value }) => console.log('Create:', value)}
-            >
-              <Chatbar.Textarea aria-label="Describe what you want to create" placeholder="Describe what you want to create..." submitOnEnter />
-              <Chatbar.InlineEnd>
+          <Chatbar.Root
+            open
+            variant="classic"
+            size="2"
+            color="gray"
+            material="translucent"
+            sendMode="always"
+            minLines={3}
+            maxLines={16}
+            style={{ width: '100%', maxWidth: 600 }}
+            onSubmit={({ value }) => console.log('Ask:', value)}
+          >
+            <Chatbar.Textarea aria-label="Ask anything" placeholder="Ask me anything..." submitOnEnter />
+            <Chatbar.Row>
+              <Chatbar.RowStart>
+                <Chatbar.AttachTrigger asChild>
+                  <IconButton variant="ghost" size="2" highContrast aria-label="Attach file" tooltip="Attach file">
+                    <HugeiconsIcon icon={Attachment01Icon} strokeWidth={1.75} />
+                  </IconButton>
+                </Chatbar.AttachTrigger>
+                <IconButton variant="ghost" size="2" highContrast aria-label="Select model" tooltip="Select model">
+                  <HugeiconsIcon icon={AiBrain01Icon} strokeWidth={1.75} />
+                </IconButton>
+              </Chatbar.RowStart>
+              <Chatbar.RowEnd>
                 <Chatbar.Send highContrast />
-              </Chatbar.InlineEnd>
-            </Chatbar.Root>
-          </Flex>
+              </Chatbar.RowEnd>
+            </Chatbar.Row>
+          </Chatbar.Root>
         </PreviewBlock>
         <CodeBlock
-          code={`<Theme appearance="dark" material="translucent">
-  <Flex direction="column" gap="4" align="center">
-    <Heading size="5" weight="medium" align="center">
-      What would you like to create?
-    </Heading>
-    <Chatbar.Root
-      variant="classic"
-      size="2"
-      onSubmit={({ value }) => generateContent(value)}
-    >
-      <Chatbar.Textarea
-        aria-label="Describe what you want to create"
-        placeholder="Describe what you want to create..."
-        submitOnEnter
-      />
-      <Chatbar.InlineEnd>
+          code={`<Theme appearance="dark">
+  <Chatbar.Root
+    open
+    variant="classic"
+    size="2"
+    material="translucent"
+    sendMode="always"
+    minLines={3}
+    maxLines={16}
+    onSubmit={handleSubmit}
+  >
+    <Chatbar.Textarea
+      aria-label="Ask anything"
+      placeholder="Ask me anything..."
+      submitOnEnter
+    />
+    <Chatbar.Row>
+      <Chatbar.RowStart>
+        <Chatbar.AttachTrigger asChild>
+          <IconButton
+            variant="ghost"
+            size="2"
+            highContrast
+            aria-label="Attach file"
+            tooltip="Attach file"
+          >
+            <HugeiconsIcon icon={Attachment01Icon} strokeWidth={1.75} />
+          </IconButton>
+        </Chatbar.AttachTrigger>
+        <IconButton
+          variant="ghost"
+          size="2"
+          highContrast
+          aria-label="Select model"
+          tooltip="Select model"
+        >
+          <HugeiconsIcon icon={AiBrain01Icon} strokeWidth={1.75} />
+        </IconButton>
+      </Chatbar.RowStart>
+      <Chatbar.RowEnd>
         <Chatbar.Send highContrast />
-      </Chatbar.InlineEnd>
-    </Chatbar.Root>
-  </Flex>
+      </Chatbar.RowEnd>
+    </Chatbar.Row>
+  </Chatbar.Root>
 </Theme>`}
           language="tsx"
           showLineNumbers={true}
