@@ -24,7 +24,7 @@ export function BadgeExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="auto">
+        <PreviewBlock background="none" height="30rem">
           <Card variant="classic" size="2" style={{ minWidth: 360 }}>
             <Flex direction="column" gap="3">
               <Flex justify="between" align="center">
@@ -91,10 +91,15 @@ export function BadgeExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="auto">
+        <PreviewBlock background="none" height="30rem">
           <Card variant="classic" size="3" style={{ maxWidth: 360 }}>
             <Flex direction="column" gap="5" align="center" p="1" style={{ textAlign: 'center' }}>
-              <Avatar size="6" fallback="AL" color="violet" variant="solid" />
+              <Avatar
+                size="6"
+                fallback="AL"
+                color="violet"
+                variant="solid"
+              />
               <Flex direction="column" gap="1">
                 <Flex align="center" justify="center" gap="2">
                   <Heading size="4">Alex Lee</Heading>
@@ -114,7 +119,12 @@ export function BadgeExamples() {
         <CodeBlock
           code={`<Card variant="classic" size="3">
   <Flex direction="column" gap="5" align="center" p="1">
-    <Avatar size="6" fallback="AL" color="violet" variant="solid" />
+    <Avatar
+      size="6"
+      fallback="AL"
+      color="violet"
+      variant="solid"
+    />
     <Flex direction="column" gap="1">
       <Flex align="center" justify="center" gap="2">
         <Heading size="4">Alex Lee</Heading>
@@ -147,7 +157,7 @@ export function BadgeExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="10rem">
+        <PreviewBlock background="none" height="30rem">
           <Card variant="classic" size="2" style={{ minWidth: 320, maxWidth: 400 }}>
             <Flex direction="column" gap="3">
               <Flex justify="between" align="center">
@@ -212,11 +222,16 @@ export function BadgeExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="auto">
+        <PreviewBlock background="none" height="30rem">
           <Card variant="classic" size="2" style={{ minWidth: 320, maxWidth: 400 }}>
             <Flex direction="column" gap="4">
               <Flex gap="3" align="start">
-                <Avatar size="3" fallback="JD" color="blue" variant="soft" />
+                <Avatar
+                  size="3"
+                  fallback="JD"
+                  color="blue"
+                  variant="soft"
+                />
                 <Flex direction="column" gap="0" style={{ flex: 1 }}>
                   <Flex justify="between" align="center">
                     <Flex gap="2" align="center">
@@ -230,7 +245,12 @@ export function BadgeExamples() {
               </Flex>
               <Separator size="4" />
               <Flex gap="3" align="start">
-                <Avatar size="3" fallback="SK" color="green" variant="soft" />
+                <Avatar
+                  size="3"
+                  fallback="SK"
+                  color="green"
+                  variant="soft"
+                />
                 <Flex direction="column" gap="0" style={{ flex: 1 }}>
                   <Flex justify="between" align="center">
                     <Flex gap="2" align="center">
@@ -249,7 +269,12 @@ export function BadgeExamples() {
         </PreviewBlock>
         <CodeBlock
           code={`<Flex gap="3" align="start">
-  <Avatar size="3" fallback="JD" color="blue" variant="soft" />
+  <Avatar
+    size="3"
+    fallback="JD"
+    color="blue"
+    variant="soft"
+  />
   <Flex direction="column" gap="0" style={{ flex: 1 }}>
     <Flex justify="between" align="center">
       <Flex gap="2" align="center">
