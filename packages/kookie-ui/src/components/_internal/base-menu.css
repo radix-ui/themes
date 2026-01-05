@@ -79,12 +79,6 @@
     cursor: default;
   }
 
-  /* Focus-visible support */
-  &:where(:focus-visible) {
-    outline: 2px solid var(--focus-8);
-    outline-offset: -2px;
-  }
-
   /* Enhanced reduced motion support */
   @media (prefers-reduced-motion: reduce) {
     transition: none;
