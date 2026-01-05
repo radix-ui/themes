@@ -215,7 +215,12 @@ Override the theme's material for a button when you need a specific effect. Tran
 Set `loading` to `true` to show a spinner and disable the button. No need to set `disabled` manually.
 
 ```tsx
-<Button size="3" color="gray" highContrast loading>
+<Button
+  size="3"
+  color="gray"
+  highContrast
+  loading
+>
   Submitting...
 </Button>
 ```
@@ -225,7 +230,11 @@ Set `loading` to `true` to show a spinner and disable the button. No need to set
 Set the `disabled` prop to `true` to prevent interaction when an action is unavailable, such as during form validation or when authentication is required.
 
 ```tsx
-<Button size="3" disabled tooltip="Please fill all required fields">
+<Button
+  size="3"
+  disabled
+  tooltip="Please fill all required fields"
+>
   Save
 </Button>
 ```
@@ -288,7 +297,11 @@ Use margin props for spacing around buttons. All margin props are responsive and
 Use the `tooltip` prop to add context to button actions, especially for icon buttons or unclear actions. Tooltips appear on hover and focus for accessibility. Always provide a tooltip for icon-only buttons.
 
 ```tsx
-<Button variant="soft" size="3" tooltip="Save your current progress">
+<Button
+  variant="soft"
+  size="3"
+  tooltip="Save your current progress"
+>
   Button
 </Button>
 ```
@@ -311,7 +324,11 @@ For icon-only buttons, use the `IconButton` component for proper accessibility a
 ```tsx
 import { ChevronDown } from 'lucide-react';
 
-<IconButton size="3" variant="soft" aria-label="More options">
+<IconButton
+  size="3"
+  variant="soft"
+  aria-label="More options"
+>
   <ChevronDown />
 </IconButton>
 ```

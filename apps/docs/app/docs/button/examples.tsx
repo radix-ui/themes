@@ -31,12 +31,24 @@ export function ButtonExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="8rem">
+        <PreviewBlock background="none" height="30rem">
           <Flex gap="2" align="center">
-            <Button variant="soft" size="2" color="gray" highContrast disabled={isSubmitting}>
+            <Button
+              variant="soft"
+              size="2"
+              color="gray"
+              highContrast
+              disabled={isSubmitting}
+            >
               Cancel
             </Button>
-            <Button variant="classic" size="2" highContrast loading={isSubmitting} onClick={handleSubmit}>
+            <Button
+              variant="classic"
+              size="2"
+              highContrast
+              loading={isSubmitting}
+              onClick={handleSubmit}
+            >
               <HugeiconsIcon icon={Tick01Icon} strokeWidth={1.75} />
               {isSubmitting ? 'Saving...' : 'Save Changes'}
             </Button>
@@ -82,7 +94,7 @@ export function ButtonExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="8rem">
+        <PreviewBlock background="none" height="30rem">
           <Flex gap="2" align="center">
             <Button variant="outline" size="2" color="gray">
               Cancel
@@ -121,7 +133,7 @@ export function ButtonExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="16rem">
+        <PreviewBlock background="none" height="30rem">
           <Card variant="classic" size="2" style={{ maxWidth: 320 }}>
             <Flex direction="column" gap="6" p="2">
               <Flex direction="column" gap="1">
@@ -188,20 +200,45 @@ export function ButtonExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="8rem">
+        <PreviewBlock background="none" height="30rem">
           <Flex gap="2" align="center">
-            <Button variant="soft" size="2" color="gray" highContrast onClick={toggleSelection}>
+            <Button
+              variant="soft"
+              size="2"
+              color="gray"
+              highContrast
+              onClick={toggleSelection}
+            >
               {selectedCount > 0 ? `${selectedCount} selected` : 'Select items'}
             </Button>
-            <Button variant="soft" size="2" color="gray" highContrast disabled={selectedCount === 0} tooltip={selectedCount === 0 ? 'Select items first' : undefined}>
+            <Button
+              variant="soft"
+              size="2"
+              color="gray"
+              highContrast
+              disabled={selectedCount === 0}
+              tooltip={selectedCount === 0 ? 'Select items first' : undefined}
+            >
               <HugeiconsIcon icon={Download01Icon} strokeWidth={1.75} />
               Export
             </Button>
-            <Button variant="soft" size="2" color="gray" highContrast tooltip="Copy link">
+            <Button
+              variant="soft"
+              size="2"
+              color="gray"
+              highContrast
+              tooltip="Copy link"
+            >
               <HugeiconsIcon icon={Copy01Icon} strokeWidth={1.75} />
               Copy
             </Button>
-            <Button variant="soft" size="2" color="gray" highContrast tooltip="Share with team">
+            <Button
+              variant="soft"
+              size="2"
+              color="gray"
+              highContrast
+              tooltip="Share with team"
+            >
               <HugeiconsIcon icon={Share01Icon} strokeWidth={1.75} />
               Share
             </Button>
@@ -258,7 +295,7 @@ export function ButtonExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="12rem">
+        <PreviewBlock background="none" height="30rem">
           <Flex direction="column" align="center" justify="center" gap="4" py="5" style={{ textAlign: 'center' }}>
             <Flex direction="column" gap="1">
               <Heading size="4" weight="medium">
@@ -314,13 +351,23 @@ export function ButtonExamples() {
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
-        <PreviewBlock background="none" height="8rem">
+        <PreviewBlock background="none" height="30rem">
           <Flex gap="1" align="center">
-            <Button variant="soft" size="1" color="gray" highContrast>
+            <Button
+              variant="soft"
+              size="1"
+              color="gray"
+              highContrast
+            >
               <HugeiconsIcon icon={FilterIcon} strokeWidth={1.75} />
               Filter
             </Button>
-            <Button variant="soft" size="1" color="gray" highContrast>
+            <Button
+              variant="soft"
+              size="1"
+              color="gray"
+              highContrast
+            >
               <HugeiconsIcon icon={SortingAZ01Icon} strokeWidth={1.75} />
               Sort
             </Button>
@@ -332,11 +379,21 @@ export function ButtonExamples() {
         </PreviewBlock>
         <CodeBlock
           code={`<Flex gap="1" align="center">
-  <Button variant="soft" size="1" color="gray" highContrast>
+  <Button
+    variant="soft"
+    size="1"
+    color="gray"
+    highContrast
+  >
     <HugeiconsIcon icon={FilterIcon} strokeWidth={1.75} />
     Filter
   </Button>
-  <Button variant="soft" size="1" color="gray" highContrast>
+  <Button
+    variant="soft"
+    size="1"
+    color="gray"
+    highContrast
+  >
     <HugeiconsIcon icon={SortingAZ01Icon} strokeWidth={1.75} />
     Sort
   </Button>
@@ -364,9 +421,10 @@ export function ButtonExamples() {
           </SectionHeader.Content>
         </SectionHeader.Root>
         <PreviewBlock
-          height="16rem"
+          height="30rem"
           showThemeToggle={false}
           appearance="dark"
+          p="0"
           variant="ghost"
           background={{
             backgroundColor: 'hsl(220, 20%, 10%)',
