@@ -22,6 +22,8 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
+  /* iOS momentum scrolling */
+  -webkit-overflow-scrolling: touch;
 
   &:where(:focus-visible) + :where(.rt-ScrollAreaViewportFocusRing) {
     position: absolute;

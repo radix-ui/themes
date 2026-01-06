@@ -13,6 +13,10 @@
   flex-direction: column;
   width: 100%;
   overflow: hidden;
+  /* Prevent scroll chaining to parent/body on iOS */
+  overscroll-behavior: none;
+  /* Ensure Shell is the scroll boundary */
+  position: relative;
 }
 
 /* Default height when no height prop is provided */
@@ -46,6 +50,8 @@
   min-height: 0;
   overflow: hidden;
   position: relative; /* enable absolute positioning for peek overlays */
+  /* Prevent scroll chaining on iOS */
+  overscroll-behavior: contain;
 }
 
 /* Left container - holds Rail, Panel, or Sidebar */
@@ -207,6 +213,8 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
+  /* iOS safe area support - prevent content from being cut off by home indicator */
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 
   /* Content animation */
   opacity: 0;
@@ -272,6 +280,12 @@
   min-width: 0;
   height: 100%;
   overflow: auto;
+  /* iOS momentum scrolling */
+  -webkit-overflow-scrolling: touch;
+  /* iOS safe area support */
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  /* Prevent overscroll bounce from triggering parent scroll */
+  overscroll-behavior: contain;
 }
 
 /* Inspector - right-side panel */
