@@ -2,7 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as Sheet from '../sheet.js';
 import { VisuallyHidden } from '../visually-hidden.js';
-import { useShell } from '../shell.context.js';
+import { useShell, useInset } from '../shell.context.js';
 import { useResponsivePresentation, useResponsiveInitialState } from '../shell.hooks.js';
 import { PaneResizeContext } from './shell-resize.js';
 import { BottomHandle, PaneHandle } from './shell-handles.js';
@@ -23,6 +23,8 @@ type BottomPublicProps = PaneBaseProps &
     onSizeChange?: (size: number, meta: BottomSizeChangeMeta) => void;
     sizeUpdate?: 'throttle' | 'debounce';
     sizeUpdateMs?: number;
+    /** When true, adds margin and triggers gray backdrop on Shell. */
+    inset?: boolean;
   };
 
 type BottomComponent = React.ForwardRefExoticComponent<BottomPublicProps & React.RefAttributes<HTMLDivElement>> & { Handle: typeof BottomHandle };
@@ -39,6 +41,7 @@ const BOTTOM_DOM_PROP_KEYS = [
   'sizeUpdate',
   'sizeUpdateMs',
   'style',
+  'inset',
 ] as const satisfies readonly (keyof BottomPublicProps)[];
 
 export const Bottom = React.forwardRef<HTMLDivElement, BottomPublicProps>((initialProps, ref) => {
@@ -70,9 +73,19 @@ export const Bottom = React.forwardRef<HTMLDivElement, BottomPublicProps>((initi
     onSizeChange,
     sizeUpdate,
     sizeUpdateMs = 50,
+    inset,
   } = initialProps;
   const bottomDomProps = extractPaneDomProps(initialProps, BOTTOM_DOM_PROP_KEYS);
   const shell = useShell();
+  const { registerInset, unregisterInset } = useInset();
+
+  // Register/unregister inset
+  React.useEffect(() => {
+    if (inset) {
+      registerInset('bottom');
+      return () => unregisterInset('bottom');
+    }
+  }, [inset, registerInset, unregisterInset]);
   const resolvedPresentation = useResponsivePresentation(presentation);
   const isOverlay = resolvedPresentation === 'overlay';
   const isStacked = resolvedPresentation === 'stacked';
@@ -375,6 +388,7 @@ export const Bottom = React.forwardRef<HTMLDivElement, BottomPublicProps>((initi
       data-peek={shell.peekTarget === 'bottom' || undefined}
       data-presentation={shell.currentBreakpointReady ? resolvedPresentation : undefined}
       data-open={(shell.currentBreakpointReady && isStacked && isExpanded) || undefined}
+      data-inset={inset || undefined}
       style={{
         ...style,
         ['--bottom-size' as any]: `${expandedSize}px`,

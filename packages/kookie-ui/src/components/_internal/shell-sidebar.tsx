@@ -2,7 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as Sheet from '../sheet.js';
 import { VisuallyHidden } from '../visually-hidden.js';
-import { useShell } from '../shell.context.js';
+import { useShell, useInset } from '../shell.context.js';
 import { useResponsivePresentation, useResponsiveInitialState } from '../shell.hooks.js';
 import { PaneResizeContext } from './shell-resize.js';
 import { extractPaneDomProps } from './shell-prop-helpers.js';
@@ -30,6 +30,8 @@ type SidebarPublicProps = Omit<SidebarPaneProps, 'mode' | 'defaultMode' | 'onMod
   onSizeChange?: (size: number, meta: { reason: 'init' | 'resize' | 'controlled' }) => void;
   sizeUpdate?: 'throttle' | 'debounce';
   sizeUpdateMs?: number;
+  /** When true, adds margin and triggers gray backdrop on Shell. */
+  inset?: boolean;
 } & (SidebarControlledProps | SidebarUncontrolledProps);
 
 type SidebarComponent = React.ForwardRefExoticComponent<SidebarPublicProps & React.RefAttributes<HTMLDivElement>> & { Handle: typeof SidebarHandle };
@@ -48,6 +50,7 @@ const SIDEBAR_DOM_PROP_KEYS = [
   'sizeUpdate',
   'sizeUpdateMs',
   'style',
+  'inset',
 ] as const satisfies readonly (keyof SidebarPublicProps)[];
 
 export const Sidebar = React.forwardRef<HTMLDivElement, SidebarPublicProps>((initialProps, ref) => {
@@ -81,9 +84,19 @@ export const Sidebar = React.forwardRef<HTMLDivElement, SidebarPublicProps>((ini
     onSizeChange,
     sizeUpdate,
     sizeUpdateMs = 50,
+    inset,
   } = initialProps;
   const sidebarDomProps = extractPaneDomProps(initialProps, SIDEBAR_DOM_PROP_KEYS);
   const shell = useShell();
+  const { registerInset, unregisterInset } = useInset();
+
+  // Register/unregister inset
+  React.useEffect(() => {
+    if (inset) {
+      registerInset('sidebar');
+      return () => unregisterInset('sidebar');
+    }
+  }, [inset, registerInset, unregisterInset]);
   const resolvedPresentation = useResponsivePresentation(presentation);
   const isOverlay = resolvedPresentation === 'overlay';
   const isStacked = resolvedPresentation === 'stacked';
@@ -430,6 +443,7 @@ export const Sidebar = React.forwardRef<HTMLDivElement, SidebarPublicProps>((ini
       data-peek={shell.peekTarget === 'sidebar' || undefined}
       data-presentation={shell.currentBreakpointReady ? resolvedPresentation : undefined}
       data-open={(shell.currentBreakpointReady && isStacked && isContentVisible) || undefined}
+      data-inset={inset || undefined}
       style={{
         ...style,
         ['--sidebar-size' as any]: `${expandedSize}px`,

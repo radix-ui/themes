@@ -134,3 +134,17 @@ export function useComposition() {
   if (!ctx) throw new Error('useComposition must be used within Shell.Root');
   return ctx;
 }
+
+// Inset slice - tracks which panes have inset for gray backdrop
+export type InsetPaneId = 'left' | 'sidebar' | 'content' | 'inspector' | 'bottom';
+export const InsetContext = React.createContext<{
+  insetPanes: Set<InsetPaneId>;
+  registerInset: (id: InsetPaneId) => void;
+  unregisterInset: (id: InsetPaneId) => void;
+  hasAnyInset: boolean;
+} | null>(null as any);
+export function useInset() {
+  const ctx = React.useContext(InsetContext);
+  if (!ctx) throw new Error('useInset must be used within Shell.Root');
+  return ctx;
+}

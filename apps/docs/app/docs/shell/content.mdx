@@ -98,7 +98,57 @@ Unified navigation sidebar with three states: collapsed, thin, and expanded. Can
 | `collapseThreshold` | `number` | Size below which sidebar auto-collapses |
 | `paneId` | `string` | Unique identifier for persistence |
 | `persistence` | `PaneSizePersistence` | Adapter for saving/loading size |
+| `inset` | `boolean` | When true, adds margin and triggers gray backdrop on Shell |
 | `children` | `React.ReactNode` | Sidebar content |
+
+## Rail Props
+
+Slim navigation strip (icon bar). Use with Panel for a two-part navigation layout. Cannot coexist with Sidebar.
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| `open` | `boolean \| Responsive<boolean>` | Controlled open state |
+| `defaultOpen` | `boolean \| Responsive<boolean>` | Initial open state. Supports responsive objects. Default: `true` |
+| `onOpenChange` | `(open: boolean, meta: { reason: 'init' \| 'toggle' \| 'responsive' \| 'panel' }) => void` | Callback fired when open state changes |
+| `presentation` | `'fixed' \| 'overlay' \| 'stacked' \| ResponsivePresentation` | How rail interacts with layout. Default: `{ initial: 'fixed', sm: 'fixed' }` |
+| `expandedSize` | `number` | Width in pixels. Default: `64` |
+| `collapsible` | `boolean` | Allow collapsing. Default: `true` |
+| `onExpand` | `() => void` | Callback fired when rail expands |
+| `onCollapse` | `() => void` | Callback fired when rail collapses |
+| `inset` | `boolean` | When true, adds margin to Rail+Panel and triggers gray backdrop on Shell |
+| `children` | `React.ReactNode` | Rail content (typically icons) |
+
+## Panel Props
+
+Expanded navigation panel that works alongside Rail. Collapses when Rail collapses. Cannot coexist with Sidebar.
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| `open` | `boolean \| Responsive<boolean>` | Controlled open state |
+| `defaultOpen` | `boolean \| Responsive<boolean>` | Initial open state. Supports responsive objects. Default: `false` |
+| `onOpenChange` | `(open: boolean, meta: { reason: 'init' \| 'toggle' \| 'left' \| 'responsive' }) => void` | Callback fired when open state changes |
+| `expandedSize` | `number` | Width when expanded in pixels. Default: `288` |
+| `size` | `number \| string` | Controlled size (width) |
+| `defaultSize` | `number \| string` | Initial size |
+| `onSizeChange` | `(size: number, meta: { reason: 'init' \| 'resize' \| 'controlled' }) => void` | Callback fired when size changes |
+| `sizeUpdate` | `'throttle' \| 'debounce'` | Strategy for size change callbacks |
+| `sizeUpdateMs` | `number` | Milliseconds for throttle/debounce. Default: `50` |
+| `minSize` | `number` | Minimum width in pixels. Default: `100` |
+| `maxSize` | `number` | Maximum width in pixels. Default: `800` |
+| `resizable` | `boolean` | Enable drag-to-resize. Default: `false` |
+| `collapsible` | `boolean` | Allow collapsing. Default: `true` |
+| `onExpand` | `() => void` | Callback fired when panel expands |
+| `onCollapse` | `() => void` | Callback fired when panel collapses |
+| `onResize` | `(size: number) => void` | Callback fired during resize |
+| `onResizeStart` | `(size: number) => void` | Callback fired when resize starts |
+| `onResizeEnd` | `(size: number) => void` | Callback fired when resize ends |
+| `snapPoints` | `number[]` | Array of sizes to snap to during resize |
+| `snapTolerance` | `number` | Distance in pixels to trigger snap |
+| `collapseThreshold` | `number` | Size below which panel auto-collapses |
+| `paneId` | `string` | Unique identifier for persistence |
+| `persistence` | `PaneSizePersistence` | Adapter for saving/loading size |
+| `inset` | `boolean` | When true, adds margin to Rail+Panel and triggers gray backdrop on Shell |
+| `children` | `React.ReactNode` | Panel content |
 
 ## Content Props
 
@@ -106,6 +156,7 @@ Main content area. Always required in shell layouts.
 
 | Prop | Type | Description |
 | ---- | ---- | ----------- |
+| `inset` | `boolean` | When true, adds margin and triggers gray backdrop on Shell |
 | `children` | `React.ReactNode` | Content to display |
 
 ## Inspector Props
@@ -138,6 +189,7 @@ Right-side panel for inspectors, property panels, or contextual information.
 | `collapseThreshold` | `number` | Size below which inspector auto-collapses |
 | `paneId` | `string` | Unique identifier for persistence |
 | `persistence` | `PaneSizePersistence` | Adapter for saving/loading size |
+| `inset` | `boolean` | When true, adds margin and triggers gray backdrop on Shell |
 | `children` | `React.ReactNode` | Inspector content |
 
 ## Bottom Props
@@ -170,6 +222,7 @@ Bottom panel for terminals, logs, or contextual information.
 | `collapseThreshold` | `number` | Size below which bottom panel auto-collapses |
 | `paneId` | `string` | Unique identifier for persistence |
 | `persistence` | `PaneSizePersistence` | Adapter for saving/loading size |
+| `inset` | `boolean` | When true, adds margin and triggers gray backdrop on Shell |
 | `children` | `React.ReactNode` | Bottom panel content |
 
 ## Trigger Props
@@ -254,6 +307,44 @@ Add a bottom panel for terminals or logs.
   <Shell.Bottom defaultOpen expandedSize={200}>
     <div>Terminal output</div>
   </Shell.Bottom>
+</Shell.Root>
+```
+
+### Rail + Panel Layout
+
+Use Rail and Panel for a two-part navigation with icon strip and expanded panel.
+
+```tsx
+<Shell.Root>
+  <Shell.Rail defaultOpen expandedSize={64}>
+    <nav>Icon strip</nav>
+  </Shell.Rail>
+  <Shell.Panel defaultOpen expandedSize={280}>
+    <nav>Expanded navigation</nav>
+  </Shell.Panel>
+  <Shell.Content>
+    <main>Content</main>
+  </Shell.Content>
+</Shell.Root>
+```
+
+### Inset Layout
+
+Use `inset` prop to create floating panes with a gray backdrop.
+
+```tsx
+<Shell.Root>
+  <Shell.Sidebar defaultState="expanded" inset>
+    <Sidebar variant="surface">
+      <nav>Floating navigation</nav>
+    </Sidebar>
+  </Shell.Sidebar>
+  <Shell.Content inset>
+    <main>Floating content</main>
+  </Shell.Content>
+  <Shell.Inspector defaultOpen inset>
+    <aside>Floating inspector</aside>
+  </Shell.Inspector>
 </Shell.Root>
 ```
 
@@ -432,6 +523,46 @@ Use responsive objects for breakpoint-specific behavior. Shell uses a mobile-fir
 | `lg` | 1280px | Large screens (desktops) |
 | `xl` | 1640px | Extra large screens |
 
+## Inset Mode
+
+The `inset` prop creates floating panes with visual separation from the shell background.
+
+### How It Works
+
+When any pane has `inset`:
+1. Shell body gets a gray backdrop (`var(--gray-2)`)
+2. The inset pane gets margin, creating gaps from edges and other panes
+3. The pane gets rounded corners for the floating appearance
+
+### Visual Treatment
+
+The `inset` prop handles spatial positioning only. For visual styling (background, shadow, border), use the child component's `variant` prop:
+
+```tsx
+<Shell.Sidebar inset>
+  <Sidebar variant="surface">  {/* surface variant adds bg + shadow */}
+    <nav>Navigation</nav>
+  </Sidebar>
+</Shell.Sidebar>
+```
+
+| Variant | Background | Shadow | Best for |
+| ------- | ---------- | ------ | -------- |
+| `surface` | Solid | Yes | Primary floating panels |
+| `soft` | Tinted | Subtle | Secondary panels |
+| `outline` | Transparent | No | Bordered panels |
+| `ghost` | Transparent | No | Minimal visual treatment |
+
+### Customizing Gap
+
+Override the inset gap with CSS variables:
+
+```css
+.rt-ShellBody[data-has-inset] {
+  --shell-inset-gap: var(--space-3);
+}
+```
+
 ## Composition Rules
 
 Shell enforces composition rules to prevent conflicting layouts.
@@ -541,6 +672,7 @@ Shell provides comprehensive accessibility through semantic HTML and ARIA attrib
 - `useShell()` hook for context access
 - ARIA slider implementation for resize handles
 - Focus management for overlay presentations
+- `inset` prop for floating pane layouts with gray backdrop
 
 ### Technical
 

@@ -21,6 +21,7 @@ import {
   Heading01Icon,
   TextIcon,
   MessageEdit01Icon,
+  LeftToRightListBulletIcon,
 } from '@hugeicons/core-free-icons';
 
 export const docsNavigation: DocsNavigationConfig = {
@@ -120,6 +121,12 @@ export const docsNavigation: DocsNavigationConfig = {
           href: '/docs/shell',
           title: 'Shell',
           icon: LayoutIcon,
+          badge: { content: 'Alpha', size: '1', highContrast: true },
+        },
+        {
+          href: '/docs/sidebar',
+          title: 'Sidebar (Presentation)',
+          icon: LeftToRightListBulletIcon,
           badge: { content: 'Alpha', size: '1', highContrast: true },
         },
         {

@@ -2,7 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import * as Sheet from '../sheet.js';
 import { VisuallyHidden } from '../visually-hidden.js';
-import { useShell } from '../shell.context.js';
+import { useShell, useInset } from '../shell.context.js';
 import { useResponsivePresentation, useResponsiveInitialState } from '../shell.hooks.js';
 import { PaneResizeContext } from './shell-resize.js';
 import { InspectorHandle, PaneHandle } from './shell-handles.js';
@@ -23,6 +23,8 @@ type InspectorPublicProps = PaneBaseProps &
     onSizeChange?: (size: number, meta: InspectorSizeChangeMeta) => void;
     sizeUpdate?: 'throttle' | 'debounce';
     sizeUpdateMs?: number;
+    /** When true, adds margin and triggers gray backdrop on Shell. */
+    inset?: boolean;
   };
 
 type InspectorComponent = React.ForwardRefExoticComponent<InspectorPublicProps & React.RefAttributes<HTMLDivElement>> & { Handle: typeof InspectorHandle };
@@ -39,6 +41,7 @@ const INSPECTOR_DOM_PROP_KEYS = [
   'sizeUpdate',
   'sizeUpdateMs',
   'style',
+  'inset',
 ] as const satisfies readonly (keyof InspectorPublicProps)[];
 
 export const Inspector = React.forwardRef<HTMLDivElement, InspectorPublicProps>((initialProps, ref) => {
@@ -70,9 +73,19 @@ export const Inspector = React.forwardRef<HTMLDivElement, InspectorPublicProps>(
     sizeUpdateMs = 50,
     size,
     defaultSize,
+    inset,
   } = initialProps;
   const inspectorDomProps = extractPaneDomProps(initialProps, INSPECTOR_DOM_PROP_KEYS);
   const shell = useShell();
+  const { registerInset, unregisterInset } = useInset();
+
+  // Register/unregister inset
+  React.useEffect(() => {
+    if (inset) {
+      registerInset('inspector');
+      return () => unregisterInset('inspector');
+    }
+  }, [inset, registerInset, unregisterInset]);
   const resolvedPresentation = useResponsivePresentation(presentation);
   const isOverlay = resolvedPresentation === 'overlay';
   const isStacked = resolvedPresentation === 'stacked';
@@ -377,6 +390,7 @@ export const Inspector = React.forwardRef<HTMLDivElement, InspectorPublicProps>(
       data-peek={shell.peekTarget === 'inspector' || undefined}
       data-presentation={shell.currentBreakpointReady ? resolvedPresentation : undefined}
       data-open={(shell.currentBreakpointReady && isStacked && isExpanded) || undefined}
+      data-inset={inset || undefined}
       style={{
         ...style,
         ['--inspector-size' as any]: `${expandedSize}px`,

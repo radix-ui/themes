@@ -4,7 +4,7 @@ import { renderWithProviders, screen } from '../../test-utils';
 import { waitFor } from '@testing-library/react';
 import { Shell } from '../../../src/components/index';
 import { usePresentation } from '../../../src/components/shell.context';
-import { BREAKPOINTS } from '../../../src/components/shell.types';
+import { _BREAKPOINTS as BREAKPOINTS } from '../../../src/components/shell.types';
 
 type Listener = (e: MediaQueryListEvent) => void;
 

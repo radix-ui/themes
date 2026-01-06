@@ -34,12 +34,13 @@ describe('Rail onOpenChange notify', () => {
         <Shell.Header>
           <ToggleLeft />
         </Shell.Header>
+        {/* Rail defaults to open, so toggling closes it */}
         <Shell.Rail presentation="fixed" onOpenChange={spy} />
         <Shell.Panel>panel</Shell.Panel>
         <Shell.Content>content</Shell.Content>
       </Shell.Root>,
     );
     await userEvent.click(screen.getByRole('button', { name: /toggle left/i }));
-    expect(spy).toHaveBeenCalledWith(true, { reason: 'toggle' });
+    expect(spy).toHaveBeenCalledWith(false, { reason: 'toggle' });
   });
 });

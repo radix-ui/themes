@@ -28,10 +28,10 @@ function App({ defaultOpen }: { defaultOpen?: boolean }) {
 }
 
 describe('Rail defaultOpen (uncontrolled)', () => {
-  it('is closed by default when defaultOpen not provided', () => {
+  it('is open by default when defaultOpen not provided', () => {
     renderWithProviders(<App />);
     const left = screen.getByText('panel').closest('.rt-ShellLeft') as HTMLElement;
-    expect(left).toHaveAttribute('data-mode', 'collapsed');
+    expect(left).toHaveAttribute('data-mode', 'expanded');
   });
 
   it('is open on mount when defaultOpen is true', () => {
@@ -44,8 +44,9 @@ describe('Rail defaultOpen (uncontrolled)', () => {
     renderWithProviders(<App />);
     const btn = screen.getByRole('button', { name: /toggle left/i });
     const left = () => screen.getByText('panel').closest('.rt-ShellLeft') as HTMLElement;
-    expect(left()).toHaveAttribute('data-mode', 'collapsed');
-    await userEvent.click(btn);
+    // Rail defaults to open
     expect(left()).toHaveAttribute('data-mode', 'expanded');
+    await userEvent.click(btn);
+    expect(left()).toHaveAttribute('data-mode', 'collapsed');
   });
 });

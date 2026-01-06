@@ -78,17 +78,11 @@
   width: var(--rail-size, 64px);
 }
 
+/* Collapsed rail: stay in flow during transition, then hide */
 .rt-ShellRail[data-mode='collapsed'] {
   width: 0px;
   /* Delay container collapse until content fade completes */
   transition-delay: var(--motion-duration-small);
-}
-
-/* Keep collapsed panes out of flow to avoid layout blips when exiting peek */
-.rt-ShellRail[data-mode='collapsed'] {
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
 }
 
 /* Peek overlay rules consolidated later to avoid duplication */
@@ -102,16 +96,20 @@
 
   /* Content animation: fade out first, then fade in after width settles */
   opacity: 0;
+  pointer-events: none;
   transition: opacity var(--motion-duration-small) var(--motion-ease-standard) var(--motion-duration-small);
 }
 
 .rt-ShellRailContent[data-visible] {
   opacity: 1;
+  pointer-events: auto;
 }
 
 .rt-ShellRail[data-mode='collapsed'] .rt-ShellRailContent {
-  /* Exit animation: fade out content first */
+  /* Exit animation: fade out content first, then collapse */
   opacity: 0;
+  width: 0;
+  visibility: hidden;
   transition: opacity var(--motion-duration-small) var(--motion-ease-standard);
 }
 
@@ -133,17 +131,11 @@
   width: var(--panel-size, 288px);
 }
 
+/* Collapsed panel: stay in flow during transition, then hide */
 .rt-ShellPanel:not([data-visible]) {
   width: 0px;
   /* Delay container collapse until content fade completes */
   transition-delay: var(--motion-duration-small);
-}
-
-/* Keep collapsed panel out of flow to avoid layout blips when exiting peek */
-.rt-ShellPanel:not([data-visible]) {
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: var(--peek-rail-width, var(--rail-size, 64px));
 }
 
 .rt-ShellPanelContent {
@@ -155,16 +147,20 @@
 
   /* Content animation */
   opacity: 0;
+  pointer-events: none;
   transition: opacity var(--motion-duration-small) var(--motion-ease-standard) var(--motion-duration-small);
 }
 
 .rt-ShellPanelContent[data-visible] {
   opacity: 1;
+  pointer-events: auto;
 }
 
 .rt-ShellPanel:not([data-visible]) .rt-ShellPanelContent {
-  /* Exit animation: fade out content first */
+  /* Exit animation: fade out content first, then collapse */
   opacity: 0;
+  width: 0;
+  visibility: hidden;
   transition: opacity var(--motion-duration-small) var(--motion-ease-standard);
 }
 
@@ -195,14 +191,9 @@
   width: var(--sidebar-thin-size, 64px);
 }
 
-/* Keep collapsed sidebar out of flow to avoid layout blips when exiting peek */
+/* Collapsed sidebar: stay in flow during transition, then hide */
 .rt-ShellSidebar[data-mode='collapsed'] {
   width: 0px;
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-  flex-shrink: 0;
-  flex-basis: 0;
   /* Delay container collapse until content fade completes */
   transition-delay: var(--motion-duration-small);
 }
@@ -216,6 +207,7 @@
 
   /* Content animation */
   opacity: 0;
+  pointer-events: none;
   transition: opacity var(--motion-duration-small) var(--motion-ease-standard) var(--motion-duration-small);
 }
 
@@ -226,6 +218,7 @@
 
 .rt-ShellSidebarContent[data-visible] {
   opacity: 1;
+  pointer-events: auto;
 }
 
 /* Sidebar presentation switch sequencing (thin ↔ expanded) */
@@ -245,8 +238,10 @@
 }
 
 .rt-ShellSidebar[data-mode='collapsed'] .rt-ShellSidebarContent {
-  /* Exit animation: fade out content first */
+  /* Exit animation: fade out content first, then collapse */
   opacity: 0;
+  width: 0;
+  visibility: hidden;
   transition: opacity var(--motion-duration-small) var(--motion-ease-standard);
 }
 
@@ -320,16 +315,20 @@
 
   /* Content animation */
   opacity: 0;
+  pointer-events: none;
   transition: opacity var(--motion-duration-small) var(--motion-ease-standard) var(--motion-duration-small);
 }
 
 .rt-ShellInspectorContent[data-visible] {
   opacity: 1;
+  pointer-events: auto;
 }
 
 .rt-ShellInspector[data-mode='collapsed'] .rt-ShellInspectorContent {
-  /* Exit animation: fade out content first */
+  /* Exit animation: fade out content first, then collapse */
   opacity: 0;
+  width: 0;
+  visibility: hidden;
   transition: opacity var(--motion-duration-small) var(--motion-ease-standard);
 }
 
@@ -351,11 +350,9 @@
   height: var(--bottom-size, 200px);
 }
 
+/* Collapsed bottom: stay in flow during transition, then hide */
 .rt-ShellBottom[data-mode='collapsed'] {
   height: 0px;
-  position: absolute;
-  inset-inline: 0;
-  inset-block-end: 0;
   /* Delay container collapse until content fade completes */
   transition-delay: var(--motion-duration-small);
 }
@@ -369,11 +366,13 @@
 
   /* Content animation */
   opacity: 0;
+  pointer-events: none;
   transition: opacity var(--motion-duration-small) var(--motion-ease-standard) var(--motion-duration-small);
 }
 
 .rt-ShellBottomContent[data-visible] {
   opacity: 1;
+  pointer-events: auto;
 }
 
 /* Disable transitions during active resize */
@@ -401,8 +400,10 @@
 }
 
 .rt-ShellBottom[data-mode='collapsed'] .rt-ShellBottomContent {
-  /* Exit animation: fade out content first */
+  /* Exit animation: fade out content first, then collapse */
   opacity: 0;
+  height: 0;
+  visibility: hidden;
   transition: opacity var(--motion-duration-small) var(--motion-ease-standard);
 }
 
@@ -617,4 +618,26 @@
 }
 .rt-ShellBottom[data-peek][data-mode='collapsed'] {
   height: var(--bottom-size, 200px);
+}
+
+/* --- Inset mode: floating panes with gray backdrop --- */
+
+/* Shell body gets gray backdrop when any pane has inset */
+.rt-ShellBody[data-has-inset] {
+  background: var(--gray-2);
+}
+
+/* Inset pane shared styles */
+.rt-ShellLeft[data-inset],
+.rt-ShellSidebar[data-inset],
+.rt-ShellContent[data-inset],
+.rt-ShellInspector[data-inset],
+.rt-ShellBottom[data-inset] {
+  --shell-inset-gap: var(--space-2);
+  margin: var(--shell-inset-gap);
+  border-radius: var(--radius-3);
+  background: var(--color-background);
+  box-shadow: var(--shadow-2);
+  /* Override height: 100% so margin doesn't overflow */
+  height: auto;
 }

@@ -48,7 +48,8 @@ describe('Shell.Rail hydration guards', () => {
 
     renderWithProviders(
       <Shell.Root>
-        <Shell.Rail presentation="fixed" />
+        {/* Rail defaults to open, so explicitly set defaultOpen={false} to test hidden initial state */}
+        <Shell.Rail presentation="fixed" defaultOpen={false} />
         <Shell.Panel>panel</Shell.Panel>
         <Shell.Content>
           <PeekOnMount />

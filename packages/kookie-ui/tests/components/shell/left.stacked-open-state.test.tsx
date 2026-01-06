@@ -21,7 +21,8 @@ describe('Left (stacked) data-open', () => {
   it('does not have data-open when stacked and collapsed', async () => {
     renderWithProviders(
       <Shell.Root>
-        <Shell.Rail presentation={{ initial: 'stacked' }} />
+        {/* Rail defaults to open, so explicitly set defaultOpen={false} to test collapsed state */}
+        <Shell.Rail presentation={{ initial: 'stacked' }} defaultOpen={false} />
         <Shell.Panel>panel</Shell.Panel>
         <Shell.Content>content</Shell.Content>
       </Shell.Root>,

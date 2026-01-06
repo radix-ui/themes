@@ -66,7 +66,7 @@
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
-.rt-SegmentedControlRoot.rt-r-orientation-vertical {
+.rt-SegmentedControlRoot:where(.rt-r-orientation-vertical) {
   grid-auto-flow: row;
   grid-auto-columns: unset;
   grid-auto-rows: 1fr;
@@ -75,7 +75,7 @@
 }
 
 /* Square items for icon-only in vertical */
-.rt-SegmentedControlRoot.rt-r-orientation-vertical:has([data-icon-only]) {
+.rt-SegmentedControlRoot:where(.rt-r-orientation-vertical):has([data-icon-only]) {
   grid-auto-columns: unset;
   grid-auto-rows: minmax(var(--segmented-control-height), 1fr);
 }
@@ -103,18 +103,18 @@
 }
 
 /* Vertical orientation - item layout */
-.rt-r-orientation-vertical .rt-SegmentedControlItem {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlItem {
   flex-direction: column;
 }
 
 /* Vertical orientation - item border radius */
-.rt-r-orientation-vertical .rt-SegmentedControlItem:first-child {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlItem:first-child {
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
   border-bottom-left-radius: 0;
 }
 
-.rt-r-orientation-vertical .rt-SegmentedControlItem:nth-last-child(2) {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlItem:nth-last-child(2) {
   border-bottom-left-radius: inherit;
   border-bottom-right-radius: inherit;
   border-top-right-radius: 0;
@@ -202,7 +202,7 @@
 }
 
 /* Vertical orientation - separator */
-.rt-r-orientation-vertical .rt-SegmentedControlItemSeparator {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlItemSeparator {
   margin-left: calc(var(--space-1) * 0.75); /* 3px */
   margin-right: calc(var(--space-1) * 0.75); /* 3px */
   margin-top: calc(-1 * var(--border-width-standard) * 0.5); /* -0.5px */
@@ -313,71 +313,71 @@
 }
 
 /* Vertical orientation - indicator height based on number of items */
-.rt-r-orientation-vertical .rt-SegmentedControlIndicator {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlIndicator {
   width: 100%;
   height: unset;
 }
 
-.rt-r-orientation-vertical .rt-SegmentedControlIndicator:nth-child(2) {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlIndicator:nth-child(2) {
   height: calc(100% / 1);
 }
-.rt-r-orientation-vertical .rt-SegmentedControlIndicator:nth-child(3) {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlIndicator:nth-child(3) {
   height: calc(100% / 2);
 }
-.rt-r-orientation-vertical .rt-SegmentedControlIndicator:nth-child(4) {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlIndicator:nth-child(4) {
   height: calc(100% / 3);
 }
-.rt-r-orientation-vertical .rt-SegmentedControlIndicator:nth-child(5) {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlIndicator:nth-child(5) {
   height: calc(100% / 4);
 }
-.rt-r-orientation-vertical .rt-SegmentedControlIndicator:nth-child(6) {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlIndicator:nth-child(6) {
   height: calc(100% / 5);
 }
-.rt-r-orientation-vertical .rt-SegmentedControlIndicator:nth-child(7) {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlIndicator:nth-child(7) {
   height: calc(100% / 6);
 }
-.rt-r-orientation-vertical .rt-SegmentedControlIndicator:nth-child(8) {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlIndicator:nth-child(8) {
   height: calc(100% / 7);
 }
-.rt-r-orientation-vertical .rt-SegmentedControlIndicator:nth-child(9) {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlIndicator:nth-child(9) {
   height: calc(100% / 8);
 }
-.rt-r-orientation-vertical .rt-SegmentedControlIndicator:nth-child(10) {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlIndicator:nth-child(10) {
   height: calc(100% / 9);
 }
-.rt-r-orientation-vertical .rt-SegmentedControlIndicator:nth-child(11) {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlIndicator:nth-child(11) {
   height: calc(100% / 10);
 }
 
 /* Vertical transforms */
-.rt-r-orientation-vertical .rt-SegmentedControlItem[data-state='on']:nth-child(1) ~ .rt-SegmentedControlIndicator {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlItem[data-state='on']:nth-child(1) ~ .rt-SegmentedControlIndicator {
   transform: translateY(0%);
 }
-.rt-r-orientation-vertical .rt-SegmentedControlItem[data-state='on']:nth-child(2) ~ .rt-SegmentedControlIndicator {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlItem[data-state='on']:nth-child(2) ~ .rt-SegmentedControlIndicator {
   transform: translateY(100%);
 }
-.rt-r-orientation-vertical .rt-SegmentedControlItem[data-state='on']:nth-child(3) ~ .rt-SegmentedControlIndicator {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlItem[data-state='on']:nth-child(3) ~ .rt-SegmentedControlIndicator {
   transform: translateY(200%);
 }
-.rt-r-orientation-vertical .rt-SegmentedControlItem[data-state='on']:nth-child(4) ~ .rt-SegmentedControlIndicator {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlItem[data-state='on']:nth-child(4) ~ .rt-SegmentedControlIndicator {
   transform: translateY(300%);
 }
-.rt-r-orientation-vertical .rt-SegmentedControlItem[data-state='on']:nth-child(5) ~ .rt-SegmentedControlIndicator {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlItem[data-state='on']:nth-child(5) ~ .rt-SegmentedControlIndicator {
   transform: translateY(400%);
 }
-.rt-r-orientation-vertical .rt-SegmentedControlItem[data-state='on']:nth-child(6) ~ .rt-SegmentedControlIndicator {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlItem[data-state='on']:nth-child(6) ~ .rt-SegmentedControlIndicator {
   transform: translateY(500%);
 }
-.rt-r-orientation-vertical .rt-SegmentedControlItem[data-state='on']:nth-child(7) ~ .rt-SegmentedControlIndicator {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlItem[data-state='on']:nth-child(7) ~ .rt-SegmentedControlIndicator {
   transform: translateY(600%);
 }
-.rt-r-orientation-vertical .rt-SegmentedControlItem[data-state='on']:nth-child(8) ~ .rt-SegmentedControlIndicator {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlItem[data-state='on']:nth-child(8) ~ .rt-SegmentedControlIndicator {
   transform: translateY(700%);
 }
-.rt-r-orientation-vertical .rt-SegmentedControlItem[data-state='on']:nth-child(9) ~ .rt-SegmentedControlIndicator {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlItem[data-state='on']:nth-child(9) ~ .rt-SegmentedControlIndicator {
   transform: translateY(800%);
 }
-.rt-r-orientation-vertical .rt-SegmentedControlItem[data-state='on']:nth-child(10) ~ .rt-SegmentedControlIndicator {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlItem[data-state='on']:nth-child(10) ~ .rt-SegmentedControlIndicator {
   transform: translateY(900%);
 }
 
@@ -577,45 +577,45 @@
 }
 
 /* Vertical icon-only - minimum square height */
-.rt-r-orientation-vertical .rt-SegmentedControlItem[data-icon-only] {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlItem[data-icon-only] {
   min-width: unset;
   min-height: var(--segmented-control-height);
 }
 
 /* Vertical icon-only - remove top/bottom padding */
-.rt-r-orientation-vertical .rt-SegmentedControlItem[data-icon-only] .rt-SegmentedControlItemLabel {
+:where(.rt-r-orientation-vertical) .rt-SegmentedControlItem[data-icon-only] .rt-SegmentedControlItemLabel {
   padding-top: 0;
   padding-bottom: 0;
 }
 
 /* Vertical icon-only root width (explicit since nested :has() in @breakpoints may not work) */
-.rt-SegmentedControlRoot.rt-r-orientation-vertical.rt-r-size-1:has([data-icon-only]) {
+.rt-SegmentedControlRoot:where(.rt-r-orientation-vertical):where(.rt-r-size-1):has([data-icon-only]) {
   width: var(--space-5);
 }
-.rt-SegmentedControlRoot.rt-r-orientation-vertical.rt-r-size-2:has([data-icon-only]) {
+.rt-SegmentedControlRoot:where(.rt-r-orientation-vertical):where(.rt-r-size-2):has([data-icon-only]) {
   width: var(--space-6);
 }
-.rt-SegmentedControlRoot.rt-r-orientation-vertical.rt-r-size-3:has([data-icon-only]) {
+.rt-SegmentedControlRoot:where(.rt-r-orientation-vertical):where(.rt-r-size-3):has([data-icon-only]) {
   width: var(--space-7);
 }
-.rt-SegmentedControlRoot.rt-r-orientation-vertical.rt-r-size-4:has([data-icon-only]) {
+.rt-SegmentedControlRoot:where(.rt-r-orientation-vertical):where(.rt-r-size-4):has([data-icon-only]) {
   width: var(--space-8);
 }
 
 /* Vertical text items need vertical padding */
-.rt-r-orientation-vertical.rt-r-size-1 .rt-SegmentedControlItemLabel {
+:where(.rt-r-orientation-vertical):where(.rt-r-size-1) .rt-SegmentedControlItemLabel {
   padding-top: var(--space-1);
   padding-bottom: var(--space-1);
 }
-.rt-r-orientation-vertical.rt-r-size-2 .rt-SegmentedControlItemLabel {
+:where(.rt-r-orientation-vertical):where(.rt-r-size-2) .rt-SegmentedControlItemLabel {
   padding-top: var(--space-2);
   padding-bottom: var(--space-2);
 }
-.rt-r-orientation-vertical.rt-r-size-3 .rt-SegmentedControlItemLabel {
+:where(.rt-r-orientation-vertical):where(.rt-r-size-3) .rt-SegmentedControlItemLabel {
   padding-top: var(--space-2);
   padding-bottom: var(--space-2);
 }
-.rt-r-orientation-vertical.rt-r-size-4 .rt-SegmentedControlItemLabel {
+:where(.rt-r-orientation-vertical):where(.rt-r-size-4) .rt-SegmentedControlItemLabel {
   padding-top: var(--space-3);
   padding-bottom: var(--space-3);
 }

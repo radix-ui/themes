@@ -51,6 +51,9 @@ import {
   PeekContext,
   ActionsContext,
   CompositionContext,
+  InsetContext,
+  useInset,
+  type InsetPaneId,
 } from './shell.context.js';
 
 // Shell context is provided via ShellProvider (see shell.context.tsx)
@@ -260,7 +263,20 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(({ className, chil
   // Compute initial defaults from immediate children (one-time, uncontrolled defaults)
   const initialChildren = React.Children.toArray(children) as React.ReactElement[];
   const hasPanelDefaultOpen = initialChildren.some((el) => React.isValidElement(el) && (el as any).type?.displayName === 'Shell.Panel' && Boolean((el as any).props?.defaultOpen));
-  const hasRailDefaultOpen = initialChildren.some((el) => React.isValidElement(el) && (el as any).type?.displayName === 'Shell.Rail' && Boolean((el as any).props?.defaultOpen));
+  // Rail defaults to open (true) unless explicitly set to false
+  // Supports responsive objects: { initial: false, md: true }
+  const railEl = initialChildren.find((el) => React.isValidElement(el) && (el as any).type?.displayName === 'Shell.Rail');
+  const railDefaultOpen = railEl ? (railEl as any).props?.defaultOpen : undefined;
+  const hasRailDefaultOpen = (() => {
+    if (!railEl) return false;
+    if (railDefaultOpen === undefined) return true; // Default to open
+    if (typeof railDefaultOpen === 'boolean') return railDefaultOpen;
+    // Responsive object - use 'initial' value, or first defined value, or default true
+    if (typeof railDefaultOpen === 'object') {
+      return railDefaultOpen.initial ?? Object.values(railDefaultOpen)[0] ?? true;
+    }
+    return true;
+  })();
   const hasInspectorDefaultOpen = initialChildren.some((el) => React.isValidElement(el) && (el as any).type?.displayName === 'Shell.Inspector' && Boolean((el as any).props?.defaultOpen));
   const hasInspectorOpenControlled = initialChildren.some(
     (el) => React.isValidElement(el) && (el as any).type?.displayName === 'Shell.Inspector' && typeof (el as any).props?.open !== 'undefined' && Boolean((el as any).props?.open),
@@ -492,6 +508,30 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(({ className, chil
   const inspectorModeCtxValue = React.useMemo(() => ({ inspectorMode: paneState.inspectorMode, setInspectorMode }), [paneState.inspectorMode, setInspectorMode]);
   const bottomModeCtxValue = React.useMemo(() => ({ bottomMode: paneState.bottomMode, setBottomMode }), [paneState.bottomMode, setBottomMode]);
   const compositionCtxValue = React.useMemo(() => ({ hasLeft, setHasLeft, hasSidebar, setHasSidebar }), [hasLeft, setHasLeft, hasSidebar, setHasSidebar]);
+
+  // Inset state management
+  const [insetPanes, setInsetPanes] = React.useState<Set<InsetPaneId>>(new Set());
+  const registerInset = React.useCallback((id: InsetPaneId) => {
+    setInsetPanes((prev) => {
+      if (prev.has(id)) return prev;
+      const next = new Set(prev);
+      next.add(id);
+      return next;
+    });
+  }, []);
+  const unregisterInset = React.useCallback((id: InsetPaneId) => {
+    setInsetPanes((prev) => {
+      if (!prev.has(id)) return prev;
+      const next = new Set(prev);
+      next.delete(id);
+      return next;
+    });
+  }, []);
+  const hasAnyInset = insetPanes.size > 0;
+  const insetCtxValue = React.useMemo(
+    () => ({ insetPanes, registerInset, unregisterInset, hasAnyInset }),
+    [insetPanes, registerInset, unregisterInset, hasAnyInset],
+  );
   const peekCtxValue = React.useMemo(() => ({ peekTarget, setPeekTarget, peekPane, clearPeek }), [peekTarget, setPeekTarget, peekPane, clearPeek]);
   const actionsCtxValue = React.useMemo(() => ({ togglePane, expandPane, collapsePane, setSidebarToggleComputer }), [togglePane, expandPane, collapsePane, setSidebarToggleComputer]);
 
@@ -519,45 +559,51 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(({ className, chil
                     <CompositionContext.Provider value={compositionCtxValue}>
                       <PeekContext.Provider value={peekCtxValue}>
                         <ActionsContext.Provider value={actionsCtxValue}>
-                          {headerEls}
-                          <div
-                            className="rt-ShellBody"
-                            data-peek-target={peekTarget ?? undefined}
-                            style={
-                              peekTarget === 'rail' || peekTarget === 'panel'
-                                ? ({
-                                    ['--peek-rail-width' as any]: `${railDefaultSizeRef.current}px`,
-                                  } as React.CSSProperties)
-                                : undefined
-                            }
-                          >
-                            {hasLeftChildren && !hasSidebarChildren
-                              ? (() => {
-                                  const firstRail = railEls[0] as any;
-                                  const passthroughProps = firstRail
-                                    ? {
-                                        // Notification passthrough used by Left; not spread to DOM in Left
-                                        onOpenChange: firstRail.props?.onOpenChange,
-                                        open: firstRail.props?.open,
-                                        defaultOpen: firstRail.props?.defaultOpen,
-                                        presentation: firstRail.props?.presentation,
-                                        collapsible: firstRail.props?.collapsible,
-                                        onExpand: firstRail.props?.onExpand,
-                                        onCollapse: firstRail.props?.onCollapse,
-                                      }
-                                    : { defaultOpen: hasPanelDefaultOpen ? true : undefined };
-                                  return (
-                                    <Left {...(passthroughProps as any)}>
-                                      {railEls}
-                                      {panelEls}
-                                    </Left>
-                                  );
-                                })()
-                              : sidebarEls}
-                            {contentEls}
-                            {inspectorEls}
-                          </div>
-                          {bottomEls}
+                          <InsetContext.Provider value={insetCtxValue}>
+                            {headerEls}
+                            <div
+                              className="rt-ShellBody"
+                              data-peek-target={peekTarget ?? undefined}
+                              data-has-inset={hasAnyInset || undefined}
+                              style={
+                                peekTarget === 'rail' || peekTarget === 'panel'
+                                  ? ({
+                                      ['--peek-rail-width' as any]: `${railDefaultSizeRef.current}px`,
+                                    } as React.CSSProperties)
+                                  : undefined
+                              }
+                            >
+                              {hasLeftChildren && !hasSidebarChildren
+                                ? (() => {
+                                    const firstRail = railEls[0] as any;
+                                    const firstPanel = panelEls[0] as any;
+                                    const leftInset = Boolean(firstRail?.props?.inset) || Boolean(firstPanel?.props?.inset);
+                                    const passthroughProps = firstRail
+                                      ? {
+                                          // Notification passthrough used by Left; not spread to DOM in Left
+                                          onOpenChange: firstRail.props?.onOpenChange,
+                                          open: firstRail.props?.open,
+                                          defaultOpen: firstRail.props?.defaultOpen,
+                                          presentation: firstRail.props?.presentation,
+                                          collapsible: firstRail.props?.collapsible,
+                                          onExpand: firstRail.props?.onExpand,
+                                          onCollapse: firstRail.props?.onCollapse,
+                                          inset: leftInset,
+                                        }
+                                      : { defaultOpen: hasPanelDefaultOpen ? true : undefined, inset: leftInset };
+                                    return (
+                                      <Left {...(passthroughProps as any)}>
+                                        {railEls}
+                                        {panelEls}
+                                      </Left>
+                                    );
+                                  })()
+                                : sidebarEls}
+                              {contentEls}
+                              {inspectorEls}
+                            </div>
+                            {bottomEls}
+                          </InsetContext.Provider>
                         </ActionsContext.Provider>
                       </PeekContext.Provider>
                     </CompositionContext.Provider>
@@ -607,13 +653,15 @@ interface LeftProps extends React.ComponentPropsWithoutRef<'div'> {
   mode?: never;
   defaultMode?: never;
   onModeChange?: never;
+  /** When true, adds margin and triggers gray backdrop on Shell. */
+  inset?: boolean;
 }
 
 // Rail (special case)
 type LeftOpenChangeMeta = { reason: 'init' | 'toggle' | 'responsive' | 'panel' };
 
-type RailControlledProps = { open: boolean; onOpenChange?: (open: boolean, meta: LeftOpenChangeMeta) => void; defaultOpen?: never };
-type RailUncontrolledProps = { defaultOpen?: boolean; onOpenChange?: (open: boolean, meta: LeftOpenChangeMeta) => void; open?: never };
+type RailControlledProps = { open: boolean | Partial<Record<Breakpoint, boolean>>; onOpenChange?: (open: boolean, meta: LeftOpenChangeMeta) => void; defaultOpen?: never };
+type RailUncontrolledProps = { defaultOpen?: boolean | Partial<Record<Breakpoint, boolean>>; onOpenChange?: (open: boolean, meta: LeftOpenChangeMeta) => void; open?: never };
 
 type RailProps = React.ComponentPropsWithoutRef<'div'> & {
   presentation?: ResponsivePresentation;
@@ -621,13 +669,24 @@ type RailProps = React.ComponentPropsWithoutRef<'div'> & {
   collapsible?: boolean;
   onExpand?: () => void;
   onCollapse?: () => void;
+  /** When true, adds margin to Rail+Panel and triggers gray backdrop on Shell. */
+  inset?: boolean;
 } & (RailControlledProps | RailUncontrolledProps);
 
 // Left container - behaves like Inspector but contains Rail+Panel
 const LEFT_DOM_OMIT_PROPS = ['open', 'defaultOpen', 'onOpenChange', 'mode', 'defaultMode', 'onModeChange'] as const;
 
 const Left = React.forwardRef<HTMLDivElement, LeftProps>((initialProps, ref) => {
-  const { className, presentation = { initial: 'fixed', sm: 'fixed' }, collapsible: _collapsible = true, onExpand, onCollapse, children, style, ...restProps } = initialProps;
+  const { className, presentation = { initial: 'fixed', sm: 'fixed' }, collapsible: _collapsible = true, onExpand, onCollapse, children, style, inset, ...restProps } = initialProps;
+  const { registerInset, unregisterInset } = useInset();
+
+  // Register/unregister inset
+  React.useEffect(() => {
+    if (inset) {
+      registerInset('left');
+      return () => unregisterInset('left');
+    }
+  }, [inset, registerInset, unregisterInset]);
   const propsOpen = restProps.open;
   const propsDefaultOpen = restProps.defaultOpen;
   const propsOnOpenChange = restProps.onOpenChange;
@@ -746,6 +805,7 @@ const Left = React.forwardRef<HTMLDivElement, LeftProps>((initialProps, ref) => 
         data-mode={shell.leftMode}
         data-peek={shell.peekTarget === 'left' || shell.peekTarget === 'rail' || shell.peekTarget === 'panel' || undefined}
         data-presentation={resolvedPresentation}
+        data-inset={inset || undefined}
         style={{
           ...style,
         }}
@@ -765,6 +825,7 @@ const Left = React.forwardRef<HTMLDivElement, LeftProps>((initialProps, ref) => 
       data-mode={shell.leftMode}
       data-peek={shell.peekTarget === 'left' || shell.peekTarget === 'rail' || shell.peekTarget === 'panel' || undefined}
       data-presentation={resolvedPresentation}
+      data-inset={inset || undefined}
       style={{
         ...style,
       }}
@@ -833,9 +894,9 @@ assignShellSlot(Rail as any, 'Shell.Rail');
 // Panel
 type HandleComponent = React.ForwardRefExoticComponent<React.ComponentPropsWithoutRef<'div'> & React.RefAttributes<HTMLDivElement>>;
 
-type PanelOpenChangeMeta = { reason: 'toggle' | 'left' | 'init' };
-type PanelControlledProps = { open: boolean; onOpenChange?: (open: boolean, meta: PanelOpenChangeMeta) => void; defaultOpen?: never };
-type PanelUncontrolledProps = { defaultOpen?: boolean; onOpenChange?: (open: boolean, meta: PanelOpenChangeMeta) => void; open?: never };
+type PanelOpenChangeMeta = { reason: 'toggle' | 'left' | 'init' | 'responsive' };
+type PanelControlledProps = { open: boolean | Partial<Record<Breakpoint, boolean>>; onOpenChange?: (open: boolean, meta: PanelOpenChangeMeta) => void; defaultOpen?: never };
+type PanelUncontrolledProps = { defaultOpen?: boolean | Partial<Record<Breakpoint, boolean>>; onOpenChange?: (open: boolean, meta: PanelOpenChangeMeta) => void; open?: never };
 
 type PanelSizeControlledProps = { size: number | string; defaultSize?: never };
 type PanelSizeUncontrolledProps = { defaultSize?: number | string; size?: never };
@@ -847,6 +908,8 @@ type PanelPublicProps = Omit<PaneProps, 'presentation' | 'defaultMode'> &
     onSizeChange?: (size: number, meta: PanelSizeChangeMeta) => void;
     sizeUpdate?: 'throttle' | 'debounce';
     sizeUpdateMs?: number;
+    /** When true, adds margin to Rail+Panel and triggers gray backdrop on Shell. */
+    inset?: boolean;
   };
 type PanelComponent = React.ForwardRefExoticComponent<PanelPublicProps & React.RefAttributes<HTMLDivElement>> & {
   Handle: HandleComponent;
@@ -963,31 +1026,32 @@ const Panel = assignShellSlot(
       }
     }
 
-    // Initialize uncontrolled open state from defaultOpen on first mount
-    React.useEffect(() => {
-      if (typeof open === 'undefined' && typeof defaultOpen === 'boolean') {
-        if (defaultOpen) {
-          // Ensure Left is expanded before expanding Panel
-          shell.setLeftMode('expanded');
-          shell.setPanelMode('expanded');
-        } else {
-          shell.setPanelMode('collapsed');
-        }
-      }
-      // run only on mount
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    // Normalize responsive open/defaultOpen to PaneMode
+    const normalizedControlledOpen = React.useMemo(() => mapResponsiveBooleanToPaneMode(open), [open]);
+    const normalizedDefaultOpen = React.useMemo(() => mapResponsiveBooleanToPaneMode(defaultOpen), [defaultOpen]);
+    const openIsResponsive = typeof open === 'object' && open !== null;
 
-    // Controlled sync: mirror shell state when `open` is provided
-    React.useEffect(() => {
-      if (typeof open === 'undefined') return;
-      if (open) {
-        if (shell.leftMode !== 'expanded') shell.setLeftMode('expanded');
-        if (shell.panelMode !== 'expanded') shell.setPanelMode('expanded');
-      } else {
-        if (shell.panelMode !== 'collapsed') shell.setPanelMode('collapsed');
-      }
-    }, [shell, open]);
+    // Use responsive initial state hook for proper breakpoint handling
+    useResponsiveInitialState<PaneMode>({
+      controlledValue: normalizedControlledOpen,
+      defaultValue: normalizedDefaultOpen,
+      currentValue: shell.panelMode,
+      setValue: (mode) => {
+        // Ensure Left is expanded when Panel is expanded
+        if (mode === 'expanded' && shell.leftMode !== 'expanded') {
+          shell.setLeftMode('expanded');
+        }
+        shell.setPanelMode(mode);
+      },
+      breakpointReady: shell.currentBreakpointReady,
+      controlledIsResponsive: openIsResponsive,
+      onResponsiveChange: (next) => onOpenChange?.(next === 'expanded', { reason: 'responsive' }),
+      onInit: (initial) => {
+        if (typeof open === 'undefined') {
+          onOpenChange?.(initial === 'expanded', { reason: 'init' });
+        }
+      },
+    });
 
     // Dev-only warning if switching controlled/uncontrolled between renders
     const wasControlledRef = React.useRef<boolean | null>(null);
@@ -1002,16 +1066,6 @@ const Panel = assignShellSlot(
         wasControlledRef.current = isControlled;
       }
     }, [open]);
-
-    // Notify init open
-    React.useEffect(() => {
-      if (initNotifiedRef.current) return;
-      if (typeof open === 'undefined' && defaultOpen && shell.panelMode === 'expanded') {
-        onOpenChange?.(true, { reason: 'init' });
-        initNotifiedRef.current = true;
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
 
     React.useEffect(() => {
       (shell as any).onPanelDefaults?.(expandedSize);
@@ -1209,9 +1263,24 @@ Panel.Handle = PanelHandle;
 // Sidebar moved to ./_internal/shell-sidebar
 
 // Content (always required)
-interface ShellContentProps extends React.ComponentPropsWithoutRef<'main'> {}
+interface ShellContentProps extends React.ComponentPropsWithoutRef<'main'> {
+  /** When true, adds margin and triggers gray backdrop on Shell. */
+  inset?: boolean;
+}
 
-const Content = React.forwardRef<HTMLElement, ShellContentProps>(({ className, ...props }, ref) => <main {...props} ref={ref} className={classNames('rt-ShellContent', className)} />);
+const Content = React.forwardRef<HTMLElement, ShellContentProps>(({ className, inset, ...props }, ref) => {
+  const { registerInset, unregisterInset } = useInset();
+
+  // Register/unregister inset
+  React.useEffect(() => {
+    if (inset) {
+      registerInset('content');
+      return () => unregisterInset('content');
+    }
+  }, [inset, registerInset, unregisterInset]);
+
+  return <main {...props} ref={ref} className={classNames('rt-ShellContent', className)} data-inset={inset || undefined} />;
+});
 Content.displayName = 'Shell.Content';
 assignShellSlot(Content as any, 'Shell.Content');
 
