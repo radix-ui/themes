@@ -213,8 +213,6 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  /* iOS safe area support - prevent content from being cut off by home indicator */
-  padding-bottom: env(safe-area-inset-bottom, 0px);
 
   /* Content animation */
   opacity: 0;
