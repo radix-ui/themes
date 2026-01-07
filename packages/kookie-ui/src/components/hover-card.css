@@ -3,6 +3,7 @@
   box-shadow: var(--shadow-4);
   overflow: auto;
   position: relative;
+  z-index: 200; /* Above dialogs (100) so hover cards inside dialogs/sheets work */
 
   --inset-padding-top: var(--hover-card-content-padding);
   --inset-padding-right: var(--hover-card-content-padding);

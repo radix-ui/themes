@@ -1,6 +1,7 @@
 .rt-BaseDialogOverlay {
   position: fixed;
   inset: 0;
+  z-index: 100; /* Above shell header (50) and shell stacked panes (30-40) */
 
   &::before {
     position: fixed;

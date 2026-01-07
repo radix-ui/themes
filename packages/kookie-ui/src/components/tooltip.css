@@ -3,6 +3,7 @@
   padding: var(--space-1) var(--space-2);
   background-color: var(--gray-12);
   border-radius: var(--radius-1);
+  z-index: 300; /* Tooltips always on top - above dialogs (100) and menus (200) */
 
   transform-origin: var(--radix-tooltip-content-transform-origin);
 

@@ -8,6 +8,7 @@
   flex-direction: column;
   box-sizing: border-box;
   overflow: hidden;
+  z-index: 200; /* Above dialogs (100) so menus inside dialogs/sheets work */
 
   background-color: var(--color-panel);
   backdrop-filter: var(--backdrop-filter-panel);

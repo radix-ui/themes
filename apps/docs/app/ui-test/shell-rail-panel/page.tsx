@@ -1,9 +1,9 @@
 'use client';
 
 import * as React from 'react';
-import { Shell, IconButton, Flex, Box, Text, Heading } from '@kushagradhawan/kookie-ui';
+import { Shell, IconButton, Flex, Box, Text, Heading, DropdownMenu } from '@kushagradhawan/kookie-ui';
 import { HugeiconsIcon } from '@hugeicons/react';
-import { Menu01Icon, SidebarLeft01Icon, SidebarRight01Icon } from '@hugeicons/core-free-icons';
+import { Menu01Icon, SidebarLeft01Icon, SidebarRight01Icon, MoreVerticalIcon } from '@hugeicons/core-free-icons';
 
 export default function ShellRailPanelTest() {
   return (
@@ -26,6 +26,20 @@ export default function ShellRailPanelTest() {
             </Shell.Trigger>
           </IconButton>
           <Box style={{ flex: 1 }} />
+          {/* Dropdown menu to test z-index layering in overlay mode */}
+          <DropdownMenu.Root>
+            <DropdownMenu.Trigger>
+              <IconButton variant="ghost" size="2">
+                <HugeiconsIcon icon={MoreVerticalIcon} size={18} />
+              </IconButton>
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Content>
+              <DropdownMenu.Item>Settings</DropdownMenu.Item>
+              <DropdownMenu.Item>Preferences</DropdownMenu.Item>
+              <DropdownMenu.Separator />
+              <DropdownMenu.Item color="red">Logout</DropdownMenu.Item>
+            </DropdownMenu.Content>
+          </DropdownMenu.Root>
           <Text size="1" color="gray">Rail</Text>
         </Flex>
       </Shell.Rail>
