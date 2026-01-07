@@ -376,6 +376,14 @@
 
 /* Panel Layout Styling (default) - inherits existing styles */
 
+/* Label truncation in expanded mode - prevents horizontal scrollbar on long names */
+.rt-SidebarMenuLabel {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 /* Note: label styling omitted to avoid type-selector-specificity; use Text component for fine control */
 
 /* Base variables and panel background support (mirrors Card pattern) */
