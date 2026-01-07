@@ -329,7 +329,6 @@
 
     &:where([data-state='open']) {
       transition-duration: 40ms;
-      box-shadow: var(--shadow-1);
 
       &::before {
         background-color: var(--gray-3);
@@ -346,8 +345,6 @@
     }
 
     &:where(:active:not([data-state='open'])) {
-      box-shadow: var(--shadow-1);
-
       &::before {
         background-color: var(--gray-3);
 

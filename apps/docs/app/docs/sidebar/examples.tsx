@@ -400,7 +400,7 @@ export function SidebarExamples() {
           <SectionHeader.Content>
             <SectionHeader.Title>Thin Size Comparison</SectionHeader.Title>
             <SectionHeader.Description>
-              Size affects icon scaling and padding in thin mode. Size 1 creates a tighter rail, size 2 provides more breathing room.
+              Size affects icon scaling and padding in thin mode. Size 1 creates a tighter rail, size 2 is standard, and size 3 provides the most breathing room.
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
@@ -458,6 +458,32 @@ export function SidebarExamples() {
                 </Sidebar.Content>
               </Sidebar.Root>
             </Box>
+            <Box style={{ width: 88 }}>
+              <Sidebar.Root presentation="thin" size="3">
+                <Sidebar.Content>
+                  <Sidebar.Menu>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton isActive>
+                        <HugeiconsIcon icon={Home01Icon} strokeWidth={1.75} />
+                        Home
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton>
+                        <HugeiconsIcon icon={Search01Icon} strokeWidth={1.75} />
+                        Search
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                    <Sidebar.MenuItem>
+                      <Sidebar.MenuButton>
+                        <HugeiconsIcon icon={Settings01Icon} strokeWidth={1.75} />
+                        Settings
+                      </Sidebar.MenuButton>
+                    </Sidebar.MenuItem>
+                  </Sidebar.Menu>
+                </Sidebar.Content>
+              </Sidebar.Root>
+            </Box>
           </Flex>
         </PreviewBlock>
         <CodeBlock
@@ -475,8 +501,22 @@ export function SidebarExamples() {
   </Sidebar.Content>
 </Sidebar.Root>
 
-{/* Size 2: More breathing room */}
+{/* Size 2: Standard spacing */}
 <Sidebar.Root presentation="thin" size="2">
+  <Sidebar.Content>
+    <Sidebar.Menu>
+      <Sidebar.MenuItem>
+        <Sidebar.MenuButton isActive>
+          <HomeIcon />
+          Home
+        </Sidebar.MenuButton>
+      </Sidebar.MenuItem>
+    </Sidebar.Menu>
+  </Sidebar.Content>
+</Sidebar.Root>
+
+{/* Size 3: More breathing room */}
+<Sidebar.Root presentation="thin" size="3">
   <Sidebar.Content>
     <Sidebar.Menu>
       <Sidebar.MenuItem>

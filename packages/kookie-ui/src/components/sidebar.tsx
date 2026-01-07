@@ -236,6 +236,7 @@ const SidebarMenuButton = React.forwardRef<HTMLButtonElement, SidebarMenuButtonP
     const [isHighlighted, setIsHighlighted] = React.useState(false);
     const visual = useSidebarVisual();
     const sidebarSize = visual?.size ?? '2';
+    const isThinMode = visual?.presentation === 'thin';
 
     const Comp = asChild ? Slot : 'button';
 
@@ -268,6 +269,30 @@ const SidebarMenuButton = React.forwardRef<HTMLButtonElement, SidebarMenuButtonP
       [onClick, onKeyDown],
     );
 
+    // Separate icons and labels for thin mode styling
+    const separateIconsAndLabels = (node: React.ReactNode): { icons: React.ReactNode[]; labels: React.ReactNode[] } => {
+      const icons: React.ReactNode[] = [];
+      const labels: React.ReactNode[] = [];
+
+      React.Children.forEach(node, (child) => {
+        if (typeof child === 'string' || typeof child === 'number') {
+          labels.push(<span key={labels.length} className="rt-SidebarMenuLabel">{child}</span>);
+        } else if (React.isValidElement(child)) {
+          const el = child as React.ReactElement<any>;
+          // Check if it's an SVG or icon component
+          if (el.type === 'svg' || (el.props && el.props.icon) || (typeof el.type === 'function' && ((el.type as any).displayName?.includes('Icon') || (el.type as any).name?.includes('Icon')))) {
+            icons.push(child);
+          } else {
+            labels.push(child);
+          }
+        } else if (child) {
+          labels.push(child);
+        }
+      });
+
+      return { icons, labels };
+    };
+
     // Wrap bare text nodes so CSS can target labels (e.g., for truncation in thin mode)
     const wrapTextNodes = (node: React.ReactNode): React.ReactNode => {
       if (typeof node === 'string' || typeof node === 'number') {
@@ -288,6 +313,9 @@ const SidebarMenuButton = React.forwardRef<HTMLButtonElement, SidebarMenuButtonP
     };
 
     const processedChildren = wrapTextNodes(children);
+
+    // For thin mode, separate icons into a wrapper for targeted background styling
+    const { icons, labels } = isThinMode ? separateIconsAndLabels(children) : { icons: [], labels: [] };
 
     // When rendering asChild, Slot expects a single child element. We still want to
     // append optional badge/shortcut inside that element so they render with Link.
@@ -347,6 +375,19 @@ const SidebarMenuButton = React.forwardRef<HTMLButtonElement, SidebarMenuButtonP
       >
         {asChild ? (
           slottedChildren
+        ) : isThinMode && icons.length > 0 ? (
+          <>
+            <span className="rt-SidebarMenuIconWrapper">{icons}</span>
+            {labels.map((label, index) => (
+              <React.Fragment key={index}>
+                {typeof label === 'string' || typeof label === 'number' ? (
+                  <span className="rt-SidebarMenuLabel">{label}</span>
+                ) : (
+                  label
+                )}
+              </React.Fragment>
+            ))}
+          </>
         ) : (
           <>
             {processedChildren}

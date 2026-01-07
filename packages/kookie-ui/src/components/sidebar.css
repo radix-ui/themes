@@ -36,10 +36,27 @@
   text-align: center !important;
   font-size: var(--font-size-0) !important;
   line-height: var(--line-height-0) !important;
-  padding-top: var(--space-2) !important;
-  padding-bottom: var(--space-2) !important;
   padding-inline-start: var(--space-1) !important;
   padding-inline-end: var(--space-1) !important;
+  /* Add margin for balanced spacing like normal variant */
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+/* Size-specific vertical padding for thin mode buttons */
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent.rt-r-size-1) :where(.rt-SidebarMenuButton, .rt-SidebarMenuSubTrigger) {
+  padding-top: var(--space-1) !important;
+  padding-bottom: var(--space-1) !important;
+}
+
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent.rt-r-size-2) :where(.rt-SidebarMenuButton, .rt-SidebarMenuSubTrigger) {
+  padding-top: var(--space-1) !important;
+  padding-bottom: var(--space-1) !important;
+}
+
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent.rt-r-size-3) :where(.rt-SidebarMenuButton, .rt-SidebarMenuSubTrigger) {
+  padding-top: var(--space-2) !important;
+  padding-bottom: var(--space-2) !important;
 }
 
 /* Consolidated thin mode size blocks */
@@ -195,18 +212,105 @@
   display: block;
 }
 
-/* Truncate labels inside an explicit label span */
+/* Icon wrapper for thin mode - receives hover/active background */
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuIconWrapper) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Override the 100% width from .rt-SidebarMenuButton > * - icon wrapper should fit content */
+  width: auto;
+  padding: var(--space-3) var(--space-2);
+  border-radius: var(--radius-2);
+  transition:
+    background-color var(--motion-duration-micro) var(--motion-ease-standard),
+    color var(--motion-duration-small) var(--motion-ease-standard);
+}
+
+/* Size-specific icon wrapper padding */
+.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent.rt-r-size-1 .rt-SidebarMenuIconWrapper {
+  padding: var(--space-2) var(--space-2);
+  border-radius: var(--radius-1);
+}
+
+.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent.rt-r-size-2 .rt-SidebarMenuIconWrapper {
+  padding: var(--space-2);
+  border-radius: var(--radius-2);
+}
+
+.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent.rt-r-size-3 .rt-SidebarMenuIconWrapper {
+  padding: var(--space-3);
+  border-radius: var(--radius-2);
+}
+
+/* Label styling in thin mode - outside the background area */
 :where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuButton .rt-SidebarMenuLabel) {
   display: block;
   max-width: 100%;
   min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow: visible;
+  text-overflow: clip;
   white-space: nowrap;
   text-align: center;
-  color: var(--accent-11);
+  color: var(--gray-11);
   font-size: var(--font-size-0);
   line-height: var(--line-height-0);
+}
+
+/* Active label gets accent color and medium weight */
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuButton[data-active] .rt-SidebarMenuLabel) {
+  color: var(--accent-11);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Highlighted label gets slightly darker color */
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuButton[data-highlighted] .rt-SidebarMenuLabel) {
+  color: var(--accent-11);
+}
+
+/* Remove background from button itself in thin mode - styles are on icon wrapper */
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuButton[data-highlighted]),
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuButton[data-active]) {
+  background-color: transparent !important;
+}
+
+/* Soft variant icon wrapper states in thin mode */
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent.rt-menu-variant-soft .rt-SidebarMenuButton[data-highlighted] .rt-SidebarMenuIconWrapper) {
+  background-color: var(--accent-4);
+}
+
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent.rt-menu-variant-soft .rt-SidebarMenuButton[data-active] .rt-SidebarMenuIconWrapper) {
+  background-color: var(--accent-3);
+}
+
+/* Translucent panel support for soft variant */
+:where([data-panel-background='translucent']) :where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent.rt-menu-variant-soft .rt-SidebarMenuButton[data-highlighted] .rt-SidebarMenuIconWrapper) {
+  background-color: var(--accent-a4);
+}
+
+:where([data-panel-background='translucent']) :where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent.rt-menu-variant-soft .rt-SidebarMenuButton[data-active] .rt-SidebarMenuIconWrapper) {
+  background-color: var(--accent-a3);
+}
+
+/* Solid variant icon wrapper states in thin mode */
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent.rt-menu-variant-solid .rt-SidebarMenuButton[data-highlighted] .rt-SidebarMenuIconWrapper) {
+  background-color: var(--accent-9);
+  color: var(--accent-contrast);
+}
+
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent.rt-menu-variant-solid .rt-SidebarMenuButton[data-active] .rt-SidebarMenuIconWrapper) {
+  background-color: var(--accent-9);
+  color: var(--accent-contrast);
+}
+
+/* High contrast solid variant in thin mode */
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent.rt-menu-variant-solid[data-high-contrast] .rt-SidebarMenuButton[data-highlighted] .rt-SidebarMenuIconWrapper) {
+  background-color: var(--accent-12);
+  color: var(--accent-1);
+}
+
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent.rt-menu-variant-solid[data-high-contrast] .rt-SidebarMenuButton[data-active] .rt-SidebarMenuIconWrapper) {
+  background-color: var(--accent-12);
+  color: var(--accent-1);
 }
 
 :where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarMenuBadge),

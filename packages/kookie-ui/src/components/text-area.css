@@ -299,7 +299,6 @@
   &:where(:has(.rt-TextAreaInput:where(:disabled, :read-only))) {
     /* Blend with grey */
     background-image: linear-gradient(var(--gray-a2), var(--gray-a2));
-    box-shadow: var(--shadow-1);
   }
 }
 

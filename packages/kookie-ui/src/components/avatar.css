@@ -104,7 +104,6 @@
       padding-top: var(--classic-active-padding-offset-2);
       padding-bottom: 0;
       background-color: var(--gray-3);
-      box-shadow: var(--shadow-1);
 
       /* Theme-level translucent override for active */
       :where([data-panel-background='translucent'], [data-material='translucent']) & {

@@ -170,7 +170,6 @@
   &:where([data-state='checked'], [data-state='indeterminate']) {
     &::before {
       background-color: var(--accent-3);
-      box-shadow: var(--shadow-1);
 
       /* Theme-level translucent override */
       :where([data-panel-background='translucent'], [data-material='translucent']) & {
@@ -219,7 +218,6 @@
     
     &::before {
       background-color: var(--accent-3);
-      box-shadow: var(--shadow-1);
 
       /* Theme-level translucent override for active */
       :where([data-panel-background='translucent'], [data-material='translucent']) & {

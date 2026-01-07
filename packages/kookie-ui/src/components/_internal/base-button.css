@@ -230,12 +230,10 @@
 
   &:where([data-state='open']) {
     background-color: color-mix(in srgb, var(--gray-a3) calc(var(--material-alpha) * 100%), var(--gray-3) var(--material-blend));
-    box-shadow: var(--shadow-1);
   }
 
   &:where(:active:not([data-state='open'], [data-disabled]), [data-state='on']:not([data-disabled])) {
     background-color: color-mix(in srgb, var(--gray-a3) calc(var(--material-alpha) * 100%), var(--gray-3) var(--material-blend));
-    box-shadow: var(--shadow-1);
   }
 
   @media (pointer: coarse) {
@@ -361,12 +359,10 @@
   &:where([data-state='open']) {
     background-color: color-mix(in srgb, var(--accent-a10) calc(var(--material-alpha) * 100%), var(--accent-10) var(--solid-blend));
     filter: var(--base-button-solid-open-filter);
-    box-shadow: var(--shadow-1);
   }
 
   &:where(:active:not([data-state='open'])) {
     filter: var(--base-button-solid-active-filter);
-    box-shadow: var(--shadow-1);
   }
 
   @media (pointer: coarse) {
@@ -396,12 +392,10 @@
     &:where([data-state='open']) {
       background-color: color-mix(in srgb, var(--accent-a12) calc(var(--material-alpha) * 100%), var(--accent-12) var(--solid-blend));
       filter: var(--base-button-solid-high-contrast-open-filter);
-      box-shadow: var(--shadow-1);
     }
 
     &:where(:active:not([data-state='open'])) {
       filter: var(--base-button-solid-high-contrast-active-filter);
-      box-shadow: var(--shadow-1);
     }
   }
 
@@ -453,12 +447,10 @@
 
   &:where([data-state='open']) {
     background-color: color-mix(in srgb, var(--accent-a4) calc(var(--material-alpha) * 100%), var(--accent-4) var(--material-blend));
-    box-shadow: var(--shadow-1);
   }
 
   &:where(:active:not([data-state='open'])) {
     background-color: color-mix(in srgb, var(--accent-a5) calc(var(--material-alpha) * 100%), var(--accent-5) var(--material-blend));
-    box-shadow: var(--shadow-1);
   }
 
   &:where([data-disabled]) {
@@ -514,12 +506,10 @@
 
   &:where([data-state='open']) {
     background-color: color-mix(in srgb, var(--accent-a3) calc(var(--material-alpha) * 100%), var(--accent-3) var(--material-blend));
-    box-shadow: var(--shadow-1);
   }
 
   &:where(:active:not([data-state='open'])) {
     background-color: color-mix(in srgb, var(--accent-a4) calc(var(--material-alpha) * 100%), var(--accent-4) var(--material-blend));
-    box-shadow: var(--shadow-1);
   }
 
   &:where([data-disabled]) {
@@ -554,16 +544,12 @@
 
   &:where([data-state='open']) {
     background-color: color-mix(in srgb, var(--accent-a2) calc(var(--material-alpha) * 100%), var(--accent-2) var(--material-blend));
-    box-shadow:
-      inset 0 0 0 1px var(--outline-border-7),
-      var(--shadow-1);
+    box-shadow: inset 0 0 0 1px var(--outline-border-7);
   }
 
   &:where(:active:not([data-state='open'])) {
     background-color: color-mix(in srgb, var(--accent-a3) calc(var(--material-alpha) * 100%), var(--accent-3) var(--material-blend));
-    box-shadow:
-      inset 0 0 0 1px var(--outline-border-8),
-      var(--shadow-1);
+    box-shadow: inset 0 0 0 1px var(--outline-border-8);
   }
 
   &:where(:focus-visible) {
@@ -608,16 +594,12 @@
 
   &:where([data-state='open']) {
     background-color: color-mix(in srgb, var(--accent-a3) calc(var(--material-alpha) * 100%), var(--accent-3) var(--material-blend));
-    box-shadow:
-      inset 0 0 0 1px var(--surface-border-8),
-      var(--shadow-1);
+    box-shadow: inset 0 0 0 1px var(--surface-border-8);
   }
 
   &:where(:active:not([data-state='open'])) {
     background-color: color-mix(in srgb, var(--accent-a4) calc(var(--material-alpha) * 100%), var(--accent-4) var(--material-blend));
-    box-shadow:
-      inset 0 0 0 1px var(--surface-border-8),
-      var(--shadow-1);
+    box-shadow: inset 0 0 0 1px var(--surface-border-8);
   }
 
   &:where(:focus-visible) {
@@ -649,7 +631,6 @@
   /* Classic variant pressed */
   &:where(.rt-variant-classic) {
     background-color: color-mix(in srgb, var(--gray-a3) calc(var(--material-alpha) * 100%), var(--gray-3) var(--material-blend));
-    box-shadow: var(--shadow-1);
   }
 
   /* Solid variant pressed - uses solid-blend from variant definition */
@@ -657,7 +638,6 @@
     --solid-blend: calc(100% - (var(--material-alpha) * 90%));
     background-color: color-mix(in srgb, var(--accent-a10) calc(var(--material-alpha) * 100%), var(--accent-10) var(--solid-blend));
     opacity: 0.9;
-    box-shadow: var(--shadow-1);
 
     &:where(.rt-high-contrast) {
       background-color: var(--accent-12);
@@ -668,31 +648,25 @@
   /* Soft variant pressed */
   &:where(.rt-variant-soft) {
     background-color: color-mix(in srgb, var(--accent-a5) calc(var(--material-alpha) * 100%), var(--accent-5) var(--material-blend));
-    box-shadow: var(--shadow-1);
   }
 
   /* Ghost variant pressed */
   &:where(.rt-variant-ghost) {
     background-color: color-mix(in srgb, var(--accent-a4) calc(var(--material-alpha) * 100%), var(--accent-4) var(--material-blend));
-    box-shadow: var(--shadow-1);
   }
 
   /* Outline variant pressed */
   &:where(.rt-variant-outline) {
     --outline-border-8: color-mix(in srgb, var(--accent-a8) calc(var(--material-alpha) * 100%), var(--accent-8) var(--material-blend));
     background-color: color-mix(in srgb, var(--accent-a3) calc(var(--material-alpha) * 100%), var(--accent-3) var(--material-blend));
-    box-shadow:
-      inset 0 0 0 1px var(--outline-border-8),
-      var(--shadow-1);
+    box-shadow: inset 0 0 0 1px var(--outline-border-8);
   }
 
   /* Surface variant pressed */
   &:where(.rt-variant-surface) {
     --surface-border-8: color-mix(in srgb, var(--accent-a8) calc(var(--material-alpha) * 100%), var(--accent-8) var(--material-blend));
     background-color: color-mix(in srgb, var(--accent-a4) calc(var(--material-alpha) * 100%), var(--accent-4) var(--material-blend));
-    box-shadow:
-      inset 0 0 0 1px var(--surface-border-8),
-      var(--shadow-1);
+    box-shadow: inset 0 0 0 1px var(--surface-border-8);
   }
 }
 
