@@ -227,17 +227,17 @@
 }
 
 /* Size-specific icon wrapper padding */
-.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent.rt-r-size-1 .rt-SidebarMenuIconWrapper {
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent.rt-r-size-1 .rt-SidebarMenuIconWrapper) {
   padding: var(--space-2) var(--space-2);
   border-radius: var(--radius-1);
 }
 
-.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent.rt-r-size-2 .rt-SidebarMenuIconWrapper {
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent.rt-r-size-2 .rt-SidebarMenuIconWrapper) {
   padding: var(--space-2);
   border-radius: var(--radius-2);
 }
 
-.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent.rt-r-size-3 .rt-SidebarMenuIconWrapper {
+:where(.rt-SidebarContainer[data-presentation='thin'] .rt-SidebarContent.rt-r-size-3 .rt-SidebarMenuIconWrapper) {
   padding: var(--space-3);
   border-radius: var(--radius-2);
 }
