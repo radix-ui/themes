@@ -432,7 +432,7 @@ export function SidebarExamples() {
                 </Sidebar.Content>
               </Sidebar.Root>
             </Box>
-            <Box style={{ width: 72 }}>
+            <Box style={{ width: 64 }}>
               <Sidebar.Root presentation="thin" size="2">
                 <Sidebar.Content>
                   <Sidebar.Menu>
@@ -458,7 +458,7 @@ export function SidebarExamples() {
                 </Sidebar.Content>
               </Sidebar.Root>
             </Box>
-            <Box style={{ width: 88 }}>
+            <Box style={{ width: 72 }}>
               <Sidebar.Root presentation="thin" size="3">
                 <Sidebar.Content>
                   <Sidebar.Menu>

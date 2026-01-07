@@ -13,7 +13,7 @@ export {
 } from './_internal/base-menu.props.js';
 
 // Sidebar container props
-const sizes = ['1', '2'] as const;
+const sizes = ['1', '2', '3'] as const;
 const variants = ['soft', 'outline', 'surface', 'ghost'] as const;
 const menuVariants = ['solid', 'soft'] as const;
 const types = ['sidebar'] as const;

@@ -32,7 +32,7 @@ type BadgeConfig = {
 
 // Internal presentational context (not exported) for size/menu variant
 type SidebarVisualContextValue = {
-  size: '1' | '2';
+  size: '1' | '2' | '3';
   menuVariant: 'solid' | 'soft';
   presentation?: 'thin' | 'expanded';
   color?: string;
@@ -563,8 +563,10 @@ const SidebarMenuSubContent = React.forwardRef<React.ElementRef<typeof Accordion
       );
     });
 
+    // DropdownMenu only supports sizes 1 and 2, so map size 3 to 2
+    const dropdownSize = visual?.size === '3' ? '2' : visual?.size;
     return (
-      <DropdownMenu.Content size={visual?.size} variant={visual?.menuVariant} className={classNames(className)}>
+      <DropdownMenu.Content size={dropdownSize} variant={visual?.menuVariant} className={classNames(className)}>
         <DropdownMenu.Group>{normalized}</DropdownMenu.Group>
       </DropdownMenu.Content>
     );
