@@ -401,6 +401,93 @@ describe('Image', () => {
   });
 });
 
+describe('Next.js Image fill compatibility', () => {
+  it('wrapper uses absolute positioning when fill prop is true', () => {
+    const { container } = renderWithProviders(
+      <Image src="/test.jpg" alt="Test" fill />,
+    );
+    const wrapper = container.querySelector('.rt-Image')?.parentElement as HTMLElement;
+    expect(wrapper.style.position).toBe('absolute');
+    // jsdom may return '0' or '0px' depending on version
+    expect(['0', '0px']).toContain(wrapper.style.inset);
+  });
+
+  it('wrapper uses relative positioning when fill is not used', () => {
+    const { container } = renderWithProviders(
+      <Image src="/test.jpg" alt="Test" />,
+    );
+    const wrapper = container.querySelector('.rt-Image')?.parentElement as HTMLElement;
+    expect(wrapper.style.position).toBe('relative');
+  });
+
+  it('does not add position style to image element when fill is true', () => {
+    renderWithProviders(<Image src="/test.jpg" alt="Test" fill />);
+    const img = screen.getByRole('img');
+    // When fill is used, position should not be relative (Next.js sets it to absolute)
+    expect(img.style.position).not.toBe('relative');
+  });
+
+  it('passes width/height to custom component when provided as numbers', () => {
+    const CustomImage = React.forwardRef<
+      HTMLImageElement,
+      React.ImgHTMLAttributes<HTMLImageElement> & { width?: number; height?: number }
+    >(({ width, height, ...props }, ref) => (
+      <img
+        ref={ref}
+        data-width={width}
+        data-height={height}
+        {...props}
+      />
+    ));
+    CustomImage.displayName = 'CustomImage';
+
+    renderWithProviders(
+      <Image as={CustomImage} src="/test.jpg" alt="Test" width={600} height={400} />,
+    );
+    const img = screen.getByRole('img');
+    expect(img).toHaveAttribute('data-width', '600');
+    expect(img).toHaveAttribute('data-height', '400');
+  });
+
+  it('works with fill and custom component without conflicting styles', () => {
+    const CustomImage = React.forwardRef<
+      HTMLImageElement,
+      React.ImgHTMLAttributes<HTMLImageElement> & { fill?: boolean }
+    >(({ fill, ...props }, ref) => (
+      <img
+        ref={ref}
+        data-fill={fill ? 'true' : 'false'}
+        style={fill ? { position: 'absolute', inset: 0 } : undefined}
+        {...props}
+      />
+    ));
+    CustomImage.displayName = 'CustomImage';
+
+    const { container } = renderWithProviders(
+      <Image as={CustomImage} src="/test.jpg" alt="Test" fill />,
+    );
+
+    // Wrapper should be absolute
+    const wrapper = container.querySelector('.rt-Image')?.parentElement as HTMLElement;
+    expect(wrapper.style.position).toBe('absolute');
+
+    // Custom component receives fill prop
+    const img = screen.getByRole('img');
+    expect(img).toHaveAttribute('data-fill', 'true');
+  });
+
+  it('user style is merged with wrapper style when fill is used', () => {
+    const { container } = renderWithProviders(
+      <Image src="/test.jpg" alt="Test" fill style={{ zIndex: 10 }} />,
+    );
+    const wrapper = container.querySelector('.rt-Image')?.parentElement as HTMLElement;
+    expect(wrapper.style.position).toBe('absolute');
+    // jsdom may return '0' or '0px' depending on version
+    expect(['0', '0px']).toContain(wrapper.style.inset);
+    expect(wrapper.style.zIndex).toBe('10');
+  });
+});
+
 describe('Image type exports', () => {
   it('exports ImageProps type', () => {
     // This test verifies TypeScript types are exported correctly

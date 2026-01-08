@@ -53,6 +53,11 @@ type ImageOwnProps = GetPropDefTypes<typeof imagePropDefs> & {
    * Image source URL
    */
   src: string;
+  /**
+   * When true, the image will fill its parent container (for Next.js Image compatibility).
+   * Parent must have `position: relative` and defined dimensions.
+   */
+  fill?: boolean;
 };
 
 interface CommonImageProps
@@ -106,6 +111,7 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
   const {
     as: Component = 'img',
     asChild: _asChild, // Extract to prevent passing to DOM element
+    fill: _fill, // Extract to prevent passing to native img element (only used for custom components)
     className,
     style,
     loading = 'lazy',
@@ -130,9 +136,11 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
     layoutPropDefs,
   );
 
-  // When using a custom component (like Next.js Image), pass native width/height
+  // When using a custom component (like Next.js Image), pass native width/height and fill
   const isCustomComponent = Component !== 'img';
-  const componentDimensionProps = isCustomComponent ? { width: nativeWidth, height: nativeHeight } : {};
+  const componentDimensionProps = isCustomComponent
+    ? { width: nativeWidth, height: nativeHeight, ...(hasFill ? { fill: true } : {}) }
+    : {};
 
   const [loadingState, setLoadingState] = React.useState<'loading' | 'loaded' | 'error'>('loading');
   const [showPlaceholder, setShowPlaceholder] = React.useState(!!placeholder);
@@ -251,9 +259,9 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
 
   // Simple flat structure when no caption
   if (!caption) {
-    // When using fill, wrapper needs to inherit parent dimensions
+    // When using fill, wrapper uses absolute positioning to fill the nearest positioned ancestor
     const wrapperStyle: React.CSSProperties = hasFill
-      ? { position: 'relative', width: '100%', height: '100%', ...style }
+      ? { position: 'absolute', inset: 0, ...style }
       : { position: 'relative', ...style };
     return (
       <div className={className} style={wrapperStyle}>
