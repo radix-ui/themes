@@ -1,5 +1,6 @@
 @import './fonts.css';
 @import './tokens/index.css';
 @import './breakpoints.css';
+@import './scrollbar.css';
 @import '../components/index.css';
 @import './utilities/index.css';

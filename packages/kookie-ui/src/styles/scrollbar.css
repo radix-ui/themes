@@ -1,0 +1,31 @@
+/* Global scrollbar styling for kookie-ui */
+/* Provides thin, subtle scrollbars that match the design system */
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--gray-a5) transparent;
+}
+
+/* WebKit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-a5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-a7);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}

@@ -153,6 +153,12 @@ export const docsNavigation: DocsNavigationConfig = {
           icon: Asterisk02Icon,
           badge: { content: 'Alpha', size: '1', highContrast: true },
         },
+        {
+          href: '/docs/toolbar',
+          title: 'Toolbar',
+          icon: LayoutTopIcon,
+          badge: { content: 'Development', color: 'gray', size: '1', highContrast: true },
+        },
       ],
     },
   ],

@@ -66,6 +66,7 @@ export { ThemePanel, type ThemePanelProps } from './theme-panel.js';
 export { Theme, ThemeContext, type ThemeProps, useThemeContext } from './theme.js';
 export { ToggleButton, type ToggleButtonProps } from './toggle-button.js';
 export { ToggleIconButton, type ToggleIconButtonProps } from './toggle-icon-button.js';
+export { Toolbar } from './toolbar.js';
 export { Tooltip, type TooltipProps } from './tooltip.js';
 export { UserCard, type UserCardProps } from './user-card.js';
 export { VisuallyHidden, type VisuallyHiddenProps } from './visually-hidden.js';

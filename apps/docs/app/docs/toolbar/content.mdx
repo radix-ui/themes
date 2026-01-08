@@ -1,0 +1,271 @@
+---
+title: Toolbar
+description: A sticky container for actions and navigation anchored to edges.
+source: https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/toolbar.tsx
+---
+
+import { Callout, Box } from '@kushagradhawan/kookie-ui';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Alert02Icon } from '@hugeicons/core-free-icons';
+
+<Box mb="6">
+  <Callout.Root color="gray" variant="outline" highContrast>
+    <Callout.Icon>
+      <HugeiconsIcon icon={Alert02Icon} strokeWidth={1.75} />
+    </Callout.Icon>
+    <Callout.Text>This component's API and documentation are under review and may change. Use with caution in production.</Callout.Text>
+  </Callout.Root>
+</Box>
+
+
+Toolbar is a compound component for creating sticky action bars anchored to any edge. It builds on Card for visual styling and provides structured slots for content organization.
+
+Use Toolbar inside dialogs, popovers, panels, or any scrollable container where you need persistent controls.
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-ui
+```
+
+## Usage
+
+```tsx
+import { Card, Inset, Toolbar, IconButton } from '@kushagradhawan/kookie-ui';
+
+export function MyToolbar() {
+  return (
+    <Card variant="classic">
+      <Inset side="all" clip="padding-box">
+        <Toolbar variant="soft" size="1">
+          <Toolbar.Left>
+            <IconButton variant="ghost" size="2" color="gray" highContrast>
+              <ArrowLeftIcon />
+            </IconButton>
+          </Toolbar.Left>
+          <Toolbar.Center>
+            <Toolbar.Title>Settings</Toolbar.Title>
+          </Toolbar.Center>
+          <Toolbar.Right>
+            <IconButton variant="ghost" size="2" color="gray" highContrast>
+              <CloseIcon />
+            </IconButton>
+          </Toolbar.Right>
+        </Toolbar>
+      </Inset>
+    </Card>
+  );
+}
+```
+
+Use `Inset` to bypass the parent Card's padding and let the Toolbar span edge-to-edge.
+
+## Anatomy
+
+Toolbar is a compound component with the following parts:
+
+```tsx
+<Toolbar>
+  <Toolbar.Left>{/* Start section content */}</Toolbar.Left>
+  <Toolbar.Center>
+    <Toolbar.Title>{/* Title text */}</Toolbar.Title>
+  </Toolbar.Center>
+  <Toolbar.Right>{/* End section content */}</Toolbar.Right>
+</Toolbar>
+```
+
+## Props
+
+### Root Props
+
+The root component manages positioning and inherits Card's visual styling.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `anchor` | `'top' \| 'bottom' \| 'left' \| 'right'` | `'top'` | Which edge to anchor to. Sets sticky positioning. |
+| `floating` | `boolean` | `false` | When true, adds margin from edges for a detached look. |
+| `offset` | `'1' \| '2' \| ... \| '9'` | `'2'` | Margin offset when floating. Uses space scale. |
+| `size` | `'1' \| '2' \| '3' \| '4' \| '5'` | `'1'` | Controls padding. Inherits from Card. |
+| `variant` | `'surface' \| 'outline' \| 'classic' \| 'ghost' \| 'soft'` | `'ghost'` | Visual style. Inherits from Card. |
+| `material` | `'solid' \| 'translucent'` | - | Background material. Translucent adds backdrop blur. |
+
+### Section Props
+
+`Toolbar.Left`, `Toolbar.Center`, and `Toolbar.Right` accept standard div props and arrange content within their section.
+
+### Title Props
+
+`Toolbar.Title` renders a truncated heading and accepts all Heading props with toolbar-appropriate defaults.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `size` | `'1' \| '2' \| ... \| '9'` | `'3'` | Font size. |
+| `weight` | `'light' \| 'regular' \| 'medium' \| 'bold'` | `'medium'` | Font weight. |
+| `truncate` | `boolean` | `true` | Truncate text with ellipsis. |
+| `children` | `ReactNode` | - | The title text. |
+
+## Anchor
+
+Use the `anchor` prop to position the toolbar at different edges.
+
+### Top
+
+The default. Anchors to the top of the scroll container.
+
+```tsx
+<Toolbar anchor="top">
+  <Toolbar.Center>
+    <Toolbar.Title>Top Toolbar</Toolbar.Title>
+  </Toolbar.Center>
+</Toolbar>
+```
+
+### Bottom
+
+Anchors to the bottom, useful for action bars.
+
+```tsx
+<Toolbar anchor="bottom">
+  <Toolbar.Right>
+    <Button>Save</Button>
+  </Toolbar.Right>
+</Toolbar>
+```
+
+### Left / Right
+
+Vertical toolbars for sidebar-style controls.
+
+```tsx
+<Toolbar anchor="left">
+  <Toolbar.Left>
+    <IconButton variant="ghost" size="2">
+      <HomeIcon />
+    </IconButton>
+  </Toolbar.Left>
+</Toolbar>
+```
+
+## Floating
+
+Use `floating` for a detached look with margin from edges.
+
+```tsx
+<Toolbar floating variant="surface">
+  <Toolbar.Center>
+    <Toolbar.Title>Floating Toolbar</Toolbar.Title>
+  </Toolbar.Center>
+</Toolbar>
+```
+
+When floating:
+- Full border radius from Card
+- Margin from container edges (controlled by `offset`)
+- Complete Card styling (all borders visible)
+- Uses `position: absolute` instead of sticky
+
+When not floating (default):
+- No border radius
+- Only the exposed edge shows a border
+- Flush with container edges
+- Uses `position: sticky`
+
+### Offset
+
+Control the margin when floating with the `offset` prop.
+
+```tsx
+<Toolbar floating offset="4" variant="surface">
+  <Toolbar.Title>More spacing</Toolbar.Title>
+</Toolbar>
+```
+
+## Variants
+
+Toolbar inherits all Card variants. The default is `ghost` for minimal visual weight.
+
+### Soft
+
+Muted background, great for dialog headers.
+
+```tsx
+<Toolbar variant="soft">
+  <Toolbar.Title>Soft</Toolbar.Title>
+</Toolbar>
+```
+
+### Surface
+
+Subtle background with border. Good for floating toolbars.
+
+```tsx
+<Toolbar variant="surface" floating>
+  <Toolbar.Title>Surface</Toolbar.Title>
+</Toolbar>
+```
+
+### Ghost
+
+No visible background or border. Use when the parent provides visual context.
+
+```tsx
+<Toolbar variant="ghost">
+  <Toolbar.Title>Ghost</Toolbar.Title>
+</Toolbar>
+```
+
+## Sizes
+
+Controls padding inside the toolbar.
+
+```tsx
+<Toolbar size="1">{/* Compact */}</Toolbar>
+<Toolbar size="2">{/* Default */}</Toolbar>
+<Toolbar size="3">{/* Comfortable */}</Toolbar>
+```
+
+## Material
+
+Use `material="translucent"` for backdrop blur over images or dynamic backgrounds.
+
+```tsx
+<Toolbar material="translucent" variant="soft">
+  <Toolbar.Title>Translucent</Toolbar.Title>
+</Toolbar>
+```
+
+## CSS Variables
+
+Toolbar exposes dimension variables so you can add padding to prevent content overlap:
+
+- `--rt-toolbar-height` for horizontal toolbars (`anchor="top"` or `anchor="bottom"`)
+- `--rt-toolbar-width` for vertical toolbars (`anchor="left"` or `anchor="right"`)
+
+The variables are set on the Toolbar's parent element, so the Toolbar and content must share a common container:
+
+```tsx
+<Box position="relative" height="100%">
+  <Toolbar floating anchor="top">
+    <Toolbar.Title>Top Toolbar</Toolbar.Title>
+  </Toolbar>
+  <Flex pt="var(--rt-toolbar-height)">
+    {/* Content */}
+  </Flex>
+</Box>
+```
+
+For image or video backgrounds where content should flow behind the toolbar, simply don't apply the padding.
+
+## Accessibility
+
+- Use semantic elements and ARIA attributes as needed
+- For dialog/popover context, pair with appropriate `aria-labelledby` on the container
+- Toolbar.Title can provide the ID for accessible labeling
+
+```tsx
+<Dialog.Content aria-labelledby="toolbar-title">
+  <Toolbar>
+    <Toolbar.Title id="toolbar-title">Settings</Toolbar.Title>
+  </Toolbar>
+</Dialog.Content>
+```

@@ -1,0 +1,161 @@
+/* Toolbar Component */
+
+.rt-Toolbar {
+  position: sticky;
+  z-index: 1;
+
+  /* --rt-toolbar-height and --rt-toolbar-width are set on parent element via JS */
+}
+
+.rt-ToolbarInner {
+  /* Ensure inner flex container takes full space */
+  width: 100%;
+  height: 100%;
+}
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*           Anchor positions          */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+.rt-Toolbar:where([data-anchor='top']) {
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.rt-Toolbar:where([data-anchor='bottom']) {
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.rt-Toolbar:where([data-anchor='left']) {
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.rt-Toolbar:where([data-anchor='right']) {
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*          Normal mode (not floating) */
+/*          Only exposed edge border   */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+/* Remove border-radius in normal mode */
+.rt-Toolbar:where(:not([data-floating])) {
+  --base-card-border-radius: 0;
+}
+
+/* Override Card's inset box-shadow to only show exposed edge */
+/* Top anchor: only show bottom border */
+.rt-Toolbar:where([data-anchor='top']:not([data-floating])) {
+  &::after {
+    box-shadow: inset 0 -1px 0 0 var(--gray-6);
+  }
+  :where([data-panel-background='translucent'], [data-material='translucent']) &::after,
+  &:where([data-panel-background='translucent'], [data-material='translucent'])::after {
+    box-shadow: inset 0 -1px 0 0 var(--gray-a6);
+  }
+}
+
+/* Bottom anchor: only show top border */
+.rt-Toolbar:where([data-anchor='bottom']:not([data-floating])) {
+  &::after {
+    box-shadow: inset 0 1px 0 0 var(--gray-6);
+  }
+  :where([data-panel-background='translucent'], [data-material='translucent']) &::after,
+  &:where([data-panel-background='translucent'], [data-material='translucent'])::after {
+    box-shadow: inset 0 1px 0 0 var(--gray-a6);
+  }
+}
+
+/* Left anchor: only show right border */
+.rt-Toolbar:where([data-anchor='left']:not([data-floating])) {
+  &::after {
+    box-shadow: inset -1px 0 0 0 var(--gray-6);
+  }
+  :where([data-panel-background='translucent'], [data-material='translucent']) &::after,
+  &:where([data-panel-background='translucent'], [data-material='translucent'])::after {
+    box-shadow: inset -1px 0 0 0 var(--gray-a6);
+  }
+}
+
+/* Right anchor: only show left border */
+.rt-Toolbar:where([data-anchor='right']:not([data-floating])) {
+  &::after {
+    box-shadow: inset 1px 0 0 0 var(--gray-6);
+  }
+  :where([data-panel-background='translucent'], [data-material='translucent']) &::after,
+  &:where([data-panel-background='translucent'], [data-material='translucent'])::after {
+    box-shadow: inset 1px 0 0 0 var(--gray-a6);
+  }
+}
+
+/* Ghost variant in normal mode has no border */
+.rt-Toolbar:where(.rt-variant-ghost:not([data-floating]))::after {
+  box-shadow: none;
+}
+
+/* Soft variant in normal mode has no border */
+.rt-Toolbar:where(.rt-variant-soft:not([data-floating]))::after {
+  box-shadow: none;
+}
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*            Floating mode            */
+/*            Full card treatment      */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+.rt-Toolbar:where([data-floating]) {
+  /* Use absolute positioning for floating (not sticky) */
+  position: absolute;
+
+  /* Margin controlled via offset prop */
+
+  /* Inherit Card's border-radius (don't override) */
+}
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*           Title truncation          */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+.rt-ToolbarTitle {
+  /* Ensure title can truncate within flex container */
+  min-width: 0;
+  flex-shrink: 1;
+}
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
+/*         Section alignment           */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+.rt-ToolbarSection {
+  /* Base section styles */
+}
+
+.rt-ToolbarLeft {
+  justify-content: flex-start;
+}
+
+.rt-ToolbarCenter {
+  justify-content: center;
+}
+
+.rt-ToolbarRight {
+  justify-content: flex-end;
+}
