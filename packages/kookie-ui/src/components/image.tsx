@@ -97,6 +97,10 @@ type ImageProps = CommonImageProps & (ImageImgProps | ImageComponentProps);
  * ```
  */
 const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) => {
+  // Extract native width/height before extractProps consumes them (for Next.js Image compatibility)
+  const nativeWidth = typeof props.width === 'number' ? props.width : undefined;
+  const nativeHeight = typeof props.height === 'number' ? props.height : undefined;
+
   const {
     as: Component = 'img',
     asChild: _asChild, // Extract to prevent passing to DOM element
@@ -123,6 +127,10 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
     heightPropDefs,
     layoutPropDefs,
   );
+
+  // When using a custom component (like Next.js Image), pass native width/height
+  const isCustomComponent = Component !== 'img';
+  const componentDimensionProps = isCustomComponent ? { width: nativeWidth, height: nativeHeight } : {};
 
   const [loadingState, setLoadingState] = React.useState<'loading' | 'loaded' | 'error'>('loading');
   const [showPlaceholder, setShowPlaceholder] = React.useState(!!placeholder);
@@ -195,6 +203,7 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
       aria-busy={isLoading}
       aria-invalid={isError}
       aria-describedby={isError ? 'image-error' : undefined}
+      {...componentDimensionProps}
       {...restProps}
     />
   );
