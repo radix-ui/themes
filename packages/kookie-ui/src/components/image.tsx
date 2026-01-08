@@ -251,8 +251,12 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
 
   // Simple flat structure when no caption
   if (!caption) {
+    // When using fill, wrapper needs to inherit parent dimensions
+    const wrapperStyle: React.CSSProperties = hasFill
+      ? { position: 'relative', width: '100%', height: '100%', ...style }
+      : { position: 'relative', ...style };
     return (
-      <div className={className} style={{ position: 'relative', ...style }}>
+      <div className={className} style={wrapperStyle}>
         {loadingAnnouncement}
         {errorAnnouncement}
         {skeletonElement}
