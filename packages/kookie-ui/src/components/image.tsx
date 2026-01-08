@@ -100,6 +100,8 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
   // Extract native width/height before extractProps consumes them (for Next.js Image compatibility)
   const nativeWidth = typeof props.width === 'number' ? props.width : undefined;
   const nativeHeight = typeof props.height === 'number' ? props.height : undefined;
+  // Check if fill prop is used (for Next.js Image compatibility)
+  const hasFill = 'fill' in props && props.fill === true;
 
   const {
     as: Component = 'img',
@@ -172,13 +174,20 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
   const isError = loadingState === 'error';
   const isLoaded = loadingState === 'loaded';
 
-  const imgStyle: React.CSSProperties = {
-    width: '100%',
-    height: '100%',
-    display: 'block',
-    opacity: fadeIn ? (isLoaded ? 1 : 0) : 1,
-    transition: fadeIn ? 'opacity 0.3s ease-out' : 'none',
-  };
+  // When using fill (Next.js Image), don't add dimension/position styles as Next.js handles them
+  const imgStyle: React.CSSProperties = hasFill
+    ? {
+        display: 'block',
+        opacity: fadeIn ? (isLoaded ? 1 : 0) : 1,
+        transition: fadeIn ? 'opacity 0.3s ease-out' : 'none',
+      }
+    : {
+        width: '100%',
+        height: '100%',
+        display: 'block',
+        opacity: fadeIn ? (isLoaded ? 1 : 0) : 1,
+        transition: fadeIn ? 'opacity 0.3s ease-out' : 'none',
+      };
 
   const mergeRefs = (node: HTMLImageElement | null) => {
     (imgRef as React.RefObject<HTMLImageElement | null>).current = node;
@@ -193,7 +202,7 @@ const Image = React.forwardRef<ImageElement, ImageProps>((props, forwardedRef) =
     <Component
       ref={mergeRefs}
       loading={loading}
-      style={{ ...imgStyle, position: 'relative', zIndex: 1 }}
+      style={hasFill ? imgStyle : { ...imgStyle, position: 'relative', zIndex: 1 }}
       className={classNames('rt-reset', 'rt-Image')}
       alt={alt}
       src={src}
