@@ -81,9 +81,14 @@ type ImageProps = CommonImageProps & (ImageImgProps | ImageComponentProps);
  * // Basic usage
  * <Image src="/photo.jpg" alt="Team photo" />
  *
- * // With Next.js Image
+ * // With Next.js Image (fixed dimensions)
  * import NextImage from 'next/image';
  * <Image as={NextImage} src="/photo.jpg" alt="..." width={400} height={300} />
+ *
+ * // With Next.js Image (fill mode - parent needs position: relative and dimensions)
+ * <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}>
+ *   <Image as={NextImage} src="/photo.jpg" alt="..." fill />
+ * </div>
  *
  * // With placeholder and skeleton
  * <Image
