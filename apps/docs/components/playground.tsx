@@ -118,7 +118,9 @@ export default function Playground({ component, code, items, showBackground = fa
       </Flex>
 
       {/* Right side - Property controls */}
-      <PropertyControl.Group width="256px" items={items} style={{ flexShrink: 0 }} />
+      <Box width={{ initial: '100%', md: '256px' }} flexShrink="0">
+        <PropertyControl.Group width="100%" items={items} />
+      </Box>
     </Flex>
   );
 }

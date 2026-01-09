@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import * as Label from '@radix-ui/react-label';
-import { Card, Flex, Grid, Text, DropdownMenu, Switch, Box, Button, Theme } from '@kushagradhawan/kookie-ui';
+import { Card, Flex, Text, DropdownMenu, Switch, Box, Button } from '@kushagradhawan/kookie-ui';
 
 interface RootProps {
   width?: string | number;
@@ -26,9 +26,9 @@ interface FieldProps {
 
 function Field({ children }: FieldProps) {
   return (
-    <Grid columns={{ initial: '1', sm: '2' }} align="center" gap="8" style={{ minHeight: 'var(--space-5)' }}>
+    <Flex align="center" justify="between" gap="4" style={{ minHeight: 'var(--space-5)' }}>
       {children}
-    </Grid>
+    </Flex>
   );
 }
 
