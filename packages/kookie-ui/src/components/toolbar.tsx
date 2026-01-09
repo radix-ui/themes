@@ -23,8 +23,8 @@ interface ToolbarRootProps extends Omit<CardProps, 'asChild'> {
    */
   anchor?: Anchor;
   /**
-   * Floating variant adds margin from edges for a detached look.
-   * When floating, shows full card treatment. When not floating, only shows exposed edge border.
+   * Floating mode adds margin from edges for a detached look with absolute positioning.
+   * When false (default), uses inset mode with negative margins to go edge-to-edge inside Cards.
    * @default false
    */
   floating?: boolean;

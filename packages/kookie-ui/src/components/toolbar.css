@@ -45,14 +45,45 @@
 
 /* * * * * * * * * * * * * * * * * * * */
 /*                                     */
-/*          Normal mode (not floating) */
-/*          Only exposed edge border   */
+/*          Inset mode (default)       */
+/*          Edge-to-edge with margins  */
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
 
-/* Remove border-radius in normal mode */
+/* Remove border-radius in inset mode */
 .rt-Toolbar:where(:not([data-floating])) {
   --base-card-border-radius: 0;
+}
+
+/* Apply negative margins to break out of parent Card padding */
+/* Uses --inset-padding-* variables set by parent Card */
+
+/* Top anchor: negative top, left, right margins */
+.rt-Toolbar:where([data-anchor='top']:not([data-floating])) {
+  margin-top: calc(-1 * var(--inset-padding-top, 0px));
+  margin-left: calc(-1 * var(--inset-padding-left, 0px));
+  margin-right: calc(-1 * var(--inset-padding-right, 0px));
+}
+
+/* Bottom anchor: negative bottom, left, right margins */
+.rt-Toolbar:where([data-anchor='bottom']:not([data-floating])) {
+  margin-bottom: calc(-1 * var(--inset-padding-bottom, 0px));
+  margin-left: calc(-1 * var(--inset-padding-left, 0px));
+  margin-right: calc(-1 * var(--inset-padding-right, 0px));
+}
+
+/* Left anchor: negative top, bottom, left margins */
+.rt-Toolbar:where([data-anchor='left']:not([data-floating])) {
+  margin-top: calc(-1 * var(--inset-padding-top, 0px));
+  margin-bottom: calc(-1 * var(--inset-padding-bottom, 0px));
+  margin-left: calc(-1 * var(--inset-padding-left, 0px));
+}
+
+/* Right anchor: negative top, bottom, right margins */
+.rt-Toolbar:where([data-anchor='right']:not([data-floating])) {
+  margin-top: calc(-1 * var(--inset-padding-top, 0px));
+  margin-bottom: calc(-1 * var(--inset-padding-bottom, 0px));
+  margin-right: calc(-1 * var(--inset-padding-right, 0px));
 }
 
 /* Override Card's inset box-shadow to only show exposed edge */

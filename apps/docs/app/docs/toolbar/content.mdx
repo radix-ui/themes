@@ -146,7 +146,30 @@ Vertical toolbars for sidebar-style controls.
 </Toolbar>
 ```
 
-## Floating
+## Positioning Modes
+
+Toolbar has two positioning modes: **inset** (default) and **floating**.
+
+### Inset (Default)
+
+By default, Toolbar uses inset mode with negative margins to go edge-to-edge inside Cards, breaking out of the parent's padding.
+
+```tsx
+<Card size="2">
+  <Toolbar variant="soft">
+    <Toolbar.Title>Edge-to-edge</Toolbar.Title>
+  </Toolbar>
+  <Flex p="4">{/* Content */}</Flex>
+</Card>
+```
+
+When inset (default):
+- No border radius
+- Edge-to-edge layout (negative margins match parent Card padding)
+- Only the exposed edge shows a border
+- Uses `position: sticky`
+
+### Floating
 
 Use `floating` for a detached look with margin from edges.
 
@@ -163,12 +186,6 @@ When floating:
 - Margin from container edges (controlled by `offset`)
 - Complete Card styling (all borders visible)
 - Uses `position: absolute` instead of sticky
-
-When not floating (default):
-- No border radius
-- Only the exposed edge shows a border
-- Flush with container edges
-- Uses `position: sticky`
 
 ### Offset
 
