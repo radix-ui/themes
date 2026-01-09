@@ -38,8 +38,8 @@ export function ToolbarExamples() {
                 </IconButton>
               </Toolbar.Right>
             </Toolbar>
-            <ScrollArea scrollbars="vertical">
-              <Flex direction="column" gap="4" p="4">
+            <ScrollArea scrollbars="vertical" style={{ paddingTop: 'var(--rt-toolbar-height)' }}>
+              <Flex direction="column" gap="4">
                 <Flex direction="column" gap="1">
                   <Text size="2" weight="medium">
                     Notifications
@@ -126,7 +126,7 @@ export function ToolbarExamples() {
       </IconButton>
     </Toolbar.Right>
   </Toolbar>
-  <ScrollArea scrollbars="vertical">
+  <ScrollArea scrollbars="vertical" style={{ paddingTop: 'var(--rt-toolbar-height)' }}>
     <Flex direction="column" gap="4" p="4">
       {/* Settings content */}
     </Flex>
@@ -246,7 +246,7 @@ export function ToolbarExamples() {
               flexDirection: 'column',
             }}
           >
-            <Flex direction="column" gap="4" p="4" flexGrow="1">
+            <Flex direction="column" gap="4" p="4" flexGrow="1" pb="var(--rt-toolbar-height)">
               <Flex direction="column" gap="1">
                 <Heading size="4" weight="medium">
                   Edit Profile
@@ -289,7 +289,7 @@ export function ToolbarExamples() {
         </PreviewBlock>
         <CodeBlock
           code={`<Card variant="classic" size="2" style={{ display: 'flex', flexDirection: 'column' }}>
-  <Flex direction="column" gap="4" p="4" flexGrow="1">
+  <Flex direction="column" gap="4" p="4" flexGrow="1" pb="var(--rt-toolbar-height)">
     <Heading size="4" weight="medium">Edit Profile</Heading>
     <Text size="2" color="gray">Update your account information.</Text>
     {/* Form fields */}
@@ -349,7 +349,7 @@ export function ToolbarExamples() {
                 </Button>
               </Toolbar.Right>
             </Toolbar>
-            <Flex direction="column" p="3" gap="1">
+            <Flex direction="column" p="3" gap="1" pt="var(--rt-toolbar-height)">
               <Flex align="center" gap="3" p="2">
                 <HugeiconsIcon icon={Folder02Icon} size={20} strokeWidth={1.75} style={{ color: 'var(--gray-10)' }} />
                 <Flex direction="column" gap="1">
@@ -417,7 +417,7 @@ export function ToolbarExamples() {
       </Button>
     </Toolbar.Right>
   </Toolbar>
-  <Flex direction="column" p="3" gap="1">
+  <Flex direction="column" p="3" gap="1" pt="var(--rt-toolbar-height)">
     {/* File list */}
   </Flex>
 </Card>`}

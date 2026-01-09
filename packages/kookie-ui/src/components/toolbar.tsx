@@ -66,8 +66,7 @@ const ToolbarRoot = React.forwardRef<ToolbarRootElement, ToolbarRootProps>(
       [forwardedRef],
     );
 
-    // Measure and expose height/width as CSS variable on parent element
-    // so that sibling elements can access it
+    // Expose height/width as CSS variable on parent element
     React.useEffect(() => {
       const element = internalRef.current;
       if (!element) return;
@@ -75,10 +74,10 @@ const ToolbarRoot = React.forwardRef<ToolbarRootElement, ToolbarRootProps>(
       const parent = element.parentElement;
       if (!parent) return;
 
-      const updateDimension = () => {
+      const update = () => {
         let dimension = isHorizontal ? element.offsetHeight : element.offsetWidth;
 
-        // For floating toolbars, include the margin offset (2x for top + bottom or left + right)
+        // For floating mode, include the margin in the total space
         if (floating) {
           const computedStyle = getComputedStyle(element);
           const margin = parseFloat(computedStyle.marginTop) || 0;
@@ -92,15 +91,15 @@ const ToolbarRoot = React.forwardRef<ToolbarRootElement, ToolbarRootProps>(
         }
       };
 
-      updateDimension();
+      update();
 
-      const resizeObserver = new ResizeObserver(updateDimension);
+      const resizeObserver = new ResizeObserver(update);
       resizeObserver.observe(element);
 
       return () => resizeObserver.disconnect();
     }, [isHorizontal, floating]);
 
-    const floatingStyle = floating
+    const computedStyle = floating
       ? { margin: `var(--space-${offset})`, ...style }
       : style;
 
@@ -113,7 +112,7 @@ const ToolbarRoot = React.forwardRef<ToolbarRootElement, ToolbarRootProps>(
         data-anchor={anchor}
         data-floating={floating || undefined}
         className={classNames('rt-Toolbar', className)}
-        style={floatingStyle}
+        style={computedStyle}
         {...restProps}
       >
         <Flex

@@ -1,6 +1,6 @@
 ---
 title: Toolbar
-description: A sticky container for actions and navigation anchored to edges.
+description: An absolutely positioned container for actions and navigation anchored to edges.
 source: https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/toolbar.tsx
 ---
 
@@ -18,9 +18,9 @@ import { Alert02Icon } from '@hugeicons/core-free-icons';
 </Box>
 
 
-Toolbar is a compound component for creating sticky action bars anchored to any edge. It builds on Card for visual styling and provides structured slots for content organization.
+Toolbar is a compound component for creating action bars anchored to any edge. It builds on Card for visual styling and provides structured slots for content organization.
 
-Use Toolbar inside dialogs, popovers, panels, or any scrollable container where you need persistent controls.
+Use Toolbar inside dialogs, popovers, panels, or any container where you need persistent controls.
 
 ## Installation
 
@@ -31,34 +31,35 @@ npm install @kushagradhawan/kookie-ui
 ## Usage
 
 ```tsx
-import { Card, Inset, Toolbar, IconButton } from '@kushagradhawan/kookie-ui';
+import { Card, Flex, Toolbar, IconButton } from '@kushagradhawan/kookie-ui';
 
 export function MyToolbar() {
   return (
-    <Card variant="classic">
-      <Inset side="all" clip="padding-box">
-        <Toolbar variant="soft" size="1">
-          <Toolbar.Left>
-            <IconButton variant="ghost" size="2" color="gray" highContrast>
-              <ArrowLeftIcon />
-            </IconButton>
-          </Toolbar.Left>
-          <Toolbar.Center>
-            <Toolbar.Title>Settings</Toolbar.Title>
-          </Toolbar.Center>
-          <Toolbar.Right>
-            <IconButton variant="ghost" size="2" color="gray" highContrast>
-              <CloseIcon />
-            </IconButton>
-          </Toolbar.Right>
-        </Toolbar>
-      </Inset>
+    <Card variant="classic" size="2">
+      <Toolbar variant="soft" size="1">
+        <Toolbar.Left>
+          <IconButton variant="ghost" size="2" color="gray" highContrast>
+            <ArrowLeftIcon />
+          </IconButton>
+        </Toolbar.Left>
+        <Toolbar.Center>
+          <Toolbar.Title>Settings</Toolbar.Title>
+        </Toolbar.Center>
+        <Toolbar.Right>
+          <IconButton variant="ghost" size="2" color="gray" highContrast>
+            <CloseIcon />
+          </IconButton>
+        </Toolbar.Right>
+      </Toolbar>
+      <Flex p="4" pt="var(--rt-toolbar-height)">
+        {/* Content */}
+      </Flex>
     </Card>
   );
 }
 ```
 
-Use `Inset` to bypass the parent Card's padding and let the Toolbar span edge-to-edge.
+Toolbar uses absolute positioning to span edge-to-edge. Use `--rt-toolbar-height` (or `--rt-toolbar-width` for vertical toolbars) to add padding to your content.
 
 ## Anatomy
 
@@ -82,7 +83,7 @@ The root component manages positioning and inherits Card's visual styling.
 
 | Prop | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| `anchor` | `'top' \| 'bottom' \| 'left' \| 'right'` | `'top'` | Which edge to anchor to. Sets sticky positioning. |
+| `anchor` | `'top' \| 'bottom' \| 'left' \| 'right'` | `'top'` | Which edge to anchor to. |
 | `floating` | `boolean` | `false` | When true, adds margin from edges for a detached look. |
 | `offset` | `'1' \| '2' \| ... \| '9'` | `'2'` | Margin offset when floating. Uses space scale. |
 | `size` | `'1' \| '2' \| '3' \| '4' \| '5'` | `'1'` | Controls padding. Inherits from Card. |
@@ -148,26 +149,25 @@ Vertical toolbars for sidebar-style controls.
 
 ## Positioning Modes
 
-Toolbar has two positioning modes: **inset** (default) and **floating**.
+Toolbar has two positioning modes: **inset** (default) and **floating**. Both use `position: absolute`.
 
 ### Inset (Default)
 
-By default, Toolbar uses inset mode with negative margins to go edge-to-edge inside Cards, breaking out of the parent's padding.
+By default, Toolbar uses inset mode to go edge-to-edge inside Cards.
 
 ```tsx
 <Card size="2">
   <Toolbar variant="soft">
     <Toolbar.Title>Edge-to-edge</Toolbar.Title>
   </Toolbar>
-  <Flex p="4">{/* Content */}</Flex>
+  <Flex p="4" pt="var(--rt-toolbar-height)">{/* Content */}</Flex>
 </Card>
 ```
 
 When inset (default):
 - No border radius
-- Edge-to-edge layout (negative margins match parent Card padding)
+- Edge-to-edge layout
 - Only the exposed edge shows a border
-- Uses `position: sticky`
 
 ### Floating
 
@@ -185,7 +185,6 @@ When floating:
 - Full border radius from Card
 - Margin from container edges (controlled by `offset`)
 - Complete Card styling (all borders visible)
-- Uses `position: absolute` instead of sticky
 
 ### Offset
 
@@ -261,15 +260,17 @@ Toolbar exposes dimension variables so you can add padding to prevent content ov
 The variables are set on the Toolbar's parent element, so the Toolbar and content must share a common container:
 
 ```tsx
-<Box position="relative" height="100%">
-  <Toolbar floating anchor="top">
+<Card size="2">
+  <Toolbar anchor="top">
     <Toolbar.Title>Top Toolbar</Toolbar.Title>
   </Toolbar>
-  <Flex pt="var(--rt-toolbar-height)">
+  <Flex p="4" pt="var(--rt-toolbar-height)">
     {/* Content */}
   </Flex>
-</Box>
+</Card>
 ```
+
+For bottom-anchored toolbars, use `pb="var(--rt-toolbar-height)"` on your content instead.
 
 For image or video backgrounds where content should flow behind the toolbar, simply don't apply the padding.
 
