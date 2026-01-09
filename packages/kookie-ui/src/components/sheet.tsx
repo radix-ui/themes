@@ -40,11 +40,15 @@ import { Dialog as DialogPrimitive } from 'radix-ui';
 import { dialogContentPropDefs } from './dialog.props.js';
 import type { DialogContentOwnProps } from './dialog.props.js';
 import { Theme } from './theme.js';
+import { Heading } from './heading.js';
+import { Text } from './text.js';
 import { extractProps } from '../helpers/extract-props.js';
 import { requireReactElement } from '../helpers/require-react-element.js';
 import { useBodyPointerEventsCleanup } from '../hooks/use-body-pointer-events-cleanup.js';
 
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
+import type { HeadingProps } from './heading.js';
+import type { TextProps } from './text.js';
 
 /**
  * Supported sides for the Sheet.
@@ -256,27 +260,27 @@ const Content = React.forwardRef<SheetContentElement, SheetContentProps>(
 );
 Content.displayName = 'Sheet.Content';
 
-// Title/Description/Close re-export
-type SheetTitleElement = React.ElementRef<typeof DialogPrimitive.Title>;
-interface SheetTitleProps extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title> {}
-/** Accessible title for the Sheet. Required for non-decorative content. */
+// Title - renders as Heading with sensible defaults
+type SheetTitleElement = React.ElementRef<typeof Heading>;
+interface SheetTitleProps extends HeadingProps {}
+/** Accessible title for the Sheet. Renders as Heading with sensible defaults. */
 const Title = React.forwardRef<SheetTitleElement, SheetTitleProps>(
-  ({ children, ...props }, ref) => (
-    <DialogPrimitive.Title {...props} ref={ref} asChild={false}>
-      {children}
+  ({ size = '4', weight = 'medium', ...props }, ref) => (
+    <DialogPrimitive.Title asChild>
+      <Heading ref={ref} size={size} weight={weight} {...props} />
     </DialogPrimitive.Title>
   ),
 );
 Title.displayName = 'Sheet.Title';
 
-type SheetDescriptionElement = React.ElementRef<typeof DialogPrimitive.Description>;
-interface SheetDescriptionProps
-  extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description> {}
-/** Supplementary description text for Sheet content. */
+// Description - renders as Text with sensible defaults
+type SheetDescriptionElement = React.ElementRef<typeof Text>;
+interface SheetDescriptionProps extends TextProps {}
+/** Supplementary description text for Sheet content. Renders as Text with sensible defaults. */
 const Description = React.forwardRef<SheetDescriptionElement, SheetDescriptionProps>(
-  ({ children, ...props }, ref) => (
-    <DialogPrimitive.Description {...props} ref={ref} asChild={false}>
-      {children}
+  ({ size = '2', color = 'gray', ...props }, ref) => (
+    <DialogPrimitive.Description asChild>
+      <Text ref={ref} size={size} color={color} {...props} />
     </DialogPrimitive.Description>
   ),
 );

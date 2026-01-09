@@ -110,19 +110,25 @@ The panel that slides in from the specified side.
 
 ## Title Props
 
-Accessible title for the sheet. Required for non-decorative content.
+Accessible title for the sheet. Renders as a Heading component with sensible defaults.
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| `children` | `React.ReactNode` | Title text |
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `size` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'4'` | Text size |
+| `weight` | `'light' \| 'regular' \| 'medium' \| 'bold'` | `'medium'` | Font weight |
+| `children` | `React.ReactNode` | — | Title text |
+| ...props | `HeadingProps` | — | All other Heading props are supported |
 
 ## Description Props
 
-Supplementary description text for sheet content.
+Supplementary description text for sheet content. Renders as a Text component with sensible defaults.
 
-| Prop | Type | Description |
-| ---- | ---- | ----------- |
-| `children` | `React.ReactNode` | Description text |
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `size` | `'1' \| '2' \| '3' \| '4' \| '5' \| '6' \| '7' \| '8' \| '9'` | `'2'` | Text size |
+| `color` | `string` | `'gray'` | Text color |
+| `children` | `React.ReactNode` | — | Description text |
+| ...props | `TextProps` | — | All other Text props are supported |
 
 ## Close Props
 
@@ -397,6 +403,11 @@ Always provide an accessible name via `Sheet.Title` or `aria-label` on `Sheet.Co
 - Overlay prevents interaction with content behind
 
 ## Changelog
+
+### Changed
+
+- `Sheet.Title` now renders as a Heading component with sensible defaults (`size="4"`, `weight="medium"`)
+- `Sheet.Description` now renders as a Text component with sensible defaults (`size="2"`, `color="gray"`)
 
 ### Added
 
