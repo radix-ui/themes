@@ -5,6 +5,7 @@ import { Hero, Footer } from '@kushagradhawan/kookie-blocks';
 import Link from 'next/link';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { ArrowUpRight01Icon } from '@hugeicons/core-free-icons';
+import { Testimonial } from '@/components/testimonial';
 
 export default function HeroSection() {
   const currentYear = new Date().getFullYear();
@@ -53,6 +54,15 @@ export default function HeroSection() {
           </Hero.Root>
         </Container>
       </Section>
+
+      <Separator size="4" light />
+
+      <Testimonial
+        quote="Components like Shell in Kookie UI are a game changer for building responsive layouts. Getting responsiveness right is so difficult otherwise — Kookie UI has significantly reduced the UI load on our team."
+        author="Anuj"
+        designation="Software Engineer at Womp"
+        avatar="https://media.licdn.com/dms/image/v2/D5603AQGWSOGxFf3cCw/profile-displayphoto-shrink_400_400/B56ZSwejfaGoAg-/0/1738127590217?e=1769040000&v=beta&t=set7ygl1nzZiXozOoibgjTYfIsenO28wVGcw1dK8sCw"
+      />
 
       <Box mb="9">
         <Separator size="4" light />
