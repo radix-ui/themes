@@ -78,7 +78,7 @@ export default function HeroSection() {
                       Kookie UI
                     </Footer.Link>
                     {' + '}
-                    <Footer.Link href="https://blocks.hellokookie.com/" target="_blank" underline="always">
+                    <Footer.Link href="https://kookieblocks.com/" target="_blank" underline="always">
                       Kookie Blocks
                     </Footer.Link>
                     .
@@ -102,7 +102,7 @@ export default function HeroSection() {
                   <Footer.Link href="https://www.hellokookie.com/" target="_blank">
                     Kookie UI
                   </Footer.Link>
-                  <Footer.Link href="https://blocks.hellokookie.com/" target="_blank">
+                  <Footer.Link href="https://kookieblocks.com/" target="_blank">
                     Kookie Blocks
                   </Footer.Link>
                 </Footer.LinkGroup>
