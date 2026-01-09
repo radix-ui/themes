@@ -30,6 +30,6 @@
     }
   },
   "dependencies": {
-    "@kushagradhawan/kookie-blocks": "^0.1.43"
+    "@kushagradhawan/kookie-blocks": "^0.1.44"
   }
 }

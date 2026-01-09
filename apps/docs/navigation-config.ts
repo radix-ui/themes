@@ -124,6 +124,12 @@ export const docsNavigation: DocsNavigationConfig = {
           badge: { content: 'Alpha', size: '1', highContrast: true },
         },
         {
+          href: '/docs/sheet',
+          title: 'Sheet',
+          icon: LayoutIcon,
+          badge: { content: 'Development', color: 'gray', size: '1', highContrast: true },
+        },
+        {
           href: '/docs/sidebar',
           title: 'Sidebar (Presentation)',
           icon: LeftToRightListBulletIcon,

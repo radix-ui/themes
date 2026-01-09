@@ -379,11 +379,11 @@ export function ToolbarExamples() {
         </SectionHeader.Root>
         <PreviewBlock background="none" height="22rem">
           <Card variant="classic" size="2" style={{ width: '100%', maxWidth: '500px', overflow: 'hidden' }}>
-            <Toolbar variant="surface" size="1">
+            <Toolbar variant="surface" size="2">
               <Toolbar.Left>
                 <Toolbar.Title>Documents</Toolbar.Title>
               </Toolbar.Left>
-              <Toolbar.Right>
+              <Toolbar.Right gap="1">
                 <IconButton variant="soft" size="2" color="gray" highContrast aria-label="Search">
                   <HugeiconsIcon icon={Search01Icon} strokeWidth={1.75} />
                 </IconButton>
@@ -396,8 +396,8 @@ export function ToolbarExamples() {
                 </Button>
               </Toolbar.Right>
             </Toolbar>
-            <Flex direction="column" p="3" gap="1" pt="var(--rt-toolbar-height)">
-              <Flex align="center" gap="3" p="2">
+            <Flex direction="column" gap="1" pt="var(--rt-toolbar-height)">
+              <Flex align="center" gap="3" py="1">
                 <HugeiconsIcon icon={Folder02Icon} size={20} strokeWidth={1.75} style={{ color: 'var(--gray-10)' }} />
                 <Flex direction="column" gap="1">
                   <Text size="2" weight="medium">
@@ -408,7 +408,7 @@ export function ToolbarExamples() {
                   </Text>
                 </Flex>
               </Flex>
-              <Flex align="center" gap="3" p="2">
+              <Flex align="center" gap="3" py="1">
                 <HugeiconsIcon icon={File02Icon} size={20} strokeWidth={1.75} style={{ color: 'var(--gray-10)' }} />
                 <Flex direction="column" gap="1">
                   <Text size="2" weight="medium">
@@ -419,7 +419,7 @@ export function ToolbarExamples() {
                   </Text>
                 </Flex>
               </Flex>
-              <Flex align="center" gap="3" p="2">
+              <Flex align="center" gap="3" py="1">
                 <HugeiconsIcon icon={File02Icon} size={20} strokeWidth={1.75} style={{ color: 'var(--gray-10)' }} />
                 <Flex direction="column" gap="1">
                   <Text size="2" weight="medium">
@@ -435,11 +435,11 @@ export function ToolbarExamples() {
         </PreviewBlock>
         <CodeBlock
           code={`<Card variant="classic" size="2">
-  <Toolbar variant="surface" size="1">
+  <Toolbar variant="surface" size="2">
     <Toolbar.Left>
       <Toolbar.Title>Documents</Toolbar.Title>
     </Toolbar.Left>
-    <Toolbar.Right>
+    <Toolbar.Right gap="1">
       <IconButton
         variant="soft"
         size="2"

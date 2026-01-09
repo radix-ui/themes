@@ -1,0 +1,413 @@
+---
+title: Sheet
+description: A side-placed overlay panel for navigation, drawers, and contextual actions.
+source: https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/sheet.tsx
+---
+
+import { Callout, Box } from '@kushagradhawan/kookie-ui';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Alert02Icon } from '@hugeicons/core-free-icons';
+
+<Box mb="6">
+  <Callout.Root color="gray" variant="outline" highContrast>
+    <Callout.Icon>
+      <HugeiconsIcon icon={Alert02Icon} strokeWidth={1.75} />
+    </Callout.Icon>
+    <Callout.Text>This component's API and documentation are under review and may change. Use with caution in production.</Callout.Text>
+  </Callout.Root>
+</Box>
+
+A side-placed overlay built on top of Radix Dialog. Sheet inherits accessibility, focus management, overlay behavior, and sizing scales from Dialog, while adding side placement and slide motion suited for navigation panels and drawers.
+
+## Playground
+
+import SheetPlayground from '../../playground/sheet-playground';
+
+<SheetPlayground />
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-ui
+```
+
+## Usage
+
+```tsx
+import { Sheet, Button } from '@kushagradhawan/kookie-ui';
+
+export function MyComponent() {
+  return (
+    <Sheet.Root>
+      <Sheet.Trigger>
+        <Button>Open Sheet</Button>
+      </Sheet.Trigger>
+      <Sheet.Content side="end">
+        <Sheet.Title>Sheet Title</Sheet.Title>
+        <Sheet.Description>Sheet content goes here.</Sheet.Description>
+        <Sheet.Close>
+          <Button variant="soft">Close</Button>
+        </Sheet.Close>
+      </Sheet.Content>
+    </Sheet.Root>
+  );
+}
+```
+
+## Anatomy
+
+Sheet is a compound component with the following parts:
+
+```tsx
+<Sheet.Root>
+  <Sheet.Trigger>{/* Element that opens the sheet */}</Sheet.Trigger>
+  <Sheet.Content>
+    <Sheet.Title>{/* Accessible title (required) */}</Sheet.Title>
+    <Sheet.Description>{/* Optional description */}</Sheet.Description>
+    {/* Sheet content */}
+    <Sheet.Close>{/* Element that closes the sheet */}</Sheet.Close>
+  </Sheet.Content>
+</Sheet.Root>
+```
+
+## Root Props
+
+The Root component manages open state and provides context to child components.
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| `open` | `boolean` | Controlled open state |
+| `defaultOpen` | `boolean` | Initial open state for uncontrolled usage |
+| `onOpenChange` | `(open: boolean) => void` | Callback fired when open state changes |
+| `children` | `React.ReactNode` | Sheet components (Trigger, Content) |
+
+## Trigger Props
+
+Element that opens the sheet. Expects a single element child.
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| `children` | `React.ReactElement` | Single element child to render as trigger |
+
+## Content Props
+
+The panel that slides in from the specified side.
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| `side` | `'start' \| 'end' \| 'top' \| 'bottom' \| 'left' \| 'right'` | Side where sheet appears. `left`/`right` alias to `start`/`end` for RTL support. Default: `'start'` |
+| `size` | `'1' \| '2' \| '3' \| '4'` | Content size scale from Dialog |
+| `width` | `string \| number \| Responsive<string \| number>` | Width of the sheet. Supports responsive objects |
+| `minWidth` | `string \| number \| Responsive<string \| number>` | Minimum width |
+| `maxWidth` | `string \| number \| Responsive<string \| number>` | Maximum width (Dialog's default 600px clamping is removed for sheets) |
+| `height` | `string \| number \| Responsive<string \| number>` | Height of the sheet. Supports responsive objects |
+| `minHeight` | `string \| number \| Responsive<string \| number>` | Minimum height |
+| `maxHeight` | `string \| number \| Responsive<string \| number>` | Maximum height |
+| `material` | `'solid' \| 'translucent'` | Background appearance. Choose `solid` for opaque backgrounds, `translucent` for depth over dynamic backgrounds |
+| `forceMount` | `boolean` | Force mounting when used with animation libraries |
+| `container` | `HTMLElement` | DOM container to portal into. Defaults to `document.body` |
+| `children` | `React.ReactNode` | Sheet content |
+
+## Title Props
+
+Accessible title for the sheet. Required for non-decorative content.
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| `children` | `React.ReactNode` | Title text |
+
+## Description Props
+
+Supplementary description text for sheet content.
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| `children` | `React.ReactNode` | Description text |
+
+## Close Props
+
+Button that closes the sheet. Expects a single element child.
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| `children` | `React.ReactElement` | Single element child to render as close button |
+
+## Side
+
+Use the `side` prop to control where the sheet appears. The `left` and `right` values are aliased to `start` and `end` for RTL support.
+
+### Start (Left)
+
+Default position, slides in from the left side.
+
+```tsx
+<Sheet.Content side="start">
+  <Sheet.Title>Navigation</Sheet.Title>
+  <nav>Menu items</nav>
+</Sheet.Content>
+```
+
+### End (Right)
+
+Slides in from the right side. Common for detail panels and inspectors.
+
+```tsx
+<Sheet.Content side="end">
+  <Sheet.Title>Details</Sheet.Title>
+  <aside>Detail content</aside>
+</Sheet.Content>
+```
+
+### Top
+
+Slides down from the top. Useful for notifications or dropdowns.
+
+```tsx
+<Sheet.Content side="top">
+  <Sheet.Title>Notifications</Sheet.Title>
+  <div>Notification list</div>
+</Sheet.Content>
+```
+
+### Bottom
+
+Slides up from the bottom. Common for mobile action sheets.
+
+```tsx
+<Sheet.Content side="bottom">
+  <Sheet.Title>Actions</Sheet.Title>
+  <div>Action buttons</div>
+</Sheet.Content>
+```
+
+## Sizing
+
+Sheet reuses Dialog's sizing system but removes the default maxWidth clamping, allowing sheets to take custom widths.
+
+### Fixed Width
+
+Set a specific width for the sheet.
+
+```tsx
+<Sheet.Content side="end" width="320px">
+  <Sheet.Title>Fixed Width</Sheet.Title>
+  <div>Content</div>
+</Sheet.Content>
+```
+
+### Responsive Width
+
+Use responsive objects for breakpoint-specific widths.
+
+```tsx
+<Sheet.Content side="end" width={{ initial: '280px', md: '360px', lg: '400px' }}>
+  <Sheet.Title>Responsive</Sheet.Title>
+  <div>Content adapts to viewport</div>
+</Sheet.Content>
+```
+
+### Min/Max Constraints
+
+Control size boundaries.
+
+```tsx
+<Sheet.Content side="end" minWidth="200px" maxWidth="500px">
+  <Sheet.Title>Constrained</Sheet.Title>
+  <div>Content with size limits</div>
+</Sheet.Content>
+```
+
+## Material
+
+Use the `material` prop to set sheet appearance. Choose `solid` for opaque backgrounds, or `translucent` for depth and separation over images or dynamic backgrounds.
+
+### Theme
+
+Sheets automatically inherit the theme's material setting.
+
+```tsx
+<Theme material="translucent">
+  <Sheet.Root>
+    <Sheet.Trigger>
+      <Button>Open</Button>
+    </Sheet.Trigger>
+    <Sheet.Content side="end">
+      <Sheet.Title>Translucent Sheet</Sheet.Title>
+    </Sheet.Content>
+  </Sheet.Root>
+</Theme>
+```
+
+### Custom
+
+Override the theme's material for specific effects.
+
+```tsx
+<Theme material="solid">
+  <Sheet.Root>
+    <Sheet.Trigger>
+      <Button>Open</Button>
+    </Sheet.Trigger>
+    <Sheet.Content side="end" material="translucent">
+      <Sheet.Title>Custom Material</Sheet.Title>
+    </Sheet.Content>
+  </Sheet.Root>
+</Theme>
+```
+
+## Examples
+
+### Navigation Drawer
+
+A common pattern for mobile navigation.
+
+```tsx showLineNumbers
+<Sheet.Root>
+  <Sheet.Trigger>
+    <IconButton variant="ghost" aria-label="Menu">
+      <MenuIcon />
+    </IconButton>
+  </Sheet.Trigger>
+  <Sheet.Content side="start" width="280px">
+    <Sheet.Title>Navigation</Sheet.Title>
+    <Flex direction="column" gap="2" p="4">
+      <Button variant="ghost" fullWidth>Home</Button>
+      <Button variant="ghost" fullWidth>Products</Button>
+      <Button variant="ghost" fullWidth>About</Button>
+      <Button variant="ghost" fullWidth>Contact</Button>
+    </Flex>
+    <Sheet.Close>
+      <IconButton variant="ghost" aria-label="Close">
+        <XIcon />
+      </IconButton>
+    </Sheet.Close>
+  </Sheet.Content>
+</Sheet.Root>
+```
+
+### Detail Panel
+
+A right-side panel for showing item details.
+
+```tsx showLineNumbers
+<Sheet.Root>
+  <Sheet.Trigger>
+    <Button>View Details</Button>
+  </Sheet.Trigger>
+  <Sheet.Content side="end" width={{ initial: '100%', sm: '400px' }}>
+    <Sheet.Title>Item Details</Sheet.Title>
+    <Sheet.Description>View and edit item properties.</Sheet.Description>
+    <Flex direction="column" gap="4" p="4">
+      <TextField label="Name" defaultValue="Example Item" />
+      <TextField label="Description" />
+      <Flex gap="2" justify="end">
+        <Sheet.Close>
+          <Button variant="soft">Cancel</Button>
+        </Sheet.Close>
+        <Button>Save</Button>
+      </Flex>
+    </Flex>
+  </Sheet.Content>
+</Sheet.Root>
+```
+
+### Bottom Action Sheet
+
+A mobile-friendly action sheet pattern.
+
+```tsx showLineNumbers
+<Sheet.Root>
+  <Sheet.Trigger>
+    <Button>Share</Button>
+  </Sheet.Trigger>
+  <Sheet.Content side="bottom" height="auto">
+    <Sheet.Title>Share</Sheet.Title>
+    <Flex direction="column" gap="2" p="4">
+      <Button variant="ghost" fullWidth>Copy Link</Button>
+      <Button variant="ghost" fullWidth>Share to Twitter</Button>
+      <Button variant="ghost" fullWidth>Share to Facebook</Button>
+      <Sheet.Close>
+        <Button variant="soft" fullWidth>Cancel</Button>
+      </Sheet.Close>
+    </Flex>
+  </Sheet.Content>
+</Sheet.Root>
+```
+
+### Controlled Sheet
+
+Control the sheet state programmatically.
+
+```tsx showLineNumbers
+function ControlledSheet() {
+  const [open, setOpen] = React.useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Open Sheet</Button>
+      <Sheet.Root open={open} onOpenChange={setOpen}>
+        <Sheet.Content side="end">
+          <Sheet.Title>Controlled</Sheet.Title>
+          <Sheet.Description>This sheet is controlled externally.</Sheet.Description>
+          <Button onClick={() => setOpen(false)}>Close Programmatically</Button>
+        </Sheet.Content>
+      </Sheet.Root>
+    </>
+  );
+}
+```
+
+## Accessibility
+
+Sheet provides comprehensive accessibility through Radix Dialog primitives.
+
+### Required Label
+
+Always provide an accessible name via `Sheet.Title` or `aria-label` on `Sheet.Content`. A development warning appears if neither is provided.
+
+```tsx
+{/* Using Sheet.Title */}
+<Sheet.Content side="end">
+  <Sheet.Title>Settings</Sheet.Title>
+</Sheet.Content>
+
+{/* Using aria-label */}
+<Sheet.Content side="end" aria-label="Settings panel">
+  {/* Content without visible title */}
+</Sheet.Content>
+```
+
+### Keyboard Navigation
+
+- **Escape** - Closes the sheet
+- **Tab** - Moves focus to next focusable element within sheet
+- **Shift + Tab** - Moves focus to previous focusable element
+
+### Focus Management
+
+- Focus is automatically trapped within the sheet when open
+- Focus moves to the first focusable element when opened
+- Focus returns to the trigger element when closed
+
+### Screen Readers
+
+- `role="dialog"` with `aria-modal="true"` on content
+- Title associated via `aria-labelledby`
+- Description associated via `aria-describedby` when present
+- Overlay prevents interaction with content behind
+
+## Changelog
+
+### Added
+
+- Initial Sheet component built on Radix Dialog
+- Side placement with RTL-aware aliases (`left` → `start`, `right` → `end`)
+- Slide animation for each side direction
+- Material prop for solid/translucent backgrounds
+- Responsive width/height support
+- Focus management and keyboard navigation
+- Development warning for missing accessible name
+
+### Deprecated
+
+- `panelBackground` prop in favor of `material` prop
