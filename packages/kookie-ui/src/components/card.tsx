@@ -14,7 +14,7 @@ type CardElement = React.ElementRef<'div'>;
 type CardOwnProps = GetPropDefTypes<typeof cardPropDefs>;
 interface CardProps extends ComponentPropsWithout<'div', RemovedProps>, MarginProps, CardOwnProps {}
 const Card = React.forwardRef<CardElement, CardProps>((props, forwardedRef) => {
-  const { asChild, className, panelBackground, material, flush, ...cardProps } = extractProps(
+  const { asChild, className, panelBackground, material, flush, inset, ...cardProps } = extractProps(
     props,
     cardPropDefs,
     marginPropDefs,
@@ -28,6 +28,7 @@ const Card = React.forwardRef<CardElement, CardProps>((props, forwardedRef) => {
       data-panel-background={effectiveMaterial}
       data-material={effectiveMaterial}
       data-flush={flush ? 'true' : undefined}
+      data-inset={inset ? 'true' : undefined}
       className={classNames('rt-reset', 'rt-BaseCard', 'rt-Card', className)}
     />
   );

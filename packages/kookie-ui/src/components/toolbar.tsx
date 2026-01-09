@@ -6,7 +6,7 @@ import { Flex } from './flex.js';
 import { Heading } from './heading.js';
 
 import type { CardProps } from './card.js';
-import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
+import type { FlexProps } from './flex.js';
 
 // ============================================================================
 // Toolbar Root
@@ -115,15 +115,9 @@ const ToolbarRoot = React.forwardRef<ToolbarRootElement, ToolbarRootProps>(
         style={computedStyle}
         {...restProps}
       >
-        <Flex
-          align="center"
-          justify="between"
-          direction={isHorizontal ? 'row' : 'column'}
-          gap="2"
-          className="rt-ToolbarInner"
-        >
+        <div className="rt-ToolbarInner">
           {children}
-        </Flex>
+        </div>
       </Card>
     );
   },
@@ -135,15 +129,14 @@ ToolbarRoot.displayName = 'Toolbar.Root';
 // ============================================================================
 
 type ToolbarSectionElement = React.ElementRef<'div'>;
-interface ToolbarSectionProps extends ComponentPropsWithout<'div', RemovedProps> {}
+type ToolbarSectionProps = FlexProps;
 
 const ToolbarLeft = React.forwardRef<ToolbarSectionElement, ToolbarSectionProps>(
-  ({ className, children, ...props }, forwardedRef) => (
+  ({ gap = '2', align = 'center', className, children, ...props }, forwardedRef) => (
     <Flex
       ref={forwardedRef}
-      align="center"
-      gap="2"
-      flexShrink="0"
+      align={align}
+      gap={gap}
       className={classNames('rt-ToolbarSection', 'rt-ToolbarLeft', className)}
       {...props}
     >
@@ -158,13 +151,12 @@ ToolbarLeft.displayName = 'Toolbar.Left';
 // ============================================================================
 
 const ToolbarCenter = React.forwardRef<ToolbarSectionElement, ToolbarSectionProps>(
-  ({ className, children, ...props }, forwardedRef) => (
+  ({ gap = '2', align = 'center', justify = 'center', className, children, ...props }, forwardedRef) => (
     <Flex
       ref={forwardedRef}
-      align="center"
-      justify="center"
-      flexGrow="1"
-      minWidth="0"
+      align={align}
+      justify={justify}
+      gap={gap}
       className={classNames('rt-ToolbarSection', 'rt-ToolbarCenter', className)}
       {...props}
     >
@@ -179,12 +171,12 @@ ToolbarCenter.displayName = 'Toolbar.Center';
 // ============================================================================
 
 const ToolbarRight = React.forwardRef<ToolbarSectionElement, ToolbarSectionProps>(
-  ({ className, children, ...props }, forwardedRef) => (
+  ({ gap = '2', align = 'center', justify = 'end', className, children, ...props }, forwardedRef) => (
     <Flex
       ref={forwardedRef}
-      align="center"
-      gap="2"
-      flexShrink="0"
+      align={align}
+      justify={justify}
+      gap={gap}
       className={classNames('rt-ToolbarSection', 'rt-ToolbarRight', className)}
       {...props}
     >
@@ -202,7 +194,7 @@ type ToolbarTitleElement = React.ElementRef<typeof Heading>;
 interface ToolbarTitleProps extends React.ComponentPropsWithoutRef<typeof Heading> {}
 
 const ToolbarTitle = React.forwardRef<ToolbarTitleElement, ToolbarTitleProps>(
-  ({ className, size = '3', weight = 'medium', truncate = true, children, ...props }, forwardedRef) => (
+  ({ className, size = '2', weight = 'medium', truncate = true, children, ...props }, forwardedRef) => (
     <Heading
       ref={forwardedRef}
       size={size}

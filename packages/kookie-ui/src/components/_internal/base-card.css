@@ -134,6 +134,20 @@
 
 /* * * * * * * * * * * * * * * * * * * */
 /*                                     */
+/*                Inset                */
+/*  Resets padding to 0, keeps radius  */
+/*                                     */
+/* * * * * * * * * * * * * * * * * * * */
+
+.rt-BaseCard:where([data-inset='true']) {
+  --base-card-padding-top: 0px;
+  --base-card-padding-right: 0px;
+  --base-card-padding-bottom: 0px;
+  --base-card-padding-left: 0px;
+}
+
+/* * * * * * * * * * * * * * * * * * * */
+/*                                     */
 /*         Variants / Outline          */
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */

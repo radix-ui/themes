@@ -4,9 +4,9 @@ import * as React from 'react';
 import { PreviewBlock, CodeBlock, SectionHeader, EmptyState } from '@kushagradhawan/kookie-blocks';
 import { Flex, Card, Text, Heading, Separator, IconButton, Button, Toolbar, ScrollArea } from '@kushagradhawan/kookie-ui';
 import { HugeiconsIcon } from '@hugeicons/react';
-import { ArrowLeft01Icon, Cancel01Icon, Search01Icon, Settings01Icon, Home01Icon, Add01Icon, File02Icon, Folder02Icon } from '@hugeicons/core-free-icons';
+import { PlusSignIcon, ArrowLeft01Icon, Cancel01Icon, Search01Icon, Settings01Icon, Home01Icon, Add01Icon, File02Icon, Folder02Icon } from '@hugeicons/core-free-icons';
 
-const IMAGE_URL = 'https://images.unsplash.com/photo-1766484184654-20bfd252035f?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+const IMAGE_URL = 'https://images.unsplash.com/photo-1766182601602-55af0dc5e53b?q=80&w=1336&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 
 export function ToolbarExamples() {
   return (
@@ -22,24 +22,27 @@ export function ToolbarExamples() {
           </SectionHeader.Content>
         </SectionHeader.Root>
         <PreviewBlock background="none" height="24rem">
-          <Card variant="classic" size="2" style={{ width: '100%', maxWidth: '400px', height: '22rem', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-            <Toolbar variant="soft" size="1">
+          <Card variant="classic" size="3" inset style={{ width: '100%', maxWidth: '400px', height: '22rem', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+            <Toolbar variant="ghost" size="1">
               <Toolbar.Left>
-                <IconButton variant="ghost" size="2" color="gray" highContrast aria-label="Go back">
+                <IconButton radius="full" variant="soft" size="2" color="gray" highContrast aria-label="Go back">
                   <HugeiconsIcon icon={ArrowLeft01Icon} strokeWidth={1.75} />
                 </IconButton>
               </Toolbar.Left>
               <Toolbar.Center>
                 <Toolbar.Title>Settings</Toolbar.Title>
               </Toolbar.Center>
-              <Toolbar.Right>
-                <IconButton variant="ghost" size="2" color="gray" highContrast aria-label="Close">
+              <Toolbar.Right gap="1">
+                <IconButton radius="full" size="2" aria-label="Close">
+                  <HugeiconsIcon icon={PlusSignIcon} strokeWidth={1.75} />
+                </IconButton>
+                <IconButton radius="full" variant="soft" size="2" color="gray" highContrast aria-label="Close">
                   <HugeiconsIcon icon={Cancel01Icon} strokeWidth={1.75} />
                 </IconButton>
               </Toolbar.Right>
             </Toolbar>
-            <ScrollArea scrollbars="vertical" style={{ paddingTop: 'var(--rt-toolbar-height)' }}>
-              <Flex direction="column" gap="4">
+            <ScrollArea scrollbars="vertical" style={{ flexGrow: 1, marginTop: 'var(--rt-toolbar-height)' }}>
+              <Flex direction="column" gap="4" p="4">
                 <Flex direction="column" gap="1">
                   <Text size="2" weight="medium">
                     Notifications
@@ -98,11 +101,21 @@ export function ToolbarExamples() {
           </Card>
         </PreviewBlock>
         <CodeBlock
-          code={`<Card variant="classic" size="2" style={{ height: '22rem', display: 'flex', flexDirection: 'column' }}>
-  <Toolbar variant="soft" size="1">
+          code={`<Card
+  variant="classic"
+  size="3"
+  inset
+  style={{
+    height: '22rem',
+    display: 'flex',
+    flexDirection: 'column',
+  }}
+>
+  <Toolbar variant="ghost" size="1">
     <Toolbar.Left>
       <IconButton
-        variant="ghost"
+        radius="full"
+        variant="soft"
         size="2"
         color="gray"
         highContrast
@@ -114,9 +127,13 @@ export function ToolbarExamples() {
     <Toolbar.Center>
       <Toolbar.Title>Settings</Toolbar.Title>
     </Toolbar.Center>
-    <Toolbar.Right>
+    <Toolbar.Right gap="1">
+      <IconButton radius="full" size="2" aria-label="Add">
+        <PlusIcon />
+      </IconButton>
       <IconButton
-        variant="ghost"
+        radius="full"
+        variant="soft"
         size="2"
         color="gray"
         highContrast
@@ -126,7 +143,10 @@ export function ToolbarExamples() {
       </IconButton>
     </Toolbar.Right>
   </Toolbar>
-  <ScrollArea scrollbars="vertical" style={{ paddingTop: 'var(--rt-toolbar-height)' }}>
+  <ScrollArea
+    scrollbars="vertical"
+    style={{ flexGrow: 1, marginTop: 'var(--rt-toolbar-height)' }}
+  >
     <Flex direction="column" gap="4" p="4">
       {/* Settings content */}
     </Flex>
@@ -161,7 +181,7 @@ export function ToolbarExamples() {
             backgroundPosition: 'center',
           }}
         >
-          <Card variant="classic" material="translucent" size="2" style={{ width: '100%', maxWidth: '400px', height: '24rem', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+          <Card variant="classic" material="translucent" size="3" inset style={{ width: '100%', maxWidth: '400px', height: '24rem', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
             <Toolbar floating variant="surface" material="translucent" size="1">
               <Toolbar.Left>
                 <IconButton variant="ghost" size="2" color="gray" highContrast aria-label="Home">
@@ -189,10 +209,31 @@ export function ToolbarExamples() {
           </Card>
         </PreviewBlock>
         <CodeBlock
-          code={`<Card variant="classic" material="translucent" size="1" style={{ height: '24rem', display: 'flex', flexDirection: 'column' }}>
-  <Toolbar floating variant="surface" material="translucent" size="1">
+          code={`<Card
+  variant="classic"
+  material="translucent"
+  size="3"
+  inset
+  style={{
+    height: '24rem',
+    display: 'flex',
+    flexDirection: 'column',
+  }}
+>
+  <Toolbar
+    floating
+    variant="surface"
+    material="translucent"
+    size="1"
+  >
     <Toolbar.Left>
-      <IconButton variant="ghost" size="2" color="gray" highContrast aria-label="Home">
+      <IconButton
+        variant="ghost"
+        size="2"
+        color="gray"
+        highContrast
+        aria-label="Home"
+      >
         <HomeIcon />
       </IconButton>
     </Toolbar.Left>
@@ -200,7 +241,13 @@ export function ToolbarExamples() {
       <Toolbar.Title>Explore</Toolbar.Title>
     </Toolbar.Center>
     <Toolbar.Right>
-      <IconButton variant="ghost" size="2" color="gray" highContrast aria-label="Search">
+      <IconButton
+        variant="ghost"
+        size="2"
+        color="gray"
+        highContrast
+        aria-label="Search"
+      >
         <SearchIcon />
       </IconButton>
     </Toolbar.Right>

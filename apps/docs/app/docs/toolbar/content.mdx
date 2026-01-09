@@ -92,7 +92,15 @@ The root component manages positioning and inherits Card's visual styling.
 
 ### Section Props
 
-`Toolbar.Left`, `Toolbar.Center`, and `Toolbar.Right` accept standard div props and arrange content within their section.
+`Toolbar.Left`, `Toolbar.Center`, and `Toolbar.Right` extend Flex and accept all Flex props. They are placed on a CSS grid for true centering regardless of content width.
+
+| Prop | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `gap` | `'0' \| '1' \| '2' \| ... \| '9'` | `'2'` | Space between items in the section. |
+| `align` | `'start' \| 'center' \| 'end' \| 'baseline' \| 'stretch'` | `'center'` | Vertical alignment of items. |
+| `justify` | `'start' \| 'center' \| 'end' \| 'between'` | varies | Horizontal alignment within the section. |
+
+Plus all other Flex props (`direction`, `wrap`, `p`, `m`, etc.).
 
 ### Title Props
 
@@ -100,7 +108,7 @@ The root component manages positioning and inherits Card's visual styling.
 
 | Prop | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
-| `size` | `'1' \| '2' \| ... \| '9'` | `'3'` | Font size. |
+| `size` | `'1' \| '2' \| ... \| '9'` | `'2'` | Font size. |
 | `weight` | `'light' \| 'regular' \| 'medium' \| 'bold'` | `'medium'` | Font weight. |
 | `truncate` | `boolean` | `true` | Truncate text with ellipsis. |
 | `children` | `ReactNode` | - | The title text. |

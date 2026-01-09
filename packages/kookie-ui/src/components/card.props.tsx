@@ -14,12 +14,14 @@ const cardPropDefs = {
   panelBackground: { type: 'enum', values: panelBackgrounds, default: undefined },
   material: { type: 'enum', values: materials, default: undefined },
   flush: { type: 'boolean', default: false },
+  inset: { type: 'boolean', default: false },
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
   variant: PropDef<(typeof variants)[number]>;
   panelBackground: PropDef<(typeof panelBackgrounds)[number] | undefined>;
   material: PropDef<(typeof materials)[number] | undefined>;
   flush: PropDef<boolean>;
+  inset: PropDef<boolean>;
 };
 
 export { cardPropDefs };
