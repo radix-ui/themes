@@ -275,17 +275,14 @@ Title.displayName = 'Sheet.Title';
 
 // Description - renders as Text with sensible defaults
 type SheetDescriptionElement = React.ElementRef<typeof Text>;
-type SheetDescriptionProps = TextProps;
+type SheetDescriptionProps = React.ComponentPropsWithoutRef<typeof Text>;
 /** Supplementary description text for Sheet content. Renders as Text with sensible defaults. */
 const Description = React.forwardRef<SheetDescriptionElement, SheetDescriptionProps>(
-  (props, ref) => {
-    const { size = '2', color = 'gray', ...rest } = props as any;
-    return (
-      <DialogPrimitive.Description asChild>
-        <Text ref={ref} size={size} color={color} {...rest} />
-      </DialogPrimitive.Description>
-    );
-  },
+  ({ size = '2', color = 'gray', ...rest }, ref) => (
+    <DialogPrimitive.Description asChild>
+      <Text ref={ref} size={size} color={color} {...rest} />
+    </DialogPrimitive.Description>
+  ),
 );
 Description.displayName = 'Sheet.Description';
 
