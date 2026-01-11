@@ -36,7 +36,7 @@ import { omitPaneProps, extractPaneDomProps, mapResponsiveBooleanToPaneMode } fr
 import { Sidebar } from './_internal/shell-sidebar.js';
 import { Bottom } from './_internal/shell-bottom.js';
 import { Inspector } from './_internal/shell-inspector.js';
-import type { PresentationValue, ResponsivePresentation, PaneMode, SidebarMode, PaneSizePersistence, Breakpoint, PaneTarget, Responsive, PaneBaseProps } from './shell.types.js';
+import type { PresentationValue, ResponsivePresentation, PaneMode, SidebarMode, PaneSizePersistence, Breakpoint, PaneTarget, Responsive, PaneBaseProps, CSSPropertiesWithVars } from './shell.types.js';
 import { _BREAKPOINTS } from './shell.types.js';
 import { normalizeToPx } from '../helpers/normalize-to-px.js';
 import {
@@ -80,10 +80,11 @@ function useBreakpoint(): { bp: Breakpoint; ready: boolean } {
   React.useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    const queries: [key: keyof typeof _BREAKPOINTS, query: string][] = Object.entries(_BREAKPOINTS) as any;
+    const queries = Object.entries(_BREAKPOINTS) as [keyof typeof _BREAKPOINTS, string][];
     const mqls = queries.map(([k, q]) => [k, window.matchMedia(q)] as const);
 
-    const compute = () => {
+    // Accept optional event param to satisfy MediaQueryList listener signature
+    const compute = (_e?: MediaQueryListEvent) => {
       // Highest matched wins
       const matched = mqls.filter(([, m]) => m.matches).map(([k]) => k);
       const next = (matched[matched.length - 1] as Breakpoint | undefined) ?? 'initial';
@@ -101,11 +102,11 @@ function useBreakpoint(): { bp: Breakpoint; ready: boolean } {
         removeListener?: (listener: (e: MediaQueryListEvent) => void) => void;
       };
       if (typeof mm.addEventListener === 'function' && typeof mm.removeEventListener === 'function') {
-        mm.addEventListener('change', compute as any);
-        cleanups.push(() => mm.removeEventListener?.('change', compute as any));
+        mm.addEventListener('change', compute);
+        cleanups.push(() => mm.removeEventListener?.('change', compute));
       } else if (typeof mm.addListener === 'function' && typeof mm.removeListener === 'function') {
-        mm.addListener(compute as any);
-        cleanups.push(() => mm.removeListener?.(compute as any));
+        mm.addListener(compute);
+        cleanups.push(() => mm.removeListener?.(compute));
       }
     });
 
@@ -568,8 +569,8 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(({ className, chil
                               style={
                                 peekTarget === 'rail' || peekTarget === 'panel'
                                   ? ({
-                                      ['--peek-rail-width' as any]: `${railDefaultSizeRef.current}px`,
-                                    } as React.CSSProperties)
+                                      '--peek-rail-width': `${railDefaultSizeRef.current}px`,
+                                    } as CSSPropertiesWithVars)
                                   : undefined
                               }
                             >
@@ -631,8 +632,8 @@ const Header = React.forwardRef<HTMLElement, ShellHeaderProps>(({ className, hei
     className={classNames('rt-ShellHeader', className)}
     style={{
       ...style,
-      ['--shell-header-height' as any]: `${height}px`,
-    }}
+      '--shell-header-height': `${height}px`,
+    } as CSSPropertiesWithVars}
   />
 ));
 Header.displayName = 'Shell.Header';
@@ -698,7 +699,7 @@ const Left = React.forwardRef<HTMLDivElement, LeftProps>((initialProps, ref) => 
   const localRef = React.useRef<HTMLDivElement | null>(null);
   // Publish resolved presentation so Root can gate peeking in overlay
   React.useEffect(() => {
-    (shell as any).onLeftPres?.(resolvedPresentation);
+    shell.onLeftPres?.(resolvedPresentation);
   }, [shell, resolvedPresentation]);
   const setRef = React.useCallback(
     (node: HTMLDivElement | null) => {
@@ -864,7 +865,7 @@ const Rail = React.forwardRef<HTMLDivElement, RailProps>((initialProps, ref) => 
 
   // Register expanded size with Left container
   React.useEffect(() => {
-    (shell as any).onRailDefaults?.(expandedSize);
+    shell.onRailDefaults?.(expandedSize);
   }, [shell, expandedSize]);
 
   const isExpanded = shell.leftMode === 'expanded';
@@ -879,8 +880,8 @@ const Rail = React.forwardRef<HTMLDivElement, RailProps>((initialProps, ref) => 
       data-peek={(shell.currentBreakpointReady && shell.leftResolvedPresentation !== 'overlay' && shell.peekTarget === 'rail') || undefined}
       style={{
         ...style,
-        ['--rail-size' as any]: `${expandedSize}px`,
-      }}
+        '--rail-size': `${expandedSize}px`,
+      } as CSSPropertiesWithVars}
     >
       <div className="rt-ShellRailContent" data-visible={(shell.currentBreakpointReady && (isExpanded || (shell.leftResolvedPresentation !== 'overlay' && shell.peekTarget === 'rail'))) || undefined}>
         {children}
@@ -1068,7 +1069,7 @@ const Panel = assignShellSlot(
     }, [open]);
 
     React.useEffect(() => {
-      (shell as any).onPanelDefaults?.(expandedSize);
+      shell.onPanelDefaults?.(expandedSize);
     }, [shell, expandedSize]);
     const localRef = React.useRef<HTMLDivElement | null>(null);
     const setRef = React.useCallback(
@@ -1245,8 +1246,8 @@ const Panel = assignShellSlot(
         data-peek={(shell.currentBreakpointReady && shell.leftResolvedPresentation !== 'overlay' && shell.peekTarget === 'panel') || undefined}
         style={{
           ...style,
-          ['--panel-size' as any]: `${expandedSize}px`,
-        }}
+          '--panel-size': `${expandedSize}px`,
+        } as CSSPropertiesWithVars}
       >
         <div className="rt-ShellPanelContent" data-visible={isExpanded || undefined}>
           {contentChildren}
@@ -1312,7 +1313,7 @@ const Trigger = React.forwardRef<HTMLButtonElement, TriggerProps>(({ target, act
       onClick?.(event);
 
       // Clear any active peek on this target before toggling to avoid sticky peek state
-      if ((shell as any).peekTarget === target) {
+      if (shell.peekTarget === target) {
         shell.clearPeek();
       }
 
@@ -1361,7 +1362,7 @@ const Trigger = React.forwardRef<HTMLButtonElement, TriggerProps>(({ target, act
     (event: React.MouseEvent<HTMLButtonElement>) => {
       onMouseLeave?.(event);
       if (!peekOnHover) return;
-      if ((shell as any).peekTarget === target) {
+      if (shell.peekTarget === target) {
         shell.clearPeek();
       }
     },

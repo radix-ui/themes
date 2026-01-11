@@ -88,19 +88,19 @@ export const PaneHandle = React.forwardRef<HTMLDivElement, React.ComponentPropsW
           try {
             handleEl.releasePointerCapture(pointerId);
           } catch {}
-          window.removeEventListener('pointermove', handleMove as any);
-          document.removeEventListener('pointermove', handleMove as any);
-          window.removeEventListener('mousemove', handleMove as any);
-          document.removeEventListener('mousemove', handleMove as any);
-          handleEl.removeEventListener('pointermove', handleMove as any);
-          window.removeEventListener('pointerup', handleUp as any);
-          document.removeEventListener('pointerup', handleUp as any);
-          window.removeEventListener('mouseup', handleUp as any);
-          document.removeEventListener('mouseup', handleUp as any);
-          window.removeEventListener('pointercancel', handleUp as any);
-          document.removeEventListener('pointercancel', handleUp as any);
-          window.removeEventListener('keydown', handleKey as any);
-          handleEl.removeEventListener('lostpointercapture', handleUp as any);
+          window.removeEventListener('pointermove', handleMove as EventListener);
+          document.removeEventListener('pointermove', handleMove as EventListener);
+          window.removeEventListener('mousemove', handleMove as EventListener);
+          document.removeEventListener('mousemove', handleMove as EventListener);
+          handleEl.removeEventListener('pointermove', handleMove as EventListener);
+          window.removeEventListener('pointerup', handleUp as EventListener);
+          document.removeEventListener('pointerup', handleUp as EventListener);
+          window.removeEventListener('mouseup', handleUp as EventListener);
+          document.removeEventListener('mouseup', handleUp as EventListener);
+          window.removeEventListener('pointercancel', handleUp as EventListener);
+          document.removeEventListener('pointercancel', handleUp as EventListener);
+          window.removeEventListener('keydown', handleKey as EventListener);
+          handleEl.removeEventListener('lostpointercapture', handleUp as EventListener);
           container.removeAttribute('data-resizing');
           body.style.cursor = prevCursor;
           body.style.userSelect = prevUserSelect;
@@ -132,20 +132,20 @@ export const PaneHandle = React.forwardRef<HTMLDivElement, React.ComponentPropsW
             cleanup();
           }
         };
-        window.addEventListener('pointermove', handleMove as any);
-        document.addEventListener('pointermove', handleMove as any);
+        window.addEventListener('pointermove', handleMove as EventListener);
+        document.addEventListener('pointermove', handleMove as EventListener);
         // Fallbacks for environments that don't fully support PointerEvent on window
-        window.addEventListener('mousemove', handleMove as any);
-        document.addEventListener('mousemove', handleMove as any);
-        handleEl.addEventListener('pointermove', handleMove as any);
-        window.addEventListener('pointerup', handleUp as any);
-        document.addEventListener('pointerup', handleUp as any);
-        window.addEventListener('mouseup', handleUp as any);
-        document.addEventListener('mouseup', handleUp as any);
-        window.addEventListener('pointercancel', handleUp as any);
-        document.addEventListener('pointercancel', handleUp as any);
-        window.addEventListener('keydown', handleKey as any);
-        handleEl.addEventListener('lostpointercapture', handleUp as any);
+        window.addEventListener('mousemove', handleMove as EventListener);
+        document.addEventListener('mousemove', handleMove as EventListener);
+        handleEl.addEventListener('pointermove', handleMove as EventListener);
+        window.addEventListener('pointerup', handleUp as EventListener);
+        document.addEventListener('pointerup', handleUp as EventListener);
+        window.addEventListener('mouseup', handleUp as EventListener);
+        document.addEventListener('mouseup', handleUp as EventListener);
+        window.addEventListener('pointercancel', handleUp as EventListener);
+        document.addEventListener('pointercancel', handleUp as EventListener);
+        window.addEventListener('keydown', handleKey as EventListener);
+        handleEl.addEventListener('lostpointercapture', handleUp as EventListener);
         activeCleanupRef.current = cleanup;
       }}
       onDoubleClick={() => {

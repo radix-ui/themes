@@ -7,7 +7,7 @@ import { useResponsivePresentation, useResponsiveInitialState } from '../shell.h
 import { PaneResizeContext } from './shell-resize.js';
 import { extractPaneDomProps } from './shell-prop-helpers.js';
 import { SidebarHandle, PaneHandle } from './shell-handles.js';
-import type { Breakpoint, PaneMode, PaneSizePersistence, ResponsivePresentation, SidebarMode, Responsive, PaneBaseProps } from '../shell.types.js';
+import type { Breakpoint, PaneMode, PaneSizePersistence, ResponsivePresentation, SidebarMode, Responsive, PaneBaseProps, CSSPropertiesWithVars } from '../shell.types.js';
 import { _BREAKPOINTS } from '../shell.types.js';
 import { normalizeToPx } from '../../helpers/normalize-to-px.js';
 
@@ -446,10 +446,10 @@ export const Sidebar = React.forwardRef<HTMLDivElement, SidebarPublicProps>((ini
       data-inset={inset || undefined}
       style={{
         ...style,
-        ['--sidebar-size' as any]: `${expandedSize}px`,
-        ['--sidebar-thin-size' as any]: `${thinSize}px`,
-        ['--sidebar-min-size' as any]: `${minSize}px`,
-        ['--sidebar-max-size' as any]: `${maxSize}px`,
+        '--sidebar-size': `${expandedSize}px`,
+        '--sidebar-thin-size': `${thinSize}px`,
+        '--sidebar-min-size': `${minSize}px`,
+        '--sidebar-max-size': `${maxSize}px`,
         ...(shell.peekTarget === 'sidebar' && shell.sidebarMode === 'collapsed' && !isOverlay
           ? (() => {
               const strategy: 'both' | 'single' = toggleModes ?? 'both';
@@ -463,15 +463,15 @@ export const Sidebar = React.forwardRef<HTMLDivElement, SidebarPublicProps>((ini
               }
               if (next === 'thin') {
                 return {
-                  ['--peek-sidebar-width' as any]: `${thinSize}px`,
-                } as React.CSSProperties;
+                  '--peek-sidebar-width': `${thinSize}px`,
+                } as CSSPropertiesWithVars;
               }
               return {
-                ['--peek-sidebar-width' as any]: `var(--sidebar-size, ${expandedSize}px)`,
-              } as React.CSSProperties;
+                '--peek-sidebar-width': `var(--sidebar-size, ${expandedSize}px)`,
+              } as CSSPropertiesWithVars;
             })()
           : {}),
-      }}
+      } as CSSPropertiesWithVars}
     >
       <div className="rt-ShellSidebarContent" data-visible={isContentVisible || undefined}>
         {contentChildren}

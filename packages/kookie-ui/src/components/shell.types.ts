@@ -50,3 +50,16 @@ export const _BREAKPOINTS = {
 export type Breakpoint = 'initial' | keyof typeof _BREAKPOINTS;
 
 export type PaneTarget = 'left' | 'rail' | 'panel' | 'sidebar' | 'inspector' | 'bottom';
+
+/**
+ * CSS custom property key type for type-safe style objects.
+ * Allows any string prefixed with '--'.
+ */
+export type CSSCustomProperty = `--${string}`;
+
+/**
+ * Style object that supports CSS custom properties.
+ */
+export type CSSPropertiesWithVars = React.CSSProperties & {
+  [key: CSSCustomProperty]: string | number | undefined;
+};
