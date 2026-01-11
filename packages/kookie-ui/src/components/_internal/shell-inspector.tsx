@@ -7,7 +7,7 @@ import { useResponsivePresentation, useResponsiveInitialState } from '../shell.h
 import { PaneResizeContext } from './shell-resize.js';
 import { InspectorHandle, PaneHandle } from './shell-handles.js';
 import { _BREAKPOINTS } from '../shell.types.js';
-import type { Breakpoint, PaneMode, PaneSizePersistence, ResponsivePresentation, PaneBaseProps } from '../shell.types.js';
+import type { Breakpoint, PaneMode, PaneSizePersistence, ResponsivePresentation, PaneBaseProps, CSSPropertiesWithVars } from '../shell.types.js';
 import { extractPaneDomProps, mapResponsiveBooleanToPaneMode } from './shell-prop-helpers.js';
 import { normalizeToPx } from '../../helpers/normalize-to-px.js';
 
@@ -393,10 +393,10 @@ export const Inspector = React.forwardRef<HTMLDivElement, InspectorPublicProps>(
       data-inset={inset || undefined}
       style={{
         ...style,
-        ['--inspector-size' as any]: `${expandedSize}px`,
-        ['--inspector-min-size' as any]: `${minSize}px`,
-        ['--inspector-max-size' as any]: `${maxSize}px`,
-      }}
+        '--inspector-size': `${expandedSize}px`,
+        '--inspector-min-size': `${minSize}px`,
+        '--inspector-max-size': `${maxSize}px`,
+      } as CSSPropertiesWithVars}
     >
       <div className="rt-ShellInspectorContent" data-visible={isExpanded || undefined}>
         {contentChildren}

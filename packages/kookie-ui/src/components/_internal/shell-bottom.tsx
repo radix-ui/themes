@@ -7,7 +7,7 @@ import { useResponsivePresentation, useResponsiveInitialState } from '../shell.h
 import { PaneResizeContext } from './shell-resize.js';
 import { BottomHandle, PaneHandle } from './shell-handles.js';
 import { _BREAKPOINTS } from '../shell.types.js';
-import type { Breakpoint, PaneMode, PaneSizePersistence, ResponsivePresentation, PaneBaseProps } from '../shell.types.js';
+import type { Breakpoint, PaneMode, PaneSizePersistence, ResponsivePresentation, PaneBaseProps, CSSPropertiesWithVars } from '../shell.types.js';
 import { extractPaneDomProps, mapResponsiveBooleanToPaneMode } from './shell-prop-helpers.js';
 import { normalizeToPx } from '../../helpers/normalize-to-px.js';
 
@@ -391,10 +391,10 @@ export const Bottom = React.forwardRef<HTMLDivElement, BottomPublicProps>((initi
       data-inset={inset || undefined}
       style={{
         ...style,
-        ['--bottom-size' as any]: `${expandedSize}px`,
-        ['--bottom-min-size' as any]: `${minSize}px`,
-        ['--bottom-max-size' as any]: `${maxSize}px`,
-      }}
+        '--bottom-size': `${expandedSize}px`,
+        '--bottom-min-size': `${minSize}px`,
+        '--bottom-max-size': `${maxSize}px`,
+      } as CSSPropertiesWithVars}
     >
       <div className="rt-ShellBottomContent" data-visible={isExpanded || undefined}>
         {contentChildren}
