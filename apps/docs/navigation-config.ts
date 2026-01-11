@@ -22,6 +22,7 @@ import {
   TextIcon,
   MessageEdit01Icon,
   LeftToRightListBulletIcon,
+  Menu01Icon,
 } from '@hugeicons/core-free-icons';
 
 export const docsNavigation: DocsNavigationConfig = {
@@ -86,6 +87,12 @@ export const docsNavigation: DocsNavigationConfig = {
           title: 'Combobox',
           icon: DropdownFieldTypeIcon,
           badge: { content: 'Development', color: 'gray', size: '1', highContrast: true },
+        },
+        {
+          href: '/docs/dropdown-menu',
+          title: 'Dropdown Menu',
+          icon: Menu01Icon,
+          badge: { content: 'Alpha', size: '1', highContrast: true },
         },
         {
           href: '/docs/heading',

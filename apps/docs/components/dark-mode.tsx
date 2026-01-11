@@ -5,19 +5,55 @@ import { IconButton, useThemeContext } from '@kushagradhawan/kookie-ui';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { Moon02Icon, Sun03Icon } from '@hugeicons/core-free-icons';
 
+/**
+ * Dark mode toggle that works both inside and outside Theme context.
+ * When rendered in a portal (e.g., Sheet overlay), context may not be available,
+ * so we also directly manipulate the DOM and use localStorage as source of truth.
+ */
 export function DarkModeToggle() {
   const { appearance, onAppearanceChange } = useThemeContext();
   const [mounted, setMounted] = React.useState(false);
+  const [localAppearance, setLocalAppearance] = React.useState<'light' | 'dark'>('light');
 
   // Only render after mounting to avoid hydration issues
   React.useEffect(() => {
     setMounted(true);
+    // Initialize from localStorage or system preference
+    const savedTheme = localStorage.getItem('kookie-theme') as 'light' | 'dark' | null;
+    if (savedTheme) {
+      setLocalAppearance(savedTheme);
+    } else {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setLocalAppearance(prefersDark ? 'dark' : 'light');
+    }
   }, []);
 
+  // Sync local state when context changes (when inside Theme provider)
+  React.useEffect(() => {
+    if (mounted && (appearance === 'light' || appearance === 'dark')) {
+      setLocalAppearance(appearance);
+    }
+  }, [mounted, appearance]);
+
   const toggleTheme = () => {
-    const newAppearance = appearance === 'dark' ? 'light' : 'dark';
-    onAppearanceChange(newAppearance);
+    const newAppearance = localAppearance === 'dark' ? 'light' : 'dark';
+
+    // Update localStorage (source of truth)
     localStorage.setItem('kookie-theme', newAppearance);
+
+    // Update local state for immediate UI feedback
+    setLocalAppearance(newAppearance);
+
+    // Try to update via context (works when inside Theme provider)
+    onAppearanceChange(newAppearance);
+
+    // Also directly update the root theme element for portal scenarios
+    // This ensures the theme changes even when context is unavailable
+    const rootTheme = document.querySelector('[data-is-root-theme="true"]');
+    if (rootTheme) {
+      rootTheme.classList.remove('light', 'dark');
+      rootTheme.classList.add(newAppearance);
+    }
   };
 
   // Initialize theme from localStorage or system preference
@@ -45,11 +81,22 @@ export function DarkModeToggle() {
     );
   }
 
-  const isDark = appearance === 'dark';
+  const isDark = localAppearance === 'dark';
 
   return (
-    <IconButton variant="ghost" size="2" highContrast color="gray" onClick={toggleTheme} aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}>
-      {isDark ? <HugeiconsIcon icon={Sun03Icon} strokeWidth={1.75} /> : <HugeiconsIcon icon={Moon02Icon} strokeWidth={1.75} />}
+    <IconButton
+      variant="ghost"
+      size="2"
+      highContrast
+      color="gray"
+      onClick={toggleTheme}
+      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+    >
+      {isDark ? (
+        <HugeiconsIcon icon={Sun03Icon} strokeWidth={1.75} />
+      ) : (
+        <HugeiconsIcon icon={Moon02Icon} strokeWidth={1.75} />
+      )}
     </IconButton>
   );
 }
