@@ -47,13 +47,13 @@ export function DarkModeToggle() {
     // Try to update via context (works when inside Theme provider)
     onAppearanceChange(newAppearance);
 
-    // Also directly update the root theme element for portal scenarios
+    // Also directly update ALL theme elements (including portaled ones like Sheet overlays)
     // This ensures the theme changes even when context is unavailable
-    const rootTheme = document.querySelector('[data-is-root-theme="true"]');
-    if (rootTheme) {
-      rootTheme.classList.remove('light', 'dark');
-      rootTheme.classList.add(newAppearance);
-    }
+    const themeElements = document.querySelectorAll('.radix-themes');
+    themeElements.forEach((el) => {
+      el.classList.remove('light', 'dark');
+      el.classList.add(newAppearance);
+    });
   };
 
   // Initialize theme from localStorage or system preference
