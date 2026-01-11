@@ -20,7 +20,7 @@ async function loadGoogleFont(font: string, weight: number, text: string) {
 
 export default async function Image() {
   const title = "Kookie UI";
-  const subtitle = "The Foundation for your Design System";
+  const subtitle = "Your Design System";
   const text = title + subtitle;
 
   const interMedium = await loadGoogleFont("Inter", 500, text);
@@ -59,7 +59,7 @@ export default async function Image() {
             color: "#737373",
           }}
         >
-          The Foundation for your Design System
+          Your Design System
         </div>
       </div>
     ),
