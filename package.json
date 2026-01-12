@@ -27,7 +27,7 @@
     "prettier": "^3.7.4",
     "semantic-release": "^25.0.2",
     "turbo": "^2.7.2",
-    "typescript": "^5.9.3"
+    "typescript": "~5.8.0"
   },
   "pnpm": {
     "overrides": {

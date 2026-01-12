@@ -1,6 +1,6 @@
 {
   "name": "@kushagradhawan/kookie-ui",
-  "version": "1.0.1",
+  "version": "0.1.126",
   "description": "A modern React component library with beautiful design tokens, flexible theming, and comprehensive documentation",
   "keywords": [
     "react",
@@ -189,7 +189,7 @@
     "react-dom": "^19.0.0",
     "stylelint": "16.6.1",
     "tsd": "^0.33.0",
-    "typescript": "^5.9.3",
+    "typescript": "~5.8.0",
     "typescript-eslint": "^8.18.1",
     "vitest": "^4.0.16"
   },
