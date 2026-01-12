@@ -92,28 +92,9 @@ git commit -m "docs(readme): update installation instructions"
 git commit -m "chore: update dependencies"
 ```
 
-## Automated Release Process
-
-When you push commits to `main`:
-
-1. **semantic-release** analyzes commit messages
-2. Determines version bump based on commit types:
-   - `fix:` → patch (1.0.0 → 1.0.1)
-   - `feat:` → minor (1.0.0 → 1.1.0)
-   - `feat!:` or `BREAKING CHANGE:` → major (1.0.0 → 2.0.0)
-3. Updates `package.json` version
-4. Generates/updates `CHANGELOG.md`
-5. Creates GitHub release with notes
-6. Publishes to npm
-7. Commits changes back to repo
-
 ## Development Workflow
 
 ### 1. Clone and Setup
-
-**Requirements:**
-- Node.js ≥ 22.14.0
-- pnpm ≥ 10.0.0
 
 ```bash
 git clone https://github.com/KushagraDhawan1997/kookie-ui.git
@@ -157,7 +138,7 @@ BREAKING CHANGE: describe what breaks and how to migrate"
 git push origin feat/your-feature-name
 ```
 
-Create a pull request on GitHub. Once merged to `main`, semantic-release will handle versioning and publishing automatically.
+Create a pull request on GitHub. Once merged to `main`, the package will be automatically published to npm with a patch version bump.
 
 ## Commit Message Tips
 
@@ -181,5 +162,4 @@ If you have questions about contributing or commit conventions, please open an i
 
 - [Conventional Commits Specification](https://www.conventionalcommits.org/)
 - [Semantic Versioning](https://semver.org/)
-- [semantic-release Documentation](https://semantic-release.gitbook.io/)
 

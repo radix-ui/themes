@@ -1,6 +1,10 @@
 name: Publish Package
 
 on:
+  # Publish on release creation
+  release:
+    types: [published]
+  # Also publish on pushes to main (for continuous updates)
   push:
     branches: [main]
     paths: ['packages/kookie-ui/**']
@@ -11,13 +15,10 @@ jobs:
     permissions:
       id-token: write
       contents: write
-      issues: write
-      pull-requests: write
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: false
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
@@ -27,8 +28,14 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '20'
           cache: 'pnpm'
+
+      - name: Ensure npm CLI supports OIDC
+        run: npm install -g npm@latest
+
+      - name: Configure npm registry
+        run: npm config set registry https://registry.npmjs.org/
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -38,15 +45,46 @@ jobs:
           cd packages/kookie-ui
           pnpm build
 
-      - name: Lint package
+      - name: Auto-increment version (if not a release)
+        if: github.event_name != 'release'
         run: |
           cd packages/kookie-ui
-          pnpm lint
+          npm version patch --no-git-tag-version
 
-      - name: Semantic Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Get version
+        id: version
         run: |
           cd packages/kookie-ui
-          npx semantic-release
+          VERSION=$(node -p 'require("./package.json").version')
+          echo "Extracted version: $VERSION"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Check if version exists on NPM
+        id: check_version
+        run: |
+          cd packages/kookie-ui
+          VERSION="${{ steps.version.outputs.version }}"
+          echo "Checking if version $VERSION exists on NPM..."
+          if npm view @kushagradhawan/kookie-ui@$VERSION version 2>/dev/null; then
+            echo "Version $VERSION already exists on NPM"
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "Version $VERSION does not exist on NPM - proceeding with publish"
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+          echo "Check result: $(cat $GITHUB_OUTPUT | grep exists)"
+
+      - name: Publish to NPM
+        if: steps.check_version.outputs.exists == 'false'
+        run: |
+          cd packages/kookie-ui
+          npm publish --access public
+
+      - name: Commit version bump
+        if: github.event_name != 'release' && steps.check_version.outputs.exists == 'false'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add packages/kookie-ui/package.json
+          git commit -m "chore: bump version to ${{ steps.version.outputs.version }}" || exit 0
+          git push

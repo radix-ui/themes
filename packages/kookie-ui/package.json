@@ -1,6 +1,6 @@
 {
   "name": "@kushagradhawan/kookie-ui",
-  "version": "1.0.2",
+  "version": "0.1.126",
   "description": "A modern React component library with beautiful design tokens, flexible theming, and comprehensive documentation",
   "keywords": [
     "react",
@@ -126,6 +126,7 @@
     "lint:ts": "tsc --noEmit",
     "lint:css": "stylelint \"src/**/*.css\"",
     "clean": "rm -rf .turbo node_modules dist tokens layout *.css",
+    "prepublishOnly": "pnpm lint",
     "release": "node scripts/release.js",
     "release:patch": "node scripts/release.js patch",
     "release:minor": "node scripts/release.js minor",
