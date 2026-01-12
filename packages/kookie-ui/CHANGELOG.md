@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/KushagraDhawan1997/kookie-ui/compare/v1.0.0...v1.0.1) (2026-01-12)
+
+
+### Bug Fixes
+
+* **dropdown:** reduce CSS specificity for drill-down animations ([45bb376](https://github.com/KushagraDhawan1997/kookie-ui/commit/45bb376c3ae440729e517c34c51a90d047ebafe9))
+
 # 1.0.0 (2026-01-12)
 
 
