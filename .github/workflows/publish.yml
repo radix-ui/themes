@@ -38,6 +38,11 @@ jobs:
           cd packages/kookie-ui
           pnpm build
 
+      - name: Lint package
+        run: |
+          cd packages/kookie-ui
+          pnpm lint
+
       - name: Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
