@@ -66,6 +66,7 @@ function DrillDownRoot({ children }: { children: React.ReactNode }) {
     <div
       className="rt-DropdownMenuDrillDownRoot"
       data-drill-down-active={drillDown.isRoot ? undefined : true}
+      data-animation-direction={drillDown.animationDirection ?? undefined}
     >
       {children}
     </div>
@@ -556,6 +557,7 @@ const DropdownMenuSubContent = React.forwardRef<
         role="menu"
         aria-label={typeof subContext.label === 'string' ? subContext.label : undefined}
         data-drill-down-active={isActive ? true : undefined}
+        data-animation-direction={drillDown.animationDirection ?? undefined}
         className={classNames(
           'rt-DropdownMenuDrillDownPanel',
           className,

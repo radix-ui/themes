@@ -95,6 +95,17 @@
   }
 }
 
+/* Drill-down menu keyframes */
+@keyframes rt-drill-down-enter-from-right {
+  from { opacity: 0; transform: translateX(30%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes rt-drill-down-enter-from-left {
+  from { opacity: 0; transform: translateX(-30%); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
 /* Dialog keyframes (centralized) */
 @keyframes rt-dialog-overlay-no-op {
   from { opacity: 1; }

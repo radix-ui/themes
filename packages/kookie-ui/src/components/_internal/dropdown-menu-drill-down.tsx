@@ -111,6 +111,8 @@ function resolveResponsiveValue<T>(
 // DrillDown Context
 // ============================================================================
 
+type AnimationDirection = 'forward' | 'backward' | null;
+
 interface DrillDownContextValue {
   /** Current submenu behavior mode */
   behavior: SubmenuBehavior;
@@ -130,6 +132,8 @@ interface DrillDownContextValue {
   isRoot: boolean;
   /** The currently active submenu ID (or null if at root) */
   currentId: string | null;
+  /** Current animation direction for transitions */
+  animationDirection: AnimationDirection;
 }
 
 const DrillDownContext = React.createContext<DrillDownContextValue | null>(null);
@@ -142,6 +146,7 @@ interface DrillDownProviderProps {
 function DrillDownProvider({ children, submenuBehavior }: DrillDownProviderProps) {
   const { breakpoint, ready } = useBreakpoint();
   const [stack, setStack] = React.useState<string[]>([]);
+  const [animationDirection, setAnimationDirection] = React.useState<AnimationDirection>(null);
 
   // Resolve the current behavior based on breakpoint
   const behavior = React.useMemo(
@@ -154,20 +159,24 @@ function DrillDownProvider({ children, submenuBehavior }: DrillDownProviderProps
   React.useEffect(() => {
     if (prevBehaviorRef.current === 'drill-down' && behavior === 'cascade') {
       setStack([]);
+      setAnimationDirection(null);
     }
     prevBehaviorRef.current = behavior;
   }, [behavior]);
 
   const push = React.useCallback((id: string) => {
+    setAnimationDirection('forward');
     setStack((prev) => [...prev, id]);
   }, []);
 
   const pop = React.useCallback(() => {
+    setAnimationDirection('backward');
     setStack((prev) => prev.slice(0, -1));
   }, []);
 
   const reset = React.useCallback(() => {
     setStack([]);
+    setAnimationDirection(null);
   }, []);
 
   const isActive = React.useCallback(
@@ -189,8 +198,9 @@ function DrillDownProvider({ children, submenuBehavior }: DrillDownProviderProps
       isActive,
       isRoot: stack.length === 0,
       currentId: stack.length > 0 ? stack[stack.length - 1] : null,
+      animationDirection,
     }),
-    [behavior, ready, stack, push, pop, reset, isActive]
+    [behavior, ready, stack, push, pop, reset, isActive, animationDirection]
   );
 
   return <DrillDownContext.Provider value={value}>{children}</DrillDownContext.Provider>;
@@ -239,4 +249,4 @@ export {
   resolveResponsiveValue,
 };
 
-export type { SubmenuBehavior, DrillDownContextValue, SubContextValue };
+export type { SubmenuBehavior, DrillDownContextValue, SubContextValue, AnimationDirection };

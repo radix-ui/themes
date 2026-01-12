@@ -499,9 +499,11 @@ Dropdown Menu follows the [WAI-ARIA Menu Button pattern](https://www.w3.org/WAI/
 - Integrated `ScrollArea` for long menus
 - `shortcut` prop for keyboard shortcut display using `Kbd` component
 - Theme integration for accent colors and materials
-- `submenuBehavior` prop for drill-down navigation on mobile
-- `label` prop on `Sub` for custom back button text
-- Responsive submenu behavior with breakpoint-based switching
+- **Drill-down submenu behavior** via `submenuBehavior` prop for mobile-friendly navigation
+- `label` prop on `Sub` for custom back button text in drill-down mode
+- **Responsive submenu behavior** with breakpoint-based switching between cascade and drill-down modes
+- **Drill-down animations** with direction-aware slide transitions (slides from right when entering submenu, from left when going back)
+- Respects `prefers-reduced-motion` for drill-down animations
 
 ### Deprecated
 
