@@ -27,6 +27,13 @@ import type { MarginProps } from '../props/margin.props.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 import type { GetPropDefTypes } from '../props/prop-def.js';
 
+/**
+ * Pre-compiled regex for className sanitization.
+ * Matches size classes like "rt-r-size-1", "rt-r-size-2", etc.
+ * Pre-compiling avoids regex compilation on every render.
+ */
+const SIZE_CLASS_REGEX = /^rt-r-size-\d$/;
+
 type TextFieldVariant = (typeof textFieldRootPropDefs.variant.values)[number];
 type ComboboxValue = string | null;
 /**
@@ -97,15 +104,33 @@ type ComboboxRootOwnProps = GetPropDefTypes<typeof comboboxRootPropDefs> & {
 };
 
 /**
- * Internal context shared by all sub-components to avoid prop drilling.
+ * Split contexts to minimize re-renders. Each context changes independently:
+ * - ConfigContext: Static config that rarely changes (size, color, placeholders, etc.)
+ * - SelectionContext: Changes when user selects an item
+ * - SearchContext: Changes on every keystroke in the search input
+ * - NavigationContext: Changes during keyboard navigation
  */
-interface ComboboxContextValue extends ComboboxRootOwnProps {
+
+/** Static configuration - rarely changes after mount */
+interface ComboboxConfigContextValue {
+  size?: ComboboxRootOwnProps['size'];
+  highContrast?: boolean;
+  placeholder?: string;
+  searchPlaceholder?: string;
+  filter?: CommandFilter;
+  shouldFilter?: boolean;
+  loop?: boolean;
+  disabled?: boolean;
+  resetSearchOnSelect?: boolean;
+  color?: ComboboxRootOwnProps['color'];
+  listboxId: string;
+}
+
+/** Selection state - changes when user picks an option */
+interface ComboboxSelectionContextValue {
   open: boolean;
   setOpen: (open: boolean) => void;
   value: ComboboxValue;
-  setValue: (value: ComboboxValue) => void;
-  searchValue: string;
-  setSearchValue: (value: string) => void;
   /** Label registered by the selected item */
   selectedLabel?: string;
   /** Resolved display value (already computed from string or function) */
@@ -113,22 +138,71 @@ interface ComboboxContextValue extends ComboboxRootOwnProps {
   registerItemLabel: (value: string, label: string) => void;
   unregisterItemLabel: (value: string) => void;
   handleSelect: (value: string) => void;
-  listboxId: string;
+}
+
+/** Search state - changes on every keystroke */
+interface ComboboxSearchContextValue {
+  searchValue: string;
+  setSearchValue: (value: string) => void;
+}
+
+/** Navigation state - changes during keyboard navigation */
+interface ComboboxNavigationContextValue {
   activeDescendantId: string | undefined;
   setActiveDescendantId: (id: string | undefined) => void;
 }
 
-const ComboboxContext = React.createContext<ComboboxContextValue | null>(null);
+const ComboboxConfigContext = React.createContext<ComboboxConfigContextValue | null>(null);
+const ComboboxSelectionContext = React.createContext<ComboboxSelectionContextValue | null>(null);
+const ComboboxSearchContext = React.createContext<ComboboxSearchContextValue | null>(null);
+const ComboboxNavigationContext = React.createContext<ComboboxNavigationContextValue | null>(null);
 
 /**
- * Utility hook that ensures consumers are wrapped in Combobox.Root.
+ * Utility hooks that ensure consumers are wrapped in Combobox.Root.
+ * Components should use only the contexts they need to minimize re-renders.
  */
-const useComboboxContext = (caller: string) => {
-  const ctx = React.useContext(ComboboxContext);
+const useComboboxConfigContext = (caller: string) => {
+  const ctx = React.useContext(ComboboxConfigContext);
   if (!ctx) {
     throw new Error(`${caller} must be used within Combobox.Root`);
   }
   return ctx;
+};
+
+const useComboboxSelectionContext = (caller: string) => {
+  const ctx = React.useContext(ComboboxSelectionContext);
+  if (!ctx) {
+    throw new Error(`${caller} must be used within Combobox.Root`);
+  }
+  return ctx;
+};
+
+const useComboboxSearchContext = (caller: string) => {
+  const ctx = React.useContext(ComboboxSearchContext);
+  if (!ctx) {
+    throw new Error(`${caller} must be used within Combobox.Root`);
+  }
+  return ctx;
+};
+
+const useComboboxNavigationContext = (caller: string) => {
+  const ctx = React.useContext(ComboboxNavigationContext);
+  if (!ctx) {
+    throw new Error(`${caller} must be used within Combobox.Root`);
+  }
+  return ctx;
+};
+
+/**
+ * Combined context hook for components that need multiple contexts.
+ * Use sparingly - prefer individual context hooks when possible.
+ */
+const useComboboxContext = (caller: string) => {
+  const config = useComboboxConfigContext(caller);
+  const selection = useComboboxSelectionContext(caller);
+  const search = useComboboxSearchContext(caller);
+  const navigation = useComboboxNavigationContext(caller);
+  return { ...config, ...selection, ...search, ...navigation };
 };
 
 /**
@@ -224,6 +298,9 @@ const ComboboxRoot: React.FC<ComboboxRootProps> = (props) => {
 
   const handleSelect = React.useCallback(
     (nextValue: string) => {
+      // Batch state updates to minimize re-renders
+      // React 18+ automatically batches these, but we use flushSync-free pattern
+      // to ensure predictable update order
       setValue(nextValue);
       setOpen(false);
       if (resetSearchOnSelect) {
@@ -258,7 +335,10 @@ const ComboboxRoot: React.FC<ComboboxRootProps> = (props) => {
     return displayValueProp;
   }, [displayValueProp, value]);
 
-  const contextValue = React.useMemo<ComboboxContextValue>(
+  // Split context values for optimal re-render performance
+  // Each context only triggers re-renders for components that use it
+
+  const configContextValue = React.useMemo<ComboboxConfigContextValue>(
     () => ({
       size,
       highContrast,
@@ -270,55 +350,53 @@ const ComboboxRoot: React.FC<ComboboxRootProps> = (props) => {
       disabled,
       resetSearchOnSelect,
       color,
-      resolvedDisplayValue,
+      listboxId,
+    }),
+    [size, highContrast, placeholder, searchPlaceholder, filter, shouldFilter, loop, disabled, resetSearchOnSelect, color, listboxId],
+  );
+
+  const selectionContextValue = React.useMemo<ComboboxSelectionContextValue>(
+    () => ({
       open,
       setOpen,
       value,
-      setValue,
-      searchValue,
-      setSearchValue,
       selectedLabel,
+      resolvedDisplayValue,
       registerItemLabel,
       unregisterItemLabel,
       handleSelect,
-      listboxId,
+    }),
+    [open, setOpen, value, selectedLabel, resolvedDisplayValue, registerItemLabel, unregisterItemLabel, handleSelect],
+  );
+
+  const searchContextValue = React.useMemo<ComboboxSearchContextValue>(
+    () => ({
+      searchValue,
+      setSearchValue,
+    }),
+    [searchValue, setSearchValue],
+  );
+
+  const navigationContextValue = React.useMemo<ComboboxNavigationContextValue>(
+    () => ({
       activeDescendantId,
       setActiveDescendantId,
     }),
-    [
-      size,
-      highContrast,
-      placeholder,
-      searchPlaceholder,
-      filter,
-      shouldFilter,
-      loop,
-      disabled,
-      resetSearchOnSelect,
-      color,
-      resolvedDisplayValue,
-      open,
-      setOpen,
-      value,
-      setValue,
-      searchValue,
-      setSearchValue,
-      selectedLabel,
-      registerItemLabel,
-      unregisterItemLabel,
-      handleSelect,
-      listboxId,
-      activeDescendantId,
-      setActiveDescendantId,
-    ],
+    [activeDescendantId, setActiveDescendantId],
   );
 
   return (
-    <ComboboxContext.Provider value={contextValue}>
-      <Popover.Root open={open} onOpenChange={setOpen} {...rootProps}>
-        {children}
-      </Popover.Root>
-    </ComboboxContext.Provider>
+    <ComboboxConfigContext.Provider value={configContextValue}>
+      <ComboboxSelectionContext.Provider value={selectionContextValue}>
+        <ComboboxSearchContext.Provider value={searchContextValue}>
+          <ComboboxNavigationContext.Provider value={navigationContextValue}>
+            <Popover.Root open={open} onOpenChange={setOpen} {...rootProps}>
+              {children}
+            </Popover.Root>
+          </ComboboxNavigationContext.Provider>
+        </ComboboxSearchContext.Provider>
+      </ComboboxSelectionContext.Provider>
+    </ComboboxConfigContext.Provider>
   );
 };
 ComboboxRoot.displayName = 'Combobox.Root';
@@ -332,9 +410,13 @@ interface ComboboxTriggerProps extends NativeTriggerProps, MarginProps, Combobox
  * syncing size/highContrast from Root while exposing select-like states.
  */
 const ComboboxTrigger = React.forwardRef<ComboboxTriggerElement, ComboboxTriggerProps>((props, forwardedRef) => {
-  const context = useComboboxContext('Combobox.Trigger');
+  // Use specific contexts to minimize re-renders
+  const configContext = useComboboxConfigContext('Combobox.Trigger');
+  const selectionContext = useComboboxSelectionContext('Combobox.Trigger');
+  const navigationContext = useComboboxNavigationContext('Combobox.Trigger');
+
   const { children, className, placeholder, disabled, readOnly, error, loading, color, radius, ...triggerProps } = extractProps(
-    { size: context.size, highContrast: context.highContrast, ...props },
+    { size: configContext.size, highContrast: configContext.highContrast, ...props },
     { size: comboboxRootPropDefs.size, highContrast: comboboxRootPropDefs.highContrast },
     comboboxTriggerPropDefs,
     marginPropDefs,
@@ -343,29 +425,29 @@ const ComboboxTrigger = React.forwardRef<ComboboxTriggerElement, ComboboxTrigger
   // Extract material and panelBackground separately since they need to be passed as data attributes
   const { material, panelBackground } = props;
 
-  const isDisabled = disabled ?? context.disabled;
+  const isDisabled = disabled ?? configContext.disabled;
 
   // Use color from props or fall back to context color
-  const resolvedColor = color ?? context.color;
+  const resolvedColor = color ?? configContext.color;
 
   // Comprehensive ARIA attributes for combobox pattern (WAI-ARIA 1.2)
   const ariaProps = React.useMemo(
     () => ({
       role: 'combobox' as const,
-      'aria-expanded': context.open,
+      'aria-expanded': selectionContext.open,
       'aria-disabled': isDisabled || undefined,
       'aria-haspopup': 'listbox' as const,
-      'aria-controls': context.open ? context.listboxId : undefined,
-      'aria-activedescendant': context.open ? context.activeDescendantId : undefined,
+      'aria-controls': selectionContext.open ? configContext.listboxId : undefined,
+      'aria-activedescendant': selectionContext.open ? navigationContext.activeDescendantId : undefined,
       'aria-autocomplete': 'list' as const,
     }),
-    [context.open, context.listboxId, context.activeDescendantId, isDisabled],
+    [selectionContext.open, configContext.listboxId, navigationContext.activeDescendantId, isDisabled],
   );
 
   const defaultContent = (
     <>
       <span className="rt-SelectTriggerInner">
-        <ComboboxValue placeholder={placeholder ?? context.placeholder} />
+        <ComboboxValue placeholder={placeholder ?? configContext.placeholder} />
       </span>
       {loading ? (
         <div className="rt-SelectIcon rt-SelectLoadingIcon" aria-hidden="true">
@@ -414,14 +496,16 @@ interface ComboboxValueProps extends React.ComponentPropsWithoutRef<'span'> {
 /**
  * Value mirrors Select.Value by showing the selected item's label
  * or falling back to placeholder text supplied by the consumer or context.
- * 
+ *
  * Priority: resolvedDisplayValue (explicit) > selectedLabel (from items) > raw value > children > placeholder
  */
 const ComboboxValue = React.forwardRef<ComboboxValueElement, ComboboxValueProps>(({ placeholder, children, className, ...valueProps }, forwardedRef) => {
-  const context = useComboboxContext('Combobox.Value');
+  // Only use the contexts we need - config for placeholder, selection for value display
+  const configContext = useComboboxConfigContext('Combobox.Value');
+  const selectionContext = useComboboxSelectionContext('Combobox.Value');
   // Priority: explicit displayValue (resolved) > registered label > raw value
-  const displayValue = context.resolvedDisplayValue ?? context.selectedLabel ?? context.value ?? undefined;
-  const fallback = placeholder ?? context.placeholder;
+  const displayValue = selectionContext.resolvedDisplayValue ?? selectionContext.selectedLabel ?? selectionContext.value ?? undefined;
+  const fallback = placeholder ?? configContext.placeholder;
   return (
     <span {...valueProps} ref={forwardedRef} className={classNames('rt-ComboboxValue', className)}>
       {displayValue ?? children ?? fallback}
@@ -440,27 +524,29 @@ interface ComboboxContentProps extends Omit<ComponentPropsWithout<typeof Popover
  * and instantiating cmdk's Command list for roving focus + filtering.
  */
 const ComboboxContent = React.forwardRef<ComboboxContentElement, ComboboxContentProps>((props, forwardedRef) => {
-  const context = useComboboxContext('Combobox.Content');
+  // Only use config context - Content doesn't need selection/search/navigation state
+  const configContext = useComboboxConfigContext('Combobox.Content');
   const themeContext = useThemeContext();
   const effectiveMaterial = themeContext.panelBackground;
 
-  const sizeProp = props.size ?? context.size ?? comboboxContentPropDefs.size.default;
+  const sizeProp = props.size ?? configContext.size ?? comboboxContentPropDefs.size.default;
   const variantProp = props.variant ?? comboboxContentPropDefs.variant.default;
-  const highContrastProp = props.highContrast ?? context.highContrast ?? comboboxContentPropDefs.highContrast.default;
+  const highContrastProp = props.highContrast ?? configContext.highContrast ?? comboboxContentPropDefs.highContrast.default;
 
   const { className, children, color, forceMount, container, ...contentProps } = extractProps(
     { ...props, size: sizeProp, variant: variantProp, highContrast: highContrastProp },
     comboboxContentPropDefs,
   );
-  const resolvedColor = color || context.color || themeContext.accentColor;
+  const resolvedColor = color || configContext.color || themeContext.accentColor;
   
   // Memoize className sanitization to avoid string operations on every render
+  // Uses pre-compiled SIZE_CLASS_REGEX for better performance
   const sanitizedClassName = React.useMemo(() => {
     if (typeof sizeProp !== 'string') return className;
     return className
       ?.split(/\s+/)
       .filter(Boolean)
-      .filter((token) => !/^rt-r-size-\d$/.test(token))
+      .filter((token) => !SIZE_CLASS_REGEX.test(token))
       .join(' ') || undefined;
   }, [className, sizeProp]);
 
@@ -493,9 +579,9 @@ const ComboboxContent = React.forwardRef<ComboboxContentElement, ComboboxContent
       <Theme asChild>
         <ComboboxContentContext.Provider value={{ variant: variantProp, size: String(sizeProp), color: resolvedColor, material: effectiveMaterial, highContrast: highContrastProp }}>
           <CommandPrimitive
-            loop={context.loop}
-            shouldFilter={context.shouldFilter}
-            filter={context.filter}
+            loop={configContext.loop}
+            shouldFilter={configContext.shouldFilter}
+            filter={configContext.filter}
             className="rt-ComboboxCommand"
           >
             {children}
@@ -522,7 +608,9 @@ interface ComboboxInputProps extends Omit<React.ComponentPropsWithoutRef<typeof 
  * automatic focus management and optional adornments.
  */
 const ComboboxInput = React.forwardRef<ComboboxInputElement, ComboboxInputProps>(({ className, startAdornment, endAdornment, placeholder, variant: inputVariant, value, onValueChange, ...inputProps }, forwardedRef) => {
-  const context = useComboboxContext('Combobox.Input');
+  // Use specific contexts - config for size/placeholder, search for search state
+  const configContext = useComboboxConfigContext('Combobox.Input');
+  const searchContext = useComboboxSearchContext('Combobox.Input');
   const contentContext = useComboboxContentContext();
   const contentVariant = contentContext?.variant ?? 'solid';
   const color = contentContext?.color;
@@ -537,12 +625,12 @@ const ComboboxInput = React.forwardRef<ComboboxInputElement, ComboboxInputProps>
   const textFieldVariant = inputVariant ?? (contentVariant === 'solid' ? 'surface' : 'soft');
 
   // Use controlled search value from context, allow override via props
-  const searchValue = value ?? context.searchValue;
-  const handleSearchChange = onValueChange ?? context.setSearchValue;
+  const searchValue = value ?? searchContext.searchValue;
+  const handleSearchChange = onValueChange ?? searchContext.setSearchValue;
 
   const inputField = (
     <div
-      className={classNames('rt-TextFieldRoot', 'rt-ComboboxInputRoot', `rt-r-size-${context.size}`, `rt-variant-${textFieldVariant}`)}
+      className={classNames('rt-TextFieldRoot', 'rt-ComboboxInputRoot', `rt-r-size-${configContext.size}`, `rt-variant-${textFieldVariant}`)}
       data-accent-color={color}
       data-material={material}
       data-panel-background={material}
@@ -553,7 +641,7 @@ const ComboboxInput = React.forwardRef<ComboboxInputElement, ComboboxInputProps>
         ref={forwardedRef}
         value={searchValue}
         onValueChange={handleSearchChange}
-        placeholder={placeholder ?? context.searchPlaceholder}
+        placeholder={placeholder ?? configContext.searchPlaceholder}
         className={classNames('rt-reset', 'rt-TextFieldInput', className)}
       />
       {endAdornment ? (
@@ -579,7 +667,9 @@ interface ComboboxListProps extends React.ComponentPropsWithoutRef<typeof Comman
  * Also handles aria-activedescendant tracking via a single MutationObserver for all items.
  */
 const ComboboxList = React.forwardRef<ComboboxListElement, ComboboxListProps>(({ className, ...listProps }, forwardedRef) => {
-  const context = useComboboxContext('Combobox.List');
+  // Use specific contexts - config for listboxId, navigation for active descendant
+  const configContext = useComboboxConfigContext('Combobox.List');
+  const navigationContext = useComboboxNavigationContext('Combobox.List');
   const listRef = React.useRef<HTMLDivElement | null>(null);
 
   // Combined ref handling
@@ -595,6 +685,9 @@ const ComboboxList = React.forwardRef<ComboboxListElement, ComboboxListProps>(({
     [forwardedRef],
   );
 
+  // Destructure to get stable reference for effect dependency
+  const { setActiveDescendantId } = navigationContext;
+
   /**
    * Single MutationObserver at List level to track aria-activedescendant.
    * This replaces per-item observers for better performance with large lists.
@@ -606,7 +699,7 @@ const ComboboxList = React.forwardRef<ComboboxListElement, ComboboxListProps>(({
     const updateActiveDescendant = () => {
       const selectedItem = listNode.querySelector('[data-selected="true"], [aria-selected="true"]');
       const itemId = selectedItem?.id;
-      context.setActiveDescendantId(itemId || undefined);
+      setActiveDescendantId(itemId || undefined);
     };
 
     // Initial check
@@ -621,7 +714,7 @@ const ComboboxList = React.forwardRef<ComboboxListElement, ComboboxListProps>(({
     });
 
     return () => observer.disconnect();
-  }, [context.setActiveDescendantId]);
+  }, [setActiveDescendantId]);
 
   return (
     <ScrollArea type="auto" className="rt-ComboboxScrollArea" scrollbars="vertical" size="1">
@@ -629,7 +722,7 @@ const ComboboxList = React.forwardRef<ComboboxListElement, ComboboxListProps>(({
         <CommandPrimitive.List
           {...listProps}
           ref={combinedRef}
-          id={context.listboxId}
+          id={configContext.listboxId}
           role="listbox"
           aria-label="Options"
           className={classNames('rt-ComboboxList', className)}
@@ -709,13 +802,16 @@ function extractTextFromChildren(children: React.ReactNode): string {
 }
 
 const ComboboxItem = React.forwardRef<ComboboxItemElement, ComboboxItemProps>(({ className, children, label, value, disabled, onSelect, keywords, ...itemProps }, forwardedRef) => {
-  const context = useComboboxContext('Combobox.Item');
+  // Use specific contexts - config for disabled, selection for value/registration
+  // This means items only re-render when selection changes, not on search or navigation
+  const configContext = useComboboxConfigContext('Combobox.Item');
+  const selectionContext = useComboboxSelectionContext('Combobox.Item');
   const contentContext = useComboboxContentContext();
-  
+
   // Memoize label extraction to avoid recursive traversal on every render
   const extractedLabel = React.useMemo(() => extractTextFromChildren(children), [children]);
   const itemLabel = label ?? (extractedLabel || String(value));
-  const isSelected = value != null && context.value === value;
+  const isSelected = value != null && selectionContext.value === value;
   const sizeClass = contentContext?.size ? `rt-r-size-${contentContext.size}` : undefined;
 
   // Use provided keywords, or default to the item label for search
@@ -727,7 +823,7 @@ const ComboboxItem = React.forwardRef<ComboboxItemElement, ComboboxItemProps>(({
   const itemId = `combobox-item-${generatedId}`;
 
   // Destructure stable references to avoid effect re-runs when unrelated context values change
-  const { registerItemLabel, unregisterItemLabel, handleSelect: contextHandleSelect } = context;
+  const { registerItemLabel, unregisterItemLabel, handleSelect: contextHandleSelect } = selectionContext;
 
   // Register/unregister label for display in trigger
   React.useEffect(() => {
@@ -745,7 +841,7 @@ const ComboboxItem = React.forwardRef<ComboboxItemElement, ComboboxItemProps>(({
     [contextHandleSelect, onSelect],
   );
 
-  const isDisabled = disabled ?? context.disabled ?? false;
+  const isDisabled = disabled ?? configContext.disabled ?? false;
 
   /**
    * Performance notes:
