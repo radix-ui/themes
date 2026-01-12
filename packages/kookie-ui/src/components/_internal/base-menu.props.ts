@@ -8,6 +8,7 @@ const contentSizes = ['1', '2'] as const;
 const contentVariants = ['solid', 'soft'] as const;
 const panelBackgrounds = ['solid', 'translucent'] as const;
 const materials = ['solid', 'translucent'] as const;
+const submenuBehaviors = ['cascade', 'drill-down'] as const;
 
 const baseMenuContentPropDefs = {
   size: {
@@ -36,6 +37,18 @@ const baseMenuContentPropDefs = {
     values: panelBackgrounds,
     default: undefined,
   },
+  /**
+   * Controls how submenus behave.
+   * - `cascade`: Default cascading behavior where submenus open to the side (portal-based)
+   * - `drill-down`: Mobile-friendly behavior where submenus replace the content inline
+   * Supports responsive values: `{ initial: 'drill-down', md: 'cascade' }`
+   */
+  submenuBehavior: {
+    type: 'enum',
+    values: submenuBehaviors,
+    default: 'cascade',
+    responsive: true,
+  },
   ...colorPropDef,
   ...highContrastPropDef,
 } satisfies {
@@ -43,6 +56,7 @@ const baseMenuContentPropDefs = {
   variant: PropDef<(typeof contentVariants)[number]>;
   material: PropDef<(typeof materials)[number] | undefined>;
   panelBackground: PropDef<(typeof panelBackgrounds)[number] | undefined>;
+  submenuBehavior: PropDef<(typeof submenuBehaviors)[number]>;
 };
 
 const baseMenuItemPropDefs = {
@@ -69,4 +83,5 @@ export {
   baseMenuItemPropDefs,
   baseMenuCheckboxItemPropDefs,
   baseMenuRadioItemPropDefs,
+  submenuBehaviors,
 };
