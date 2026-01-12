@@ -44,3 +44,109 @@
     height: var(--trigger-icon-size-4);
   }
 }
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * DRILL-DOWN MODE                                                                                  *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+/* Root container that holds the main menu items */
+.rt-DropdownMenuDrillDownRoot {
+  display: contents;
+
+  /* When a submenu is active, hide the root menu items */
+  &[data-drill-down-active] {
+    display: none;
+  }
+}
+
+/* Submenu panel in drill-down mode */
+.rt-DropdownMenuDrillDownPanel {
+  display: none;
+
+  /* Only show when this panel is the active one */
+  &[data-drill-down-active] {
+    display: contents;
+  }
+}
+
+/* Back button item */
+.rt-DropdownMenuDrillDownBackItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--base-menu-item-height);
+  padding-top: var(--base-menu-item-padding-y);
+  padding-bottom: var(--base-menu-item-padding-y);
+  padding-inline-start: var(--base-menu-item-padding-left);
+  padding-inline-end: var(--base-menu-item-padding-right);
+  box-sizing: border-box;
+  outline: none;
+  cursor: var(--cursor-menu-item);
+  user-select: none;
+  transition: var(--transition-menu);
+  font-weight: 500;
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--gray-a3);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--focus-8);
+    outline-offset: -2px;
+  }
+
+  /* Enhanced reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+/* Back icon */
+.rt-DropdownMenuDrillDownBackIcon {
+  width: var(--indicator-icon-size-2);
+  height: var(--indicator-icon-size-2);
+  flex-shrink: 0;
+  color: var(--gray-11);
+}
+
+/* Back label */
+.rt-DropdownMenuDrillDownBackLabel {
+  color: var(--gray-12);
+}
+
+/* Solid variant - back button hover */
+.rt-BaseMenuContent:where(.rt-variant-solid) {
+  & .rt-DropdownMenuDrillDownBackItem:hover,
+  & .rt-DropdownMenuDrillDownBackItem:focus-visible {
+    background-color: var(--gray-3);
+  }
+
+  :where([data-panel-background='translucent']) & .rt-DropdownMenuDrillDownBackItem:hover,
+  :where([data-panel-background='translucent']) & .rt-DropdownMenuDrillDownBackItem:focus-visible {
+    background-color: var(--gray-a3);
+  }
+}
+
+/* Soft variant - back button hover */
+.rt-BaseMenuContent:where(.rt-variant-soft) {
+  & .rt-DropdownMenuDrillDownBackItem:hover,
+  & .rt-DropdownMenuDrillDownBackItem:focus-visible {
+    background-color: var(--accent-3);
+  }
+
+  :where([data-panel-background='translucent']) & .rt-DropdownMenuDrillDownBackItem:hover,
+  :where([data-panel-background='translucent']) & .rt-DropdownMenuDrillDownBackItem:focus-visible {
+    background-color: var(--accent-a3);
+  }
+}
+
+/* Forced colors support */
+@media (forced-colors: active) {
+  .rt-DropdownMenuDrillDownBackItem:focus-visible {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}

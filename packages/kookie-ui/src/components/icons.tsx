@@ -54,6 +54,19 @@ const ThickChevronRightIcon = React.forwardRef<IconElement, IconProps>((props, f
 });
 ThickChevronRightIcon.displayName = 'ThickChevronRightIcon';
 
+const ThickChevronLeftIcon = React.forwardRef<IconElement, IconProps>((props, forwardedRef) => {
+  return (
+    <svg width="9" height="9" viewBox="0 0 9 9" fill="currentcolor" xmlns="http://www.w3.org/2000/svg" {...props} ref={forwardedRef}>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M5.76174 0.201711C5.45892 -0.0809141 4.98433 -0.0645489 4.70171 0.238264L1.20171 3.98826C0.932757 4.27642 0.932757 4.72359 1.20171 5.01174L4.70171 8.76174C4.98433 9.06455 5.45892 9.08092 5.76174 8.79829C6.06455 8.51567 6.08091 8.04108 5.79829 7.73826L2.77591 4.5L5.79829 1.26174C6.08091 0.958928 6.06455 0.484337 5.76174 0.201711Z"
+      />
+    </svg>
+  );
+});
+ThickChevronLeftIcon.displayName = 'ThickChevronLeftIcon';
+
 const ThickDotIcon = React.forwardRef<IconElement, IconProps>((props, forwardedRef) => {
   return (
     <svg width="9" height="9" viewBox="0 0 9 9" fill="currentcolor" xmlns="http://www.w3.org/2000/svg" {...props} ref={forwardedRef}>
@@ -63,7 +76,7 @@ const ThickDotIcon = React.forwardRef<IconElement, IconProps>((props, forwardedR
 });
 ThickDotIcon.displayName = 'ThickDotIcon';
 
-export { ChevronDownIcon, ThickCheckIcon, ThickChevronRightIcon, ThickDividerHorizontalIcon, ThickDotIcon };
+export { ChevronDownIcon, ThickCheckIcon, ThickChevronLeftIcon, ThickChevronRightIcon, ThickDividerHorizontalIcon, ThickDotIcon };
 export type { IconProps };
 
 // Additional minimal icons

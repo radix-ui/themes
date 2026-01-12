@@ -12,14 +12,22 @@ import {
   dropdownMenuRadioItemPropDefs,
 } from './dropdown-menu.props.js';
 import { Theme, useThemeContext } from './theme.js';
-import { ChevronDownIcon, ThickCheckIcon, ThickChevronRightIcon, ThickDotIcon } from './icons.js';
+import { ChevronDownIcon, ThickCheckIcon, ThickChevronLeftIcon, ThickChevronRightIcon, ThickDotIcon } from './icons.js';
 import { extractProps } from '../helpers/extract-props.js';
+import {
+  DrillDownProvider,
+  SubContext,
+  useDrillDown,
+  useDrillDownOptional,
+  useSubContext,
+} from './_internal/dropdown-menu-drill-down.js';
+import type { SubmenuBehavior } from './_internal/dropdown-menu-drill-down.js';
 import { requireReactElement } from '../helpers/require-react-element.js';
 import { Kbd } from './kbd.js';
 
 import type { IconProps } from './icons.js';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
-import type { GetPropDefTypes } from '../props/prop-def.js';
+import type { GetPropDefTypes, Responsive } from '../props/prop-def.js';
 
 interface DropdownMenuRootProps
   extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Root> {}
@@ -40,14 +48,52 @@ const DropdownMenuTrigger = React.forwardRef<DropdownMenuTriggerElement, Dropdow
 );
 DropdownMenuTrigger.displayName = 'DropdownMenu.Trigger';
 
-type DropdownMenuContentOwnProps = GetPropDefTypes<typeof dropdownMenuContentPropDefs>;
-type DropdownMenuContentContextValue = DropdownMenuContentOwnProps;
+/**
+ * Internal component that wraps root menu items and handles visibility in drill-down mode.
+ * In drill-down mode, this hides when a submenu is active.
+ */
+function DrillDownRoot({ children }: { children: React.ReactNode }) {
+  const drillDown = useDrillDownOptional();
+
+  // In cascade mode or when no drill-down context, always show
+  if (!drillDown || drillDown.behavior === 'cascade') {
+    return <>{children}</>;
+  }
+
+  // In drill-down mode, hide root when a submenu is active
+  return (
+    <div
+      className="rt-DropdownMenuDrillDownRoot"
+      data-drill-down-active={drillDown.isRoot ? undefined : true}
+    >
+      {children}
+    </div>
+  );
+}
+
+type DropdownMenuContentOwnProps = GetPropDefTypes<typeof dropdownMenuContentPropDefs> & {
+  /**
+   * Controls how submenus behave.
+   * - `cascade`: Default cascading behavior where submenus open to the side (portal-based)
+   * - `drill-down`: Mobile-friendly behavior where submenus replace the content inline
+   * Supports responsive values: `{ initial: 'drill-down', md: 'cascade' }`
+   */
+  submenuBehavior?: Responsive<SubmenuBehavior>;
+};
+type DropdownMenuContentContextValue = Omit<DropdownMenuContentOwnProps, 'submenuBehavior'>;
 const DropdownMenuContentContext = React.createContext<DropdownMenuContentContextValue>({});
 type DropdownMenuContentElement = React.ElementRef<typeof DropdownMenuPrimitive.Content>;
 interface DropdownMenuContentProps
   extends ComponentPropsWithout<typeof DropdownMenuPrimitive.Content, RemovedProps>,
     DropdownMenuContentContextValue {
   container?: React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Portal>['container'];
+  /**
+   * Controls how submenus behave.
+   * - `cascade`: Default cascading behavior where submenus open to the side (portal-based)
+   * - `drill-down`: Mobile-friendly behavior where submenus replace the content inline
+   * Supports responsive values: `{ initial: 'drill-down', md: 'cascade' }`
+   */
+  submenuBehavior?: Responsive<SubmenuBehavior>;
 }
 const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, DropdownMenuContentProps>(
   (props, forwardedRef) => {
@@ -80,6 +126,7 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
       variant = dropdownMenuContentPropDefs.variant.default,
       highContrast = dropdownMenuContentPropDefs.highContrast.default,
       material = memoizedThemeContext.material,
+      submenuBehavior,
     } = props;
     const {
       className,
@@ -89,6 +136,7 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
       forceMount,
       material: _,
       panelBackground: __,
+      submenuBehavior: ___,
       ...contentProps
     } = extractProps(props, dropdownMenuContentPropDefs);
 
@@ -125,7 +173,9 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
                     [size, variant, resolvedColor, highContrast, material],
                   )}
                 >
-                  {children}
+                  <DrillDownProvider submenuBehavior={submenuBehavior}>
+                    <DrillDownRoot>{children}</DrillDownRoot>
+                  </DrillDownProvider>
                 </DropdownMenuContentContext.Provider>
               </div>
             </ScrollArea>
@@ -298,11 +348,51 @@ const DropdownMenuCheckboxItem = React.forwardRef<
 });
 DropdownMenuCheckboxItem.displayName = 'DropdownMenu.CheckboxItem';
 
+// Counter for generating unique submenu IDs
+let subIdCounter = 0;
+function useSubId() {
+  const idRef = React.useRef<string | null>(null);
+  if (idRef.current === null) {
+    idRef.current = `dropdown-sub-${++subIdCounter}`;
+  }
+  return idRef.current;
+}
+
 interface DropdownMenuSubProps
-  extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Sub> {}
-const DropdownMenuSub: React.FC<DropdownMenuSubProps> = (props) => (
-  <DropdownMenuPrimitive.Sub {...props} />
-);
+  extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Sub> {
+  /**
+   * Label displayed in the back button when using drill-down mode.
+   * If not provided, defaults to "Back".
+   */
+  label?: React.ReactNode;
+}
+const DropdownMenuSub: React.FC<DropdownMenuSubProps> = ({ label = 'Back', ...props }) => {
+  const drillDown = useDrillDownOptional();
+  const subId = useSubId();
+
+  // Create context value for SubContent and SubTrigger
+  const subContextValue = React.useMemo(
+    () => ({ id: subId, label }),
+    [subId, label]
+  );
+
+  // In drill-down mode, we don't use Radix's Sub component
+  // We just provide the SubContext and render children
+  if (drillDown?.behavior === 'drill-down') {
+    return (
+      <SubContext.Provider value={subContextValue}>
+        {props.children}
+      </SubContext.Provider>
+    );
+  }
+
+  // In cascade mode, use Radix's Sub component normally
+  return (
+    <SubContext.Provider value={subContextValue}>
+      <DropdownMenuPrimitive.Sub {...props} />
+    </SubContext.Provider>
+  );
+};
 DropdownMenuSub.displayName = 'DropdownMenu.Sub';
 
 type DropdownMenuSubTriggerElement = React.ElementRef<typeof DropdownMenuPrimitive.SubTrigger>;
@@ -312,10 +402,52 @@ const DropdownMenuSubTrigger = React.forwardRef<
   DropdownMenuSubTriggerElement,
   DropdownMenuSubTriggerProps
 >((props, forwardedRef) => {
-  const { className, children, ...subTriggerProps } = props;
+  const { className, children, onClick, ...subTriggerProps } = props;
+  const drillDown = useDrillDownOptional();
+  const subContext = useSubContext();
+
+  // In drill-down mode, render a button that navigates to the submenu
+  if (drillDown?.behavior === 'drill-down' && subContext) {
+    const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+      e.preventDefault();
+      drillDown.push(subContext.id);
+      (onClick as React.MouseEventHandler<HTMLDivElement> | undefined)?.(e);
+    };
+
+    return (
+      <div
+        role="menuitem"
+        tabIndex={0}
+        ref={forwardedRef as React.Ref<HTMLDivElement>}
+        onClick={handleClick}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            drillDown.push(subContext.id);
+          }
+        }}
+        className={classNames(
+          'rt-reset',
+          'rt-BaseMenuItem',
+          'rt-BaseMenuSubTrigger',
+          'rt-DropdownMenuItem',
+          'rt-DropdownMenuSubTrigger',
+          className,
+        )}
+      >
+        {children}
+        <div className="rt-BaseMenuShortcut rt-DropdownMenuShortcut">
+          <ThickChevronRightIcon className="rt-BaseMenuSubTriggerIcon rt-DropdownMenuSubtriggerIcon" />
+        </div>
+      </div>
+    );
+  }
+
+  // In cascade mode, use Radix's SubTrigger
   return (
     <DropdownMenuPrimitive.SubTrigger
       {...subTriggerProps}
+      onClick={onClick as React.MouseEventHandler<HTMLDivElement> | undefined}
       asChild={false}
       ref={forwardedRef}
       className={classNames(
@@ -335,6 +467,56 @@ const DropdownMenuSubTrigger = React.forwardRef<
 });
 DropdownMenuSubTrigger.displayName = 'DropdownMenu.SubTrigger';
 
+// Separator is defined here (before SubContent) because it's used in drill-down mode
+type DropdownMenuSeparatorElement = React.ElementRef<typeof DropdownMenuPrimitive.Separator>;
+interface DropdownMenuSeparatorProps
+  extends ComponentPropsWithout<typeof DropdownMenuPrimitive.Separator, RemovedProps> {}
+const DropdownMenuSeparator = React.forwardRef<
+  DropdownMenuSeparatorElement,
+  DropdownMenuSeparatorProps
+>(({ className, ...props }, forwardedRef) => (
+  <DropdownMenuPrimitive.Separator
+    {...props}
+    asChild={false}
+    ref={forwardedRef}
+    className={classNames('rt-BaseMenuSeparator', 'rt-DropdownMenuSeparator', className)}
+  />
+));
+DropdownMenuSeparator.displayName = 'DropdownMenu.Separator';
+
+/**
+ * Internal component for the drill-down back button.
+ */
+function DrillDownBackItem({ label }: { label: React.ReactNode }) {
+  const drillDown = useDrillDown();
+
+  return (
+    <div
+      role="menuitem"
+      tabIndex={0}
+      onClick={(e) => {
+        e.preventDefault();
+        drillDown.pop();
+      }}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          drillDown.pop();
+        }
+      }}
+      className={classNames(
+        'rt-reset',
+        'rt-BaseMenuItem',
+        'rt-DropdownMenuItem',
+        'rt-DropdownMenuDrillDownBackItem',
+      )}
+    >
+      <ThickChevronLeftIcon className="rt-DropdownMenuDrillDownBackIcon" />
+      <span className="rt-DropdownMenuDrillDownBackLabel">{label}</span>
+    </div>
+  );
+}
+
 type DropdownMenuSubContentElement = React.ElementRef<typeof DropdownMenuPrimitive.SubContent>;
 interface DropdownMenuSubContentProps
   extends ComponentPropsWithout<typeof DropdownMenuPrimitive.SubContent, RemovedProps>,
@@ -351,6 +533,8 @@ const DropdownMenuSubContent = React.forwardRef<
     () => contextValue,
     [contextValue],
   );
+  const drillDown = useDrillDownOptional();
+  const subContext = useSubContext();
 
   const {
     className,
@@ -364,6 +548,30 @@ const DropdownMenuSubContent = React.forwardRef<
     { size, variant, color, highContrast, material, ...props },
     dropdownMenuContentPropDefs,
   );
+
+  // In drill-down mode, render inline instead of in a portal
+  if (drillDown?.behavior === 'drill-down' && subContext) {
+    const isActive = drillDown.isActive(subContext.id);
+
+    return (
+      <div
+        ref={forwardedRef as React.Ref<HTMLDivElement>}
+        role="menu"
+        aria-label={typeof subContext.label === 'string' ? subContext.label : undefined}
+        data-drill-down-active={isActive ? true : undefined}
+        className={classNames(
+          'rt-DropdownMenuDrillDownPanel',
+          className,
+        )}
+      >
+        <DrillDownBackItem label={subContext.label} />
+        <DropdownMenuSeparator />
+        {children}
+      </div>
+    );
+  }
+
+  // In cascade mode, use Portal and Radix's SubContent
   return (
     <DropdownMenuPrimitive.Portal container={container} forceMount={forceMount}>
       <Theme asChild>
@@ -398,22 +606,6 @@ const DropdownMenuSubContent = React.forwardRef<
   );
 });
 DropdownMenuSubContent.displayName = 'DropdownMenu.SubContent';
-
-type DropdownMenuSeparatorElement = React.ElementRef<typeof DropdownMenuPrimitive.Separator>;
-interface DropdownMenuSeparatorProps
-  extends ComponentPropsWithout<typeof DropdownMenuPrimitive.Separator, RemovedProps> {}
-const DropdownMenuSeparator = React.forwardRef<
-  DropdownMenuSeparatorElement,
-  DropdownMenuSeparatorProps
->(({ className, ...props }, forwardedRef) => (
-  <DropdownMenuPrimitive.Separator
-    {...props}
-    asChild={false}
-    ref={forwardedRef}
-    className={classNames('rt-BaseMenuSeparator', 'rt-DropdownMenuSeparator', className)}
-  />
-));
-DropdownMenuSeparator.displayName = 'DropdownMenu.Separator';
 
 type DropdownMenuTriggerIconElement = React.ElementRef<'svg'>;
 interface DropdownMenuTriggerIconProps extends IconProps {}
@@ -457,4 +649,5 @@ export type {
   DropdownMenuSubTriggerProps as SubTriggerProps,
   DropdownMenuSubContentProps as SubContentProps,
   DropdownMenuSeparatorProps as SeparatorProps,
+  SubmenuBehavior,
 };
