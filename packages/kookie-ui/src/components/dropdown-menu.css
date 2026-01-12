@@ -172,16 +172,16 @@
 
 @media (prefers-reduced-motion: no-preference) {
   /* Active panel items animate in based on direction */
-  .rt-DropdownMenuDrillDownPanel:where([data-drill-down-active][data-animation-direction='forward']) > *:not(.rt-DropdownMenuDrillDownPanel) {
+  .rt-DropdownMenuDrillDownPanel:where([data-drill-down-active][data-animation-direction='forward']) > :where(*:not(.rt-DropdownMenuDrillDownPanel)) {
     animation: rt-drill-down-enter-from-right var(--motion-duration-small) var(--motion-ease-smooth);
   }
 
-  .rt-DropdownMenuDrillDownPanel:where([data-drill-down-active][data-animation-direction='backward']) > *:not(.rt-DropdownMenuDrillDownPanel) {
+  .rt-DropdownMenuDrillDownPanel:where([data-drill-down-active][data-animation-direction='backward']) > :where(*:not(.rt-DropdownMenuDrillDownPanel)) {
     animation: rt-drill-down-enter-from-left var(--motion-duration-small) var(--motion-ease-smooth);
   }
 
   /* Root items animate when returning from a submenu */
-  .rt-DropdownMenuDrillDownRoot:where(:not([data-drill-down-active])[data-animation-direction='backward']) > *:not(.rt-DropdownMenuDrillDownPanel) {
+  .rt-DropdownMenuDrillDownRoot:where(:not([data-drill-down-active])[data-animation-direction='backward']) > :where(*:not(.rt-DropdownMenuDrillDownPanel)) {
     animation: rt-drill-down-enter-from-left var(--motion-duration-small) var(--motion-ease-smooth);
   }
 }
