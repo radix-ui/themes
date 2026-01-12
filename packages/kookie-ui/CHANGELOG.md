@@ -1,3 +1,11 @@
+## [1.0.2](https://github.com/KushagraDhawan1997/kookie-ui/compare/v1.0.1...v1.0.2) (2026-01-12)
+
+
+### Bug Fixes
+
+* **deps:** align TypeScript version to 5.9.3 across workspace ([a7541aa](https://github.com/KushagraDhawan1997/kookie-ui/commit/a7541aad15e071e2c983fe8d5ac5b1c35c795d1c))
+* **deps:** downgrade TypeScript to 5.8.3 for typescript-eslint compatibility ([1b19793](https://github.com/KushagraDhawan1997/kookie-ui/commit/1b19793d9dbd2b816da0ba0360832ddc3496762a))
+
 ## [1.0.1](https://github.com/KushagraDhawan1997/kookie-ui/compare/v1.0.0...v1.0.1) (2026-01-12)
 
 
