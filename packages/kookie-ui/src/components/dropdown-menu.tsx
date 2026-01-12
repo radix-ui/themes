@@ -7,6 +7,7 @@ import { DropdownMenu as DropdownMenuPrimitive, Slot } from 'radix-ui';
 import { ScrollArea } from './scroll-area.js';
 import {
   dropdownMenuContentPropDefs,
+  dropdownMenuSubContentPropDefs,
   dropdownMenuItemPropDefs,
   dropdownMenuCheckboxItemPropDefs,
   dropdownMenuRadioItemPropDefs,
@@ -348,14 +349,9 @@ const DropdownMenuCheckboxItem = React.forwardRef<
 });
 DropdownMenuCheckboxItem.displayName = 'DropdownMenu.CheckboxItem';
 
-// Counter for generating unique submenu IDs
-let subIdCounter = 0;
+// Generate unique submenu IDs using React 18's useId for SSR safety
 function useSubId() {
-  const idRef = React.useRef<string | null>(null);
-  if (idRef.current === null) {
-    idRef.current = `dropdown-sub-${++subIdCounter}`;
-  }
-  return idRef.current;
+  return React.useId();
 }
 
 interface DropdownMenuSubProps
@@ -432,6 +428,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
           'rt-BaseMenuSubTrigger',
           'rt-DropdownMenuItem',
           'rt-DropdownMenuSubTrigger',
+          'rt-DropdownMenuDrillDownSubTrigger',
           className,
         )}
       >
@@ -546,7 +543,7 @@ const DropdownMenuSubContent = React.forwardRef<
     ...subContentProps
   } = extractProps(
     { size, variant, color, highContrast, material, ...props },
-    dropdownMenuContentPropDefs,
+    dropdownMenuSubContentPropDefs,
   );
 
   // In drill-down mode, render inline instead of in a portal

@@ -54,21 +54,31 @@
 /* Root container that holds the main menu items */
 .rt-DropdownMenuDrillDownRoot {
   display: contents;
+}
 
-  /* When a submenu is active, hide the root menu items */
-  &[data-drill-down-active] {
-    display: none;
-  }
+/* When a submenu is active, hide the ROOT's direct children (but not nested panels) */
+.rt-DropdownMenuDrillDownRoot:where([data-drill-down-active]) > * {
+  display: none !important;
+}
+
+/* Keep nested panels visible (they use display: contents) */
+.rt-DropdownMenuDrillDownRoot:where([data-drill-down-active]) > :where(.rt-DropdownMenuDrillDownPanel) {
+  display: contents !important;
 }
 
 /* Submenu panel in drill-down mode */
 .rt-DropdownMenuDrillDownPanel {
-  display: none;
+  display: contents;
+}
 
-  /* Only show when this panel is the active one */
-  &[data-drill-down-active] {
-    display: contents;
-  }
+/* Hide children of INACTIVE drill-down panels */
+.rt-DropdownMenuDrillDownPanel:where(:not([data-drill-down-active])) > * {
+  display: none !important;
+}
+
+/* But keep nested panels visible (they use display: contents) */
+.rt-DropdownMenuDrillDownPanel:where(:not([data-drill-down-active])) > :where(.rt-DropdownMenuDrillDownPanel) {
+  display: contents !important;
 }
 
 /* Back button item */
@@ -88,12 +98,7 @@
   transition: var(--transition-menu);
   font-weight: 500;
 
-  &:hover,
-  &:focus-visible {
-    background-color: var(--gray-a3);
-  }
-
-  &:focus-visible {
+  &:where(:focus-visible) {
     outline: 2px solid var(--focus-8);
     outline-offset: -2px;
   }
@@ -109,7 +114,7 @@
   width: var(--indicator-icon-size-2);
   height: var(--indicator-icon-size-2);
   flex-shrink: 0;
-  color: var(--gray-11);
+  color: var(--gray-12);
 }
 
 /* Back label */
@@ -117,35 +122,43 @@
   color: var(--gray-12);
 }
 
-/* Solid variant - back button hover */
+/* Solid variant - drill-down items hover (matches menu item [data-highlighted]) */
 .rt-BaseMenuContent:where(.rt-variant-solid) {
-  & .rt-DropdownMenuDrillDownBackItem:hover,
-  & .rt-DropdownMenuDrillDownBackItem:focus-visible {
-    background-color: var(--gray-3);
-  }
+  & :where(.rt-DropdownMenuDrillDownBackItem:hover),
+  & :where(.rt-DropdownMenuDrillDownBackItem:focus-visible),
+  & :where(.rt-DropdownMenuDrillDownSubTrigger:hover),
+  & :where(.rt-DropdownMenuDrillDownSubTrigger:focus-visible) {
+    background-color: var(--accent-9);
+    color: var(--accent-contrast);
 
-  :where([data-panel-background='translucent']) & .rt-DropdownMenuDrillDownBackItem:hover,
-  :where([data-panel-background='translucent']) & .rt-DropdownMenuDrillDownBackItem:focus-visible {
-    background-color: var(--gray-a3);
+    & :where(.rt-DropdownMenuDrillDownBackIcon),
+    & :where(.rt-DropdownMenuDrillDownBackLabel),
+    & :where(.rt-BaseMenuSubTriggerIcon) {
+      color: var(--accent-contrast);
+    }
   }
 }
 
-/* Soft variant - back button hover */
+/* Soft variant - drill-down items hover (matches menu item [data-highlighted]) */
 .rt-BaseMenuContent:where(.rt-variant-soft) {
-  & .rt-DropdownMenuDrillDownBackItem:hover,
-  & .rt-DropdownMenuDrillDownBackItem:focus-visible {
-    background-color: var(--accent-3);
+  & :where(.rt-DropdownMenuDrillDownBackItem:hover),
+  & :where(.rt-DropdownMenuDrillDownBackItem:focus-visible),
+  & :where(.rt-DropdownMenuDrillDownSubTrigger:hover),
+  & :where(.rt-DropdownMenuDrillDownSubTrigger:focus-visible) {
+    background-color: var(--accent-4);
   }
 
-  :where([data-panel-background='translucent']) & .rt-DropdownMenuDrillDownBackItem:hover,
-  :where([data-panel-background='translucent']) & .rt-DropdownMenuDrillDownBackItem:focus-visible {
-    background-color: var(--accent-a3);
+  :where([data-panel-background='translucent']) & :where(.rt-DropdownMenuDrillDownBackItem:hover),
+  :where([data-panel-background='translucent']) & :where(.rt-DropdownMenuDrillDownBackItem:focus-visible),
+  :where([data-panel-background='translucent']) & :where(.rt-DropdownMenuDrillDownSubTrigger:hover),
+  :where([data-panel-background='translucent']) & :where(.rt-DropdownMenuDrillDownSubTrigger:focus-visible) {
+    background-color: var(--accent-a4);
   }
 }
 
 /* Forced colors support */
 @media (forced-colors: active) {
-  .rt-DropdownMenuDrillDownBackItem:focus-visible {
+  .rt-DropdownMenuDrillDownBackItem:where(:focus-visible) {
     outline: 2px solid Highlight;
     outline-offset: 2px;
   }

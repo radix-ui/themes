@@ -1,24 +1,16 @@
 'use client';
 
 import * as React from 'react';
-import { breakpoints } from '../../props/prop-def.js';
 import type { Breakpoint, Responsive } from '../../props/prop-def.js';
 import type { submenuBehaviors } from './base-menu.props.js';
+import { _BREAKPOINTS } from '../shell.types.js';
 
 type SubmenuBehavior = (typeof submenuBehaviors)[number];
-
-// Breakpoint min-widths matching breakpoints.css
-const BREAKPOINT_VALUES: Record<Exclude<Breakpoint, 'initial'>, number> = {
-  xs: 520,
-  sm: 768,
-  md: 1024,
-  lg: 1280,
-  xl: 1640,
-};
 
 /**
  * Hook to get the current breakpoint based on window width.
  * Returns 'initial' on the server and during initial hydration.
+ * Uses shared breakpoint values from shell.types.js.
  */
 function useBreakpoint(): { breakpoint: Breakpoint; ready: boolean } {
   const [currentBp, setCurrentBp] = React.useState<Breakpoint>('initial');
@@ -27,8 +19,8 @@ function useBreakpoint(): { breakpoint: Breakpoint; ready: boolean } {
   React.useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    const bpKeys = breakpoints.filter((bp) => bp !== 'initial') as Exclude<Breakpoint, 'initial'>[];
-    const queries = bpKeys.map((k) => [k, `(min-width: ${BREAKPOINT_VALUES[k]}px)`] as const);
+    // Use shared breakpoint media queries from shell.types
+    const queries = Object.entries(_BREAKPOINTS) as [keyof typeof _BREAKPOINTS, string][];
     const mqls = queries.map(([k, q]) => [k, window.matchMedia(q)] as const);
 
     const compute = () => {
@@ -62,7 +54,13 @@ function useBreakpoint(): { breakpoint: Breakpoint; ready: boolean } {
       cleanups.forEach((fn) => {
         try {
           fn();
-        } catch {}
+        } catch (e) {
+          // MediaQueryList cleanup can fail in edge cases (e.g., already removed)
+          // Log in development to aid debugging
+          if (process.env.NODE_ENV !== 'production') {
+            console.warn('[DropdownMenu] MediaQueryList cleanup warning:', e);
+          }
+        }
       });
     };
   }, []);

@@ -10,7 +10,8 @@ const panelBackgrounds = ['solid', 'translucent'] as const;
 const materials = ['solid', 'translucent'] as const;
 const submenuBehaviors = ['cascade', 'drill-down'] as const;
 
-const baseMenuContentPropDefs = {
+// Base props shared between Content and SubContent
+const baseMenuSharedPropDefs = {
   size: {
     type: 'enum',
     className: 'rt-r-size',
@@ -37,6 +38,18 @@ const baseMenuContentPropDefs = {
     values: panelBackgrounds,
     default: undefined,
   },
+  ...colorPropDef,
+  ...highContrastPropDef,
+} satisfies {
+  size: PropDef<(typeof contentSizes)[number]>;
+  variant: PropDef<(typeof contentVariants)[number]>;
+  material: PropDef<(typeof materials)[number] | undefined>;
+  panelBackground: PropDef<(typeof panelBackgrounds)[number] | undefined>;
+};
+
+// Content-specific props (includes submenuBehavior)
+const baseMenuContentPropDefs = {
+  ...baseMenuSharedPropDefs,
   /**
    * Controls how submenus behave.
    * - `cascade`: Default cascading behavior where submenus open to the side (portal-based)
@@ -49,8 +62,6 @@ const baseMenuContentPropDefs = {
     default: 'cascade',
     responsive: true,
   },
-  ...colorPropDef,
-  ...highContrastPropDef,
 } satisfies {
   size: PropDef<(typeof contentSizes)[number]>;
   variant: PropDef<(typeof contentVariants)[number]>;
@@ -58,6 +69,9 @@ const baseMenuContentPropDefs = {
   panelBackground: PropDef<(typeof panelBackgrounds)[number] | undefined>;
   submenuBehavior: PropDef<(typeof submenuBehaviors)[number]>;
 };
+
+// SubContent props (no submenuBehavior)
+const baseMenuSubContentPropDefs = baseMenuSharedPropDefs;
 
 const baseMenuItemPropDefs = {
   ...asChildPropDef,
@@ -80,6 +94,7 @@ const baseMenuRadioItemPropDefs = {
 
 export {
   baseMenuContentPropDefs,
+  baseMenuSubContentPropDefs,
   baseMenuItemPropDefs,
   baseMenuCheckboxItemPropDefs,
   baseMenuRadioItemPropDefs,

@@ -94,6 +94,7 @@ The dropdown menu is composed of several parts:
 | `color`           | `AccentColor`               | —         | Accent color for highlighted items. Inherits from theme if not set    |
 | `highContrast`    | `boolean`                   | `false`   | Increases contrast for better visibility                              |
 | `material`        | `'solid' \| 'translucent'`  | —         | Background appearance. Inherits from theme if not set                 |
+| `submenuBehavior` | `'cascade' \| 'drill-down' \| Responsive` | `'cascade'` | How submenus behave. See [Submenu Behavior](#submenu-behavior) |
 | `container`       | `HTMLElement`               | —         | Custom container for the portal                                       |
 | `forceMount`      | `boolean`                   | —         | Forces content to remain in DOM when closed                           |
 | `side`            | `'top' \| 'right' \| 'bottom' \| 'left'` | `'bottom'` | Preferred side relative to trigger           |
@@ -135,6 +136,12 @@ The dropdown menu is composed of several parts:
 | `value`    | `string`      | —       | Unique value for the radio item (required)          |
 | `color`    | `AccentColor` | —       | Accent color for the item                           |
 | `disabled` | `boolean`     | `false` | Prevents interaction when `true`                    |
+
+### Sub
+
+| Prop       | Type        | Default  | Description                                         |
+| ---------- | ----------- | -------- | --------------------------------------------------- |
+| `label`    | `ReactNode` | `'Back'` | Text for the back button in drill-down mode         |
 
 ### SubTrigger
 
@@ -355,6 +362,66 @@ Use `Sub`, `SubTrigger`, and `SubContent` for nested navigation.
 </DropdownMenu.Content>
 ```
 
+## Submenu Behavior
+
+The `submenuBehavior` prop controls how submenus appear and interact. There are two modes:
+
+### Cascade (Default)
+
+Submenus open as floating panels to the side of the trigger, using portals. This is the standard desktop behavior.
+
+```tsx
+<DropdownMenu.Content submenuBehavior="cascade">
+  <DropdownMenu.Sub>
+    <DropdownMenu.SubTrigger>Share</DropdownMenu.SubTrigger>
+    <DropdownMenu.SubContent>
+      <DropdownMenu.Item>Email</DropdownMenu.Item>
+      <DropdownMenu.Item>Messages</DropdownMenu.Item>
+    </DropdownMenu.SubContent>
+  </DropdownMenu.Sub>
+</DropdownMenu.Content>
+```
+
+### Drill-Down
+
+Submenus replace the current menu content inline with a back button, similar to mobile navigation patterns. This prevents horizontal overflow on small screens.
+
+```tsx
+<DropdownMenu.Content submenuBehavior="drill-down">
+  <DropdownMenu.Item>Home</DropdownMenu.Item>
+  <DropdownMenu.Sub label="Settings">
+    <DropdownMenu.SubTrigger>Settings</DropdownMenu.SubTrigger>
+    <DropdownMenu.SubContent>
+      <DropdownMenu.Item>General</DropdownMenu.Item>
+      <DropdownMenu.Item>Privacy</DropdownMenu.Item>
+    </DropdownMenu.SubContent>
+  </DropdownMenu.Sub>
+</DropdownMenu.Content>
+```
+
+The `label` prop on `Sub` sets the back button text. It defaults to "Back" if not provided.
+
+### Responsive
+
+Use a responsive object to switch between behaviors at different breakpoints. This provides the best experience on both mobile and desktop.
+
+```tsx
+<DropdownMenu.Content 
+  submenuBehavior={{ initial: 'drill-down', md: 'cascade' }}
+>
+  <DropdownMenu.Item>Dashboard</DropdownMenu.Item>
+  <DropdownMenu.Sub label="Account">
+    <DropdownMenu.SubTrigger>Account</DropdownMenu.SubTrigger>
+    <DropdownMenu.SubContent>
+      <DropdownMenu.Item>Profile</DropdownMenu.Item>
+      <DropdownMenu.Item>Billing</DropdownMenu.Item>
+    </DropdownMenu.SubContent>
+  </DropdownMenu.Sub>
+</DropdownMenu.Content>
+```
+
+Breakpoint values: `initial` (default), `xs` (520px), `sm` (768px), `md` (1024px), `lg` (1280px), `xl` (1640px).
+
 ## Trigger Icon
 
 Use `TriggerIcon` to add a dropdown indicator to custom triggers.
@@ -399,11 +466,11 @@ Dropdown Menu follows the [WAI-ARIA Menu Button pattern](https://www.w3.org/WAI/
 
 | Key                     | Action                                          |
 | ----------------------- | ----------------------------------------------- |
-| `Space` / `Enter`       | Opens menu from trigger, selects focused item   |
+| `Space` / `Enter`       | Opens menu from trigger, selects focused item. In drill-down mode, navigates into submenu or activates back button. |
 | `Arrow Down`            | Opens menu from trigger, moves focus down       |
 | `Arrow Up`              | Moves focus up, wraps from first to last        |
-| `Arrow Right`           | Opens submenu when focused on SubTrigger        |
-| `Arrow Left`            | Closes submenu, returns focus to SubTrigger     |
+| `Arrow Right`           | Opens submenu when focused on SubTrigger (cascade mode) |
+| `Arrow Left`            | Closes submenu, returns focus to SubTrigger (cascade mode) |
 | `Escape`                | Closes menu and returns focus to trigger        |
 | `Home` / `End`          | Moves focus to first/last item                  |
 | Type character          | Moves focus to item starting with that letter   |
@@ -432,6 +499,9 @@ Dropdown Menu follows the [WAI-ARIA Menu Button pattern](https://www.w3.org/WAI/
 - Integrated `ScrollArea` for long menus
 - `shortcut` prop for keyboard shortcut display using `Kbd` component
 - Theme integration for accent colors and materials
+- `submenuBehavior` prop for drill-down navigation on mobile
+- `label` prop on `Sub` for custom back button text
+- Responsive submenu behavior with breakpoint-based switching
 
 ### Deprecated
 
