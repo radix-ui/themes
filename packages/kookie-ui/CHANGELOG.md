@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/KushagraDhawan1997/kookie-ui/compare/v1.0.2...v1.0.3) (2026-01-12)
+
+
+### Bug Fixes
+
+* **ci:** move linting from prepublishOnly to CI workflow step ([5605080](https://github.com/KushagraDhawan1997/kookie-ui/commit/560508061df0a0f347644bb39c1498279bdf0e23))
+
 ## [1.0.2](https://github.com/KushagraDhawan1997/kookie-ui/compare/v1.0.1...v1.0.2) (2026-01-12)
 
 
