@@ -15,6 +15,7 @@
 ```
 
 Components support layout props directly:
+
 - Spacing: `p`, `px`, `py`, `pt`, `pr`, `pb`, `pl`, `m`, `mx`, `my`, `mt`, `mr`, `mb`, `ml`
 - Sizing: `width`, `height`, `minWidth`, `maxWidth`, `minHeight`, `maxHeight`
 - Position: `position`, `top`, `right`, `bottom`, `left`
@@ -165,13 +166,7 @@ Never hardcode colors. Use theme-aware props:
 Icon buttons require `aria-label`:
 
 ```tsx
-<IconButton
-  variant="soft"
-  size="2"
-  color="gray"
-  highContrast
-  aria-label="Search"
->
+<IconButton variant="soft" size="2" color="gray" highContrast aria-label="Search">
   <HugeiconsIcon icon={SearchIcon} strokeWidth={1.75} />
 </IconButton>
 ```
@@ -253,11 +248,11 @@ Examples are real-world patterns, not variant showcases.
 
 Use use-case names, not prop names:
 
-| ✅ Good | ❌ Bad |
-|---------|--------|
-| Form Submission | Solid Variant |
-| Destructive Confirmation | Red Button |
-| Compact Toolbar | Size 1 |
+| ✅ Good                  | ❌ Bad        |
+| ------------------------ | ------------- |
+| Form Submission          | Solid Variant |
+| Destructive Confirmation | Red Button    |
+| Compact Toolbar          | Size 1        |
 
 ## Code Formatting
 
@@ -301,7 +296,9 @@ Use `variant="classic"` for Cards providing UI context:
 ```tsx
 <Card variant="classic" size="2">
   <Flex justify="between" align="center" p="2">
-    <Text size="2" weight="medium">Dashboard</Text>
+    <Text size="2" weight="medium">
+      Dashboard
+    </Text>
     <IconButton variant="soft" size="2" color="gray" highContrast aria-label="Settings">
       <HugeiconsIcon icon={SettingsIcon} strokeWidth={1.75} />
     </IconButton>
@@ -349,9 +346,9 @@ Kookie UI (based on Radix) is built for accessibility. Don't break it:
 Group Kookie imports together:
 
 ```tsx
-import { Box, Flex, Text, Heading, Button, Card } from "@kushagradhawan/kookie-ui";
-import { HugeiconsIcon } from "@hugeicons/react";
-import { Add01Icon, SearchIcon } from "@hugeicons/core-free-icons";
+import { Box, Flex, Text, Heading, Button, Card } from '@kushagradhawan/kookie-ui';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Add01Icon, SearchIcon } from '@hugeicons/core-free-icons';
 ```
 
 ---
@@ -362,3 +359,441 @@ import { Add01Icon, SearchIcon } from "@hugeicons/core-free-icons";
 - **EXAMPLES_GUIDE**: `/Users/kushagradhawan/Code/EXAMPLES_GUIDE.md`
 - **DESIGN_GUIDE**: `/Users/kushagradhawan/Code/DESIGN_GUIDE.md`
 - **kookie-rules.mdc**: `/Users/kushagradhawan/Code/kookie-ui/apps/docs/.cursor/kookie-rules.mdc`
+
+---
+
+# Frontend Engineering Standards
+
+These rules apply to all frontend code, regardless of framework or design system.
+Follow these conventions even if the user request does not restate them.
+
+---
+
+## 1. Architecture & Code Organization
+
+- Prefer **feature-based architecture**:
+  - Group components, hooks, utils, and API logic by _domain_, not by file type.
+- Keep components small, focused, and predictable.
+- Avoid "God components" — extract logic into hooks/utilities early.
+- Do not create deep nested folder structures — two or three levels max.
+
+### File naming
+
+- Components: **PascalCase.tsx**
+- Hooks: **useSomething.ts**
+- Utilities/types: **camelCase.ts**
+- Avoid default exports for utilities; prefer named exports.
+
+---
+
+## 2. State Management Strategy
+
+- **Server state** → managed by React Query (or framework/server loaders).
+- **Local UI state** → handled with React component state or small hooks.
+- Avoid storing server data in local state; derive it directly from queries.
+- Do not introduce global state stores unless a real cross-feature need emerges.
+
+### Avoid anti-patterns:
+
+- "Prop drilling" beyond 2–3 levels → prefer composition or a small context.
+- Multiple sources of truth for the same data.
+
+---
+
+## 3. Data Fetching & API Boundaries
+
+- All networking logic must live in an **API client layer**, not inline.
+- API responses must be typed (TS interfaces or Zod schemas).
+- Validate or transform responses at the boundary before they enter the UI.
+- Error and loading states must always be handled explicitly.
+- Never use `useEffect` to fetch data that can be handled by React Query or framework tools.
+
+---
+
+## 4. Error Handling Standards
+
+- No empty `catch` blocks.
+- Always surface a meaningful error to the user (toast, message, or UI state).
+- Log technical details to a central utility, not inline `console.log` everywhere.
+- Use React Error Boundaries for isolating failures in large UI areas.
+
+---
+
+## 5. Accessibility (A11y) Standards
+
+- All interactive elements must be:
+  - Keyboard accessible,
+  - Screen-reader friendly,
+  - Semantically correct (`button`, `a`, etc.).
+- Never use `div` or `span` as clickable elements.
+- Provide labels for all form controls.
+- Respect `prefers-reduced-motion` for animations.
+
+---
+
+## 6. Forms & Validation
+
+- Prefer **React Hook Form** (or the established library) for all non-trivial forms.
+- Validation should happen at:
+  - Schema level (Zod/Yup),
+  - UI level (input error props),
+  - And optionally server side.
+- Avoid writing complex form logic with plain `useState`.
+
+---
+
+## 7. Performance Standards
+
+- Avoid premature optimization — but write code that avoids obvious pitfalls.
+- Prefer memoization when:
+  - Passing functions/objects to memoized children,
+  - Doing heavy computations.
+- Avoid storing derived data in state — derive when needed.
+- Use `useTransition` for expensive UI updates that should remain responsive.
+- Lazy-load large modules when practical.
+
+---
+
+## 8. Routing & Navigation Standards
+
+### If Next.js:
+
+- Prefer **Server Components** for data-heavy or static content.
+- Client components are reserved for interactivity, animations, or user-driven data.
+
+### If React Router:
+
+- Co-locate loaders/actions with route components.
+- Don't pass huge props through multiple routes — use loader data instead.
+
+---
+
+## 9. Testing Standards
+
+- Use React Testing Library for:
+  - Behavioral tests,
+  - Accessibility assertions,
+  - Integration flows.
+- Avoid snapshot tests for dynamic UI.
+- Focus tests on:
+  - critical flows,
+  - edge cases,
+  - accessibility,
+  - regressions.
+
+---
+
+## 10. Security Standards
+
+- Validate all external data before using it.
+- Escape potentially unsafe strings before inserting into HTML.
+- Never interpolate raw user input into HTML.
+- Keep all secret keys or tokens out of the frontend environment.
+
+---
+
+## 11. Code Review & Quality
+
+- PRs must be small, scoped, and clearly described.
+- Do not merge code containing:
+  - Inline styling that ignores design-system props,
+  - Manual DOM manipulation without reason,
+  - Deprecated patterns (`useEffect`-fetching, prop drilling, untyped APIs),
+  - Unnecessary complexity.
+- Always refactor code when adding features if it improves maintainability.
+
+---
+
+## 12. Logging & Monitoring
+
+- Use a centralized logging utility (e.g., `log.error`, `log.info`).
+- Never leave stray `console.log` statements.
+- Errors thrown from network/API should be traceable and formatted consistently.
+
+---
+
+## 13. Developer Experience (DX)
+
+- Follow established ESLint, prettier, and TypeScript rules at all times.
+- Maintain consistent formatting and import order.
+- Use barrel files sparingly — only when they improve clarity, not hide structure.
+- Prefer clarity over cleverness.
+
+---
+
+## 14. When In Doubt
+
+- Prefer explicit, declarative, readable code.
+- Follow the established patterns of the codebase.
+- Align with the principles of:
+  - React best practices,
+  - Kookie UI conventions,
+  - Modern frontend engineering standards.
+
+If implementing a feature contradicts these principles, adapt the solution to align with these rules instead of following the original flawed approach directly.
+
+---
+
+# React + TypeScript Standards
+
+Assume: function components, hooks, strict TypeScript, and a focus on correctness, DX, and performance.
+
+When you generate or edit code, **follow these principles even if the user doesn't restate them.**
+
+---
+
+## 1. TypeScript & Types
+
+- **Avoid `any` and `as any`.** Treat them as code smells.
+  - Prefer proper types, generics, or `unknown` plus runtime narrowing.
+  - If you _must_ use `any` (rare), isolate it in a small, well-documented utility.
+
+- **Minimize type assertions (`as Foo`)**.
+  - Prefer proper typing of values at source (e.g., API client types) over casting later.
+  - If using assertions, add a comment why it's safe.
+
+- **Use explicit types for public surfaces:**
+  - Component props: `type Props = { ... }` or `interface Props { ... }`.
+  - Custom hooks return types.
+  - Utility function params/returns.
+
+- **Leverage inference for internals.**
+  - Let TS infer local variables and intermediate values.
+  - Don't over-annotate obvious stuff.
+
+- **No `non-null assertion` (`!`) unless unavoidable.**
+  - Prefer null checks or narrowing. If asserting non-null, justify in a comment and keep the scope tiny.
+
+---
+
+## 2. Component Design
+
+- **Prefer small, focused components.**
+  - Each component should have a single clear responsibility.
+  - Extract subcomponents when JSX gets too nested or props too numerous.
+
+- **Use function components + hooks only. No class components.**
+
+- **Good props design:**
+  - Avoid giant "bags of props". If there are > 7–8 props, consider grouping into objects or refactoring.
+  - Avoid booleans that explode permutations; consider variants or enums.
+
+- **No business logic in JSX.**
+  - Precompute values before the `return`.
+  - Mapping, filtering, complex conditionals → move into well-named helpers.
+
+---
+
+## 3. State Management
+
+- **Keep state as local as possible.**
+  - Start with component state. Only lift state when multiple descendants truly need it.
+  - Avoid premature global state solutions.
+
+- **Avoid prop drilling more than 2–3 levels.**
+  - Options: composition, context (sparingly), or dedicated hooks.
+
+- **Use context carefully.**
+  - Don't shove "everything" into a global context.
+  - Make contexts narrow and purpose-driven (auth, theme, feature-specific etc.).
+  - Always type context values clearly and handle "no provider" cases explicitly.
+
+- **Derived state belongs in selectors/memos, not `useState`.**
+  - No duplicated state that can be computed from existing state/props.
+
+---
+
+## 4. Side Effects & `useEffect`
+
+> Default stance: **avoid `useEffect` unless it's genuinely a side-effect.**
+
+- **Do NOT fetch data in `useEffect` by default.**
+  - Prefer:
+    - Framework loaders / server components (Next.js loader, RSC, etc.), or
+    - Data libraries like React Query / SWR.
+  - Only fall back to `useEffect`+`fetch` for truly ad hoc or one-off cases.
+
+- **UseEffect is for:**
+  - Subscribing/unsubscribing to external systems (websockets, event listeners).
+  - Imperative interactions with non-React APIs (e.g. `document`, `window`, third-party widgets).
+  - Syncing state to external storage (localStorage) in a controlled way.
+
+- **Avoid these anti-patterns in `useEffect`:**
+  - Computing _derived values_ that could live in `useMemo` or plain variables.
+  - Triggering re-renders by setting state from props when it can be computed.
+  - "Syncing" props to state without strong justification.
+
+- **Always define the correct dependencies.**
+  - No empty `[]` when values are used inside.
+  - No disabling of ESLint `react-hooks/exhaustive-deps` just to "make it work".
+  - If you intentionally omit deps, explain why with a comment.
+
+- **Cleanup functions on unmount.**
+  - Remove event listeners, abort fetch controllers, cancel subscriptions, etc.
+
+---
+
+## 5. Data Fetching
+
+- **Prefer declarative data fetching approaches:**
+  - Use React Query / SWR / framework data APIs for server data.
+  - Co-locate queries with the components that need them but keep API clients reusable.
+
+- **No ad-hoc fetch logic repeated everywhere.**
+  - Centralize API client configuration (base URL, interceptors, auth headers).
+  - Reuse typed API methods instead of raw `fetch` calls.
+
+- **Type-safe APIs.**
+  - Define request/response types for each endpoint.
+  - Parse/validate external data (e.g. Zod) at boundaries when reasonable.
+
+- **Handle loading and error states explicitly.**
+  - No "invisible" failures. Surface errors with sensible UI and logging.
+
+---
+
+## 6. Hooks
+
+- **Custom hooks first-class citizen.**
+  - Whenever logic is reused across components, extract into `useXxx` hooks.
+  - Hooks should encapsulate behavior + data, not UI.
+
+- **Hook rules:**
+  - Follow the Rules of Hooks strictly (no conditional calls).
+  - Keep hooks focused; avoid "god hooks" that do too many things.
+
+- **Performance hooks:**
+  - Use `useMemo` and `useCallback` **only** when:
+    - There's a proven/likely perf problem, or
+    - Referencing them in dependencies (`useEffect`, `useMemo`, `useCallback`) requires stable identity.
+  - Avoid sprinkling `useCallback` on every handler.
+
+---
+
+## 7. Performance & Rendering
+
+- **Prefer simplicity first; optimize when needed.**
+
+- When optimizing:
+  - Use `React.memo` on components that:
+    - Are pure, and
+    - Render often with same props, and
+    - Are expensive or numerous.
+  - Stabilize props passed to memoized components (`useMemo` for objects/arrays passed down).
+
+- **Avoid unnecessary re-renders:**
+  - Don't create new inline objects/arrays in JSX in hot paths if children are memoized.
+  - Don't store large derived objects in state; derive them when needed.
+
+- **Code-splitting:**
+  - Use dynamic import / lazy loading for large, rarely used parts (modals, heavy pages).
+
+---
+
+## 8. Styling
+
+- Assume a utility/CSS-in-JS setup (e.g. Tailwind, CSS Modules, or a design system).
+- **Keep styling consistent:**
+  - Use shared components for common patterns (Button, Modal, Input).
+  - Don't inline raw styles when a design-system component exists.
+
+- **No random one-off styles.**
+  - If a pattern repeats, extract it.
+
+- **Avoid deeply nested CSS.**
+  - Prefer composition and small, reusable style units.
+
+---
+
+## 9. Accessibility & UX
+
+- **Semantics first:**
+  - Use proper HTML elements: `button` for clickable, `a` for navigation, lists for lists, headings in order.
+  - No `div`-buttons with click handlers.
+
+- **Keyboard accessibility:**
+  - Ensure focus states are visible.
+  - Support Enter/Space where appropriate.
+  - Manage focus on modals, dialogs, and key flows.
+
+- **ARIA only when needed.**
+  - Don't sprinkle ARIA roles where native semantics suffice.
+  - When using ARIA, follow spec: `aria-*` attributes must make sense.
+
+- **Forms:**
+  - Every input must have a label.
+  - Provide error messages and associate them properly.
+
+---
+
+## 10. Testing
+
+- **Use React Testing Library for component/integration tests.**
+  - Test behavior and user-visible outcomes over implementation details.
+  - Avoid testing internal state or hook internals directly.
+
+- **Prefer fewer high-value tests over many fragile ones.**
+  - Cover critical paths, edge cases, and regressions.
+
+- **No snapshot tests for complex UIs by default.**
+  - Use snapshots for simple, stable outputs only.
+
+---
+
+## 11. Project Structure & DX
+
+- **Co-locate related files.**
+  - Component + subcomponents + hooks + styles live together when it improves cohesion.
+  - Avoid giant "components" or "utils" dumping grounds.
+
+- **Naming:**
+  - Components: `PascalCase`.
+  - Hooks: `useCamelCase`.
+  - Files follow default export name or clear domain name.
+
+- **Imports:**
+  - Use absolute imports where supported.
+  - Group imports: external libs, shared internal, local.
+
+- **Linting & formatting:**
+  - Always respect ESLint and Prettier config.
+  - If a rule is painful, fix the underlying issue or justify changing the rule—don't disable inline without reason.
+
+---
+
+## 12. Error Handling & Logging
+
+- **No empty catch blocks.**
+  - Log errors appropriately, surface user-friendly messages.
+  - Avoid leaking sensitive info to the UI; keep detailed logs to console/monitoring.
+
+- **Use error boundaries where appropriate.**
+  - Wrap large sections/pages that can fail independently.
+
+- **Avoid console noise in production.**
+  - Use logging utilities or environment-guarded logs if needed.
+
+---
+
+## 13. Comments & Documentation
+
+- **Comment "why", not "what".**
+  - Code should explain _what_; comments explain _why_ it's done that way.
+
+- **Document tricky hooks and components.**
+  - Short JSDoc for custom hooks and complex utilities is appreciated.
+  - If there's a non-obvious constraint, document it.
+
+---
+
+## 14. When in Doubt
+
+When there are multiple ways to implement something:
+
+1. Prefer readability and maintainability.
+2. Prefer patterns already established in the codebase.
+3. Avoid clever one-liners that are hard to understand.
+4. Respect the rules above even if the immediate request pushes in a worse direction—nudge the solution toward these standards.
+
+If a user request conflicts with these rules, **adapt the request to fit these principles** rather than ignoring them.
+Le
