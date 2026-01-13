@@ -8,6 +8,55 @@ export default function DropdownMenuTest() {
   const [sideOffset, setSideOffset] = React.useState(1);
   const [alignOffset, setAlignOffset] = React.useState(0);
 
+  const groupedDrilldownTree = (
+    <>
+      <DropdownMenu.Label>Actions</DropdownMenu.Label>
+      <DropdownMenu.Group>
+        <DropdownMenu.Item>New File</DropdownMenu.Item>
+        <DropdownMenu.Item>New Folder</DropdownMenu.Item>
+      </DropdownMenu.Group>
+
+      <DropdownMenu.Separator />
+
+      <DropdownMenu.Label>Navigate</DropdownMenu.Label>
+      <DropdownMenu.Group>
+        <DropdownMenu.Item>Go to File</DropdownMenu.Item>
+        <DropdownMenu.Sub label="Recent Files">
+          <DropdownMenu.SubTrigger>Recent Files</DropdownMenu.SubTrigger>
+          <DropdownMenu.SubContent>
+            <DropdownMenu.Item>document.tsx</DropdownMenu.Item>
+            <DropdownMenu.Item>styles.css</DropdownMenu.Item>
+            <DropdownMenu.Item>index.ts</DropdownMenu.Item>
+            <DropdownMenu.Separator />
+            <DropdownMenu.Sub label="By Type">
+              <DropdownMenu.SubTrigger>By Type</DropdownMenu.SubTrigger>
+              <DropdownMenu.SubContent>
+                <DropdownMenu.Item>TypeScript</DropdownMenu.Item>
+                <DropdownMenu.Item>CSS</DropdownMenu.Item>
+                <DropdownMenu.Item>JSON</DropdownMenu.Item>
+              </DropdownMenu.SubContent>
+            </DropdownMenu.Sub>
+          </DropdownMenu.SubContent>
+        </DropdownMenu.Sub>
+      </DropdownMenu.Group>
+
+      <DropdownMenu.Separator />
+
+      <DropdownMenu.Label>Settings</DropdownMenu.Label>
+      <DropdownMenu.Group>
+        <DropdownMenu.Sub label="Preferences">
+          <DropdownMenu.SubTrigger>Preferences</DropdownMenu.SubTrigger>
+          <DropdownMenu.SubContent>
+            <DropdownMenu.Item>Theme</DropdownMenu.Item>
+            <DropdownMenu.Item>Font Size</DropdownMenu.Item>
+            <DropdownMenu.Item>Keybindings</DropdownMenu.Item>
+          </DropdownMenu.SubContent>
+        </DropdownMenu.Sub>
+        <DropdownMenu.Item>Extensions</DropdownMenu.Item>
+      </DropdownMenu.Group>
+    </>
+  );
+
   return (
     <Box p="6" style={{ minHeight: '100vh' }}>
       <Heading size="6" mb="4">Dropdown Menu - Nested SubMenus Test</Heading>
@@ -15,6 +64,90 @@ export default function DropdownMenuTest() {
       <Text as="p" size="2" color="gray" mb="6">
         Test collision behavior with deeply nested submenus. Resize window to mobile width to see the drill-down behavior.
       </Text>
+
+      {/* Drill-Down with Groups - Variants */}
+      <Box
+        mb="6"
+        p="4"
+        style={{
+          background: 'var(--purple-3)',
+          borderRadius: 'var(--radius-3)',
+          border: '2px solid var(--purple-6)',
+        }}
+      >
+        <Heading size="4" mb="2" color="purple">🧪 Drill-Down with Groups (Variants)</Heading>
+        <Text as="p" size="2" color="gray" mb="4">
+          Same grouped drill-down tree rendered with different <code>variant</code>/<code>color</code> props.
+        </Text>
+
+        <Flex gap="3" wrap="wrap" align="center">
+          <DropdownMenu.Root>
+            <DropdownMenu.Trigger>
+              <Button variant="soft" color="purple">Soft (purple)</Button>
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Content
+              submenuBehavior="drill-down"
+              variant="soft"
+              color="purple"
+              style={{ minWidth: 240 }}
+            >
+              {groupedDrilldownTree}
+            </DropdownMenu.Content>
+          </DropdownMenu.Root>
+
+          <DropdownMenu.Root>
+            <DropdownMenu.Trigger>
+              <Button variant="solid" color="indigo">Solid (indigo)</Button>
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Content
+              submenuBehavior="drill-down"
+              variant="solid"
+              color="indigo"
+              style={{ minWidth: 240 }}
+            >
+              {groupedDrilldownTree}
+            </DropdownMenu.Content>
+          </DropdownMenu.Root>
+
+          <DropdownMenu.Root>
+            <DropdownMenu.Trigger>
+              <Button variant="outline" color="gray">High Contrast</Button>
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Content
+              submenuBehavior="drill-down"
+              variant="soft"
+              color="gray"
+              highContrast
+              style={{ minWidth: 240 }}
+            >
+              {groupedDrilldownTree}
+            </DropdownMenu.Content>
+          </DropdownMenu.Root>
+        </Flex>
+
+        <Text as="p" size="1" color="gray" mt="2">
+          Test: open any menu → click “Recent Files” / “Preferences” → previous items should fully disappear (no sandwiching).
+        </Text>
+      </Box>
+
+      {/* Drill-Down with Groups (Regression Test) */}
+      <Box mb="6" p="4" style={{ background: 'var(--purple-3)', borderRadius: 'var(--radius-3)', border: '2px solid var(--purple-6)' }}>
+        <Heading size="4" mb="2" color="purple">🧪 Drill-Down with Groups</Heading>
+        <Text as="p" size="2" color="gray" mb="4">
+          Testing drill-down submenus inside <code>DropdownMenu.Group</code> - verifies nested panels work correctly.
+        </Text>
+        <DropdownMenu.Root>
+          <DropdownMenu.Trigger>
+            <Button variant="soft" color="purple">Menu with Groups</Button>
+          </DropdownMenu.Trigger>
+          <DropdownMenu.Content submenuBehavior="drill-down" style={{ minWidth: 220 }}>
+            {groupedDrilldownTree}
+          </DropdownMenu.Content>
+        </DropdownMenu.Root>
+        <Text as="p" size="1" color="gray" mt="2">
+          If submenus don't show when clicked, the CSS fix for groups is not working.
+        </Text>
+      </Box>
 
       {/* Native Drill-Down Pattern */}
       <Box mb="6" p="4" style={{ background: 'var(--green-3)', borderRadius: 'var(--radius-3)', border: '2px solid var(--green-6)' }}>

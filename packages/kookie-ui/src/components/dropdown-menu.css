@@ -61,9 +61,19 @@
   display: none !important;
 }
 
-/* Keep nested panels visible (they use display: contents) */
-.rt-DropdownMenuDrillDownRoot:where([data-drill-down-active]) > :where(.rt-DropdownMenuDrillDownPanel) {
+/* Keep nested panels visible (they use display: contents) - uses descendant selector to work with groups */
+.rt-DropdownMenuDrillDownRoot:where([data-drill-down-active]) :where(.rt-DropdownMenuDrillDownPanel) {
   display: contents !important;
+}
+
+/* Keep root-level groups visible so their children (panels) can be shown */
+.rt-DropdownMenuDrillDownRoot:where([data-drill-down-active]) > :where(.rt-BaseMenuGroup) {
+  display: contents !important;
+}
+
+/* When the root is hidden, groups must also hide their non-panel children */
+.rt-DropdownMenuDrillDownRoot:where([data-drill-down-active]) > :where(.rt-BaseMenuGroup) > :where(*:not(.rt-DropdownMenuDrillDownPanel)) {
+  display: none !important;
 }
 
 /* Submenu panel in drill-down mode */
@@ -76,9 +86,19 @@
   display: none !important;
 }
 
-/* But keep nested panels visible (they use display: contents) */
-.rt-DropdownMenuDrillDownPanel:where(:not([data-drill-down-active])) > :where(.rt-DropdownMenuDrillDownPanel) {
+/* But keep nested panels visible (they use display: contents) - uses descendant selector to work with groups */
+.rt-DropdownMenuDrillDownPanel:where(:not([data-drill-down-active])) :where(.rt-DropdownMenuDrillDownPanel) {
   display: contents !important;
+}
+
+/* Keep groups visible so their children (panels) can be shown */
+.rt-DropdownMenuDrillDownPanel:where(:not([data-drill-down-active])) > :where(.rt-BaseMenuGroup) {
+  display: contents !important;
+}
+
+/* When a panel is inactive, groups must also hide their non-panel children */
+.rt-DropdownMenuDrillDownPanel:where(:not([data-drill-down-active])) > :where(.rt-BaseMenuGroup) > :where(*:not(.rt-DropdownMenuDrillDownPanel)) {
+  display: none !important;
 }
 
 /* Back button item */
