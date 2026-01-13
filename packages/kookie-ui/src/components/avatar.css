@@ -392,8 +392,25 @@
 .rt-AvatarImage {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: var(--avatar-object-fit, cover);
   border-radius: inherit;
+}
+
+/* Object-fit variants */
+.rt-AvatarRoot:where(.rt-r-fit-cover) {
+  --avatar-object-fit: cover;
+}
+.rt-AvatarRoot:where(.rt-r-fit-contain) {
+  --avatar-object-fit: contain;
+}
+.rt-AvatarRoot:where(.rt-r-fit-fill) {
+  --avatar-object-fit: fill;
+}
+.rt-AvatarRoot:where(.rt-r-fit-scale-down) {
+  --avatar-object-fit: scale-down;
+}
+.rt-AvatarRoot:where(.rt-r-fit-none) {
+  --avatar-object-fit: none;
 }
 
 .rt-AvatarFallback {

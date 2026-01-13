@@ -406,7 +406,86 @@ export function AvatarExamples() {
 
       <Separator size="4" />
 
-      {/* Example 6: Invite Members */}
+      {/* Example 6: Company Logos */}
+      <Flex direction="column" gap="4">
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Company Logos</SectionHeader.Title>
+            <SectionHeader.Description>
+              Use fit="contain" to display logos without cropping. This ensures the entire logo is visible within the avatar bounds.
+            </SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
+        <PreviewBlock background="none" height="30rem">
+          <Card variant="classic" size="2" style={{ minWidth: 320, maxWidth: 400 }}>
+            <Flex direction="column" gap="3">
+              <Flex justify="between" align="center">
+                <Flex gap="3" align="center">
+                  <Avatar
+                    size="4"
+                    src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
+                    fallback="AZ"
+                    fit="contain"
+                    variant="surface"
+                  />
+                  <Flex direction="column" gap="0">
+                    <Text size="2" weight="medium">Amazon</Text>
+                    <Text size="1" color="gray">E-commerce</Text>
+                  </Flex>
+                </Flex>
+              </Flex>
+              <Separator size="4" />
+              <Flex justify="between" align="center">
+                <Flex gap="3" align="center">
+                  <Avatar
+                    size="4"
+                    src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
+                    fallback="GO"
+                    fit="contain"
+                    variant="surface"
+                  />
+                  <Flex direction="column" gap="0">
+                    <Text size="2" weight="medium">Google</Text>
+                    <Text size="1" color="gray">Technology</Text>
+                  </Flex>
+                </Flex>
+              </Flex>
+              <Separator size="4" />
+              <Flex justify="between" align="center">
+                <Flex gap="3" align="center">
+                  <Avatar
+                    size="4"
+                    src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
+                    fallback="AP"
+                    fit="contain"
+                    variant="surface"
+                  />
+                  <Flex direction="column" gap="0">
+                    <Text size="2" weight="medium">Apple</Text>
+                    <Text size="1" color="gray">Consumer Electronics</Text>
+                  </Flex>
+                </Flex>
+              </Flex>
+            </Flex>
+          </Card>
+        </PreviewBlock>
+        <CodeBlock
+          code={`<Avatar
+  size="4"
+  src="/company-logo.svg"
+  fallback="CO"
+  fit="contain"
+  variant="surface"
+/>`}
+          language="tsx"
+          showLineNumbers={true}
+          collapsible={false}
+        />
+      </Flex>
+
+      <Separator size="4" />
+
+      {/* Example 7: Invite Members */}
       <Flex direction="column" gap="4">
         <SectionHeader.Root>
           <SectionHeader.Content>

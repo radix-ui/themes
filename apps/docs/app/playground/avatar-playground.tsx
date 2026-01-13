@@ -37,6 +37,7 @@ const variants = ['solid', 'soft', 'surface', 'outline'] as const;
 const sizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 const radiusOptions = ['none', 'small', 'medium', 'large', 'full'] as const;
 const materials = ['solid', 'translucent'] as const;
+const fitOptions = ['cover', 'contain', 'fill', 'scale-down', 'none'] as const;
 
 export default function AvatarPlayground() {
   const [variant, setVariant] = React.useState<string>('soft');
@@ -45,6 +46,7 @@ export default function AvatarPlayground() {
   const [size, setSize] = React.useState<string>('3');
   const [highContrast, setHighContrast] = React.useState<boolean>(false);
   const [material, setMaterial] = React.useState<string>('theme');
+  const [fit, setFit] = React.useState<string>('cover');
   const [showImage, setShowImage] = React.useState<boolean>(false);
 
   const items = [
@@ -108,6 +110,15 @@ export default function AvatarPlayground() {
       value: showImage,
       onChange: setShowImage,
     },
+    {
+      id: 'fit',
+      label: 'Fit',
+      type: 'select' as const,
+      value: fit,
+      onChange: setFit,
+      options: fitOptions.map((f) => ({ label: f, value: f })),
+      placeholder: 'Select fit',
+    },
   ];
 
   const generateCode = () => {
@@ -116,6 +127,7 @@ export default function AvatarPlayground() {
     if (color !== 'theme') props.push(`color="${color}"`);
     if (radius !== 'theme') props.push(`radius="${radius}"`);
     if (material !== 'theme') props.push(`material="${material}"`);
+    if (fit !== 'cover') props.push(`fit="${fit}"`);
     if (highContrast) props.push('highContrast');
     if (showImage) props.push('src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=100"');
     props.push('fallback="JD"');
@@ -135,6 +147,7 @@ export default function AvatarPlayground() {
           color={color === 'theme' ? undefined : (color as any)}
           radius={radius === 'theme' ? undefined : (radius as any)}
           material={material === 'theme' ? undefined : (material as any)}
+          fit={fit as any}
           highContrast={highContrast || undefined}
           src={showImage ? 'https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=100' : undefined}
           fallback="JD"

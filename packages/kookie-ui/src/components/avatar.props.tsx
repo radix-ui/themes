@@ -9,6 +9,7 @@ const sizes = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'] as
 const variants = ['classic', 'solid', 'soft', 'surface', 'outline'] as const;
 const panelBackgrounds = ['solid', 'translucent'] as const;
 const materials = ['solid', 'translucent'] as const;
+const objectFitValues = ['cover', 'contain', 'fill', 'scale-down', 'none'] as const;
 
 const avatarPropDefs = {
   ...asChildPropDef,
@@ -33,6 +34,12 @@ const avatarPropDefs = {
    * Cannot be used together with `status`.
    */
   badge: { type: 'ReactNode', default: undefined },
+  /**
+   * Controls how the avatar image should be resized to fit its container.
+   * Defaults to 'cover' which crops the image to fill the avatar.
+   * Use 'contain' to show the full image without cropping.
+   */
+  fit: { type: 'enum', className: 'rt-r-fit', values: objectFitValues, default: 'cover', responsive: true },
 } satisfies {
   size: PropDef<(typeof sizes)[number]>;
   variant: PropDef<(typeof variants)[number]>;
@@ -41,6 +48,7 @@ const avatarPropDefs = {
   panelBackground: PropDef<(typeof panelBackgrounds)[number] | undefined>;
   status: PropDef<(typeof accentColors)[number] | undefined>;
   badge: PropDef<React.ReactNode>;
+  fit: PropDef<(typeof objectFitValues)[number]>;
 };
 
 export { avatarPropDefs };

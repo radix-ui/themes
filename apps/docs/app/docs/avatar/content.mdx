@@ -63,6 +63,7 @@ export function MyAvatars() {
 | `material` | `'solid' \| 'translucent'` | - | Material appearance for the fallback. |
 | `status` | `AccentColor` | - | Status indicator color. Renders a colored dot at bottom-right. |
 | `badge` | `React.ReactNode` | - | Custom badge content. Renders at bottom-right. |
+| `fit` | `'cover' \| 'contain' \| 'fill' \| 'scale-down' \| 'none'` | `'cover'` | Controls how the image fits within the avatar. Supports responsive values. |
 | `onLoadingStatusChange` | `function` | - | Callback when image loading status changes. |
 | `asChild` | `boolean` | `false` | Merge props onto the child element. |
 
@@ -214,3 +215,37 @@ Use the `badge` prop for custom indicator content like icons or notification cou
 ```
 
 Note: `status` and `badge` cannot be used together. If both are provided, `badge` takes precedence and a warning is logged in development.
+
+## Fit
+
+Control how images are scaled within the avatar container. This is useful for logos or images that shouldn't be cropped.
+
+```tsx
+<Flex gap="3">
+  <Avatar
+    src="/company-logo.png"
+    fallback="CO"
+    fit="cover"
+  />
+  <Avatar
+    src="/company-logo.png"
+    fallback="CO"
+    fit="contain"
+  />
+</Flex>
+```
+
+- `cover` (default): Scales image to fill the container, may crop edges
+- `contain`: Scales image to fit entirely within container, may leave empty space
+- `fill`: Stretches image to fill container exactly, may distort
+- `scale-down`: Like contain but never scales up beyond original size
+- `none`: Image keeps original size
+
+The `fit` prop also supports responsive values:
+
+```tsx
+<Avatar
+  src="/logo.png"
+  fallback="LO"
+  fit={{ initial: 'cover', md: 'contain' }}
+/>
