@@ -19,9 +19,9 @@ export default function ChatbarPlayground() {
   const [radius, setRadius] = React.useState<string>('theme');
   const [material, setMaterial] = React.useState<string>('theme');
   const [expandOn, setExpandOn] = React.useState<string>('both');
-  const [sendMode, setSendMode] = React.useState<string>('whenDirty');
+  const [sendMode, setSendMode] = React.useState<string>('always');
   const [disabled, setDisabled] = React.useState<boolean>(false);
-  const [showAttach, setShowAttach] = React.useState<boolean>(false);
+  const [showAttach, setShowAttach] = React.useState<boolean>(true);
   const [textValue, setTextValue] = React.useState<string>('');
 
   const items = [
