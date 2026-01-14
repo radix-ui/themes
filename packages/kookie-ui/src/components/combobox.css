@@ -1,4 +1,7 @@
-/* Combobox styles extend BaseMenu primitives and TextField tokens for search input parity. */
+/* 
+ * Combobox styles - optimized for performance.
+ * Uses CSS :hover for visual feedback (disablePointerSelection enabled in JS).
+ */
 @import './_internal/base-menu.css';
 @import './text-field.css';
 
@@ -10,11 +13,7 @@
   flex-direction: column;
 }
 
-/* 
- * Hide content when closed (forceMount keeps items mounted for label registration).
- * Using visibility + position to keep items in DOM for label registration while
- * making them invisible and non-interactive.
- */
+/* Hide content when closed (forceMount keeps items mounted for label registration) */
 .rt-ComboboxContent:where([data-state='closed']) {
   visibility: hidden;
   position: absolute;
@@ -32,6 +31,24 @@
   padding-top: 0 !important;
 }
 
+/* Simplified scroll area - native overflow */
+.rt-ComboboxScrollArea {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  max-height: 300px;
+}
+
+/* Override base-menu disabled styles for cmdk compatibility.
+ * cmdk adds data-disabled="false" to enabled items, but base-menu.css
+ * applies disabled styles to any element with [data-disabled] attribute.
+ * This override restores normal appearance for enabled items. */
+.rt-ComboboxItem:where([data-disabled="false"]) {
+  color: inherit;
+  cursor: var(--cursor-menu-item);
+}
+
+/* Size adjustments for items */
 .rt-BaseMenuContent:where(.rt-r-size-1) :where(.rt-ComboboxItem) {
   --base-menu-item-padding-left: calc(var(--space-5) / 1.2);
 }
@@ -50,20 +67,7 @@
   --base-menu-item-padding-left: var(--space-5);
 }
 
-/* 
- * Override disabled styles when data-disabled is false or empty (cmdk may set it incorrectly).
- * This CSS-only approach replaces the per-item MutationObserver workaround for better performance.
- * We reset all visual properties that base-menu applies to [data-disabled] items.
- */
-.rt-BaseMenuContent :where(.rt-BaseMenuItem.rt-ComboboxItem[data-disabled='false']),
-.rt-BaseMenuContent :where(.rt-BaseMenuItem.rt-ComboboxItem[data-disabled='']) {
-  color: inherit !important;
-  cursor: var(--cursor-menu-item) !important;
-  opacity: 1 !important;
-  pointer-events: auto !important;
-}
-
-/* Sticky search input with consistent padding */
+/* Sticky search input */
 .rt-ComboboxSearch {
   position: sticky;
   top: 0;
@@ -74,39 +78,81 @@
 
 :where([data-panel-background='translucent']) .rt-ComboboxSearch {
   background-color: var(--color-panel-translucent);
-  backdrop-filter: var(--backdrop-filter-panel);
 }
 
 .rt-ComboboxSearch :where(.rt-ComboboxInputRoot) {
   width: 100%;
 }
 
-.rt-ScrollAreaRoot:where(.rt-ComboboxScrollArea) {
-  flex: 1;
-  min-height: 0;
-}
-
-/*
- * Map cmdk's data-selected state to highlighted styling.
- * Mirrors base-menu's [data-highlighted] styling but for cmdk's [data-selected].
- * 
- * IMPORTANT: background-color applies only to the item itself.
- * color is explicitly set on ALL descendants (* selector) because user content
- * (Flex, icons, text) may have intermediate wrappers that break CSS inheritance.
+/* =============================================================================
+ * HOVER STYLES - CSS-based hover for performance (disablePointerSelection)
+ * These replace cmdk's React state-based [data-selected] on hover.
+ * =============================================================================
  */
 
-/* Solid variant - highlighted item */
+/* Base hover state - applies to all variants
+ * Note: cmdk adds data-disabled="false" to enabled items, so we exclude only truly disabled items
+ * :hover is inside :where() to maintain low specificity */
+.rt-ComboboxItem:where(:not([data-disabled="true"], [data-disabled=""]):hover) {
+  cursor: var(--cursor-menu-item);
+}
+
+/* Solid variant - hover */
+:where(.rt-BaseMenuContent.rt-variant-solid) .rt-ComboboxItem:where(:not([data-disabled="true"], [data-disabled=""]):hover) {
+  background-color: var(--accent-9);
+  color: var(--accent-contrast);
+}
+
+:where(.rt-BaseMenuContent.rt-variant-solid) .rt-ComboboxItem:where(:not([data-disabled="true"], [data-disabled=""]):hover) * {
+  color: var(--accent-contrast) !important;
+}
+
+/* Soft variant - hover */
+:where(.rt-BaseMenuContent.rt-variant-soft) .rt-ComboboxItem:where(:not([data-disabled="true"], [data-disabled=""]):hover) {
+  background-color: var(--accent-4);
+}
+
+:where([data-panel-background='translucent'] .rt-BaseMenuContent.rt-variant-soft) .rt-ComboboxItem:where(:not([data-disabled="true"], [data-disabled=""]):hover) {
+  background-color: var(--accent-a4);
+}
+
+/* High contrast solid - hover */
+:where(.rt-BaseMenuContent.rt-variant-solid.rt-high-contrast) .rt-ComboboxItem:where(:not([data-disabled="true"], [data-disabled=""]):hover) {
+  background-color: var(--accent-12);
+  color: var(--accent-1);
+}
+
+:where(.rt-BaseMenuContent.rt-variant-solid.rt-high-contrast) .rt-ComboboxItem:where(:not([data-disabled="true"], [data-disabled=""]):hover) * {
+  color: var(--accent-1) !important;
+}
+
+/* High contrast solid with accent color - hover */
+:where(.rt-BaseMenuContent.rt-variant-solid.rt-high-contrast[data-accent-color]) .rt-ComboboxItem:where(:not([data-disabled="true"], [data-disabled=""]):hover) {
+  background-color: var(--accent-9);
+  color: var(--accent-contrast);
+}
+
+:where(.rt-BaseMenuContent.rt-variant-solid.rt-high-contrast[data-accent-color]) .rt-ComboboxItem:where(:not([data-disabled="true"], [data-disabled=""]):hover) * {
+  color: var(--accent-contrast) !important;
+}
+
+/* =============================================================================
+ * KEYBOARD SELECTION STYLES - [data-selected] from cmdk keyboard navigation
+ * These apply when using keyboard to navigate (arrow keys).
+ * =============================================================================
+ */
+
+/* Solid variant - keyboard selected */
 .rt-BaseMenuContent:where(.rt-variant-solid) :where(.rt-ComboboxItem[data-selected='true']) {
   background-color: var(--accent-9);
   color: var(--accent-contrast);
 }
 
-/* Force color on all descendants (text, icons, wrappers) */
 .rt-BaseMenuContent:where(.rt-variant-solid) :where(.rt-ComboboxItem[data-selected='true']) * {
   color: var(--accent-contrast) !important;
 }
 
-/* Soft variant - highlighted item */
+/* Soft variant - keyboard selected */
 .rt-BaseMenuContent:where(.rt-variant-soft) :where(.rt-ComboboxItem[data-selected='true']) {
   background-color: var(--accent-4);
 }
@@ -115,7 +161,7 @@
   background-color: var(--accent-a4);
 }
 
-/* High contrast SOLID variant - highlighted item */
+/* High contrast solid - keyboard selected */
 .rt-BaseMenuContent:where(.rt-variant-solid.rt-high-contrast) :where(.rt-ComboboxItem[data-selected='true']) {
   background-color: var(--accent-12);
   color: var(--accent-1);
@@ -125,7 +171,7 @@
   color: var(--accent-1) !important;
 }
 
-/* High contrast SOLID with accent color */
+/* High contrast solid with accent color - keyboard selected */
 .rt-BaseMenuContent:where(.rt-variant-solid.rt-high-contrast[data-accent-color]) :where(.rt-ComboboxItem[data-selected='true']) {
   background-color: var(--accent-9);
   color: var(--accent-contrast);
@@ -133,4 +179,24 @@
 
 .rt-BaseMenuContent:where(.rt-variant-solid.rt-high-contrast[data-accent-color]) :where(.rt-ComboboxItem[data-selected='true']) * {
   color: var(--accent-contrast) !important;
+}
+
+/* =============================================================================
+ * DISABLED STYLES
+ * =============================================================================
+ */
+
+/* Only match truly disabled items - cmdk sets data-disabled="false" for enabled items */
+.rt-ComboboxItem:where([data-disabled="true"], [data-disabled=""]) {
+  color: var(--gray-a8);
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Empty state */
+.rt-ComboboxEmpty {
+  padding: var(--space-4);
+  text-align: center;
+  color: var(--gray-a11);
+  font-size: var(--font-size-2);
 }

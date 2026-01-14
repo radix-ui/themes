@@ -1,6 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from 'radix-ui';
+import { composeRefs } from 'radix-ui/internal';
 import { motion } from 'motion/react';
 
 import { baseButtonPropDefs } from './base-button.props.js';
@@ -143,7 +144,13 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
   // asChild takes precedence over as prop for Radix Slot integration
   // When asChild is true, we use Slot.Root and skip motion (parent controls animation)
   // When asChild is false, we use motion.button for spring scale animations
-  const Comp = asChild ? Slot.Root : (as ? motion.create(as as any) : motion.button);
+  // IMPORTANT: useMemo prevents creating a new component type on every render,
+  // which would cause remounting and infinite loops with floating-ui refs
+  const Comp = React.useMemo(() => {
+    if (asChild) return Slot.Root;
+    if (as) return motion.create(as as any);
+    return motion.button;
+  }, [asChild, as]);
   
   // Detect Firefox to disable scale animation (Firefox has SVG rendering issues with transforms)
   const isFirefox = typeof navigator !== 'undefined' && /Firefox/i.test(navigator.userAgent);
@@ -211,15 +218,7 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
       {...baseButtonProps}
       {...accessibilityProps}
       {...motionProps}
-      ref={(node: BaseButtonElement | null) => {
-        // Handle both forwarded ref and internal ref for performance optimization
-        if (typeof forwardedRef === 'function') {
-          forwardedRef(node);
-        } else if (forwardedRef) {
-          forwardedRef.current = node;
-        }
-        buttonRef.current = node;
-      }}
+      ref={composeRefs(buttonRef, forwardedRef)}
       className={classNames('rt-reset', 'rt-BaseButton', className)}
       {...(shouldPassDisabled && { disabled })}
       {...(isNativeButtonElement && !hasExplicitTypeAttribute ? { type: 'button' } : {})}
