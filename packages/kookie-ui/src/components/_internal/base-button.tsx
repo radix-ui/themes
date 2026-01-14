@@ -149,7 +149,7 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
   const isFirefox = typeof navigator !== 'undefined' && /Firefox/i.test(navigator.userAgent);
   
   // Animation config for scale effects
-  const tweenConfig = { type: 'tween', duration: 0.15, ease: 'circOut' } as const;
+  const tweenConfig = { type: 'tween', duration: 0.15, ease: 'circInOut' } as const;
   const isInteractive = !disabled && !props.loading;
   // Check if button is in "open" state (for dropdown triggers, etc.)
   const dataState = (baseButtonProps as Record<string, unknown>)['data-state'];

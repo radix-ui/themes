@@ -23,6 +23,7 @@ import {
   MessageEdit01Icon,
   LeftToRightListBulletIcon,
   Menu01Icon,
+  TextCreationIcon,
 } from '@hugeicons/core-free-icons';
 
 export const docsNavigation: DocsNavigationConfig = {
@@ -146,6 +147,12 @@ export const docsNavigation: DocsNavigationConfig = {
           href: '/docs/text',
           title: 'Text',
           icon: TextIcon,
+          badge: { content: 'Alpha', size: '1', highContrast: true },
+        },
+        {
+          href: '/docs/text-area',
+          title: 'Text Area',
+          icon: TextCreationIcon,
           badge: { content: 'Alpha', size: '1', highContrast: true },
         },
         {

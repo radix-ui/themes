@@ -1,0 +1,472 @@
+---
+title: Text Area
+description: Text Area is a multi-line text input component for collecting longer text from users. Use it for forms, comments, descriptions, and any content requiring multiple lines of text input.
+source: https://github.com/KushagraDhawan1997/kookie-ui/blob/main/packages/kookie-ui/src/components/text-area.tsx
+---
+
+Text Area is a multi-line text input component for collecting longer text from users. Use it for forms, comments, messages, descriptions, and any content requiring multiple lines of text input. The component supports error validation, resizing options, and all the variant styles from the design system.
+
+This is an enhanced version of the native HTML `<textarea>` element, styled to match the Kookie UI design system.
+
+## Playground
+
+import TextAreaPlayground from '../../playground/text-area-playground';
+
+<TextAreaPlayground />
+
+## Installation
+
+```bash
+npm install @kushagradhawan/kookie-ui
+```
+
+## Usage
+
+```tsx
+import { TextArea } from '@kushagradhawan/kookie-ui';
+
+export function MyComponent() {
+  return <TextArea placeholder="Enter description" />;
+}
+```
+
+## Props
+
+The TextArea component is the textarea element that accepts multi-line text input.
+
+| Prop | Type | Description |
+| ---- | ---- | ----------- |
+| `size` | `'1' \| '2' \| '3'` | Input density: 1 (80px min height) for compact interfaces, 2 (96px) standard, 3 (120px) for comfortable multi-line editing. Supports responsive objects |
+| `variant` | `'classic' \| 'surface' \| 'soft' \| 'ghost' \| 'outline'` | Input style variant: classic for elevated, surface for standard forms, soft for subtle integration, outline for defined boundaries, ghost for minimal inline editing |
+| `color` | `AccentColor` | Semantic color for focus state and validation feedback. Use for visual categorization or status communication |
+| `radius` | `'none' \| 'small' \| 'medium' \| 'large' \| 'full'` | Corner radius scale: none for sharp edges, small/medium/large for progressive rounding, full for maximum rounding |
+| `material` | `'solid' \| 'translucent'` | Background appearance: solid for opaque backgrounds, translucent for depth over images or dynamic backgrounds |
+| `panelBackground` | `'solid' \| 'translucent'` | Deprecated: Use material prop instead. Controls panel background appearance |
+| `resize` | `'none' \| 'vertical' \| 'horizontal' \| 'both'` | Controls textarea resizing behavior. Default: user agent default (usually 'vertical') |
+| `error` | `boolean` | Marks field as invalid. Use with errorMessage for accessibility |
+| `errorMessage` | `string` | Error message displayed below textarea. Automatically connected via ARIA attributes for screen readers |
+| `isInvalid` | `boolean` | Alternative to error prop for marking field as invalid |
+| `required` | `boolean` | Marks field as required for forms |
+| `placeholder` | `string` | Placeholder text shown when textarea is empty |
+| `disabled` | `boolean` | Prevents interaction when textarea is unavailable |
+| `readOnly` | `boolean` | Makes textarea non-editable while keeping it focusable and copyable |
+| `defaultValue` | `string` | Initial uncontrolled value |
+| `value` | `string` | Controlled value |
+| `onChange` | `(event: ChangeEvent) => void` | Callback fired when textarea value changes |
+| `rows` | `number` | Number of visible text lines (native textarea attribute) |
+| `cols` | `number` | Visible width in characters (native textarea attribute) |
+| `maxLength` | `number` | Maximum character count |
+| `minLength` | `number` | Minimum character count |
+| `aria-describedby` | `string` | ID of element describing the textarea |
+| `aria-labelledby` | `string` | ID of element labeling the textarea |
+
+## Variants
+
+Use the `variant` prop to set textarea style.
+
+### Classic
+
+Elevated style with subtle shadow for maximum visual prominence and important inputs.
+
+```tsx
+<TextArea variant="classic" placeholder="Enter description" />
+```
+
+### Surface
+
+Standard surface style for form inputs and general text entry.
+
+```tsx
+<TextArea variant="surface" placeholder="Enter description" />
+```
+
+### Soft
+
+Subtle background for secondary inputs and content-heavy interfaces.
+
+```tsx
+<TextArea variant="soft" placeholder="Enter description" />
+```
+
+### Outline
+
+Bordered style for defined boundaries and structured forms.
+
+```tsx
+<TextArea variant="outline" placeholder="Enter description" />
+```
+
+### Ghost
+
+Minimal style for inline editing and seamless integration with text content.
+
+```tsx
+<TextArea variant="ghost" placeholder="Enter description" />
+```
+
+## Sizes
+
+Set `size` for textarea density: `1` (80px min height), `2` (96px), `3` (120px). Use `3` for comfortable multi-line editing. Supports responsive objects like `{ initial: '1', sm: '2', md: '3' }`.
+
+### Size 1
+
+For compact interfaces and limited space.
+
+```tsx
+<TextArea size="1" placeholder="Enter description" />
+```
+
+### Size 2
+
+For standard form contexts and general interfaces.
+
+```tsx
+<TextArea size="2" placeholder="Enter description" />
+```
+
+### Size 3
+
+For comfortable editing and longer content.
+
+```tsx
+<TextArea size="3" placeholder="Enter description" />
+```
+
+## Colors
+
+Use the `color` prop with semantic colors to communicate textarea purpose or status. The color affects the focus state and can be used for visual categorization.
+
+```tsx
+<TextArea size="2" color="blue" placeholder="Description" />
+<TextArea size="2" color="green" placeholder="Approved comment" />
+<TextArea size="2" color="red" placeholder="Error feedback" />
+```
+
+## Material
+
+Use the `material` prop to set textarea appearance. Choose `solid` for opaque backgrounds, or `translucent` for depth and separation over images or dynamic backgrounds.
+
+### Theme
+
+TextArea automatically inherits the theme's material setting.
+
+```tsx
+<Theme material="translucent">
+  <TextArea placeholder="Enter description" />
+</Theme>
+```
+
+### Custom
+
+Override the theme's material for specific effects.
+
+```tsx
+<Theme material="solid">
+  <TextArea material="translucent" placeholder="Enter description" />
+</Theme>
+```
+
+## Resize
+
+Control how users can resize the textarea with the `resize` prop.
+
+### None
+
+Prevent resizing for fixed layouts.
+
+```tsx
+<TextArea resize="none" placeholder="Fixed size textarea" />
+```
+
+### Vertical
+
+Allow vertical resizing only (most common for multi-line text).
+
+```tsx
+<TextArea resize="vertical" placeholder="Resize vertically" />
+```
+
+### Horizontal
+
+Allow horizontal resizing only.
+
+```tsx
+<TextArea resize="horizontal" placeholder="Resize horizontally" />
+```
+
+### Both
+
+Allow resizing in both directions.
+
+```tsx
+<TextArea resize="both" placeholder="Resize freely" />
+```
+
+## States
+
+### Error
+
+Use `error` and `errorMessage` props to show validation errors. Error messages are automatically connected to the textarea via ARIA attributes.
+
+```tsx
+<TextArea
+  error
+  errorMessage="Description is required"
+  placeholder="Enter description"
+/>
+```
+
+### Disabled
+
+Set `disabled` to prevent interaction when textarea is unavailable.
+
+```tsx
+<TextArea disabled placeholder="Disabled textarea" />
+```
+
+### Read Only
+
+Use `readOnly` to make textarea non-editable while keeping it focusable and copyable.
+
+```tsx
+<TextArea readOnly value="Read-only content that can be selected and copied" />
+```
+
+## Examples
+
+### Comment Form
+
+Collect user comments with appropriate sizing and validation.
+
+```tsx
+import { TextArea } from '@kushagradhawan/kookie-ui';
+
+function CommentForm() {
+  const [comment, setComment] = React.useState('');
+  const [error, setError] = React.useState('');
+
+  const handleSubmit = () => {
+    if (comment.length < 10) {
+      setError('Comment must be at least 10 characters');
+    } else {
+      setError('');
+      // Submit comment
+    }
+  };
+
+  return (
+    <TextArea
+      size="2"
+      value={comment}
+      onChange={(e) => setComment(e.target.value)}
+      error={!!error}
+      errorMessage={error}
+      placeholder="Share your thoughts..."
+      rows={4}
+    />
+  );
+}
+```
+
+### Product Description
+
+Use soft variant for content creation interfaces.
+
+```tsx
+<TextArea
+  size="3"
+  variant="soft"
+  placeholder="Describe your product..."
+  rows={6}
+/>
+```
+
+### Feedback Form
+
+Structured form input with outline variant.
+
+```tsx
+<TextArea
+  size="2"
+  variant="outline"
+  placeholder="Tell us about your experience"
+  maxLength={500}
+  rows={5}
+/>
+```
+
+### Code Snippet Input
+
+Fixed size textarea for code or formatted text.
+
+```tsx
+<TextArea
+  size="2"
+  variant="classic"
+  resize="none"
+  placeholder="Paste your code here"
+  style={{ fontFamily: 'monospace' }}
+  rows={10}
+/>
+```
+
+### Note Taking
+
+Expandable textarea for note-taking interfaces.
+
+```tsx
+import { TextArea } from '@kushagradhawan/kookie-ui';
+
+function NoteTaking() {
+  const [note, setNote] = React.useState('');
+
+  return (
+    <TextArea
+      size="2"
+      variant="ghost"
+      resize="vertical"
+      value={note}
+      onChange={(e) => setNote(e.target.value)}
+      placeholder="Start typing your notes..."
+    />
+  );
+}
+```
+
+### Character Counter
+
+Show remaining characters for limited text input.
+
+```tsx
+import { TextArea, Text } from '@kushagradhawan/kookie-ui';
+
+function LimitedTextArea() {
+  const [text, setText] = React.useState('');
+  const maxLength = 280;
+
+  return (
+    <div>
+      <TextArea
+        size="2"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        maxLength={maxLength}
+        placeholder="What's happening?"
+        rows={3}
+      />
+      <Text size="1" color="gray">
+        {text.length} / {maxLength}
+      </Text>
+    </div>
+  );
+}
+```
+
+## Responsive
+
+Use responsive objects with the `size` prop to adapt textarea sizing across different breakpoints. The component uses a mobile-first approach.
+
+```tsx
+<TextArea
+  size={{ initial: '1', sm: '2', md: '3' }}
+  placeholder="Responsive textarea"
+/>
+```
+
+### Breakpoints
+
+| Breakpoint | Value  | Description                |
+| ---------- | ------ | -------------------------- |
+| `initial`  | -      | Base styles (mobile-first) |
+| `xs`       | 520px  | Extra small screens        |
+| `sm`       | 768px  | Small screens (tablets)    |
+| `md`       | 1024px | Medium screens (laptops)   |
+| `lg`       | 1280px | Large screens (desktops)   |
+| `xl`       | 1640px | Extra large screens        |
+
+## Accessibility
+
+TextArea provides comprehensive accessibility through ARIA attributes and semantic HTML.
+
+### Keyboard Navigation
+
+- **Tab** - Move focus to/from textarea
+- **Enter** - Insert new line
+- **Escape** - Clear focus (browser default)
+- **Arrow Keys** - Navigate cursor within text
+- **Shift + Arrow Keys** - Select text
+- **Ctrl/Cmd + A** - Select all text
+
+### ARIA Attributes
+
+- `aria-invalid="true"` - Automatically set when error or isInvalid is true
+- `aria-describedby` - Links to error message for screen reader announcements
+- `aria-labelledby` - Links to external label element
+- `role="alert"` - Error messages are announced immediately
+- `aria-live="polite"` - Error message updates are announced
+
+### Screen Readers
+
+- Error messages are automatically associated with the textarea
+- Required fields can be marked with `required` prop
+- Placeholder text provides hints without replacing labels
+- Multi-line editing is properly announced
+
+### Best Practices
+
+- Always provide a label (use `aria-labelledby` if label is external)
+- Use `errorMessage` instead of just `error` for clear feedback
+- Provide placeholder as hints, not as replacement for labels
+- Mark required fields with `required` prop
+- Consider `maxLength` for forms with character limits
+- Ensure sufficient color contrast for all states
+- Use appropriate `rows` attribute for initial size
+
+## Enhancements
+
+Kookie UI extends the native textarea with practical improvements:
+
+### Enhanced Error States
+
+Rich error handling with `error` and `errorMessage` props. Error messages automatically associate with textarea via `aria-describedby` for screen reader accessibility. Visual error indicators appear in both light and dark themes.
+
+### Material System
+
+Full integration with the material system for solid and translucent backgrounds. Automatic backdrop blur on translucent materials for depth and visual hierarchy.
+
+### Advanced Validation
+
+Built-in support for required fields, min/max length validation, and character counting. Form integration with native HTML validation attributes and proper error messaging.
+
+### Responsive Sizing
+
+Size prop supports responsive objects for adaptive sizing across breakpoints. Mobile-first approach ensures optimal experience on all devices.
+
+## Changelog
+
+### Added
+
+- **Error validation system** with `error`, `errorMessage`, and `isInvalid` props
+- **Automatic ARIA attributes** for error messages and validation states
+- **Material prop** for solid/translucent theme contexts
+- **Resize control** with `resize` prop for user resizing behavior
+- **Responsive size support** with breakpoint objects
+- **Enhanced focus states** with better contrast
+- **Character limit support** with `maxLength` and `minLength` props
+
+### Changed
+
+- Enhanced focus states with better contrast
+- Improved error state styling with clearer visual feedback
+- Better placeholder styling for all variants
+
+### Deprecated
+
+- `panelBackground` prop in favor of `material` prop
+
+### Fixed
+
+- Error messages properly linked via ARIA for screen readers
+- Focus management for all interactive states
+- Scrollbar styling consistency across browsers
+- Autofill color handling for password managers

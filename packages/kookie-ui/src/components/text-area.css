@@ -1,4 +1,36 @@
+/**
+ * TextArea Component Styles
+ * 
+ * ARCHITECTURE (following base-button pattern):
+ * - Base styles: Layout, accessibility, material system
+ * - Sizes: Responsive sizing and typography
+ * - Variant palettes: Each variant defines its color scale as CSS variables
+ * - Shared state logic: Single set of hover/focus/disabled selectors
+ * - Special variants: classic (unique behavior, kept separate)
+ * - Error states: Override colors for error styling
+ */
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * BASE STYLES                                                                                     *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
 .rt-TextAreaRoot {
+  /*
+   * Component-level material override
+   * When component has explicit material prop, override the inherited theme values.
+   */
+  &:where([data-material='solid'], [data-panel-background='solid']) {
+    --material-blend: 100%;
+    --material-alpha: 0;
+  }
+
+  &:where([data-material='translucent'], [data-panel-background='translucent']) {
+    --material-blend: 60%;
+    --material-alpha: 1;
+  }
+
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -33,12 +65,12 @@
   }
 
   &:where(:focus-within) {
-    outline: 2px solid var(--text-area-focus-color, var(--focus-8));
+    outline: 2px solid var(--v-focus-color, var(--focus-8));
     outline-offset: -1px;
   }
 
   &::selection {
-    background-color: var(--text-area-selection-color, var(--focus-a5));
+    background-color: var(--v-selection-color, var(--focus-a5));
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -94,7 +126,7 @@
   }
 
   &::selection {
-    background-color: var(--text-area-selection-color, var(--focus-a5));
+    background-color: var(--v-selection-color, var(--focus-a5));
   }
 }
 
@@ -158,58 +190,238 @@
 
 /***************************************************************************************************
  *                                                                                                 *
- * VARIANTS                                                                                        *
+ * VARIANT PALETTES                                                                                *
+ *                                                                                                 *
+ * Each variant defines its color scale. Shared state logic uses these variables.                  *
+ * Variables: --v-bg-*, --v-border-*, --v-selection-color, --v-focus-color                        *
  *                                                                                                 *
  ***************************************************************************************************/
 
-/* outline */
+/* Soft variant palette */
+.rt-TextAreaRoot:where(.rt-variant-soft) {
+  --text-area-border-width: 0px;
+  --v-selection-color: var(--accent-a5);
+  --v-focus-color: var(--accent-8);
+  --v-bg: var(--accent-3);
+  --v-bg-a: var(--accent-a3);
+  --v-bg-hover: var(--accent-4);
+  --v-bg-hover-a: var(--accent-a4);
+  --v-placeholder-color: var(--accent-12);
+  --v-placeholder-opacity: 0.6;
+}
+
+/* Ghost variant palette */
+.rt-TextAreaRoot:where(.rt-variant-ghost) {
+  --text-area-border-width: 0px;
+  --v-selection-color: var(--accent-a5);
+  --v-focus-color: var(--accent-8);
+  --v-bg: transparent;
+  --v-bg-a: transparent;
+  --v-bg-hover: var(--accent-3);
+  --v-bg-hover-a: var(--accent-a3);
+  --v-bg-focus: var(--accent-2);
+  --v-bg-focus-a: var(--accent-a2);
+  --v-placeholder-color: var(--gray-a10);
+}
+
+/* Outline variant palette */
 .rt-TextAreaRoot:where(.rt-variant-outline) {
-  --text-area-selection-color: var(--focus-a5);
-  --text-area-focus-color: var(--focus-8);
   --text-area-border-width: 1px;
-
-  /* Base state: solid colors for solid panels */
-  box-shadow: inset 0 0 0 1px var(--accent-6);
+  --v-selection-color: var(--focus-a5);
+  --v-focus-color: var(--focus-8);
+  --v-bg: transparent;
+  --v-bg-a: transparent;
+  --v-bg-hover: var(--accent-2);
+  --v-bg-hover-a: var(--accent-a2);
+  --v-border: var(--accent-6);
+  --v-border-a: var(--accent-a6);
+  --v-border-hover: var(--accent-7);
+  --v-border-hover-a: var(--accent-a7);
+  --v-placeholder-color: var(--gray-a10);
+  /* Outline uses a different transition */
   transition: var(--transition-background-blur);
+}
 
-  /* Theme-level translucent override */
-  :where([data-panel-background='translucent'], [data-material='translucent']) & {
-    box-shadow: inset 0 0 0 1px var(--accent-a6);
-  }
+/* Surface variant palette */
+.rt-TextAreaRoot:where(.rt-variant-surface) {
+  --text-area-border-width: 1px;
+  --v-selection-color: var(--accent-a5);
+  --v-focus-color: var(--accent-8);
+  --v-bg: var(--accent-2);
+  --v-bg-a: var(--accent-a2);
+  --v-bg-hover: var(--accent-3);
+  --v-bg-hover-a: var(--accent-a3);
+  --v-bg-focus: var(--accent-2);
+  --v-bg-focus-a: var(--accent-a2);
+  --v-border: var(--accent-6);
+  --v-border-a: var(--accent-a6);
+  --v-border-hover: var(--accent-7);
+  --v-border-hover-a: var(--accent-a7);
+  --v-border-focus: var(--accent-8);
+  --v-border-focus-a: var(--accent-a8);
+  --v-placeholder-color: var(--gray-a10);
+}
 
-  /* Component-level overrides (higher specificity) */
-  &:where([data-panel-background='solid'], [data-material='solid']) {
-    box-shadow: inset 0 0 0 1px var(--accent-6);
-  }
+/***************************************************************************************************
+ *                                                                                                 *
+ * SHARED STATE LOGIC                                                                              *
+ *                                                                                                 *
+ * Single set of state selectors that use variant palette variables.                               *
+ * Applies to: soft, ghost, outline, surface                                                       *
+ *                                                                                                 *
+ ***************************************************************************************************/
 
-  &:where([data-panel-background='translucent'], [data-material='translucent']) {
-    box-shadow: inset 0 0 0 1px var(--accent-a6);
-  }
+.rt-TextAreaRoot:where(.rt-variant-soft, .rt-variant-ghost, .rt-variant-outline, .rt-variant-surface) {
+  /* Rest state */
+  background-color: color-mix(
+    in srgb,
+    var(--v-bg-a) calc(var(--material-alpha) * 100%),
+    var(--v-bg) var(--material-blend)
+  );
 
-  /* Hover effects */
-  @media (hover: hover) {
-    &:where(:hover:not(:has(.rt-TextAreaInput:focus))) {
-      background-color: var(--accent-2);
-      box-shadow: inset 0 0 0 1px var(--accent-7);
-      
-              /* Theme-level translucent override for hover */
-        :where([data-panel-background='translucent'], [data-material='translucent']) & {
-          background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
-          box-shadow: inset 0 0 0 1px var(--accent-a7);
-        }
-
-        /* Component-level overrides for hover */
-        &:where([data-panel-background='solid'], [data-material='solid']) {
-          background-color: var(--accent-2);
-          box-shadow: inset 0 0 0 1px var(--accent-7);
-        }
-
-        &:where([data-panel-background='translucent'], [data-material='translucent']) {
-          background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
-          box-shadow: inset 0 0 0 1px var(--accent-a7);
-        }
+  /* Placeholder styling */
+  & :where(.rt-TextAreaInput) {
+    &::placeholder {
+      color: var(--v-placeholder-color, var(--gray-a10));
+      opacity: var(--v-placeholder-opacity, 1);
     }
   }
+
+  /* Hover state */
+  @media (hover: hover) {
+    &:where(:hover:not(:has(.rt-TextAreaInput:focus))) {
+      background-color: color-mix(
+        in srgb,
+        var(--v-bg-hover-a) calc(var(--material-alpha) * 100%),
+        var(--v-bg-hover) var(--material-blend)
+      );
+    }
+  }
+
+  /* Autofill state */
+  /* prettier-ignore */
+  &:where(:has(.rt-TextAreaInput:where(:autofill, [data-com-onepassword-filled]):not(:disabled, :read-only))) {
+    background-image: linear-gradient(var(--focus-a2), var(--focus-a2));
+    box-shadow: inset 0 0 0 1px var(--focus-a5);
+  }
+
+  /* Disabled/read-only state */
+  &:where(:has(.rt-TextAreaInput:where(:disabled, :read-only))) {
+    background-color: var(--gray-a2);
+    background-image: linear-gradient(var(--gray-a2), var(--gray-a2));
+  }
+}
+
+/* Border variants: outline and surface */
+.rt-TextAreaRoot:where(.rt-variant-outline, .rt-variant-surface) {
+  /* Rest state border */
+  box-shadow: inset 0 0 0 1px color-mix(
+    in srgb,
+    var(--v-border-a) calc(var(--material-alpha) * 100%),
+    var(--v-border) var(--material-blend)
+  );
+
+  /* Hover state border */
+  @media (hover: hover) {
+    &:where(:hover:not(:has(.rt-TextAreaInput:focus))) {
+      box-shadow: inset 0 0 0 1px color-mix(
+        in srgb,
+        var(--v-border-hover-a) calc(var(--material-alpha) * 100%),
+        var(--v-border-hover) var(--material-blend)
+      );
+    }
+  }
+
+  /* Disabled state border */
+  &:where(:has(.rt-TextAreaInput:where(:disabled, :read-only))) {
+    box-shadow: inset 0 0 0 var(--text-area-border-width) var(--gray-a6);
+  }
+}
+
+/* Ghost focus state - needs background on focus */
+.rt-TextAreaRoot:where(.rt-variant-ghost) {
+  &:where(:focus-within) {
+    background-color: color-mix(
+      in srgb,
+      var(--v-bg-focus-a, var(--v-bg-a)) calc(var(--material-alpha) * 100%),
+      var(--v-bg-focus, var(--v-bg)) var(--material-blend)
+    );
+  }
+}
+
+/* Surface focus state - border changes on focus */
+.rt-TextAreaRoot:where(.rt-variant-surface) {
+  &:where(:focus-within) {
+    background-color: color-mix(
+      in srgb,
+      var(--v-bg-focus-a, var(--v-bg-a)) calc(var(--material-alpha) * 100%),
+      var(--v-bg-focus, var(--v-bg)) var(--material-blend)
+    );
+    box-shadow: inset 0 0 0 var(--text-area-border-width) color-mix(
+      in srgb,
+      var(--v-border-focus-a) calc(var(--material-alpha) * 100%),
+      var(--v-border-focus) var(--material-blend)
+    );
+  }
+}
+
+/* Soft autofill - uses accent colors */
+.rt-TextAreaRoot:where(.rt-variant-soft) {
+  /* prettier-ignore */
+  &:where(:has(.rt-TextAreaInput:where(:autofill, [data-com-onepassword-filled]):not(:disabled, :read-only))) {
+    box-shadow: inset 0 0 0 1px var(--accent-a5), inset 0 0 0 1px var(--gray-a4);
+    background-image: none;
+  }
+
+  &:where(:has(.rt-TextAreaInput:where(:disabled, :read-only))) {
+    background-color: var(--gray-a3);
+    background-image: none;
+  }
+}
+
+/* Ghost disabled - specific color */
+.rt-TextAreaRoot:where(.rt-variant-ghost) {
+  &:where(:has(.rt-TextAreaInput:where(:disabled, :read-only))) {
+    color: var(--gray-a8);
+  }
+
+  /* prettier-ignore */
+  &:where(:has(.rt-TextAreaInput:where(:autofill, [data-com-onepassword-filled]):not(:disabled, :read-only))) {
+    background-color: var(--accent-a2);
+    box-shadow: inset 0 0 0 1px var(--accent-a5), inset 0 0 0 1px var(--gray-a4);
+  }
+}
+
+/* Surface disabled - specific color */
+.rt-TextAreaRoot:where(.rt-variant-surface) {
+  &:where(:has(.rt-TextAreaInput:where(:disabled, :read-only))) {
+    color: var(--gray-a8);
+  }
+
+  /* prettier-ignore */
+  &:where(:has(.rt-TextAreaInput:where(:autofill, [data-com-onepassword-filled]):not(:disabled, :read-only))) {
+    background-color: var(--accent-a2);
+    box-shadow: inset 0 0 0 1px var(--accent-a5), inset 0 0 0 1px var(--gray-a4);
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SPECIAL VARIANTS                                                                                *
+ *                                                                                                 *
+ * Classic has unique behavior that doesn't fit the shared pattern.                                *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+/* Classic variant - uses --color-surface and shadow */
+.rt-TextAreaRoot:where(.rt-variant-classic) {
+  --text-area-border-width: 0px;
+  --v-selection-color: var(--focus-a5);
+  --v-focus-color: var(--focus-8);
+
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-2);
+  transition: var(--transition-text-field);
 
   & :where(.rt-TextAreaInput) {
     &::placeholder {
@@ -217,64 +429,15 @@
     }
   }
 
-  /* prettier-ignore */
-  &:where(:has(.rt-TextAreaInput:where(:autofill, [data-com-onepassword-filled]):not(:disabled, :read-only))) {
-    /* Blend with focus color */
-    background-image: linear-gradient(var(--focus-a2), var(--focus-a2));
-    box-shadow: inset 0 0 0 1px var(--focus-a5);
-  }
-
-  &:where(:has(.rt-TextAreaInput:where(:disabled, :read-only))) {
-    /* Blend with grey */
-    background-image: linear-gradient(var(--gray-a2), var(--gray-a2));
-    box-shadow: inset 0 0 0 var(--text-area-border-width) var(--gray-a6);
-  }
-}
-
-/* classic */
-.rt-TextAreaRoot:where(.rt-variant-classic) {
-  --text-area-selection-color: var(--focus-a5);
-  --text-area-focus-color: var(--focus-8);
-  --text-area-border-width: 0px;
-
-  /* Base state: solid surface for solid panels */
-  background-color: var(--color-surface-solid);
-  box-shadow: var(--shadow-2);
-  transition: var(--transition-text-field);
-
-  /* Theme-level translucent override */
-  :where([data-panel-background='translucent'], [data-material='translucent']) & {
-    background-color: var(--color-surface-translucent);
-  }
-
-  /* Component-level overrides (higher specificity) */
-  &:where([data-panel-background='solid'], [data-material='solid']) {
-    background-color: var(--color-surface-solid);
-  }
-
-  &:where([data-panel-background='translucent'], [data-material='translucent']) {
-    background-color: var(--color-surface-translucent);
-  }
-
   /* Hover effects */
   @media (hover: hover) {
     &:where(:hover:not(:has(.rt-TextAreaInput:focus))) {
-      background-color: var(--accent-2);
+      background-color: color-mix(
+        in srgb,
+        var(--accent-a2) calc(var(--material-alpha) * 100%),
+        var(--accent-2) var(--material-blend)
+      );
       box-shadow: var(--shadow-2);
-
-      /* Theme-level translucent override for hover */
-      :where([data-panel-background='translucent'], [data-material='translucent']) & {
-        background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
-      }
-
-      /* Component-level overrides for hover */
-      &:where([data-panel-background='solid'], [data-material='solid']) {
-        background-color: var(--accent-2);
-      }
-
-      &:where([data-panel-background='translucent'], [data-material='translucent']) {
-        background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
-      }
     }
   }
 
@@ -283,269 +446,24 @@
     box-shadow: var(--shadow-2), 0 0 0 2px var(--focus-8);
   }
 
-  & :where(.rt-TextAreaInput) {
-    &::placeholder {
-      color: var(--gray-a10);
-    }
-  }
-
   /* prettier-ignore */
   &:where(:has(.rt-TextAreaInput:where(:autofill, [data-com-onepassword-filled]):not(:disabled, :read-only))) {
-    /* Blend with focus color */
     background-image: linear-gradient(var(--focus-a2), var(--focus-a2));
     box-shadow: var(--shadow-2);
   }
 
   &:where(:has(.rt-TextAreaInput:where(:disabled, :read-only))) {
-    /* Blend with grey */
     background-image: linear-gradient(var(--gray-a2), var(--gray-a2));
   }
 }
 
-/* soft */
-.rt-TextAreaRoot:where(.rt-variant-soft) {
-  --text-area-selection-color: var(--accent-a5);
-  --text-area-focus-color: var(--accent-8);
-  --text-area-border-width: 0px;
+/***************************************************************************************************
+ *                                                                                                 *
+ * DISABLED STATES                                                                                 *
+ *                                                                                                 *
+ ***************************************************************************************************/
 
-  /* Base state: solid color for solid panels */
-  background-color: var(--accent-3);
-  transition: var(--transition-background-blur);
-
-  /* Theme-level translucent override */
-  :where([data-panel-background='translucent'], [data-material='translucent']) & {
-    background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
-  }
-
-  /* Component-level overrides (higher specificity) */
-  &:where([data-panel-background='solid'], [data-material='solid']) {
-    background-color: var(--accent-3);
-  }
-
-  &:where([data-panel-background='translucent'], [data-material='translucent']) {
-    background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
-  }
-
-  /* Hover effects */
-  @media (hover: hover) {
-    &:where(:hover:not(:has(.rt-TextAreaInput:focus))) {
-      background-color: var(--accent-4);
-      
-      /* Theme-level translucent override for hover */
-      :where([data-panel-background='translucent'], [data-material='translucent']) & {
-        background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
-      }
-
-      /* Component-level overrides for hover */
-      &:where([data-panel-background='solid'], [data-material='solid']) {
-        background-color: var(--accent-4);
-      }
-
-      &:where([data-panel-background='translucent'], [data-material='translucent']) {
-        background-color: color-mix(in srgb, var(--accent-a4), var(--accent-4) 60%);
-      }
-    }
-  }
-
-  & :where(.rt-TextAreaInput) {
-    &::placeholder {
-      color: var(--accent-12);
-      opacity: 0.6;
-    }
-  }
-
-  /* prettier-ignore */
-  &:where(:has(.rt-TextAreaInput:where(:autofill, [data-com-onepassword-filled]):not(:disabled, :read-only))) {
-    /* Use gray autofill color when component color is gray */
-    box-shadow: inset 0 0 0 1px var(--accent-a5), inset 0 0 0 1px var(--gray-a4);
-  }
-
-  &:where(:has(.rt-TextAreaInput:where(:disabled, :read-only))) {
-    background-color: var(--gray-a3);
-  }
-}
-
-/* ghost */
-.rt-TextAreaRoot:where(.rt-variant-ghost) {
-  --text-area-selection-color: var(--accent-a5);
-  --text-area-focus-color: var(--accent-8);
-  --text-area-border-width: 0px;
-
-  background-color: transparent;
-  color: var(--gray-12);
-
-  & :where(.rt-TextAreaInput) {
-    &::placeholder {
-      color: var(--gray-a10);
-    }
-  }
-
-  /* Hover effects */
-  @media (hover: hover) {
-    &:where(:hover:not(:has(.rt-TextAreaInput:focus))) {
-      /* Base state: solid accent for solid panels */
-      background-color: var(--accent-3);
-      
-      /* Theme-level translucent override for hover */
-      :where([data-panel-background='translucent'], [data-material='translucent']) & {
-        background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
-      }
-
-      /* Component-level overrides for hover */
-      &:where([data-panel-background='solid'], [data-material='solid']) {
-        background-color: var(--accent-3);
-      }
-
-      &:where([data-panel-background='translucent'], [data-material='translucent']) {
-        background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
-      }
-
-      /* Disable backdrop-filter when inside elements that already have backdrop-filter */
-      /* :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
-        backdrop-filter: none !important;
-      } */
-    }
-  }
-
-  /* Show styling only on focus/interaction */
-  &:where(:focus-within) {
-    /* Base state: solid accent for solid panels */
-    background-color: var(--accent-2);
-
-    /* Theme-level translucent override */
-    :where([data-panel-background='translucent'], [data-material='translucent']) & {
-      background-color: var(--accent-a2);
-    }
-
-    /* Component-level overrides */
-    &:where([data-panel-background='solid'], [data-material='solid']) {
-      background-color: var(--accent-2);
-    }
-
-    &:where([data-panel-background='translucent'], [data-material='translucent']) {
-      background-color: var(--accent-a2);
-    }
-
-    /* Disable backdrop-filter when inside elements that already have backdrop-filter */
-    /* :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
-      backdrop-filter: none !important;
-    } */
-  }
-
-  /* prettier-ignore */
-  &:where(:has(.rt-TextAreaInput:where(:autofill, [data-com-onepassword-filled]):not(:disabled, :read-only))) {
-    background-color: var(--accent-a2);
-    box-shadow: inset 0 0 0 1px var(--accent-a5), inset 0 0 0 1px var(--gray-a4);
-  }
-
-  &:where(:has(.rt-TextAreaInput:where(:disabled, :read-only))) {
-    background-color: var(--gray-a2);
-    color: var(--gray-a8);
-  }
-}
-
-/* surface */
-.rt-TextAreaRoot:where(.rt-variant-surface) {
-  --text-area-selection-color: var(--accent-a5);
-  --text-area-focus-color: var(--accent-8);
-  --text-area-border-width: 1px;
-
-  /* Base state: solid accent for solid panels */
-  background-color: var(--accent-2);
-  box-shadow: inset 0 0 0 1px var(--accent-6);
-  transition: var(--transition-background-blur);
-
-  /* Theme-level translucent override */
-  :where([data-panel-background='translucent'], [data-material='translucent']) & {
-    background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
-    box-shadow: inset 0 0 0 1px var(--accent-a6);
-  }
-
-  /* Component-level overrides (higher specificity) */
-  &:where([data-panel-background='solid'], [data-material='solid']) {
-    background-color: var(--accent-2);
-    box-shadow: inset 0 0 0 1px var(--accent-6);
-  }
-
-  &:where([data-panel-background='translucent'], [data-material='translucent']) {
-    background-color: color-mix(in srgb, var(--accent-a2), var(--accent-2) 60%);
-    box-shadow: inset 0 0 0 1px var(--accent-a6);
-  }
-
-  & :where(.rt-TextAreaInput) {
-    &::placeholder {
-      color: var(--gray-a10);
-    }
-  }
-
-  /* Hover effects */
-  @media (hover: hover) {
-    &:where(:hover:not(:has(.rt-TextAreaInput:focus))) {
-      background-color: var(--accent-3);
-      box-shadow: inset 0 0 0 1px var(--accent-7);
-      
-      /* Theme-level translucent override for hover */
-      :where([data-panel-background='translucent'], [data-material='translucent']) & {
-        background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
-        box-shadow: inset 0 0 0 1px var(--accent-a7);
-      }
-
-      /* Component-level overrides for hover */
-      &:where([data-panel-background='solid'], [data-material='solid']) {
-        background-color: var(--accent-3);
-        box-shadow: inset 0 0 0 1px var(--accent-7);
-      }
-
-      &:where([data-panel-background='translucent'], [data-material='translucent']) {
-        background-color: color-mix(in srgb, var(--accent-a3), var(--accent-3) 60%);
-        box-shadow: inset 0 0 0 1px var(--accent-a7);
-      }
-    }
-  }
-
-  /* Interaction states get light background */
-  &:where(:focus-within) {
-    /* Base state: solid accent for solid panels */
-    background-color: var(--accent-2);
-    box-shadow: inset 0 0 0 var(--text-area-border-width) var(--accent-8);
-
-    /* Theme-level translucent override */
-    :where([data-panel-background='translucent'], [data-material='translucent']) & {
-      background-color: var(--accent-a2);
-      box-shadow: inset 0 0 0 var(--text-area-border-width) var(--accent-a8);
-    }
-
-    /* Component-level overrides */
-    &:where([data-panel-background='solid'], [data-material='solid']) {
-      background-color: var(--accent-2);
-      box-shadow: inset 0 0 0 var(--text-area-border-width) var(--accent-8);
-    }
-
-    &:where([data-panel-background='translucent'], [data-material='translucent']) {
-      background-color: var(--accent-a2);
-      box-shadow: inset 0 0 0 var(--text-area-border-width) var(--accent-a8);
-    }
-
-    /* Disable backdrop-filter when inside elements that already have backdrop-filter */
-    /* :where(.rt-PopoverContent, .rt-BaseDialogContent, .rt-BaseMenuContent, .rt-DropdownMenuContent, .rt-ContextMenuContent, .rt-AlertDialogContent, .rt-HoverCardContent, .rt-TooltipContent, .rt-Card) & {
-      backdrop-filter: none !important;
-    } */
-  }
-
-  /* prettier-ignore */
-  &:where(:has(.rt-TextAreaInput:where(:autofill, [data-com-onepassword-filled]):not(:disabled, :read-only))) {
-    background-color: var(--accent-a2);
-    box-shadow: inset 0 0 0 1px var(--accent-a5), inset 0 0 0 1px var(--gray-a4);
-  }
-
-  &:where(:has(.rt-TextAreaInput:where(:disabled, :read-only))) {
-    background-color: var(--gray-a2);
-    box-shadow: inset 0 0 0 var(--text-area-border-width) var(--gray-a6);
-    color: var(--gray-a8);
-  }
-}
-
-/* all disabled and read-only text areas */
+/* All disabled and read-only text areas */
 .rt-TextAreaInput {
   &:where(:disabled, :read-only) {
     cursor: text;
@@ -561,38 +479,93 @@
     }
 
     .rt-TextAreaRoot:where(:has(&)) {
-      --text-area-selection-color: var(--gray-a5);
-      --text-area-focus-color: var(--gray-8);
+      --v-selection-color: var(--gray-a5);
+      --v-focus-color: var(--gray-8);
     }
   }
 }
 
-/* Error state styling */
+/***************************************************************************************************
+ *                                                                                                 *
+ * ERROR STATES                                                                                    *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
 .rt-TextAreaRoot:where(.rt-error) {
-  --text-area-selection-color: var(--red-a5);
-  --text-area-focus-color: var(--red-8);
+  --v-selection-color: var(--red-a5);
+  --v-focus-color: var(--red-8);
 }
 
+/* Error outline variant */
 .rt-TextAreaRoot:where(.rt-error.rt-variant-outline) {
-  box-shadow: inset 0 0 0 1px var(--red-6);
-  
+  --v-bg-hover: var(--red-2);
+  --v-bg-hover-a: var(--red-a2);
+  --v-border: var(--red-6);
+  --v-border-a: var(--red-a6);
+  --v-border-hover: var(--red-7);
+  --v-border-hover-a: var(--red-a7);
+
+  box-shadow: inset 0 0 0 1px color-mix(
+    in srgb,
+    var(--v-border-a) calc(var(--material-alpha) * 100%),
+    var(--v-border) var(--material-blend)
+  );
+
   @media (hover: hover) {
     &:where(:hover:not(:has(.rt-TextAreaInput:focus))) {
-      box-shadow: inset 0 0 0 1px var(--red-7);
+      background-color: color-mix(
+        in srgb,
+        var(--v-bg-hover-a) calc(var(--material-alpha) * 100%),
+        var(--v-bg-hover) var(--material-blend)
+      );
+      box-shadow: inset 0 0 0 1px color-mix(
+        in srgb,
+        var(--v-border-hover-a) calc(var(--material-alpha) * 100%),
+        var(--v-border-hover) var(--material-blend)
+      );
     }
   }
 }
 
+/* Error surface variant */
 .rt-TextAreaRoot:where(.rt-error.rt-variant-surface) {
-  box-shadow: inset 0 0 0 1px var(--red-6);
-  
+  --v-bg: var(--red-2);
+  --v-bg-a: var(--red-a2);
+  --v-bg-hover: var(--red-3);
+  --v-bg-hover-a: var(--red-a3);
+  --v-border: var(--red-6);
+  --v-border-a: var(--red-a6);
+  --v-border-hover: var(--red-7);
+  --v-border-hover-a: var(--red-a7);
+
+  background-color: color-mix(
+    in srgb,
+    var(--v-bg-a) calc(var(--material-alpha) * 100%),
+    var(--v-bg) var(--material-blend)
+  );
+  box-shadow: inset 0 0 0 1px color-mix(
+    in srgb,
+    var(--v-border-a) calc(var(--material-alpha) * 100%),
+    var(--v-border) var(--material-blend)
+  );
+
   @media (hover: hover) {
     &:where(:hover:not(:has(.rt-TextAreaInput:focus))) {
-      box-shadow: inset 0 0 0 1px var(--red-7);
+      background-color: color-mix(
+        in srgb,
+        var(--v-bg-hover-a) calc(var(--material-alpha) * 100%),
+        var(--v-bg-hover) var(--material-blend)
+      );
+      box-shadow: inset 0 0 0 1px color-mix(
+        in srgb,
+        var(--v-border-hover-a) calc(var(--material-alpha) * 100%),
+        var(--v-border-hover) var(--material-blend)
+      );
     }
   }
 }
 
+/* Error classic variant */
 .rt-TextAreaRoot:where(.rt-error.rt-variant-classic) {
   box-shadow: var(--shadow-2), inset 0 0 0 1px var(--red-6);
   
@@ -603,29 +576,62 @@
   }
 }
 
+/* Error soft variant */
 .rt-TextAreaRoot:where(.rt-error.rt-variant-soft) {
-  background-color: var(--red-2);
+  --v-bg: var(--red-2);
+  --v-bg-a: var(--red-a2);
+  --v-bg-hover: var(--red-4);
+  --v-bg-hover-a: var(--red-a4);
+  
+  background-color: color-mix(
+    in srgb,
+    var(--v-bg-a) calc(var(--material-alpha) * 100%),
+    var(--v-bg) var(--material-blend)
+  );
   
   @media (hover: hover) {
     &:where(:hover:not(:has(.rt-TextAreaInput:focus))) {
-      background-color: var(--red-4);
+      background-color: color-mix(
+        in srgb,
+        var(--v-bg-hover-a) calc(var(--material-alpha) * 100%),
+        var(--v-bg-hover) var(--material-blend)
+      );
     }
   }
 }
 
+/* Error ghost variant */
 .rt-TextAreaRoot:where(.rt-error.rt-variant-ghost) {
+  --v-bg-hover: var(--red-3);
+  --v-bg-hover-a: var(--red-a3);
+  --v-bg-focus: var(--red-2);
+  --v-bg-focus-a: var(--red-a2);
+
   @media (hover: hover) {
     &:where(:hover:not(:has(.rt-TextAreaInput:focus))) {
-      background-color: var(--red-3);
+      background-color: color-mix(
+        in srgb,
+        var(--v-bg-hover-a) calc(var(--material-alpha) * 100%),
+        var(--v-bg-hover) var(--material-blend)
+      );
     }
   }
   
   &:where(:focus-within) {
-    background-color: var(--red-2);
+    background-color: color-mix(
+      in srgb,
+      var(--v-bg-focus-a) calc(var(--material-alpha) * 100%),
+      var(--v-bg-focus) var(--material-blend)
+    );
   }
 }
 
-/* Error message styling */
+/***************************************************************************************************
+ *                                                                                                 *
+ * ERROR MESSAGE                                                                                   *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
 .rt-TextAreaErrorMessage {
   color: var(--red-11);
   font-size: var(--font-size-1);
