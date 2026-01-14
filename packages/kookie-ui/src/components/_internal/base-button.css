@@ -116,7 +116,8 @@
   }
 
   /* Stabilize SVGs during scale transforms (prevent wobble, especially Firefox) */
-  & svg {
+  /* stylelint-disable-next-line selector-max-type */
+  & :where(svg) {
     display: block;
     transform: translateZ(0);
     transform-origin: center;
