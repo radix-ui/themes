@@ -115,22 +115,22 @@
   background-color: var(--accent-a4);
 }
 
-/* High contrast - highlighted item */
-.rt-BaseMenuContent:where(.rt-high-contrast) :where(.rt-ComboboxItem[data-selected='true']) {
+/* High contrast SOLID variant - highlighted item */
+.rt-BaseMenuContent:where(.rt-variant-solid.rt-high-contrast) :where(.rt-ComboboxItem[data-selected='true']) {
   background-color: var(--accent-12);
   color: var(--accent-1);
 }
 
-.rt-BaseMenuContent:where(.rt-high-contrast) :where(.rt-ComboboxItem[data-selected='true']) * {
+.rt-BaseMenuContent:where(.rt-variant-solid.rt-high-contrast) :where(.rt-ComboboxItem[data-selected='true']) * {
   color: var(--accent-1) !important;
 }
 
-/* High contrast with accent color */
-.rt-BaseMenuContent:where(.rt-high-contrast[data-accent-color]) :where(.rt-ComboboxItem[data-selected='true']) {
+/* High contrast SOLID with accent color */
+.rt-BaseMenuContent:where(.rt-variant-solid.rt-high-contrast[data-accent-color]) :where(.rt-ComboboxItem[data-selected='true']) {
   background-color: var(--accent-9);
   color: var(--accent-contrast);
 }
 
-.rt-BaseMenuContent:where(.rt-high-contrast[data-accent-color]) :where(.rt-ComboboxItem[data-selected='true']) * {
+.rt-BaseMenuContent:where(.rt-variant-solid.rt-high-contrast[data-accent-color]) :where(.rt-ComboboxItem[data-selected='true']) * {
   color: var(--accent-contrast) !important;
 }
