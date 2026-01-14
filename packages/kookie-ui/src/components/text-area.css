@@ -419,9 +419,14 @@
   --v-selection-color: var(--focus-a5);
   --v-focus-color: var(--focus-8);
 
-  background-color: var(--color-surface);
+  background-color: var(--color-surface-solid);
   box-shadow: var(--shadow-2);
   transition: var(--transition-text-field);
+
+  /* Translucent theme override */
+  &:where([data-panel-background='translucent'], [data-material='translucent']) {
+    background-color: var(--color-surface-translucent);
+  }
 
   & :where(.rt-TextAreaInput) {
     &::placeholder {

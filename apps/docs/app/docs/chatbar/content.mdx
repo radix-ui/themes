@@ -19,6 +19,12 @@ import { Alert02Icon } from '@hugeicons/core-free-icons';
 
 Use Chatbar to create rich messaging experiences with expandable text areas, file attachments, and intuitive submission flows. Designed for AI chat interfaces, customer support, and collaborative applications.
 
+## Playground
+
+import ChatbarPlayground from '../../playground/chatbar-playground';
+
+<ChatbarPlayground />
+
 ## Installation
 
 ```bash
@@ -74,7 +80,7 @@ Chatbar is a compound component with the following parts:
 | `defaultOpen` | `boolean` | `false` | Initial expansion state for uncontrolled usage |
 | `onOpenChange` | `(open: boolean) => void` | - | Callback when expansion state changes |
 | `expandOn` | `'none' \| 'focus' \| 'overflow' \| 'both'` | `'both'` | When to auto-expand: on focus, when content overflows, both, or manual only |
-| `minLines` | `number` | `1` | Minimum visible lines in compact state |
+| `minLines` | `number` | `3` | Minimum visible lines when expanded |
 | `maxLines` | `number` | `6` | Maximum visible lines before scrolling |
 | `sendMode` | `'always' \| 'whenDirty' \| 'never'` | `'whenDirty'` | When to show send button: always visible, only with content, or hidden |
 | `disabled` | `boolean` | - | Disables all interactions |

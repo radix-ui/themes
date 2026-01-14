@@ -431,9 +431,14 @@
 .rt-BaseButton:where(.rt-variant-classic) {
   position: relative;
   color: var(--accent-a11);
-  background-color: var(--color-surface);
+  background-color: var(--color-surface-solid);
   box-shadow: var(--shadow-2);
   transition: var(--transition-text-field);
+
+  /* Translucent theme override */
+  &:where([data-material='translucent']) {
+    background-color: var(--color-surface-translucent);
+  }
 
   &:where(.rt-high-contrast) {
     color: var(--gray-12);

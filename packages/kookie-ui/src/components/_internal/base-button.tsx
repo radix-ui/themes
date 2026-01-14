@@ -148,8 +148,8 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
   // Detect Firefox to disable scale animation (Firefox has SVG rendering issues with transforms)
   const isFirefox = typeof navigator !== 'undefined' && /Firefox/i.test(navigator.userAgent);
   
-  // Animation config for scale effects
-  const tweenConfig = { type: 'tween', duration: 0.15, ease: 'circInOut' } as const;
+  // Animation config for scale effects - duration-based spring
+  const springConfig = { type: 'spring', visualDuration: 0.1, bounce: 0.25 } as const;
   const isInteractive = !disabled && !props.loading;
   // Check if button is in "open" state (for dropdown triggers, etc.)
   const dataState = (baseButtonProps as Record<string, unknown>)['data-state'];
@@ -158,7 +158,7 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
     whileHover: isInteractive && !isOpen ? { scale: 1.02 } : undefined,
     whileTap: isInteractive ? { scale: 0.96 } : undefined,
     animate: isOpen ? { scale: 0.96 } : { scale: 1 },
-    transition: tweenConfig,
+    transition: springConfig,
   };
 
   // Only pass disabled for elements that support it

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
+import { motion } from 'motion/react';
 
 import { IconButton, type IconButtonProps } from './icon-button.js';
 import { CloseIcon, FileTextIcon } from './icons.js';
@@ -7,7 +8,6 @@ import { Flex } from './flex.js';
 
 import { ScrollArea } from './scroll-area.js';
 import { Slot } from './slot.js';
-import { Box } from './box.js';
 import { Text } from './text.js';
 import { useDropzone } from 'react-dropzone';
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
@@ -235,7 +235,7 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
     defaultOpen = false,
     onOpenChange: onOpenChangeProp,
     expandOn = 'both',
-    minLines = 1,
+    minLines = 3,
     maxLines = 6,
     sendMode = 'whenDirty',
     disabled,
@@ -591,15 +591,35 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
       >
         {dropzone && <input {...getInputProps()} />}
         <div {...(dropzone ? getRootProps() : {})} style={{ width: '100%', height: '100%' }} onPointerDown={handleContainerPointerDown}>
-          <Box
+          <motion.div
             className={classNames('rt-ChatbarBox', `rt-variant-${variant ?? 'surface'}`)}
             style={{ position: 'relative' }}
             data-accent-color={color}
             data-radius={radius as any}
             data-panel-background={effectiveMaterial}
             data-material={effectiveMaterial}
+            layout
+            transition={{
+              layout: {
+                type: 'spring',
+                visualDuration: 0.1,
+                bounce: 0.25,
+              },
+            }}
           >
-            <div className="rt-ChatbarGrid">{children}</div>
+            <motion.div 
+              className="rt-ChatbarGrid" 
+              layout="position"
+              transition={{
+                layout: {
+                  type: 'spring',
+                  visualDuration: 0.1,
+                  bounce: 0.25,
+                },
+              }}
+            >
+              {children}
+            </motion.div>
             {dropzone && isDragActive && (
               <div className="rt-ChatbarDropOverlay">
                 <div className="rt-ChatbarDropContent">
@@ -609,7 +629,7 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
                 </div>
               </div>
             )}
-          </Box>
+          </motion.div>
         </div>
       </Comp>
     </ChatbarContext.Provider>
@@ -876,7 +896,17 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>((props, fo
 
   const Comp = asChild ? Slot : ('textarea' as any);
   return (
-    <div className={classNames('rt-ChatbarField', 'rt-ChatbarTextarea', className)}>
+    <motion.div 
+      className={classNames('rt-ChatbarField', 'rt-ChatbarTextarea', className)}
+      layout="position"
+      transition={{
+        layout: {
+          type: 'spring',
+          visualDuration: 0.1,
+          bounce: 0.25,
+        },
+      }}
+    >
       <Comp
         {...textareaProps}
         ref={(node: HTMLTextAreaElement) => {
@@ -898,7 +928,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>((props, fo
         autoCorrect={textareaProps.autoCorrect ?? 'on'}
         style={style}
       />
-    </div>
+    </motion.div>
   );
 });
 Textarea.displayName = 'Chatbar.Textarea';
@@ -924,6 +954,7 @@ InlineStart.displayName = 'Chatbar.InlineStart';
 const InlineEnd = React.forwardRef<HTMLDivElement, InlineSlotProps>((props, forwardedRef) => {
   const { children, asChild, style, className, ...divProps } = props;
   const ctx = useChatbarContext();
+  // Use CSS to hide when open instead of unmounting to avoid layout animation scale
   if (ctx.open) return null;
   const Comp = asChild ? Slot : ('div' as any);
   return (
