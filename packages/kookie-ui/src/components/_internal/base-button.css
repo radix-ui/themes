@@ -5,30 +5,25 @@
  * Kookie User Interface design system. It provides the base styles that are
  * extended by Button, IconButton, and other button variants.
  * 
- * Key features:
- * - Comprehensive accessibility support (forced colors, reduced motion)
- * - Six visual variants with distinct styling patterns
- * - Material system for solid and translucent effects
- * - Responsive sizing with mobile-first approach
- * - RTL (right-to-left) language support
- * - Interactive states (hover, focus, active, disabled)
- * - Loading states with proper visual feedback
- * - High contrast mode support
- * 
- * The base button uses CSS custom properties extensively to enable
- * dynamic theming and responsive behavior across different contexts.
+ * ARCHITECTURE:
+ * - Base styles: Layout, accessibility, material system
+ * - Sizes: Responsive height and border-radius
+ * - Variant palettes: Each variant defines its color scale as CSS variables
+ * - Shared state logic: Single set of hover/active/open/disabled selectors
+ * - Special variants: classic, override, solid (unique behavior, kept separate)
+ * - Toggle states: Pressed state overrides for all variants
  */
 
-/* 
- * Base button foundation styles
- * These styles establish the core button behavior and appearance
- */
+/***************************************************************************************************
+ *                                                                                                 *
+ * BASE STYLES                                                                                     *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
 .rt-BaseButton {
   /*
    * Component-level material override
    * When button has explicit material prop, override the inherited theme values.
-   * The base --material-blend and --material-alpha are defined in tokens/color.css
-   * and cascade from the Theme component.
    */
   &:where([data-material='solid'], [data-panel-background='solid']) {
     --material-blend: 100%;
@@ -68,10 +63,7 @@
     flex-direction: row-reverse;
   }
 
-  /* 
-   * Theme-level translucent override
-   * Applies backdrop filter for elevated visual effects
-   */
+  /* Theme-level translucent override */
   :where([data-panel-background='translucent'], [data-material='translucent']) & {
     backdrop-filter: var(--backdrop-filter-components);
     --backdrop-filter-components: blur(var(--backdrop-blur-components));
@@ -80,10 +72,7 @@
   /* Prevent backdrop-filter stacking with parent elements */
   isolation: isolate;
 
-  /* 
-   * Component-level material overrides
-   * These ensure proper rendering based on material setting
-   */
+  /* Component-level material overrides */
   &:where([data-panel-background='solid'], [data-material='solid']) {
     backdrop-filter: none;
     --backdrop-filter-components: none;
@@ -94,20 +83,14 @@
     --backdrop-filter-components: blur(var(--backdrop-blur-components));
   }
 
-  /* 
-   * Forced colors support for high contrast mode
-   * Ensures buttons remain visible in Windows high contrast mode
-   */
+  /* Forced colors support for high contrast mode */
   @media (forced-colors: active) {
     border: 1px solid CanvasText;
     color: CanvasText;
     background-color: Canvas;
   }
 
-  /* 
-   * Disabled state styling
-   * Prevents interaction and provides visual feedback
-   */
+  /* Disabled state styling */
   &:where([data-disabled]) {
     --spinner-opacity: 1;
     cursor: not-allowed;
@@ -119,33 +102,39 @@
     }
   }
 
-  /* 
-   * Loading state styling
-   * Changes cursor to indicate processing state
-   */
+  /* Loading state styling */
   &:where(.rt-loading) {
     position: relative;
     cursor: wait;
   }
 
-  /* 
-   * Reduced motion support
-   * Respects user's motion preferences for accessibility
-   */
+  /* Reduced motion support */
   @media (prefers-reduced-motion: reduce) {
     transition: none;
     backdrop-filter: none;
     animation: none;
   }
 
+  /* Stabilize SVGs during scale transforms (prevent wobble, especially Firefox) */
+  & svg {
+    display: block;
+    transform: translateZ(0);
+    transform-origin: center;
+    transform-box: fill-box;
+    backface-visibility: hidden;
+    shape-rendering: geometricPrecision;
+  }
+
   /* Set height using CSS custom property for responsive sizing */
   height: var(--base-button-height);
-}
 
 /* 
- * Full width mode
- * Expands button to fill its container width
+   * Scale transforms are handled by motion.dev in the component.
+   * This provides true spring physics and smoother rendering than CSS transforms.
  */
+}
+
+/* Full width mode */
 .rt-BaseButton:where(.rt-full-width) {
   display: flex;
   width: 100%;
@@ -155,26 +144,15 @@
  *                                                                                                 *
  * SIZES                                                                                           *
  *                                                                                                 *
- * Button sizes are defined using CSS custom properties for responsive design.
- * Each size sets the height and border radius appropriate for the scale.
- *                                                                                                 *
  ***************************************************************************************************/
 
 @breakpoints {
   .rt-BaseButton {
-    /* 
-     * Size 1: Compact (24px height)
-     * Designed for toolbars and dense interfaces
-     */
     &:where(.rt-r-size-1) {
       --base-button-height: var(--space-5);
       border-radius: max(var(--radius-1), var(--radius-full));
     }
 
-    /* 
-     * Size 2: Standard (32px height)
-     * Default size for most interface contexts
-     */
     &:where(.rt-r-size-2) {
       --base-button-height: var(--space-6);
       border-radius: max(var(--radius-2), var(--radius-full));
@@ -194,18 +172,262 @@
 
 /***************************************************************************************************
  *                                                                                                 *
- * VARIANTS                                                                                        *
+ * VARIANT PALETTES                                                                                *
+ *                                                                                                 *
+ * Each variant defines its color scale. Shared state logic uses these variables.                  *
+ * Variables: --v-color, --v-bg-*, --v-border-*, --v-shadow-*, --v-focus-*                        *
  *                                                                                                 *
  ***************************************************************************************************/
 
-/* classic */
+/* Soft variant palette */
+.rt-BaseButton:where(.rt-variant-soft) {
+  --v-color: var(--accent-a11);
+  --v-color-high-contrast: var(--accent-12);
+  --v-bg: var(--accent-3);
+  --v-bg-a: var(--accent-a3);
+  --v-bg-hover: var(--accent-4);
+  --v-bg-hover-a: var(--accent-a4);
+  --v-bg-active: var(--accent-5);
+  --v-bg-active-a: var(--accent-a5);
+  --v-bg-pressed: var(--accent-5);
+  --v-bg-pressed-a: var(--accent-a5);
+  --v-shadow-hover: var(--shadow-2);
+  --v-focus-color: var(--accent-8);
+  --v-focus-offset: -1px;
+}
 
+/* Ghost variant palette */
+.rt-BaseButton:where(.rt-variant-ghost) {
+  --v-color: var(--accent-a11);
+  --v-color-high-contrast: var(--accent-12);
+  --v-bg: transparent;
+  --v-bg-a: transparent;
+  --v-bg-hover: var(--accent-3);
+  --v-bg-hover-a: var(--accent-a3);
+  --v-bg-active: var(--accent-4);
+  --v-bg-active-a: var(--accent-a4);
+  --v-bg-pressed: var(--accent-4);
+  --v-bg-pressed-a: var(--accent-a4);
+  --v-bg-disabled: transparent;
+  --v-focus-color: var(--focus-8);
+  --v-focus-offset: -1px;
+}
+
+/* Outline variant palette */
+.rt-BaseButton:where(.rt-variant-outline) {
+  --v-color: var(--accent-11);
+  --v-color-high-contrast: var(--accent-12);
+  --v-bg: transparent;
+  --v-bg-a: transparent;
+  --v-bg-hover: var(--accent-2);
+  --v-bg-hover-a: var(--accent-a2);
+  --v-bg-active: var(--accent-3);
+  --v-bg-active-a: var(--accent-a3);
+  --v-bg-pressed: var(--accent-3);
+  --v-bg-pressed-a: var(--accent-a3);
+  --v-bg-disabled: transparent;
+  --v-border: var(--accent-6);
+  --v-border-a: var(--accent-a6);
+  --v-border-hover: var(--accent-7);
+  --v-border-hover-a: var(--accent-a7);
+  --v-border-open: var(--accent-7);
+  --v-border-open-a: var(--accent-a7);
+  --v-border-active: var(--accent-8);
+  --v-border-active-a: var(--accent-a8);
+  --v-border-disabled: var(--gray-a7);
+  --v-focus-color: var(--focus-8);
+  --v-focus-offset: -1px;
+  /* Outline uses a different transition than other variants */
+  transition: var(--transition-background-blur);
+}
+
+/* Surface variant palette */
+.rt-BaseButton:where(.rt-variant-surface) {
+  --v-color: var(--accent-a11);
+  --v-color-high-contrast: var(--accent-12);
+  --v-bg: var(--accent-2);
+  --v-bg-a: var(--accent-a2);
+  --v-bg-hover: var(--accent-3);
+  --v-bg-hover-a: var(--accent-a3);
+  --v-bg-active: var(--accent-4);
+  --v-bg-active-a: var(--accent-a4);
+  --v-bg-pressed: var(--accent-4);
+  --v-bg-pressed-a: var(--accent-a4);
+  --v-bg-disabled: var(--gray-a2);
+  --v-border: var(--accent-6);
+  --v-border-a: var(--accent-a6);
+  --v-border-hover: var(--accent-7);
+  --v-border-hover-a: var(--accent-a7);
+  --v-border-open: var(--accent-8);
+  --v-border-open-a: var(--accent-a8);
+  --v-border-active: var(--accent-8);
+  --v-border-active-a: var(--accent-a8);
+  --v-border-disabled: var(--gray-a6);
+  --v-focus-color: var(--focus-8);
+  --v-focus-offset: -1px;
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SHARED STATE LOGIC                                                                              *
+ *                                                                                                 *
+ * Single set of state selectors that use variant palette variables.                               *
+ * Applies to: soft, ghost, outline, surface                                                       *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+.rt-BaseButton:where(.rt-variant-soft, .rt-variant-ghost, .rt-variant-outline, .rt-variant-surface) {
+  /* Rest state */
+  color: var(--v-color);
+  background-color: color-mix(
+    in srgb,
+    var(--v-bg-a) calc(var(--material-alpha) * 100%),
+    var(--v-bg) var(--material-blend)
+  );
+
+  /* High contrast override */
+  &:where(.rt-high-contrast) {
+    color: var(--v-color-high-contrast);
+  }
+
+  /* Focus visible */
+  &:where(:focus-visible) {
+    outline: 2px solid var(--v-focus-color);
+    outline-offset: var(--v-focus-offset);
+  }
+
+  /* Hover state */
+  @media (hover: hover) {
+    &:where(:hover:not([data-disabled])) {
+      background-color: color-mix(
+        in srgb,
+        var(--v-bg-hover-a) calc(var(--material-alpha) * 100%),
+        var(--v-bg-hover) var(--material-blend)
+      );
+      box-shadow: var(--v-shadow-hover, none);
+    }
+  }
+
+  /* Open state (menu trigger) */
+  &:where([data-state='open']) {
+    background-color: color-mix(
+      in srgb,
+      var(--v-bg-hover-a) calc(var(--material-alpha) * 100%),
+      var(--v-bg-hover) var(--material-blend)
+    );
+  }
+
+  /* Active state */
+  &:where(:active:not([data-state='open'], [data-disabled])) {
+    background-color: color-mix(
+      in srgb,
+      var(--v-bg-active-a) calc(var(--material-alpha) * 100%),
+      var(--v-bg-active) var(--material-blend)
+    );
+    box-shadow: var(--shadow-1);
+  }
+
+  /* Pressed state (toggle on) */
+  &:where([data-state='on']) {
+    background-color: color-mix(
+      in srgb,
+      var(--v-bg-pressed-a) calc(var(--material-alpha) * 100%),
+      var(--v-bg-pressed) var(--material-blend)
+    );
+  }
+
+  /* Disabled state */
+  &:where([data-disabled]) {
+    color: var(--gray-a8);
+    background-color: var(--v-bg-disabled, var(--gray-a3));
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+/* Border variants: outline and surface */
+.rt-BaseButton:where(.rt-variant-outline, .rt-variant-surface) {
+  /* Rest state border */
+  box-shadow: inset 0 0 0 1px color-mix(
+    in srgb,
+    var(--v-border-a) calc(var(--material-alpha) * 100%),
+    var(--v-border) var(--material-blend)
+  );
+
+  /* Hover state border */
+  @media (hover: hover) {
+    &:where(:hover:not([data-disabled])) {
+      box-shadow: inset 0 0 0 1px color-mix(
+        in srgb,
+        var(--v-border-hover-a) calc(var(--material-alpha) * 100%),
+        var(--v-border-hover) var(--material-blend)
+      );
+    }
+  }
+
+  /* Open state border (outline uses hover color, surface uses active color) */
+  &:where([data-state='open']) {
+    box-shadow: inset 0 0 0 1px color-mix(
+      in srgb,
+      var(--v-border-open-a) calc(var(--material-alpha) * 100%),
+      var(--v-border-open) var(--material-blend)
+    );
+  }
+
+  /* Active and pressed state border */
+  &:where(:active:not([data-state='open'], [data-disabled])),
+  &:where([data-state='on']) {
+    box-shadow: inset 0 0 0 1px color-mix(
+      in srgb,
+      var(--v-border-active-a) calc(var(--material-alpha) * 100%),
+      var(--v-border-active) var(--material-blend)
+    );
+  }
+
+  /* Disabled state border */
+  &:where([data-disabled]) {
+    box-shadow: inset 0 0 0 1px var(--v-border-disabled);
+  }
+}
+
+/* Ghost flush mode */
+.rt-BaseButton:where(.rt-variant-ghost[data-flush='true']) {
+  --margin-top: 0px;
+  --margin-right: 0px;
+  --margin-bottom: 0px;
+  --margin-left: 0px;
+
+  --button-padding-x: calc(var(--base-button-height) * var(--padding-ratio-horizontal) / 4);
+  --button-padding-y: calc(var(--base-button-height) / 8);
+
+  --margin-top-override: calc(var(--margin-top) - var(--button-padding-y));
+  --margin-right-override: calc(var(--margin-right) - var(--button-padding-x));
+  --margin-bottom-override: calc(var(--margin-bottom) - var(--button-padding-y));
+  --margin-left-override: calc(var(--margin-left) - var(--button-padding-x));
+
+  margin-top: var(--margin-top-override);
+  margin-right: var(--margin-right-override);
+  margin-bottom: var(--margin-bottom-override);
+  margin-left: var(--margin-left-override);
+
+  :where(&) > * {
+    --margin-top-override: initial;
+    --margin-right-override: initial;
+    --margin-bottom-override: initial;
+    --margin-left-override: initial;
+  }
+}
+
+/***************************************************************************************************
+ *                                                                                                 *
+ * SPECIAL VARIANTS                                                                                *
+ *                                                                                                 *
+ * These variants have unique behavior that doesn't fit the shared pattern.                        *
+ *                                                                                                 *
+ ***************************************************************************************************/
+
+/* Classic variant - uses --color-surface and gray interactive states */
 .rt-BaseButton:where(.rt-variant-classic) {
-  /*
-   * Classic variant uses the --color-surface token which automatically
-   * switches between solid and translucent based on theme material setting.
-   * Interactive states use the material system for gray backgrounds.
-   */
   position: relative;
   color: var(--accent-a11);
   background-color: var(--color-surface);
@@ -228,12 +450,11 @@
     }
   }
 
-  &:where([data-state='open']) {
+  &:where([data-state='open']),
+  &:where(:active:not([data-state='open'], [data-disabled])),
+  &:where([data-state='on']:not([data-disabled])) {
     background-color: color-mix(in srgb, var(--gray-a3) calc(var(--material-alpha) * 100%), var(--gray-3) var(--material-blend));
-  }
-
-  &:where(:active:not([data-state='open'], [data-disabled]), [data-state='on']:not([data-disabled])) {
-    background-color: color-mix(in srgb, var(--gray-a3) calc(var(--material-alpha) * 100%), var(--gray-3) var(--material-blend));
+    box-shadow: var(--shadow-1);
   }
 
   @media (pointer: coarse) {
@@ -254,10 +475,8 @@
   }
 }
 
-/* override */
-
+/* Override variant - fully customizable via CSS variables */
 .rt-BaseButton:where(.rt-variant-override) {
-  /* Base styles driven entirely by CSS variables, set via props */
   color: var(--button-override-color, inherit);
   background: var(--button-override-background, transparent);
   background-color: var(--button-override-background-color, initial);
@@ -299,7 +518,6 @@
     outline-offset: var(--button-override-focus-outline-offset, 2px);
   }
 
-  /* Toggle pressed */
   &:where([data-state='on']) {
     color: var(--button-override-pressed-color, var(--button-override-active-color, var(--button-override-color, inherit)));
     background: var(--button-override-pressed-background, var(--button-override-active-background, var(--button-override-background, transparent)));
@@ -321,8 +539,7 @@
   }
 }
 
-/* solid */
-
+/* Solid variant - uses filter for active state */
 :where(.radix-themes) {
   --base-button-solid-high-contrast-hover-filter: contrast(0.88) saturate(1.1) brightness(1.1);
   --base-button-solid-active-filter: brightness(0.9) contrast(1.03);
@@ -340,14 +557,16 @@
 }
 
 .rt-BaseButton:where(.rt-variant-solid) {
-  /*
-   * Solid variant uses a 10% blend for translucent (more opaque than other variants).
-   * We use a local --solid-blend variable to handle this difference.
-   */
-  --solid-blend: calc(100% - (var(--material-alpha) * 90%)); /* 100% for solid, 10% for translucent */
+  /* Solid uses 10% blend for translucent (more opaque than other variants) */
+  --solid-blend: calc(100% - (var(--material-alpha) * 90%));
 
   background-color: color-mix(in srgb, var(--accent-a9) calc(var(--material-alpha) * 100%), var(--accent-9) var(--solid-blend));
   color: var(--accent-contrast);
+
+  &:where(:focus-visible) {
+    outline: 2px solid var(--focus-8);
+    outline-offset: 2px;
+  }
 
   @media (hover: hover) {
     &:where(:hover) {
@@ -365,16 +584,16 @@
     filter: var(--base-button-solid-active-filter);
   }
 
+  &:where([data-state='on']) {
+    background-color: color-mix(in srgb, var(--accent-a10) calc(var(--material-alpha) * 100%), var(--accent-10) var(--solid-blend));
+    opacity: 0.9;
+  }
+
   @media (pointer: coarse) {
     &:where(:active:not([data-state='open'])) {
       outline: var(--classic-shadow-blur-large) solid var(--accent-a4);
       outline-offset: 0;
     }
-  }
-
-  &:where(:focus-visible) {
-    outline: 2px solid var(--focus-8);
-    outline-offset: 2px;
   }
 
   &:where(.rt-high-contrast) {
@@ -397,6 +616,11 @@
     &:where(:active:not([data-state='open'])) {
       filter: var(--base-button-solid-high-contrast-active-filter);
     }
+
+    &:where([data-state='on']) {
+      background-color: var(--accent-12);
+      opacity: 0.85;
+    }
   }
 
   &:where([data-disabled]) {
@@ -409,273 +633,14 @@
   }
 }
 
-/* soft / ghost */
-
-.rt-BaseButton:where(.rt-variant-soft, .rt-variant-ghost) {
-  color: var(--accent-a11);
-
-  &:where(.rt-high-contrast) {
-    color: var(--accent-12);
-  }
-  &:where([data-disabled]) {
-    color: var(--gray-a8);
-    background-color: var(--gray-a3);
-    cursor: not-allowed;
-    pointer-events: none;
-  }
-}
-
-.rt-BaseButton:where(.rt-variant-soft) {
-  /*
-   * Soft variant uses the material system for background colors.
-   * color-mix blends alpha and solid colors based on --material-blend.
-   * This automatically handles both solid and translucent modes.
-   */
-  background-color: color-mix(in srgb, var(--accent-a3) calc(var(--material-alpha) * 100%), var(--accent-3) var(--material-blend));
-
-  &:where(:focus-visible) {
-    outline: 2px solid var(--accent-8);
-    outline-offset: -1px;
-  }
-
-  @media (hover: hover) {
-    &:where(:hover) {
-      background-color: color-mix(in srgb, var(--accent-a4) calc(var(--material-alpha) * 100%), var(--accent-4) var(--material-blend));
-      box-shadow: var(--shadow-2);
-    }
-  }
-
-  &:where([data-state='open']) {
-    background-color: color-mix(in srgb, var(--accent-a4) calc(var(--material-alpha) * 100%), var(--accent-4) var(--material-blend));
-  }
-
-  &:where(:active:not([data-state='open'])) {
-    background-color: color-mix(in srgb, var(--accent-a5) calc(var(--material-alpha) * 100%), var(--accent-5) var(--material-blend));
-  }
-
-  &:where([data-disabled]) {
-    color: var(--gray-a8);
-    background-color: var(--gray-a3);
-    cursor: not-allowed;
-    pointer-events: none;
-  }
-}
-
-.rt-BaseButton:where(.rt-variant-ghost) {
-  /*
-   * Ghost variant is transparent by default and only shows background on interaction.
-   * Uses the material system for hover/active/open states.
-   */
-  &:where([data-flush='true']) {
-    --margin-top: 0px;
-    --margin-right: 0px;
-    --margin-bottom: 0px;
-    --margin-left: 0px;
-
-    --button-padding-x: calc(var(--base-button-height) * var(--padding-ratio-horizontal) / 4);
-    --button-padding-y: calc(var(--base-button-height) / 8);
-
-    --margin-top-override: calc(var(--margin-top) - var(--button-padding-y));
-    --margin-right-override: calc(var(--margin-right) - var(--button-padding-x));
-    --margin-bottom-override: calc(var(--margin-bottom) - var(--button-padding-y));
-    --margin-left-override: calc(var(--margin-left) - var(--button-padding-x));
-
-    margin-top: var(--margin-top-override);
-    margin-right: var(--margin-right-override);
-    margin-bottom: var(--margin-bottom-override);
-    margin-left: var(--margin-left-override);
-
-    :where(&) > * {
-      --margin-top-override: initial;
-      --margin-right-override: initial;
-      --margin-bottom-override: initial;
-      --margin-left-override: initial;
-    }
-  }
-
-  @media (hover: hover) {
-    &:where(:hover) {
-      background-color: color-mix(in srgb, var(--accent-a3) calc(var(--material-alpha) * 100%), var(--accent-3) var(--material-blend));
-    }
-  }
-
-  &:where(:focus-visible) {
-    outline: 2px solid var(--focus-8);
-    outline-offset: -1px;
-  }
-
-  &:where([data-state='open']) {
-    background-color: color-mix(in srgb, var(--accent-a3) calc(var(--material-alpha) * 100%), var(--accent-3) var(--material-blend));
-  }
-
-  &:where(:active:not([data-state='open'])) {
-    background-color: color-mix(in srgb, var(--accent-a4) calc(var(--material-alpha) * 100%), var(--accent-4) var(--material-blend));
-  }
-
-  &:where([data-disabled]) {
-    color: var(--gray-a8);
-    background-color: transparent;
-    cursor: not-allowed;
-    pointer-events: none;
-  }
-}
-
-/* outline */
-
-.rt-BaseButton:where(.rt-variant-outline) {
-  /*
-   * Outline variant uses the material system for backgrounds and borders.
-   * Border colors use alpha variants in translucent mode.
-   */
-  --outline-border-6: color-mix(in srgb, var(--accent-a6) calc(var(--material-alpha) * 100%), var(--accent-6) var(--material-blend));
-  --outline-border-7: color-mix(in srgb, var(--accent-a7) calc(var(--material-alpha) * 100%), var(--accent-7) var(--material-blend));
-  --outline-border-8: color-mix(in srgb, var(--accent-a8) calc(var(--material-alpha) * 100%), var(--accent-8) var(--material-blend));
-
-  box-shadow: inset 0 0 0 1px var(--outline-border-6);
-  color: var(--accent-11);
-  transition: var(--transition-background-blur);
-
-  @media (hover: hover) {
-    &:where(:hover) {
-      background-color: color-mix(in srgb, var(--accent-a2) calc(var(--material-alpha) * 100%), var(--accent-2) var(--material-blend));
-      box-shadow: inset 0 0 0 1px var(--outline-border-7);
-    }
-  }
-
-  &:where([data-state='open']) {
-    background-color: color-mix(in srgb, var(--accent-a2) calc(var(--material-alpha) * 100%), var(--accent-2) var(--material-blend));
-    box-shadow: inset 0 0 0 1px var(--outline-border-7);
-  }
-
-  &:where(:active:not([data-state='open'])) {
-    background-color: color-mix(in srgb, var(--accent-a3) calc(var(--material-alpha) * 100%), var(--accent-3) var(--material-blend));
-    box-shadow: inset 0 0 0 1px var(--outline-border-8);
-  }
-
-  &:where(:focus-visible) {
-    outline: 2px solid var(--focus-8);
-    outline-offset: -1px;
-  }
-
-  &:where(.rt-high-contrast) {
-    color: var(--accent-12);
-  }
-
-  &:where([data-disabled]) {
-    color: var(--gray-a8);
-    box-shadow: inset 0 0 0 1px var(--gray-a7);
-    background-color: transparent;
-    cursor: not-allowed;
-    pointer-events: none;
-  }
-}
-
-/* surface */
-
-.rt-BaseButton:where(.rt-variant-surface) {
-  /*
-   * Surface variant uses the material system for backgrounds and borders.
-   * Has a visible background in default state unlike outline.
-   */
-  --surface-border-6: color-mix(in srgb, var(--accent-a6) calc(var(--material-alpha) * 100%), var(--accent-6) var(--material-blend));
-  --surface-border-7: color-mix(in srgb, var(--accent-a7) calc(var(--material-alpha) * 100%), var(--accent-7) var(--material-blend));
-  --surface-border-8: color-mix(in srgb, var(--accent-a8) calc(var(--material-alpha) * 100%), var(--accent-8) var(--material-blend));
-
-  background-color: color-mix(in srgb, var(--accent-a2) calc(var(--material-alpha) * 100%), var(--accent-2) var(--material-blend));
-  box-shadow: inset 0 0 0 1px var(--surface-border-6);
-  color: var(--accent-a11);
-
-  @media (hover: hover) {
-    &:where(:hover) {
-      background-color: color-mix(in srgb, var(--accent-a3) calc(var(--material-alpha) * 100%), var(--accent-3) var(--material-blend));
-      box-shadow: inset 0 0 0 1px var(--surface-border-7);
-    }
-  }
-
-  &:where([data-state='open']) {
-    background-color: color-mix(in srgb, var(--accent-a3) calc(var(--material-alpha) * 100%), var(--accent-3) var(--material-blend));
-    box-shadow: inset 0 0 0 1px var(--surface-border-8);
-  }
-
-  &:where(:active:not([data-state='open'])) {
-    background-color: color-mix(in srgb, var(--accent-a4) calc(var(--material-alpha) * 100%), var(--accent-4) var(--material-blend));
-    box-shadow: inset 0 0 0 1px var(--surface-border-8);
-  }
-
-  &:where(:focus-visible) {
-    outline: 2px solid var(--focus-8);
-    outline-offset: -1px;
-  }
-
-  &:where(.rt-high-contrast) {
-    color: var(--accent-12);
-  }
-
-  &:where([data-disabled]) {
-    color: var(--gray-a8);
-    box-shadow: inset 0 0 0 1px var(--gray-a6);
-    background-color: var(--gray-a2);
-    cursor: not-allowed;
-    pointer-events: none;
-  }
-}
-
 /***************************************************************************************************
  *                                                                                                 *
- * TOGGLE PRESSED STATES                                                                           *
+ * DISABLED TOGGLE STATES                                                                          *
  *                                                                                                 *
  ***************************************************************************************************/
 
-/* Toggle button pressed states for all variants - using material system */
-.rt-BaseButton:where([data-state='on']) {
-  /* Classic variant pressed */
-  &:where(.rt-variant-classic) {
-    background-color: color-mix(in srgb, var(--gray-a3) calc(var(--material-alpha) * 100%), var(--gray-3) var(--material-blend));
-  }
-
-  /* Solid variant pressed - uses solid-blend from variant definition */
-  &:where(.rt-variant-solid) {
-    --solid-blend: calc(100% - (var(--material-alpha) * 90%));
-    background-color: color-mix(in srgb, var(--accent-a10) calc(var(--material-alpha) * 100%), var(--accent-10) var(--solid-blend));
-    opacity: 0.9;
-
-    &:where(.rt-high-contrast) {
-      background-color: var(--accent-12);
-      opacity: 0.85;
-    }
-  }
-
-  /* Soft variant pressed */
-  &:where(.rt-variant-soft) {
-    background-color: color-mix(in srgb, var(--accent-a5) calc(var(--material-alpha) * 100%), var(--accent-5) var(--material-blend));
-  }
-
-  /* Ghost variant pressed */
-  &:where(.rt-variant-ghost) {
-    background-color: color-mix(in srgb, var(--accent-a4) calc(var(--material-alpha) * 100%), var(--accent-4) var(--material-blend));
-  }
-
-  /* Outline variant pressed */
-  &:where(.rt-variant-outline) {
-    --outline-border-8: color-mix(in srgb, var(--accent-a8) calc(var(--material-alpha) * 100%), var(--accent-8) var(--material-blend));
-    background-color: color-mix(in srgb, var(--accent-a3) calc(var(--material-alpha) * 100%), var(--accent-3) var(--material-blend));
-    box-shadow: inset 0 0 0 1px var(--outline-border-8);
-  }
-
-  /* Surface variant pressed */
-  &:where(.rt-variant-surface) {
-    --surface-border-8: color-mix(in srgb, var(--accent-a8) calc(var(--material-alpha) * 100%), var(--accent-8) var(--material-blend));
-    background-color: color-mix(in srgb, var(--accent-a4) calc(var(--material-alpha) * 100%), var(--accent-4) var(--material-blend));
-    box-shadow: inset 0 0 0 1px var(--surface-border-8);
-  }
-}
-
-/* Disabled state for ALL toggle buttons (pressed and unpressed) */
 .rt-BaseButton:where([disabled][aria-pressed]) {
-  /* Remove scale transform when disabled */
   transform: none;
-
-  /* Apply consistent disabled styling across all variants */
   color: var(--gray-a8);
   background-color: var(--gray-a3);
   background: var(--gray-a3);
@@ -685,7 +650,6 @@
   cursor: not-allowed;
   pointer-events: none;
 
-  /* Override any pressed state styling with higher specificity */
   &:where([data-state='on']) {
     transform: none;
     background: var(--gray-a3);
@@ -694,35 +658,8 @@
     filter: none;
   }
 
-  /* Override variant-specific pressed states */
+  /* Classic needs special handling for top position */
   &:where(.rt-variant-classic) {
-    background-color: var(--gray-a3);
-    box-shadow: none;
-    padding-top: 0;
-    padding-bottom: 0;
     top: 0;
-  }
-
-  &:where(.rt-variant-solid) {
-    background-color: var(--gray-a3);
-    filter: none;
-  }
-
-  &:where(.rt-variant-soft) {
-    background-color: var(--gray-a3);
-  }
-
-  &:where(.rt-variant-ghost) {
-    background-color: var(--gray-a3);
-  }
-
-  &:where(.rt-variant-outline) {
-    background-color: var(--gray-a3);
-    box-shadow: none;
-  }
-
-  &:where(.rt-variant-surface) {
-    background-color: var(--gray-a3);
-    box-shadow: none;
   }
 }

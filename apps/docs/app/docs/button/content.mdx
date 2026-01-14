@@ -53,7 +53,7 @@ export function MyComponent() {
 | `radius`       | `'none' \| 'small' \| 'medium' \| 'large' \| 'full'`                  | Corner radius scale: none for sharp edges, small/medium/large for progressive rounding, full for pill-shaped |
 | `material`     | `'solid' \| 'translucent'`                                            | Background appearance: solid for opaque backgrounds, translucent for depth over images or dynamic backgrounds |
 | `panelBackground` | `'solid' \| 'translucent'`                                         | Deprecated: Use material prop instead. Controls panel background appearance                     |
-| `loading`      | `boolean`                                                             | Shows spinner and disables button automatically. No need to set disabled manually               |
+| `loading`      | `boolean`                                                             | Replaces all content with a centered spinner and disables button automatically. For visible text during loading, use Spinner component around icons instead |
 | `disabled`     | `boolean`                                                             | Prevents interaction when action is unavailable, such as during form validation or when authentication is required |
 | `as`           | `ElementType`                                                         | Renders button as different HTML element while maintaining button styling. Useful for navigation links or routing integration |
 | `asChild`      | `boolean`                                                             | Merges button props with child element using Radix Slot pattern. Ideal for composition with routing libraries like Next.js Link |
@@ -212,7 +212,7 @@ Override the theme's material for a button when you need a specific effect. Tran
 
 ### Loading
 
-Set `loading` to `true` to show a spinner and disable the button. No need to set `disabled` manually.
+Set `loading` to `true` to replace all content with a centered spinner and disable the button automatically. No need to set `disabled` manually.
 
 ```tsx
 <Button
@@ -221,7 +221,18 @@ Set `loading` to `true` to show a spinner and disable the button. No need to set
   highContrast
   loading
 >
-  Submitting...
+  Submit
+</Button>
+```
+
+For a more sophisticated loading pattern where text remains visible, wrap your icon in a `Spinner` component:
+
+```tsx
+<Button disabled={isLoading}>
+  <Spinner loading={isLoading}>
+    <BookmarkIcon />
+  </Spinner>
+  Bookmark
 </Button>
 ```
 
@@ -417,7 +428,7 @@ Advanced `overrideStyles` prop enables per-state style customization using desig
 
 ### Enhanced Loading State
 
-Loading state automatically disables interaction and displays spinner. Screen readers announce loading context with proper `aria-busy` and `aria-disabled` attributes.
+Loading state replaces all button content with a centered spinner and disables interaction. Screen readers announce loading context with proper `aria-busy` and `aria-disabled` attributes. For patterns where text should remain visible during loading, wrap icons in the `Spinner` component instead.
 
 ### Flush Mode
 

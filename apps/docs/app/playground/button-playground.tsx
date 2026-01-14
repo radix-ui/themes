@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { Button } from '@kushagradhawan/kookie-ui';
-import { Plus } from 'lucide-react';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { Asterisk02Icon } from '@hugeicons/core-free-icons';
 import Playground from '@/components/playground';
 
 const accentColors = [
@@ -152,11 +153,11 @@ export default function ButtonPlayground() {
 
     let content = 'Button';
     if (iconLeft && iconRight) {
-      content = '<Plus />\n  Button\n  <Plus />';
+      content = '<HugeiconsIcon icon={Asterisk02Icon} strokeWidth={1.75} />\n  Button\n  <HugeiconsIcon icon={Asterisk02Icon} strokeWidth={1.75} />';
     } else if (iconLeft) {
-      content = '<Plus />\n  Button';
+      content = '<HugeiconsIcon icon={Asterisk02Icon} strokeWidth={1.75} />\n  Button';
     } else if (iconRight) {
-      content = 'Button\n  <Plus />';
+      content = 'Button\n  <HugeiconsIcon icon={Asterisk02Icon} strokeWidth={1.75} />';
     }
 
     // Format props nicely
@@ -180,9 +181,9 @@ export default function ButtonPlayground() {
           disabled={isDisabled}
           loading={isLoading}
         >
-          {iconPosition === 'left' || iconPosition === 'both' ? <Plus /> : null}
+          {iconPosition === 'left' || iconPosition === 'both' ? <HugeiconsIcon icon={Asterisk02Icon} strokeWidth={1.75} /> : null}
           Button
-          {iconPosition === 'right' || iconPosition === 'both' ? <Plus /> : null}
+          {iconPosition === 'right' || iconPosition === 'both' ? <HugeiconsIcon icon={Asterisk02Icon} strokeWidth={1.75} /> : null}
         </Button>
       }
       code={generateCode()}

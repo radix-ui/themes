@@ -2,17 +2,23 @@
 
 import * as React from 'react';
 import { PreviewBlock, CodeBlock, SectionHeader } from '@kushagradhawan/kookie-blocks';
-import { Flex, Button, Text, Separator, Card, Heading } from '@kushagradhawan/kookie-ui';
+import { Flex, Button, Text, Separator, Card, Heading, Spinner } from '@kushagradhawan/kookie-ui';
 import { HugeiconsIcon } from '@hugeicons/react';
-import { ArrowRight01Icon, Download01Icon, Add01Icon, Delete01Icon, Copy01Icon, Share01Icon, Tick01Icon, FilterIcon, SortingAZ01Icon, Settings01Icon, PlayIcon } from '@hugeicons/core-free-icons';
+import { ArrowRight01Icon, Download01Icon, Add01Icon, Delete01Icon, Copy01Icon, Share01Icon, Tick01Icon, FilterIcon, SortingAZ01Icon, Settings01Icon, PlayIcon, Bookmark01Icon } from '@hugeicons/core-free-icons';
 
 export function ButtonExamples() {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [isBookmarking, setIsBookmarking] = React.useState(false);
   const [selectedCount, setSelectedCount] = React.useState(0);
 
   const handleSubmit = () => {
     setIsSubmitting(true);
     setTimeout(() => setIsSubmitting(false), 2000);
+  };
+
+  const handleBookmark = () => {
+    setIsBookmarking(true);
+    setTimeout(() => setIsBookmarking(false), 2000);
   };
 
   const toggleSelection = () => {
@@ -27,7 +33,7 @@ export function ButtonExamples() {
           <SectionHeader.Content>
             <SectionHeader.Title>Form Submission</SectionHeader.Title>
             <SectionHeader.Description>
-              The classic variant commands attention for primary actions. Click to see the loading state - the button shows a spinner and disables interaction automatically.
+              The classic variant commands attention for primary actions. Click to see the loading state - the button replaces all content with a centered spinner and disables interaction automatically.
             </SectionHeader.Description>
           </SectionHeader.Content>
         </SectionHeader.Root>
@@ -50,7 +56,7 @@ export function ButtonExamples() {
               onClick={handleSubmit}
             >
               <HugeiconsIcon icon={Tick01Icon} strokeWidth={1.75} />
-              {isSubmitting ? 'Saving...' : 'Save Changes'}
+              Save Changes
             </Button>
           </Flex>
         </PreviewBlock>
@@ -73,9 +79,61 @@ export function ButtonExamples() {
     onClick={handleSubmit}
   >
     <HugeiconsIcon icon={Tick01Icon} strokeWidth={1.75} />
-    {isSubmitting ? 'Saving...' : 'Save Changes'}
+    Save Changes
   </Button>
 </Flex>`}
+          language="tsx"
+          showLineNumbers={true}
+          collapsible={false}
+        />
+      </Flex>
+
+      <Separator size="4" />
+
+      {/* Example: Icon Loading with Spinner */}
+      <Flex direction="column" gap="4">
+        <SectionHeader.Root>
+          <SectionHeader.Content>
+            <SectionHeader.Title>Icon Loading State</SectionHeader.Title>
+            <SectionHeader.Description>
+              For a more sophisticated loading design, wrap the icon in a Spinner component. 
+              The spinner replaces just the icon while the text remains visible, providing clearer context during the action.
+            </SectionHeader.Description>
+          </SectionHeader.Content>
+        </SectionHeader.Root>
+        <PreviewBlock background="none" height="30rem">
+          <Flex gap="2" align="center">
+            <Button
+              variant="classic"
+              size="2"
+              disabled={isBookmarking}
+              onClick={handleBookmark}
+            >
+              <Spinner loading={isBookmarking}>
+                <HugeiconsIcon icon={Bookmark01Icon} strokeWidth={1.75} />
+              </Spinner>
+              Bookmark
+            </Button>
+            <Button
+              variant="soft"
+              size="2"
+              disabled={isBookmarking}
+              onClick={handleBookmark}
+            >
+              <Spinner loading={isBookmarking}>
+                <HugeiconsIcon icon={Bookmark01Icon} strokeWidth={1.75} />
+              </Spinner>
+              Bookmark
+            </Button>
+          </Flex>
+        </PreviewBlock>
+        <CodeBlock
+          code={`<Button disabled={isBookmarking} variant="classic">
+  <Spinner loading={isBookmarking}>
+    <BookmarkIcon />
+  </Spinner>
+  Bookmark
+</Button>`}
           language="tsx"
           showLineNumbers={true}
           collapsible={false}

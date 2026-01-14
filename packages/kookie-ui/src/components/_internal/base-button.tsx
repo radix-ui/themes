@@ -1,6 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from 'radix-ui';
+import { motion } from 'motion/react';
 
 import { baseButtonPropDefs } from './base-button.props.js';
 import { Flex } from '../flex.js';
@@ -140,7 +141,25 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
   }, [effectiveMaterial]);
 
   // asChild takes precedence over as prop for Radix Slot integration
-  const Comp = asChild ? Slot.Root : as || 'button';
+  // When asChild is true, we use Slot.Root and skip motion (parent controls animation)
+  // When asChild is false, we use motion.button for spring scale animations
+  const Comp = asChild ? Slot.Root : (as ? motion.create(as as any) : motion.button);
+  
+  // Detect Firefox to disable scale animation (Firefox has SVG rendering issues with transforms)
+  const isFirefox = typeof navigator !== 'undefined' && /Firefox/i.test(navigator.userAgent);
+  
+  // Animation config for scale effects
+  const tweenConfig = { type: 'tween', duration: 0.15, ease: 'circOut' } as const;
+  const isInteractive = !disabled && !props.loading;
+  // Check if button is in "open" state (for dropdown triggers, etc.)
+  const dataState = (baseButtonProps as Record<string, unknown>)['data-state'];
+  const isOpen = dataState === 'open';
+  const motionProps = asChild || isFirefox ? {} : {
+    whileHover: isInteractive && !isOpen ? { scale: 1.02 } : undefined,
+    whileTap: isInteractive ? { scale: 0.96 } : undefined,
+    animate: isOpen ? { scale: 0.96 } : { scale: 1 },
+    transition: tweenConfig,
+  };
 
   // Only pass disabled for elements that support it
   // This prevents invalid HTML attributes on unsupported elements
@@ -191,7 +210,8 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
       data-flush={flush ? 'true' : undefined}
       {...baseButtonProps}
       {...accessibilityProps}
-      ref={(node) => {
+      {...motionProps}
+      ref={(node: BaseButtonElement | null) => {
         // Handle both forwarded ref and internal ref for performance optimization
         if (typeof forwardedRef === 'function') {
           forwardedRef(node);

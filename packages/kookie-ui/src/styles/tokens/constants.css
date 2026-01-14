@@ -174,13 +174,13 @@
   /* Component gap spacing constants (shared between Button, Select, etc.) */
   --component-gap-1: var(--space-1);
   --component-gap-2: var(--space-1);
-  --component-gap-3: var(--space-2);
+  --component-gap-3: calc(var(--space-1) * 1.5);
   --component-gap-4: var(--space-2);
 
   /* Ghost variant gap constants */
   --component-gap-ghost-1: var(--space-1);
   --component-gap-ghost-2: calc(var(--space-1) * 1.5);
-  --component-gap-ghost-3: var(--space-2);
+  --component-gap-ghost-3: calc(var(--space-1) * 1.5);
   --component-gap-ghost-4: var(--space-2);
 
   /* Focus outline constants */
