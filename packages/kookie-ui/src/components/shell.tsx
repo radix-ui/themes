@@ -282,6 +282,18 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(({ className, chil
   const hasInspectorOpenControlled = initialChildren.some(
     (el) => React.isValidElement(el) && (el as any).type?.displayName === 'Shell.Inspector' && typeof (el as any).props?.open !== 'undefined' && Boolean((el as any).props?.open),
   );
+  // Detect Panel controlled open state for initial reducer state
+  const hasPanelOpenControlled = initialChildren.some((el) => {
+    if (!React.isValidElement(el) || (el as any).type?.displayName !== 'Shell.Panel') return false;
+    const openProp = (el as any).props?.open;
+    if (typeof openProp === 'undefined') return false;
+    if (typeof openProp === 'boolean') return openProp;
+    // Responsive object - check 'initial' or first truthy value
+    if (typeof openProp === 'object' && openProp !== null) {
+      return openProp.initial ?? Object.values(openProp)[0] ?? false;
+    }
+    return false;
+  });
 
   // Detect Sidebar initial state from props
   const getSidebarInitialState = (): SidebarMode => {
@@ -329,8 +341,8 @@ const Root = React.forwardRef<HTMLDivElement, ShellRootProps>(({ className, chil
 
   // Pane state management via reducer
   const [paneState, dispatchPane] = React.useReducer(paneReducer, {
-    leftMode: hasPanelDefaultOpen || hasRailDefaultOpen ? 'expanded' : 'collapsed',
-    panelMode: hasPanelDefaultOpen ? 'expanded' : 'collapsed',
+    leftMode: hasPanelDefaultOpen || hasPanelOpenControlled || hasRailDefaultOpen ? 'expanded' : 'collapsed',
+    panelMode: hasPanelDefaultOpen || hasPanelOpenControlled ? 'expanded' : 'collapsed',
     sidebarMode: getSidebarInitialState(),
     inspectorMode: hasInspectorDefaultOpen || hasInspectorOpenControlled ? 'expanded' : 'collapsed',
     bottomMode: getBottomInitialState(),
