@@ -2,7 +2,6 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from 'radix-ui';
 import { composeRefs } from 'radix-ui/internal';
-import { motion } from 'motion/react';
 
 import { baseButtonPropDefs } from './base-button.props.js';
 import { Flex } from '../flex.js';
@@ -142,31 +141,9 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
   }, [effectiveMaterial]);
 
   // asChild takes precedence over as prop for Radix Slot integration
-  // When asChild is true, we use Slot.Root and skip motion (parent controls animation)
-  // When asChild is false, we use motion.button for spring scale animations
-  // IMPORTANT: useMemo prevents creating a new component type on every render,
-  // which would cause remounting and infinite loops with floating-ui refs
-  const Comp = React.useMemo(() => {
-    if (asChild) return Slot.Root;
-    if (as) return motion.create(as as any);
-    return motion.button;
-  }, [asChild, as]);
-  
-  // Detect Firefox to disable scale animation (Firefox has SVG rendering issues with transforms)
-  const isFirefox = typeof navigator !== 'undefined' && /Firefox/i.test(navigator.userAgent);
-  
-  // Animation config for scale effects - duration-based spring
-  const springConfig = { type: 'spring', visualDuration: 0.1, bounce: 0.25 } as const;
-  const isInteractive = !disabled && !props.loading;
-  // Check if button is in "open" state (for dropdown triggers, etc.)
-  const dataState = (baseButtonProps as Record<string, unknown>)['data-state'];
-  const isOpen = dataState === 'open';
-  const motionProps = asChild || isFirefox ? {} : {
-    whileHover: isInteractive && !isOpen ? { scale: 1.02 } : undefined,
-    whileTap: isInteractive ? { scale: 0.96 } : undefined,
-    animate: isOpen ? { scale: 0.96 } : { scale: 1 },
-    transition: springConfig,
-  };
+  // When asChild is true, we use Slot.Root to merge props onto the child element
+  // When asChild is false, we render as the specified element (or button by default)
+  const Comp = asChild ? Slot.Root : (as || 'button');
 
   // Only pass disabled for elements that support it
   // This prevents invalid HTML attributes on unsupported elements
@@ -217,7 +194,6 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
       data-flush={flush ? 'true' : undefined}
       {...baseButtonProps}
       {...accessibilityProps}
-      {...motionProps}
       ref={composeRefs(buttonRef, forwardedRef)}
       className={classNames('rt-reset', 'rt-BaseButton', className)}
       {...(shouldPassDisabled && { disabled })}

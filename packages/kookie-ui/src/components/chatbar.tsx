@@ -602,8 +602,8 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
             transition={{
               layout: {
                 type: 'spring',
-                visualDuration: 0.1,
-                bounce: 0.25,
+                visualDuration: 0.15,
+                bounce: 0.1,
               },
             }}
           >
@@ -613,8 +613,8 @@ const Root = React.forwardRef<RootElement, RootProps>((props, forwardedRef) => {
               transition={{
                 layout: {
                   type: 'spring',
-                  visualDuration: 0.1,
-                  bounce: 0.25,
+                  visualDuration: 0.15,
+                  bounce: 0.1,
                 },
               }}
             >
@@ -902,8 +902,8 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>((props, fo
       transition={{
         layout: {
           type: 'spring',
-          visualDuration: 0.1,
-          bounce: 0.25,
+          visualDuration: 0.15,
+          bounce: 0.1,
         },
       }}
     >
@@ -983,17 +983,28 @@ const AttachmentsRow = React.forwardRef<HTMLDivElement, AttachmentsRowProps>((pr
   if (!hasItems && !forceMount) return null;
   const Comp = asChild ? Slot : ('div' as any);
   return (
-    <Comp {...divProps} ref={forwardedRef} className={classNames('rt-ChatbarAttachmentsRow', className)} style={style} role="list" aria-label={divProps['aria-label'] ?? 'Attachments'}>
-      <ScrollArea className="rt-ChatbarScrollArea" scrollbars="horizontal" size="1">
-        <Flex align="center" gap="2" style={{ minWidth: 'fit-content' }}>
-          {ctx.attachments.map((att) => (
-            <Attachment key={att.id} attachment={att} asChild={!!renderAttachment}>
-              {renderAttachment?.(att)}
-            </Attachment>
-          ))}
-        </Flex>
-      </ScrollArea>
-    </Comp>
+    <motion.div
+      layout="position"
+      transition={{
+        layout: {
+          type: 'spring',
+          visualDuration: 0.15,
+          bounce: 0.1,
+        },
+      }}
+    >
+      <Comp {...divProps} ref={forwardedRef} className={classNames('rt-ChatbarAttachmentsRow', className)} style={style} role="list" aria-label={divProps['aria-label'] ?? 'Attachments'}>
+        <ScrollArea className="rt-ChatbarScrollArea" scrollbars="horizontal" size="1">
+          <Flex align="center" gap="2" style={{ minWidth: 'fit-content' }}>
+            {ctx.attachments.map((att) => (
+              <Attachment key={att.id} attachment={att} asChild={!!renderAttachment}>
+                {renderAttachment?.(att)}
+              </Attachment>
+            ))}
+          </Flex>
+        </ScrollArea>
+      </Comp>
+    </motion.div>
   );
 });
 AttachmentsRow.displayName = 'Chatbar.AttachmentsRow';
@@ -1131,11 +1142,22 @@ const Row = React.forwardRef<HTMLDivElement, RowProps>((props, forwardedRef) => 
   if (!ctx.open) return null;
   const Comp = asChild ? Slot : ('div' as any);
   return (
-    <Comp {...divProps} ref={forwardedRef} className={classNames('rt-ChatbarRow', className)} style={style}>
-      <Flex align="center" justify="between" width="100%">
-        {children}
-      </Flex>
-    </Comp>
+    <motion.div
+      layout="position"
+      transition={{
+        layout: {
+          type: 'spring',
+          visualDuration: 0.15,
+          bounce: 0.1,
+        },
+      }}
+    >
+      <Comp {...divProps} ref={forwardedRef} className={classNames('rt-ChatbarRow', className)} style={style}>
+        <Flex align="center" justify="between" width="100%">
+          {children}
+        </Flex>
+      </Comp>
+    </motion.div>
   );
 });
 Row.displayName = 'Chatbar.Row';

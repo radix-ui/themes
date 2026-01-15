@@ -12,6 +12,7 @@ export default function CardPlayground() {
   const [variant, setVariant] = React.useState<string>('classic');
   const [size, setSize] = React.useState<string>('2');
   const [material, setMaterial] = React.useState<string>('theme');
+  const [interactive, setInteractive] = React.useState<boolean>(false);
 
   const items = [
     {
@@ -41,14 +42,30 @@ export default function CardPlayground() {
       options: [{ label: 'Theme', value: 'theme' }, ...materials.map((m) => ({ label: m, value: m }))],
       placeholder: 'Theme',
     },
+    {
+      id: 'interactive',
+      label: 'Interactive (asChild)',
+      type: 'switch' as const,
+      value: interactive,
+      onChange: setInteractive,
+    },
   ];
 
   const generateCode = () => {
     const props = [`variant="${variant}"`, `size="${size}"`];
 
     if (material !== 'theme') props.push(`material="${material}"`);
+    if (interactive) props.push('asChild');
 
     const propsString = props.length > 0 ? `\n  ${props.join('\n  ')}` : '';
+
+    if (interactive) {
+      return `<Card${propsString}>
+  <button onClick={() => handleClick()}>
+    {/* Card content */}
+  </button>
+</Card>`;
+    }
 
     return `<Card${propsString}>
   <Flex direction="column" gap="2">
@@ -58,28 +75,50 @@ export default function CardPlayground() {
 </Card>`;
   };
 
+  const innerContent = (
+    <Flex
+      direction="column"
+      gap="2"
+      p="2"
+      width="100%"
+      height="320px"
+      style={{
+        border: '1px dashed var(--crimson-8)',
+        borderRadius: 'var(--radius-2)',
+        background: 'repeating-linear-gradient(135deg, transparent, transparent 4px, var(--crimson-3) 4px, var(--crimson-3) 5px)',
+      }}
+    />
+  );
+
   return (
     <Playground
       component={
-        <Card size={size as any} variant={variant as any} material={material === 'theme' ? undefined : (material as any)} style={{ width: 280 }}>
-          <Flex
-            direction="column"
-            gap="2"
-            p="2"
-            width="100%"
-            height="320px"
-            style={{
-              border: '1px dashed var(--crimson-8)',
-              borderRadius: 'var(--radius-2)',
-              background: 'repeating-linear-gradient(135deg, transparent, transparent 4px, var(--crimson-3) 4px, var(--crimson-3) 5px)',
-            }}
-          ></Flex>
+        <Card
+          asChild={interactive}
+          size={size as any}
+          variant={variant as any}
+          material={material === 'theme' ? undefined : (material as any)}
+          style={{ width: 280 }}
+        >
+          {interactive ? (
+            <button>
+              {innerContent}
+            </button>
+          ) : (
+            innerContent
+          )}
         </Card>
       }
       code={generateCode()}
       items={items}
       showBackground={material === 'translucent'}
-      hint={material === 'translucent' ? 'Translucent material is best observed with surface or soft variants.' : undefined}
+      hint={
+        interactive
+          ? 'Click the card to test. Hover and active states are styled automatically.'
+          : material === 'translucent'
+            ? 'Translucent material is best observed with surface or soft variants.'
+            : undefined
+      }
     />
   );
 }

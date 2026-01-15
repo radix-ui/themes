@@ -161,7 +161,9 @@
   --position-zero: 0%;
 
   /* Transition constants */
-  --transition-background-blur: background-color var(--duration-2) var(--ease-1);
+  --transition-background-blur:
+    background-color var(--duration-2) var(--ease-1),
+    scale var(--motion-duration-small) var(--motion-ease-standard);
 
   /* Sheet animation constants */
   --sheet-slide-distance: 50%;

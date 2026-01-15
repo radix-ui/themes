@@ -74,9 +74,9 @@
   min-width: 0;
 }
 
-/* Send button smooth transitions */
+/* Send button - extend button transition with opacity for visibility fade */
 .rt-ChatbarSend {
-  transition: opacity 150ms ease-in-out;
+  transition: var(--transition-button), opacity var(--motion-duration-small) var(--motion-ease-standard);
 }
 
 /* Row visibility and layout */

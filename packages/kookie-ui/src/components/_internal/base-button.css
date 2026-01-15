@@ -129,10 +129,29 @@
   /* Set height using CSS custom property for responsive sizing */
   height: var(--base-button-height);
 
-/* 
-   * Scale transforms are handled by motion.dev in the component.
-   * This provides true spring physics and smoother rendering than CSS transforms.
- */
+  /* Scale interaction effects using CSS scale property (separate from transform).
+   * This avoids conflicts with user's transform styles (e.g. translateX).
+   * Uses spring-bounce easing from --transition-button for natural feel. */
+  &:where(:hover:not([data-disabled], [data-state='open'])) {
+    scale: 1.02;
+  }
+
+  &:where(:active:not([data-disabled])) {
+    scale: 0.96;
+  }
+
+  &:where([data-state='open']) {
+    scale: 0.96;
+  }
+
+  /* Disable scale on Firefox (SVG rendering issues with transforms) */
+  @supports (-moz-appearance: none) {
+    &:where(:hover:not([data-disabled], [data-state='open'])),
+    &:where(:active:not([data-disabled])),
+    &:where([data-state='open']) {
+      scale: 1;
+    }
+  }
 }
 
 /* Full width mode */
@@ -238,8 +257,6 @@
   --v-border-disabled: var(--gray-a7);
   --v-focus-color: var(--focus-8);
   --v-focus-offset: -1px;
-  /* Outline uses a different transition than other variants */
-  transition: var(--transition-background-blur);
 }
 
 /* Surface variant palette */
@@ -433,7 +450,6 @@
   color: var(--accent-a11);
   background-color: var(--color-surface-solid);
   box-shadow: var(--shadow-2);
-  transition: var(--transition-text-field);
 
   /* Translucent theme override */
   &:where([data-material='translucent']) {

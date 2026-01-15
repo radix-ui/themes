@@ -73,12 +73,14 @@
     box-shadow var(--motion-duration-small) var(--motion-ease-standard),
     filter var(--motion-duration-small) var(--motion-ease-standard),
     backdrop-filter var(--motion-duration-small) var(--motion-ease-standard),
-    transform var(--motion-duration-micro) var(--motion-spring-snappy),
-    padding var(--motion-duration-micro) var(--motion-ease-standard);
+    transform var(--motion-duration-small) var(--motion-ease-standard),
+    scale var(--motion-duration-small) var(--motion-ease-standard),
+    padding var(--motion-duration-small) var(--motion-ease-standard);
 
   --transition-text-field:
     background var(--motion-duration-small) var(--motion-ease-standard),
-    box-shadow var(--motion-duration-small) var(--motion-ease-standard);
+    box-shadow var(--motion-duration-small) var(--motion-ease-standard),
+    scale var(--motion-duration-small) var(--motion-ease-standard);
 
   --transition-select:
     background var(--motion-duration-small) var(--motion-ease-standard),
@@ -90,9 +92,12 @@
     padding var(--motion-duration-micro) var(--motion-ease-standard);
 
   --transition-card:
-    background-color var(--motion-duration-small) var(--motion-ease-standard),
+    background var(--motion-duration-small) var(--motion-ease-standard),
     box-shadow var(--motion-duration-small) var(--motion-ease-standard),
-    top var(--motion-duration-small) var(--motion-ease-standard);
+    filter var(--motion-duration-small) var(--motion-ease-standard),
+    backdrop-filter var(--motion-duration-small) var(--motion-ease-standard),
+    transform var(--motion-duration-small) var(--motion-ease-standard),
+    scale var(--motion-duration-small) var(--motion-ease-standard);
 
   --transition-tabs:
     color var(--motion-duration-micro) var(--motion-ease-standard),
