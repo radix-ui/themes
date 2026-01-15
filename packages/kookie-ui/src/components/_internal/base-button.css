@@ -119,10 +119,8 @@
   /* stylelint-disable-next-line selector-max-type */
   & :where(svg) {
     display: block;
-    transform: translateZ(0);
     transform-origin: center;
     transform-box: fill-box;
-    backface-visibility: hidden;
     shape-rendering: geometricPrecision;
   }
 

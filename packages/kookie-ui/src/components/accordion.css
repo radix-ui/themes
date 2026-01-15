@@ -219,9 +219,6 @@
   color: var(--gray-12);
   cursor: pointer;
   transition: var(--transition-accordion-trigger);
-  /* GPU acceleration hints */
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 
 /* Size variants */
@@ -249,9 +246,6 @@
 :where(.rt-AccordionTrigger:hover) {
   background-color: var(--gray-a3);
   transform: translateY(-1px);
-  /* GPU acceleration hints */
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 
 :where(.rt-AccordionTrigger:active) {
@@ -451,10 +445,7 @@
   color: var(--accent-a11);
   line-height: var(--line-height-4);
   transform-origin: top;
-  /* GPU acceleration hints */
   will-change: height, opacity, transform;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 
 .rt-AccordionContentInner {

@@ -92,12 +92,8 @@
     min-height: 0;
   }
 
-  /* Step 1: promote menu viewport to its own layer (Chrome jitter test) */
+  /* Isolate painting to prevent cross-layer nudges */
   & :where(.rt-BaseMenuViewport) {
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    will-change: transform;
-    /* Step 4: isolate painting to prevent cross-layer nudges */
     contain: paint;
   }
 }
