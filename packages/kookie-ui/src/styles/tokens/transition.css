@@ -71,8 +71,6 @@
   --transition-button:
     background var(--motion-duration-small) var(--motion-ease-standard),
     box-shadow var(--motion-duration-small) var(--motion-ease-standard),
-    filter var(--motion-duration-small) var(--motion-ease-standard),
-    backdrop-filter var(--motion-duration-small) var(--motion-ease-standard),
     transform var(--motion-duration-small) var(--motion-ease-standard),
     scale var(--motion-duration-small) var(--motion-ease-standard),
     padding var(--motion-duration-small) var(--motion-ease-standard);
@@ -94,8 +92,6 @@
   --transition-card:
     background var(--motion-duration-small) var(--motion-ease-standard),
     box-shadow var(--motion-duration-small) var(--motion-ease-standard),
-    filter var(--motion-duration-small) var(--motion-ease-standard),
-    backdrop-filter var(--motion-duration-small) var(--motion-ease-standard),
     transform var(--motion-duration-small) var(--motion-ease-standard),
     scale var(--motion-duration-small) var(--motion-ease-standard);
 

@@ -65,20 +65,7 @@
 /*        Vertical Orientation         */
 /*                                     */
 /* * * * * * * * * * * * * * * * * * * */
-
-.rt-SegmentedControlRoot:where(.rt-r-orientation-vertical) {
-  grid-auto-flow: row;
-  grid-auto-columns: unset;
-  grid-auto-rows: 1fr;
-  min-width: unset;
-  min-height: max-content;
-}
-
-/* Square items for icon-only in vertical */
-.rt-SegmentedControlRoot:where(.rt-r-orientation-vertical):has([data-icon-only]) {
-  grid-auto-columns: unset;
-  grid-auto-rows: minmax(var(--segmented-control-height), 1fr);
-}
+/* Note: Base vertical grid properties are inside @breakpoints for correct CSS ordering */
 
 .rt-SegmentedControlItem {
   display: flex;
@@ -402,6 +389,20 @@
 
 @breakpoints {
   .rt-SegmentedControlRoot {
+    /* Vertical orientation - grid layout (must be inside @breakpoints for correct CSS ordering) */
+    &:where(.rt-r-orientation-vertical) {
+      grid-auto-flow: row;
+      grid-auto-columns: unset;
+      grid-auto-rows: 1fr;
+      min-width: unset;
+      min-height: max-content;
+    }
+
+    &:where(.rt-r-orientation-vertical):has([data-icon-only]) {
+      grid-auto-columns: unset;
+      grid-auto-rows: minmax(var(--segmented-control-height), 1fr);
+    }
+
     &:where(.rt-r-size-1) {
       --segmented-control-border-radius: max(var(--radius-1), var(--radius-full));
       --segmented-control-height: var(--space-5);
