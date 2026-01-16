@@ -1,5 +1,24 @@
 # Claude Guidelines for kookie-ui
 
+## Performance > Everything
+
+**Performance is the best user experience.** Every decision—architecture, component design, data fetching, rendering—must prioritize performance. A fast, responsive UI beats a feature-rich slow one every time.
+
+- Measure before and after changes
+- Avoid unnecessary re-renders, network requests, and DOM updates
+- Lazy-load aggressively
+- Keep bundle sizes small
+- Optimize critical rendering paths
+- Never sacrifice perceived performance for code convenience
+
+---
+
+## Do Not Build
+
+**Never run build commands.** Watchers are already running in the background. Do not run `npm run build`, `pnpm build`, `turbo build`, or similar commands.
+
+---
+
 ## Props Over Inline Styles
 
 **Always prefer component props over inline styles.**
