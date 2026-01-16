@@ -18,7 +18,7 @@
   /* Focus ring */
   outline: none;
 
-  &:focus-visible {
+  &:where(:focus-visible) {
     outline: 2px solid var(--focus-8);
     outline-offset: -2px;
   }
