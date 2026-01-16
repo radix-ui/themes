@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { DropdownMenu, Button, Flex, Box, Text, Heading, Slider } from '@kushagradhawan/kookie-ui';
+import { DropdownMenu, Button, Flex, Box, Text, Heading, Slider, VirtualMenu } from '@kushagradhawan/kookie-ui';
 
 export default function DropdownMenuTest() {
   const [collisionPadding, setCollisionPadding] = React.useState(10);
@@ -64,6 +64,39 @@ export default function DropdownMenuTest() {
       <Text as="p" size="2" color="gray" mb="6">
         Test collision behavior with deeply nested submenus. Resize window to mobile width to see the drill-down behavior.
       </Text>
+
+      {/* Virtualized Menu Test */}
+      <Box mb="6" p="4" style={{ background: 'var(--cyan-3)', borderRadius: 'var(--radius-3)', border: '2px solid var(--cyan-6)' }}>
+        <Heading size="4" mb="2" color="cyan">⚡ Virtualized Menu (1000 items)</Heading>
+        <Text as="p" size="2" color="gray" mb="4">
+          Testing VirtualMenu inside DropdownMenu.Content with virtualized prop.
+          Only ~15 DOM nodes rendered at any time. Use arrow keys to navigate.
+        </Text>
+        <DropdownMenu.Root>
+          <DropdownMenu.Trigger>
+            <Button variant="soft" color="cyan">Open Large Menu</Button>
+          </DropdownMenu.Trigger>
+          <DropdownMenu.Content virtualized style={{ minWidth: 220, padding: 0 }}>
+            <VirtualMenu
+              items={Array.from({ length: 1000 }, (_, i) => ({ 
+                id: String(i), 
+                label: `Item ${i + 1}` 
+              }))}
+              onSelect={(item) => console.log('Selected:', item)}
+              style={{ height: 300 }}
+            >
+              {(item, { isHighlighted, ...props }) => (
+                <VirtualMenu.Item {...props}>
+                  {item.label}
+                </VirtualMenu.Item>
+              )}
+            </VirtualMenu>
+          </DropdownMenu.Content>
+        </DropdownMenu.Root>
+        <Text as="p" size="1" color="gray" mt="2">
+          Open DevTools → Elements → search for &quot;rt-VirtualMenuItem&quot; → only ~15 elements rendered.
+        </Text>
+      </Box>
 
       {/* Drill-Down with Groups - Variants */}
       <Box

@@ -1,0 +1,231 @@
+'use client';
+
+import * as React from 'react';
+import classNames from 'classnames';
+import { useVirtualizer } from '@tanstack/react-virtual';
+
+/**
+ * VirtualMenu - A virtualized menu component for rendering large lists efficiently.
+ * 
+ * Uses TanStack Virtual to render only visible items.
+ * Works inside any container (DropdownMenu.Content, Sidebar.Content, Popover.Content, etc.)
+ * 
+ * @example
+ * <VirtualMenu items={items} onSelect={handleSelect}>
+ *   {(item, { isHighlighted, ...props }) => (
+ *     <VirtualMenu.Item {...props}>{item.label}</VirtualMenu.Item>
+ *   )}
+ * </VirtualMenu>
+ */
+
+// ============================================================================
+// Types
+// ============================================================================
+
+interface VirtualMenuItemRenderProps {
+  /** Whether this item is currently highlighted (keyboard/hover) */
+  isHighlighted: boolean;
+  /** Positioning styles - must be applied for virtualization to work */
+  style: React.CSSProperties;
+  /** Menu item role */
+  role: 'menuitem';
+  /** Tab index for focus management */
+  tabIndex: number;
+  /** Position in set for accessibility */
+  'aria-posinset': number;
+  /** Total set size for accessibility */
+  'aria-setsize': number;
+  /** Data attribute for CSS styling */
+  'data-highlighted': true | undefined;
+  /** Mouse enter handler for hover highlighting */
+  onMouseEnter: () => void;
+  /** Mouse leave handler */
+  onMouseLeave: () => void;
+  /** Click handler for selection */
+  onClick: () => void;
+  /** Keyboard handler */
+  onKeyDown: (e: React.KeyboardEvent) => void;
+}
+
+interface VirtualMenuProps<T> {
+  /** Array of items to render */
+  items: T[];
+  /** Estimated height of each item in pixels (default: 36) */
+  estimatedItemSize?: number;
+  /** Number of items to render outside visible area (default: 5) */
+  overscan?: number;
+  /** Callback when an item is selected */
+  onSelect?: (item: T, index: number) => void;
+  /** Render function for each item */
+  children: (item: T, props: VirtualMenuItemRenderProps) => React.ReactNode;
+  /** Additional class name for the root element */
+  className?: string;
+  /** Additional styles for the root element */
+  style?: React.CSSProperties;
+}
+
+// ============================================================================
+// VirtualMenu Component
+// ============================================================================
+
+function VirtualMenuRoot<T>({
+  items,
+  estimatedItemSize = 36,
+  overscan = 5,
+  onSelect,
+  children,
+  className,
+  style,
+}: VirtualMenuProps<T>) {
+  const parentRef = React.useRef<HTMLDivElement>(null);
+  const [highlightedIndex, setHighlightedIndex] = React.useState<number>(-1);
+
+  const virtualizer = useVirtualizer({
+    count: items.length,
+    getScrollElement: () => parentRef.current,
+    estimateSize: () => estimatedItemSize,
+    overscan,
+  });
+
+  const virtualItems = virtualizer.getVirtualItems();
+
+  // Handle keyboard navigation
+  const handleKeyDown = React.useCallback(
+    (e: React.KeyboardEvent) => {
+      switch (e.key) {
+        case 'ArrowDown': {
+          e.preventDefault();
+          const nextIndex = highlightedIndex < items.length - 1 ? highlightedIndex + 1 : 0;
+          setHighlightedIndex(nextIndex);
+          virtualizer.scrollToIndex(nextIndex, { align: 'auto' });
+          break;
+        }
+        case 'ArrowUp': {
+          e.preventDefault();
+          const prevIndex = highlightedIndex > 0 ? highlightedIndex - 1 : items.length - 1;
+          setHighlightedIndex(prevIndex);
+          virtualizer.scrollToIndex(prevIndex, { align: 'auto' });
+          break;
+        }
+        case 'Home': {
+          e.preventDefault();
+          setHighlightedIndex(0);
+          virtualizer.scrollToIndex(0, { align: 'start' });
+          break;
+        }
+        case 'End': {
+          e.preventDefault();
+          const lastIndex = items.length - 1;
+          setHighlightedIndex(lastIndex);
+          virtualizer.scrollToIndex(lastIndex, { align: 'end' });
+          break;
+        }
+        case 'Enter':
+        case ' ': {
+          e.preventDefault();
+          if (highlightedIndex >= 0 && highlightedIndex < items.length) {
+            onSelect?.(items[highlightedIndex], highlightedIndex);
+          }
+          break;
+        }
+      }
+    },
+    [highlightedIndex, items, onSelect, virtualizer],
+  );
+
+  // Create item props generator
+  const getItemProps = React.useCallback(
+    (index: number, virtualRow: { start: number; size: number }): VirtualMenuItemRenderProps => ({
+      isHighlighted: highlightedIndex === index,
+      style: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: `${virtualRow.size}px`,
+        transform: `translateY(${virtualRow.start}px)`,
+      },
+      role: 'menuitem',
+      tabIndex: highlightedIndex === index ? 0 : -1,
+      'aria-posinset': index + 1,
+      'aria-setsize': items.length,
+      'data-highlighted': highlightedIndex === index ? true : undefined,
+      onMouseEnter: () => setHighlightedIndex(index),
+      onMouseLeave: () => {}, // Keep highlight on mouse leave for better UX
+      onClick: () => onSelect?.(items[index], index),
+      onKeyDown: handleKeyDown,
+    }),
+    [highlightedIndex, items, onSelect, handleKeyDown],
+  );
+
+  return (
+    <div
+      ref={parentRef}
+      role="menu"
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+      className={classNames('rt-VirtualMenuRoot', className)}
+      style={{
+        overflow: 'auto',
+        position: 'relative',
+        ...style,
+      }}
+    >
+      <div
+        className="rt-VirtualMenuViewport"
+        style={{
+          height: `${virtualizer.getTotalSize()}px`,
+          width: '100%',
+          position: 'relative',
+        }}
+      >
+        {virtualItems.map((virtualRow) => {
+          const item = items[virtualRow.index];
+          const props = getItemProps(virtualRow.index, virtualRow);
+          return (
+            <React.Fragment key={virtualRow.key}>
+              {children(item, props)}
+            </React.Fragment>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+VirtualMenuRoot.displayName = 'VirtualMenu';
+
+// ============================================================================
+// VirtualMenu.Item Component
+// ============================================================================
+
+interface VirtualMenuItemProps extends React.ComponentPropsWithoutRef<'div'> {
+  children: React.ReactNode;
+}
+
+const VirtualMenuItem = React.forwardRef<HTMLDivElement, VirtualMenuItemProps>(
+  ({ className, children, ...props }, forwardedRef) => {
+    return (
+      <div
+        ref={forwardedRef}
+        className={classNames('rt-reset', 'rt-BaseMenuItem', 'rt-VirtualMenuItem', className)}
+        {...props}
+      >
+        {children}
+      </div>
+    );
+  },
+);
+
+VirtualMenuItem.displayName = 'VirtualMenu.Item';
+
+// ============================================================================
+// Exports
+// ============================================================================
+
+const VirtualMenu = Object.assign(VirtualMenuRoot, {
+  Item: VirtualMenuItem,
+});
+
+export { VirtualMenu };
+export type { VirtualMenuProps, VirtualMenuItemProps, VirtualMenuItemRenderProps };

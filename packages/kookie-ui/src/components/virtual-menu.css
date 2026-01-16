@@ -1,0 +1,43 @@
+/**
+ * VirtualMenu - Virtualized menu component styles
+ * 
+ * Only positioning styles needed here.
+ * Item appearance inherits from rt-BaseMenuItem in _internal/base-menu.css
+ */
+
+.rt-VirtualMenuRoot {
+  /* Scroll container */
+  overflow: auto;
+  position: relative;
+  box-sizing: border-box;
+
+  /* Fills parent container */
+  flex: 1 1 0%;
+  min-height: 0;
+
+  /* Focus ring */
+  outline: none;
+
+  &:focus-visible {
+    outline: 2px solid var(--focus-8);
+    outline-offset: -2px;
+  }
+}
+
+.rt-VirtualMenuViewport {
+  /* Container for absolutely positioned items */
+  position: relative;
+  width: 100%;
+}
+
+.rt-VirtualMenuItem {
+  /* Ensure proper box model for absolute positioning */
+  box-sizing: border-box;
+
+  /* Inherit from rt-BaseMenuItem for consistent styling */
+  /* The rt-BaseMenuItem class provides: */
+  /* - display: flex, align-items: center, gap */
+  /* - min-height, padding */
+  /* - cursor, user-select */
+  /* - transition */
+}

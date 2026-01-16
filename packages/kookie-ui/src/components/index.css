@@ -60,6 +60,7 @@
 @import './toolbar.css';
 @import './tooltip.css';
 @import './user-card.css';
+@import './virtual-menu.css';
 @import './chatbar.css';
 
 .radix-themes:where([data-is-root-theme='true']) {

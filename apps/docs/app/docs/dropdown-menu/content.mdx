@@ -95,6 +95,7 @@ The dropdown menu is composed of several parts:
 | `highContrast`    | `boolean`                   | `false`   | Increases contrast for better visibility                              |
 | `material`        | `'solid' \| 'translucent'`  | —         | Background appearance. Inherits from theme if not set                 |
 | `submenuBehavior` | `'cascade' \| 'drill-down' \| Responsive` | `'cascade'` | How submenus behave. See [Submenu Behavior](#submenu-behavior) |
+| `virtualized`     | `boolean`                   | `false`   | Enables virtualization mode. See [Virtualization](#virtualization)    |
 | `container`       | `HTMLElement`               | —         | Custom container for the portal                                       |
 | `forceMount`      | `boolean`                   | —         | Forces content to remain in DOM when closed                           |
 | `side`            | `'top' \| 'right' \| 'bottom' \| 'left'` | `'bottom'` | Preferred side relative to trigger           |
@@ -435,6 +436,131 @@ Use `TriggerIcon` to add a dropdown indicator to custom triggers.
 </DropdownMenu.Trigger>
 ```
 
+## Virtualization
+
+For menus with many items (hundreds or thousands), use the `virtualized` prop with `VirtualMenu` to render only visible items. This dramatically improves performance by keeping the DOM small.
+
+```tsx
+import { DropdownMenu, VirtualMenu, Button } from '@kushagradhawan/kookie-ui';
+
+const items = Array.from({ length: 1000 }, (_, i) => ({
+  id: String(i),
+  label: `Item ${i + 1}`,
+}));
+
+function VirtualizedExample() {
+  return (
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger>
+        <Button variant="soft">Open Menu</Button>
+      </DropdownMenu.Trigger>
+      <DropdownMenu.Content virtualized>
+        <VirtualMenu
+          items={items}
+          onSelect={(item) => console.log('Selected:', item)}
+          style={{ height: 300 }}
+        >
+          {(item, props) => (
+            <VirtualMenu.Item {...props}>
+              {item.label}
+            </VirtualMenu.Item>
+          )}
+        </VirtualMenu>
+      </DropdownMenu.Content>
+    </DropdownMenu.Root>
+  );
+}
+```
+
+### How It Works
+
+1. Set `virtualized` on `Content` to skip the built-in ScrollArea
+2. Use `VirtualMenu` with your items array and a render function
+3. Set a fixed `height` on VirtualMenu (required for virtualization)
+4. Spread the provided `props` onto `VirtualMenu.Item`
+
+### VirtualMenu Props
+
+| Prop                | Type                                      | Default | Description                                      |
+| ------------------- | ----------------------------------------- | ------- | ------------------------------------------------ |
+| `items`             | `T[]`                                     | —       | Array of items to render (required)              |
+| `children`          | `(item: T, props: ItemProps) => ReactNode`| —       | Render function for each item (required)         |
+| `onSelect`          | `(item: T, index: number) => void`        | —       | Callback when an item is selected                |
+| `estimatedItemSize` | `number`                                  | `36`    | Estimated height of each item in pixels          |
+| `overscan`          | `number`                                  | `5`     | Extra items to render above/below visible area   |
+| `style`             | `CSSProperties`                           | —       | Must include `height` for virtualization         |
+
+### Render Function Props
+
+The render function receives each item and props that **must be spread** onto your item element:
+
+```tsx
+{(item, props) => (
+  <VirtualMenu.Item {...props}>{item.label}</VirtualMenu.Item>
+)}
+```
+
+**Why spreading is required:**
+
+- **`style`** — Contains `position: absolute` and `transform: translateY(...)` that positions each item at its virtual scroll position. Without it, all items stack at the top.
+- **Event handlers** — `onClick`, `onMouseEnter`, `onKeyDown` enable selection, hover highlighting, and keyboard navigation.
+- **ARIA attributes** — `aria-posinset` and `aria-setsize` tell screen readers "Item 5 of 1000" even though only ~20 items exist in the DOM.
+
+| Prop              | Type              | Description                                        |
+| ----------------- | ----------------- | -------------------------------------------------- |
+| `isHighlighted`   | `boolean`         | Whether the item is currently highlighted          |
+| `style`           | `CSSProperties`   | Positioning styles (required for virtualization)   |
+| `role`            | `'menuitem'`      | ARIA role                                          |
+| `tabIndex`        | `number`          | Focus management                                   |
+| `aria-posinset`   | `number`          | Position in set for screen readers                 |
+| `aria-setsize`    | `number`          | Total items for screen readers                     |
+| `data-highlighted`| `boolean`         | CSS styling hook                                   |
+| `onMouseEnter`    | `() => void`      | Hover handler                                      |
+| `onClick`         | `() => void`      | Selection handler                                  |
+| `onKeyDown`       | `(e) => void`     | Keyboard navigation                                |
+
+You can destructure `isHighlighted` for custom styling while spreading the rest:
+
+```tsx
+{(item, { isHighlighted, ...props }) => (
+  <VirtualMenu.Item {...props} data-active={isHighlighted}>
+    {item.label}
+  </VirtualMenu.Item>
+)}
+```
+
+### Custom Item Rendering
+
+You can render custom content inside `VirtualMenu.Item`:
+
+```tsx
+<VirtualMenu
+  items={users}
+  onSelect={(user) => selectUser(user)}
+  style={{ height: 400 }}
+>
+  {(user, props) => (
+    <VirtualMenu.Item {...props}>
+      <Avatar size="1" src={user.avatar} fallback={user.initials} />
+      <span>{user.name}</span>
+      <span style={{ color: 'var(--gray-9)' }}>{user.email}</span>
+    </VirtualMenu.Item>
+  )}
+</VirtualMenu>
+```
+
+### Keyboard Navigation
+
+VirtualMenu supports full keyboard navigation:
+
+| Key              | Action                              |
+| ---------------- | ----------------------------------- |
+| `Arrow Down`     | Move to next item                   |
+| `Arrow Up`       | Move to previous item               |
+| `Home`           | Jump to first item                  |
+| `End`            | Jump to last item                   |
+| `Enter` / `Space`| Select highlighted item             |
+
 ## Controlled
 
 Control the open state for programmatic menu management.
@@ -504,6 +630,7 @@ Dropdown Menu follows the [WAI-ARIA Menu Button pattern](https://www.w3.org/WAI/
 - **Responsive submenu behavior** with breakpoint-based switching between cascade and drill-down modes
 - **Drill-down animations** with direction-aware slide transitions (slides from right when entering submenu, from left when going back)
 - Respects `prefers-reduced-motion` for drill-down animations
+- **Virtualization support** via `virtualized` prop and `VirtualMenu` component for rendering large lists efficiently
 
 ### Deprecated
 

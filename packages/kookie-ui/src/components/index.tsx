@@ -69,6 +69,7 @@ export { ToggleIconButton, type ToggleIconButtonProps } from './toggle-icon-butt
 export { Toolbar } from './toolbar.js';
 export { Tooltip, type TooltipProps } from './tooltip.js';
 export { UserCard, type UserCardProps } from './user-card.js';
+export { VirtualMenu, type VirtualMenuProps, type VirtualMenuItemProps, type VirtualMenuItemRenderProps } from './virtual-menu.js';
 export { VisuallyHidden, type VisuallyHiddenProps } from './visually-hidden.js';
 export * as Sidebar from './sidebar.js';
 export * as Shell from './shell.js';

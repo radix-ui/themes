@@ -81,6 +81,11 @@ type DropdownMenuContentOwnProps = GetPropDefTypes<typeof dropdownMenuContentPro
    * Supports responsive values: `{ initial: 'drill-down', md: 'cascade' }`
    */
   submenuBehavior?: Responsive<SubmenuBehavior>;
+  /**
+   * When true, skips the ScrollArea wrapper to allow VirtualMenu to handle its own scrolling.
+   * Use this when rendering virtualized lists inside the dropdown.
+   */
+  virtualized?: boolean;
 };
 type DropdownMenuContentContextValue = Omit<DropdownMenuContentOwnProps, 'submenuBehavior'>;
 const DropdownMenuContentContext = React.createContext<DropdownMenuContentContextValue>({});
@@ -96,6 +101,11 @@ interface DropdownMenuContentProps
    * Supports responsive values: `{ initial: 'drill-down', md: 'cascade' }`
    */
   submenuBehavior?: Responsive<SubmenuBehavior>;
+  /**
+   * When true, skips the ScrollArea wrapper to allow VirtualMenu to handle its own scrolling.
+   * Use this when rendering virtualized lists inside the dropdown.
+   */
+  virtualized?: boolean;
 }
 const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, DropdownMenuContentProps>(
   (props, forwardedRef) => {
@@ -129,6 +139,7 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
       highContrast = dropdownMenuContentPropDefs.highContrast.default,
       material = memoizedThemeContext.material,
       submenuBehavior,
+      virtualized = false,
     } = props;
     const {
       className,
@@ -139,6 +150,7 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
       material: _,
       panelBackground: __,
       submenuBehavior: ___,
+      virtualized: ____,
       ...contentProps
     } = extractProps(props, dropdownMenuContentPropDefs);
 
@@ -147,6 +159,19 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
       () => color || memoizedThemeContext.accentColor,
       [color, memoizedThemeContext.accentColor],
     );
+    const contentBody = (
+      <DropdownMenuContentContext.Provider
+        value={React.useMemo(
+          () => ({ size, variant, color: resolvedColor, highContrast, material }),
+          [size, variant, resolvedColor, highContrast, material],
+        )}
+      >
+        <DrillDownProvider submenuBehavior={submenuBehavior}>
+          <DrillDownRoot>{children}</DrillDownRoot>
+        </DrillDownProvider>
+      </DropdownMenuContentContext.Provider>
+    );
+
     return (
       <DropdownMenuPrimitive.Portal container={container} forceMount={forceMount}>
         <Theme asChild>
@@ -167,20 +192,17 @@ const DropdownMenuContent = React.forwardRef<DropdownMenuContentElement, Dropdow
               className,
             )}
           >
-            <ScrollArea type="auto">
+            {virtualized ? (
               <div className={classNames('rt-BaseMenuViewport', 'rt-DropdownMenuViewport')}>
-                <DropdownMenuContentContext.Provider
-                  value={React.useMemo(
-                    () => ({ size, variant, color: resolvedColor, highContrast, material }),
-                    [size, variant, resolvedColor, highContrast, material],
-                  )}
-                >
-                  <DrillDownProvider submenuBehavior={submenuBehavior}>
-                    <DrillDownRoot>{children}</DrillDownRoot>
-                  </DrillDownProvider>
-                </DropdownMenuContentContext.Provider>
+                {contentBody}
               </div>
-            </ScrollArea>
+            ) : (
+              <ScrollArea type="auto">
+                <div className={classNames('rt-BaseMenuViewport', 'rt-DropdownMenuViewport')}>
+                  {contentBody}
+                </div>
+              </ScrollArea>
+            )}
           </DropdownMenuPrimitive.Content>
         </Theme>
       </DropdownMenuPrimitive.Portal>
