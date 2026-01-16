@@ -98,6 +98,51 @@ export default function DropdownMenuTest() {
         </Text>
       </Box>
 
+      {/* Virtualized Menu with Variable Heights */}
+      <Box mb="6" p="4" style={{ background: 'var(--teal-3)', borderRadius: 'var(--radius-3)', border: '2px solid var(--teal-6)' }}>
+        <Heading size="4" mb="2" color="teal">⚡ Variable Height Items</Heading>
+        <Text as="p" size="2" color="gray" mb="4">
+          Testing VirtualMenu with mixed item heights (headers = 48px, items = 36px).
+        </Text>
+        <DropdownMenu.Root>
+          <DropdownMenu.Trigger>
+            <Button variant="soft" color="teal">Open Variable Height Menu</Button>
+          </DropdownMenu.Trigger>
+          <DropdownMenu.Content virtualized style={{ minWidth: 250, padding: 0 }}>
+            <VirtualMenu
+              items={Array.from({ length: 100 }, (_, i) => ({ 
+                id: String(i), 
+                type: i % 10 === 0 ? 'header' : 'item',
+                label: i % 10 === 0 ? `Section ${Math.floor(i / 10) + 1}` : `Item ${i + 1}`
+              }))}
+              estimatedItemSize={(index) => index % 10 === 0 ? 48 : 36}
+              onSelect={(item) => console.log('Selected:', item)}
+              style={{ height: 300 }}
+            >
+              {(item, { isHighlighted, ...props }) => (
+                <VirtualMenu.Item 
+                  {...props}
+                  style={{
+                    ...props.style,
+                    height: item.type === 'header' ? 48 : 36,
+                    fontWeight: item.type === 'header' ? 600 : 400,
+                    fontSize: item.type === 'header' ? 11 : 14,
+                    color: item.type === 'header' ? 'var(--gray-11)' : undefined,
+                    textTransform: item.type === 'header' ? 'uppercase' : undefined,
+                    letterSpacing: item.type === 'header' ? '0.05em' : undefined,
+                  }}
+                >
+                  {item.label}
+                </VirtualMenu.Item>
+              )}
+            </VirtualMenu>
+          </DropdownMenu.Content>
+        </DropdownMenu.Root>
+        <Text as="p" size="1" color="gray" mt="2">
+          Headers are taller (48px) than regular items (36px).
+        </Text>
+      </Box>
+
       {/* Drill-Down with Groups - Variants */}
       <Box
         mb="6"

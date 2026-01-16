@@ -486,7 +486,7 @@ function VirtualizedExample() {
 | `items`             | `T[]`                                     | —       | Array of items to render (required)              |
 | `children`          | `(item: T, props: ItemProps) => ReactNode`| —       | Render function for each item (required)         |
 | `onSelect`          | `(item: T, index: number) => void`        | —       | Callback when an item is selected                |
-| `estimatedItemSize` | `number`                                  | `36`    | Estimated height of each item in pixels          |
+| `estimatedItemSize` | `number \| (index: number) => number`     | `36`    | Estimated height per item. Use a function for variable heights. |
 | `overscan`          | `number`                                  | `5`     | Extra items to render above/below visible area   |
 | `style`             | `CSSProperties`                           | —       | Must include `height` for virtualization         |
 
@@ -527,6 +527,32 @@ You can destructure `isHighlighted` for custom styling while spreading the rest:
     {item.label}
   </VirtualMenu.Item>
 )}
+```
+
+### Variable Height Items
+
+Use a function for `estimatedItemSize` when items have different heights:
+
+```tsx
+const items = [
+  { type: 'header', label: 'Section A' },
+  { type: 'item', label: 'Item 1' },
+  { type: 'item', label: 'Item 2' },
+  { type: 'header', label: 'Section B' },
+  // ...
+];
+
+<VirtualMenu
+  items={items}
+  estimatedItemSize={(index) => items[index].type === 'header' ? 48 : 36}
+  style={{ height: 300 }}
+>
+  {(item, props) => (
+    <VirtualMenu.Item {...props}>
+      {item.type === 'header' ? <strong>{item.label}</strong> : item.label}
+    </VirtualMenu.Item>
+  )}
+</VirtualMenu>
 ```
 
 ### Custom Item Rendering

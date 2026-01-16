@@ -50,8 +50,17 @@ interface VirtualMenuItemRenderProps {
 interface VirtualMenuProps<T> {
   /** Array of items to render */
   items: T[];
-  /** Estimated height of each item in pixels (default: 36) */
-  estimatedItemSize?: number;
+  /** 
+   * Estimated height of each item in pixels.
+   * Can be a number (same for all) or a function (per-item).
+   * @default 36
+   * @example
+   * // Fixed height
+   * estimatedItemSize={36}
+   * // Variable heights
+   * estimatedItemSize={(index) => items[index].type === 'header' ? 48 : 36}
+   */
+  estimatedItemSize?: number | ((index: number) => number);
   /** Number of items to render outside visible area (default: 5) */
   overscan?: number;
   /** Callback when an item is selected */
@@ -80,10 +89,18 @@ function VirtualMenuRoot<T>({
   const parentRef = React.useRef<HTMLDivElement>(null);
   const [highlightedIndex, setHighlightedIndex] = React.useState<number>(-1);
 
+  // Normalize estimatedItemSize to always be a function
+  const getItemSize = React.useMemo(
+    () => typeof estimatedItemSize === 'function' 
+      ? estimatedItemSize 
+      : () => estimatedItemSize,
+    [estimatedItemSize]
+  );
+
   const virtualizer = useVirtualizer({
     count: items.length,
     getScrollElement: () => parentRef.current,
-    estimateSize: () => estimatedItemSize,
+    estimateSize: getItemSize,
     overscan,
   });
 
