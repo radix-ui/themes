@@ -557,13 +557,16 @@ const ComboboxItem = React.forwardRef<ComboboxItemElement, ComboboxItemProps>(
     const isDisabled = disabled ?? ctx.disabled ?? false;
     const sizeClass = contentContext?.size ? `rt-r-size-${contentContext.size}` : undefined;
 
+    // Extract stable onSelect to avoid depending on entire ctx object
+    const onSelectFromContext = ctx.onSelect;
+
     // Handle selection
     const handleSelect = React.useCallback(() => {
       if (value != null) {
-        ctx.onSelect(value);
+        onSelectFromContext(value);
         onSelect?.(value);
       }
-    }, [ctx, value, onSelect]);
+    }, [onSelectFromContext, value, onSelect]);
 
     // Use provided keywords or label for search
     const searchKeywords = keywords ?? (label ? [label] : undefined);
