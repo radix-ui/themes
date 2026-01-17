@@ -19,6 +19,13 @@ import { useVirtualizer } from '@tanstack/react-virtual';
  */
 
 // ============================================================================
+// Constants
+// ============================================================================
+
+/** Stable no-op function to avoid creating new references */
+const noop = () => {};
+
+// ============================================================================
 // Types
 // ============================================================================
 
@@ -50,7 +57,7 @@ interface VirtualMenuItemRenderProps {
 interface VirtualMenuProps<T> {
   /** Array of items to render */
   items: T[];
-  /** 
+  /**
    * Estimated height of each item in pixels.
    * Can be a number (same for all) or a function (per-item).
    * @default 36
@@ -71,6 +78,8 @@ interface VirtualMenuProps<T> {
   className?: string;
   /** Additional styles for the root element */
   style?: React.CSSProperties;
+  /** Accessible label for the menu */
+  'aria-label'?: string;
 }
 
 // ============================================================================
@@ -85,16 +94,26 @@ function VirtualMenuRoot<T>({
   children,
   className,
   style,
+  'aria-label': ariaLabel,
 }: VirtualMenuProps<T>) {
   const parentRef = React.useRef<HTMLDivElement>(null);
   const [highlightedIndex, setHighlightedIndex] = React.useState<number>(-1);
 
+  // Derive safe highlighted index - clamp to valid range when items change
+  // This avoids useEffect and keeps highlight stable when possible
+  const safeHighlightedIndex = React.useMemo(() => {
+    if (items.length === 0) return -1;
+    if (highlightedIndex < 0) return -1;
+    return Math.min(highlightedIndex, items.length - 1);
+  }, [highlightedIndex, items.length]);
+
   // Normalize estimatedItemSize to always be a function
   const getItemSize = React.useMemo(
-    () => typeof estimatedItemSize === 'function' 
-      ? estimatedItemSize 
-      : () => estimatedItemSize,
-    [estimatedItemSize]
+    () =>
+      typeof estimatedItemSize === 'function'
+        ? estimatedItemSize
+        : () => estimatedItemSize,
+    [estimatedItemSize],
   );
 
   const virtualizer = useVirtualizer({
@@ -112,14 +131,16 @@ function VirtualMenuRoot<T>({
       switch (e.key) {
         case 'ArrowDown': {
           e.preventDefault();
-          const nextIndex = highlightedIndex < items.length - 1 ? highlightedIndex + 1 : 0;
+          const nextIndex =
+            safeHighlightedIndex < items.length - 1 ? safeHighlightedIndex + 1 : 0;
           setHighlightedIndex(nextIndex);
           virtualizer.scrollToIndex(nextIndex, { align: 'auto' });
           break;
         }
         case 'ArrowUp': {
           e.preventDefault();
-          const prevIndex = highlightedIndex > 0 ? highlightedIndex - 1 : items.length - 1;
+          const prevIndex =
+            safeHighlightedIndex > 0 ? safeHighlightedIndex - 1 : items.length - 1;
           setHighlightedIndex(prevIndex);
           virtualizer.scrollToIndex(prevIndex, { align: 'auto' });
           break;
@@ -140,20 +161,20 @@ function VirtualMenuRoot<T>({
         case 'Enter':
         case ' ': {
           e.preventDefault();
-          if (highlightedIndex >= 0 && highlightedIndex < items.length) {
-            onSelect?.(items[highlightedIndex], highlightedIndex);
+          if (safeHighlightedIndex >= 0 && safeHighlightedIndex < items.length) {
+            onSelect?.(items[safeHighlightedIndex], safeHighlightedIndex);
           }
           break;
         }
       }
     },
-    [highlightedIndex, items, onSelect, virtualizer],
+    [safeHighlightedIndex, items, onSelect, virtualizer],
   );
 
   // Create item props generator
   const getItemProps = React.useCallback(
     (index: number, virtualRow: { start: number; size: number }): VirtualMenuItemRenderProps => ({
-      isHighlighted: highlightedIndex === index,
+      isHighlighted: safeHighlightedIndex === index,
       style: {
         position: 'absolute',
         top: 0,
@@ -163,30 +184,37 @@ function VirtualMenuRoot<T>({
         transform: `translateY(${virtualRow.start}px)`,
       },
       role: 'menuitem',
-      tabIndex: highlightedIndex === index ? 0 : -1,
+      tabIndex: safeHighlightedIndex === index ? 0 : -1,
       'aria-posinset': index + 1,
       'aria-setsize': items.length,
-      'data-highlighted': highlightedIndex === index ? true : undefined,
+      'data-highlighted': safeHighlightedIndex === index ? true : undefined,
       onMouseEnter: () => setHighlightedIndex(index),
-      onMouseLeave: () => {}, // Keep highlight on mouse leave for better UX
+      onMouseLeave: noop,
       onClick: () => onSelect?.(items[index], index),
       onKeyDown: handleKeyDown,
     }),
-    [highlightedIndex, items, onSelect, handleKeyDown],
+    [safeHighlightedIndex, items, onSelect, handleKeyDown],
+  );
+
+  // Memoize root styles to prevent object recreation on each render
+  const rootStyle = React.useMemo(
+    () => ({
+      overflow: 'auto' as const,
+      position: 'relative' as const,
+      ...style,
+    }),
+    [style],
   );
 
   return (
     <div
       ref={parentRef}
       role="menu"
+      aria-label={ariaLabel}
       tabIndex={0}
       onKeyDown={handleKeyDown}
       className={classNames('rt-VirtualMenuRoot', className)}
-      style={{
-        overflow: 'auto',
-        position: 'relative',
-        ...style,
-      }}
+      style={rootStyle}
     >
       <div
         className="rt-VirtualMenuViewport"
