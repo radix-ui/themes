@@ -10,7 +10,7 @@
     "clean": "turbo run clean && rm -rf node_modules .turbo"
   },
   "devDependencies": {
-    "@types/node": "^20.16.10",
+    "@types/node": "^24",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
     "prettier": "^3.4.2",
