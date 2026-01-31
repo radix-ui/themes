@@ -150,6 +150,7 @@ export default function Snapshot() {
               </header>
               <div style={{ position: 'relative' }}>
                 <img
+                  alt=""
                   style={{ display: 'block', width: '100%' }}
                   role="presentation"
                   src="https://images.unsplash.com/photo-1675371788315-60fa0ef48267?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1vZi10aGUtZGF5fHx8fGVufDB8fHx8&dpr=2&auto=format%2Ccompress&fit=crop&w=1599&h=594"
@@ -195,8 +196,11 @@ export default function Snapshot() {
                 </div>
               </div>
               <div className={`${styles.container} ${styles.grid}`}>
-                {['1601815560619-c5aeb2cb9297', '1683223336014-06e82d91c95e'].map((id) => (
-                  <ImageCard key={id} id={id} />
+                {[
+                  { id: '1601815560619-c5aeb2cb9297', alt: 'United States Capitol Building' },
+                  { id: '1683223336014-06e82d91c95e', alt: 'Apple Park' },
+                ].map(({ id, alt }) => (
+                  <ImageCard key={id} id={id} alt={alt} />
                 ))}
                 <div style={{ border: '1px solid var(--gray-7)', padding: 'var(--space-5)' }}>
                   <Text as="p" size="4" weight="bold" style={{ marginBottom: 'var(--space-5)' }}>
@@ -222,14 +226,20 @@ export default function Snapshot() {
                   </div>
                 </div>
                 {[
-                  '1683490484039-c9839f9b2382',
-                  '1683408581419-33e8f174ab10',
-                  '1683035094630-146fdff5b960',
-                  '1683402971094-879a7d879171',
-                  '1588661565258-8ecc570d1403',
-                  '1683402969702-4c7558fd41e3',
-                ].map((id) => (
-                  <ImageCard key={id} id={id} />
+                  { id: '1683490484039-c9839f9b2382', alt: 'A tall skyscraper at night' },
+                  { id: '1683408581419-33e8f174ab10', alt: 'Lush plants in a greenhouse' },
+                  {
+                    id: '1683035094630-146fdff5b960',
+                    alt: 'An apartment building with balconies covered in plants',
+                  },
+                  { id: '1683402971094-879a7d879171', alt: 'An office building covered in plants' },
+                  {
+                    id: '1588661565258-8ecc570d1403',
+                    alt: 'An apartment building with balconies covered in plants',
+                  },
+                  { id: '1683402969702-4c7558fd41e3', alt: 'An office building covered in plants' },
+                ].map(({ id, alt }) => (
+                  <ImageCard key={id} id={id} alt={alt} />
                 ))}
               </div>
             </div>
@@ -240,7 +250,7 @@ export default function Snapshot() {
   );
 }
 
-function SubmitPhotoDialog({ children }: any) {
+function SubmitPhotoDialog({ children }: { children: React.ReactNode }) {
   return (
     <Dialog.Root>
       <Dialog.Trigger>{children}</Dialog.Trigger>

@@ -476,7 +476,13 @@ const Card: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   );
 };
 
-function ConfirmBookingDialog({ children, guestCount }: any) {
+function ConfirmBookingDialog({
+  children,
+  guestCount,
+}: {
+  children: React.ReactNode;
+  guestCount: number;
+}) {
   return (
     <Dialog.Root>
       <Dialog.Trigger>{children}</Dialog.Trigger>
