@@ -57,6 +57,7 @@
   ],
   "license": "MIT",
   "files": [
+    "CHANGELOG.md",
     "src/**",
     "dist/**",
     "tokens/**",
