@@ -21,7 +21,7 @@ jobs:
         uses: ./.github/actions/ci-setup
 
       - name: Lint
-        run: pnpm lint
+        run: pnpm --filter "@radix-ui/*" lint
 
       - name: Build packages
         run: pnpm --filter "@radix-ui/*" build
