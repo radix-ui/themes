@@ -44,10 +44,10 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
       const childNode = props.children;
       child = React.cloneElement<any>(children, {
         ...props,
-        children: <LoadingButtonContents size={size}>{childNode}</LoadingButtonContents>,
+        children: renderLoadingButtonContents(childNode, size),
       });
     } else {
-      child = <LoadingButtonContents size={size}>{children}</LoadingButtonContents>;
+      child = renderLoadingButtonContents(children, size);
     }
   }
 
@@ -68,10 +68,10 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
 });
 BaseButton.displayName = 'BaseButton';
 
-const LoadingButtonContents: React.FC<{ children: React.ReactNode; size: any }> = ({
-  children,
-  size,
-}) => {
+export { BaseButton };
+export type { BaseButtonProps };
+
+function renderLoadingButtonContents(children: React.ReactNode, size: BaseButtonProps['size']) {
   return (
     <>
       {/*
@@ -94,8 +94,4 @@ const LoadingButtonContents: React.FC<{ children: React.ReactNode; size: any }> 
       </Flex>
     </>
   );
-};
-LoadingButtonContents.displayName = 'LoadingButtonContents';
-
-export { BaseButton };
-export type { BaseButtonProps };
+}
