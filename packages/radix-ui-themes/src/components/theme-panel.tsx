@@ -22,6 +22,7 @@ import { themePropDefs } from './theme.props.js';
 
 import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-props.js';
 import type { GetPropDefTypes } from '../props/prop-def.js';
+import { flushSync } from 'react-dom';
 
 interface ThemePanelProps extends Omit<ThemePanelImplProps, keyof ThemePanelImplPrivateProps> {
   onAppearanceChange?: (value: 'light' | 'dark') => void;
@@ -41,6 +42,8 @@ const keyboardInputElement = `
 const ThemePanel = React.forwardRef<ThemePanelImplElement, ThemePanelProps>(
   ({ defaultOpen = true, ...props }, forwardedRef) => {
     const [open, setOpen] = React.useState(defaultOpen);
+    const triggerRef = React.useRef<HTMLButtonElement>(null);
+    const previouslyFocusedElementRef = React.useRef<HTMLElement | null>(null);
 
     // quickly show/hide using "T" keypress
     React.useEffect(() => {
@@ -49,7 +52,19 @@ const ThemePanel = React.forwardRef<ThemePanelImplElement, ThemePanelProps>(
         const isKeyboardInputActive = document.activeElement?.closest(keyboardInputElement);
         const isKeyT = event.key?.toUpperCase() === 'T' && !isModifierActive;
         if (isKeyT && !isKeyboardInputActive) {
-          setOpen((open) => !open);
+          let isOpen = false;
+          flushSync(() => {
+            setOpen((open) => {
+              isOpen = !open;
+              return isOpen;
+            });
+          });
+          if (isOpen) {
+            previouslyFocusedElementRef.current = document.activeElement as HTMLElement | null;
+            triggerRef.current?.focus();
+          } else {
+            previouslyFocusedElementRef.current?.focus();
+          }
         }
       }
       document.addEventListener('keydown', handleKeydown);
@@ -60,11 +75,17 @@ const ThemePanel = React.forwardRef<ThemePanelImplElement, ThemePanelProps>(
       <ThemePanelImpl
         {...props}
         ref={forwardedRef}
+        triggerRef={triggerRef}
         open={open}
         shortcut={
           <Tooltip content="Press T to show/hide the Theme Panel" side="bottom" sideOffset={6}>
             <Kbd asChild size="3" tabIndex={0} className="rt-ThemePanelShortcut">
-              <button type="button" onClick={() => setOpen((open) => !open)}>
+              <button
+                type="button"
+                onClick={() => setOpen((open) => !open)}
+                ref={triggerRef}
+                aria-label="Toggle the Theme Panel"
+              >
                 T
               </button>
             </Kbd>
@@ -80,6 +101,7 @@ type ThemePanelImplElement = React.ElementRef<'div'>;
 interface ThemePanelImplPrivateProps {
   open: boolean;
   shortcut: React.ReactNode;
+  triggerRef: React.RefObject<HTMLButtonElement | null>;
 }
 interface ThemePanelImplProps
   extends ComponentPropsWithout<'div', RemovedProps>, ThemePanelImplPrivateProps {
@@ -87,7 +109,7 @@ interface ThemePanelImplProps
 }
 const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplProps>(
   (props, forwardedRef) => {
-    const { open, onAppearanceChange, shortcut, ...panelProps } = props;
+    const { open, onAppearanceChange, shortcut, triggerRef, ...panelProps } = props;
     const themeContext = useThemeContext();
     return (
       <Theme asChild radius="medium" scaling="100%">
