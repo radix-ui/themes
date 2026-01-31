@@ -4767,24 +4767,41 @@ export default function Sink() {
                       </Kbd>
                     </Flex>
 
-                    <Flex align="start" direction="column" gap="4" mt="7">
-                      {kbdPropDefs.size.values
-                        .slice()
-                        .reverse()
-                        .map((size) => (
-                          <Flex key={size}>
-                            <Kbd size={size} style={{ marginRight: '0.5em' }}>
-                              /
-                            </Kbd>
-                            <Kbd size={size} style={{ marginRight: '0.5em' }}>
-                              X
-                            </Kbd>
-                            <Kbd size={size} style={{ marginRight: '0.5em' }}>
-                              ⇧ ⌘ V
-                            </Kbd>
-                          </Flex>
-                        ))}
-                    </Flex>
+                    <table className={styles.table}>
+                      <thead>
+                        <tr>
+                          <ColumnHeaderCell />
+                          {kbdPropDefs.variant.values.map((variant) => (
+                            <ColumnHeaderCell key={variant}>{variant}</ColumnHeaderCell>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {kbdPropDefs.size.values
+                          .slice()
+                          .reverse()
+                          .map((size) => (
+                            <tr key={size}>
+                              <RowHeaderCell>size {size}</RowHeaderCell>
+                              {kbdPropDefs.variant.values.map((variant) => (
+                                <td key={variant} style={{ paddingRight: 'var(--space-6)' }}>
+                                  <Flex gap="2">
+                                    <Kbd size={size} variant={variant}>
+                                      /
+                                    </Kbd>
+                                    <Kbd size={size} variant={variant}>
+                                      X
+                                    </Kbd>
+                                    <Kbd size={size} variant={variant}>
+                                      ⇧ ⌘ V
+                                    </Kbd>
+                                  </Flex>
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                      </tbody>
+                    </table>
                   </DocsSection>
 
                   <React.Suspense fallback={null}>
