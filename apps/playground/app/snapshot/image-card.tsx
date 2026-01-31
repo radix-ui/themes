@@ -5,11 +5,12 @@ import { Tooltip, IconButton, Popover, Text, Button } from '@radix-ui/themes';
 import { HeartFilledIcon, PlusIcon, DownloadIcon } from '@radix-ui/react-icons';
 import styles from './page.module.css';
 
-function ImageCard({ id }: any) {
+function ImageCard({ id, alt }: { id: string; alt: string }) {
   const [open, setOpen] = React.useState(false);
   return (
     <div className={styles.imageCard}>
       <img
+        alt={alt}
         src={`https://images.unsplash.com/photo-${id}?w=400&h=400&dpr=2&auto=format&fit=crop&w=2574&q=70`}
         style={{
           display: 'block',

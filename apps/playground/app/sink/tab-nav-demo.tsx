@@ -6,7 +6,7 @@ import { useSearchParams } from 'next/navigation';
 import { TabNav } from '@radix-ui/themes';
 
 const TabNavDemo = React.forwardRef<
-  React.ElementRef<typeof TabNav.Root>,
+  React.ComponentRef<typeof TabNav.Root>,
   React.ComponentPropsWithoutRef<typeof TabNav.Root>
 >((props, forwardedRef) => {
   const params = useSearchParams();

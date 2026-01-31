@@ -1,3 +1,4 @@
+'use client';
 import * as React from 'react';
 import { NextThemeProvider } from '../next-theme-provider';
 import {
@@ -387,7 +388,7 @@ export default function Sink() {
                                             <ColumnHeaderCell key={variant}>
                                               {variant}
                                             </ColumnHeaderCell>
-                                          )
+                                          ),
                                         )}
                                       </tr>
                                     </thead>
@@ -422,7 +423,7 @@ export default function Sink() {
                                                   />
                                                 </DropdownMenu.Root>
                                               </td>
-                                            )
+                                            ),
                                           )}
                                         </tr>
                                       ))}
@@ -1189,7 +1190,7 @@ export default function Sink() {
                       <div>
                         <table className={styles.table}>
                           <tbody>
-                            {progressPropDefs.size.values.map((size, i) => (
+                            {progressPropDefs.size.values.map((size) => (
                               <tr key={size}>
                                 <RowHeaderCell>size {size}</RowHeaderCell>
                                 <td style={{ width: 220 }}>
@@ -4810,7 +4811,7 @@ export default function Sink() {
                           </Text>
                         </summary>
                         <Grid gap="5" columns="3" align="center">
-                          {tabsListPropDefs.color.values.map((color, i) => (
+                          {tabsListPropDefs.color.values.map((color) => (
                             <React.Fragment key={color}>
                               <Text>{color}</Text>
                               <Flex>
@@ -4864,7 +4865,7 @@ export default function Sink() {
                         </Text>
                       </summary>
                       <Grid gap="5" columns="3" align="center">
-                        {tabsListPropDefs.color.values.map((color, i) => (
+                        {tabsListPropDefs.color.values.map((color) => (
                           <React.Fragment key={color}>
                             <Text>{color}</Text>
                             <Flex>
@@ -6165,7 +6166,7 @@ function CustomUserIcon() {
 }
 
 const SampleNestedUI = React.forwardRef<
-  React.ElementRef<typeof Flex>,
+  React.ComponentRef<typeof Flex>,
   React.ComponentPropsWithoutRef<typeof Flex>
 >(({ children, title, ...props }, forwardedRef) => {
   return (
