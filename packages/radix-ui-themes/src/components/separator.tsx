@@ -12,14 +12,12 @@ import type { GetPropDefTypes } from '../props/prop-def.js';
 type SeparatorElement = React.ElementRef<'span'>;
 type SeparatorOwnProps = GetPropDefTypes<typeof separatorPropDefs>;
 interface SeparatorProps
-  extends ComponentPropsWithout<'span', RemovedProps>,
-    MarginProps,
-    SeparatorOwnProps {}
+  extends ComponentPropsWithout<'span', RemovedProps>, MarginProps, SeparatorOwnProps {}
 const Separator = React.forwardRef<SeparatorElement, SeparatorProps>((props, forwardedRef) => {
   const { className, color, decorative, ...separatorProps } = extractProps(
     props,
     separatorPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   return (
     <span

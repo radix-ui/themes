@@ -15,14 +15,15 @@ type TextAreaOwnProps = GetPropDefTypes<typeof textAreaPropDefs> & {
   value?: string;
 };
 interface TextAreaProps
-  extends ComponentPropsWithout<'textarea', RemovedProps | 'size' | 'value'>,
+  extends
+    ComponentPropsWithout<'textarea', RemovedProps | 'size' | 'value'>,
     MarginProps,
     TextAreaOwnProps {}
 const TextArea = React.forwardRef<TextAreaElement, TextAreaProps>((props, forwardedRef) => {
   const { className, color, radius, style, ...textAreaProps } = extractProps(
     props,
     textAreaPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   return (
     <div

@@ -13,14 +13,12 @@ import type { GetPropDefTypes } from '../props/prop-def.js';
 type CodeElement = React.ElementRef<'code'>;
 type CodeOwnProps = GetPropDefTypes<typeof codePropDefs>;
 interface CodeProps
-  extends ComponentPropsWithout<'code', RemovedProps>,
-    MarginProps,
-    CodeOwnProps {}
+  extends ComponentPropsWithout<'code', RemovedProps>, MarginProps, CodeOwnProps {}
 const Code = React.forwardRef<CodeElement, CodeProps>((props, forwardedRef) => {
   const { asChild, className, color, ...codeProps } = extractProps(
     props,
     codePropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   // Code ghost color prop should work as text color by default
   const resolvedColor = props.variant === 'ghost' ? color || undefined : color;

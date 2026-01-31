@@ -17,7 +17,8 @@ import type { GetPropDefTypes } from '../props/prop-def.js';
 type CheckboxElement = React.ElementRef<typeof CheckboxPrimitive.Root>;
 type CheckboxOwnProps = GetPropDefTypes<typeof checkboxPropDefs>;
 interface CheckboxProps
-  extends ComponentPropsWithout<
+  extends
+    ComponentPropsWithout<
       typeof CheckboxPrimitive.Root,
       'asChild' | 'color' | 'defaultValue' | 'children'
     >,

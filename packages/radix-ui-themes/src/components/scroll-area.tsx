@@ -16,7 +16,8 @@ import type { GetPropDefTypes } from '../props/prop-def.js';
 type ScrollAreaElement = React.ElementRef<typeof ScrollAreaPrimitive.Viewport>;
 type ScrollAreaOwnProps = GetPropDefTypes<typeof scrollAreaPropDefs>;
 interface ScrollAreaProps
-  extends ComponentPropsWithout<typeof ScrollAreaPrimitive.Root, RemovedProps>,
+  extends
+    ComponentPropsWithout<typeof ScrollAreaPrimitive.Root, RemovedProps>,
     ComponentPropsWithout<typeof ScrollAreaPrimitive.Viewport, RemovedProps | 'dir'>,
     MarginProps,
     ScrollAreaOwnProps {}
@@ -68,7 +69,7 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
                   className: 'rt-r-size',
                   value: size,
                   propValues: scrollAreaPropDefs.size.values,
-                })
+                }),
               )}
             >
               <ScrollAreaPrimitive.Thumb className="rt-ScrollAreaThumb" />
@@ -85,7 +86,7 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
                   className: 'rt-r-size',
                   value: size,
                   propValues: scrollAreaPropDefs.size.values,
-                })
+                }),
               )}
             >
               <ScrollAreaPrimitive.Thumb className="rt-ScrollAreaThumb" />

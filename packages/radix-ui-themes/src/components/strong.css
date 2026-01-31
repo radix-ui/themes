@@ -3,9 +3,7 @@
   font-size: calc(var(--strong-font-size-adjust) * 1em);
   font-style: var(--strong-font-style);
   font-weight: var(--strong-font-weight);
-  letter-spacing: calc(
-    var(--strong-letter-spacing) + var(--letter-spacing, var(--default-letter-spacing))
-  );
+  letter-spacing: calc(var(--strong-letter-spacing) + var(--letter-spacing, var(--default-letter-spacing)));
 
   & :where(&) {
     font-size: inherit;

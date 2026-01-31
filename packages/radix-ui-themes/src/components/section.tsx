@@ -14,16 +14,13 @@ import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-p
 
 type SectionElement = React.ElementRef<'div'>;
 interface SectionProps
-  extends ComponentPropsWithout<'div', RemovedProps>,
-    MarginProps,
-    LayoutProps,
-    SectionOwnProps {}
+  extends ComponentPropsWithout<'div', RemovedProps>, MarginProps, LayoutProps, SectionOwnProps {}
 const Section = React.forwardRef<SectionElement, SectionProps>((props, forwardedRef) => {
   const { asChild, className, ...sectionProps } = extractProps(
     props,
     sectionPropDefs,
     layoutPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   const Comp = asChild ? Slot.Root : 'section';
   return (

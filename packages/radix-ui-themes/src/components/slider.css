@@ -86,7 +86,10 @@
   }
 
   &:where(:focus-visible)::after {
-    box-shadow: var(--slider-thumb-box-shadow), 0 0 0 3px var(--accent-3), 0 0 0 5px var(--focus-8);
+    box-shadow:
+      var(--slider-thumb-box-shadow),
+      0 0 0 3px var(--accent-3),
+      0 0 0 5px var(--focus-8);
   }
 
   &:where(:active) {
@@ -170,11 +173,17 @@
   & :where(.rt-SliderRange) {
     background-color: var(--accent-track);
     background-image: var(--slider-range-high-contrast-background-image);
-    box-shadow: inset 0 0 0 1px var(--gray-a3), inset 0 0 0 1px var(--accent-a4), inset 0 0 0 1px var(--black-a1),
+    box-shadow:
+      inset 0 0 0 1px var(--gray-a3),
+      inset 0 0 0 1px var(--accent-a4),
+      inset 0 0 0 1px var(--black-a1),
       inset 0 1.5px 2px 0 var(--black-a2);
 
     &:where(.rt-high-contrast) {
-      box-shadow: inset 0 0 0 1px var(--gray-a3), inset 0 0 0 1px var(--black-a2), inset 0 1.5px 2px 0 var(--black-a2);
+      box-shadow:
+        inset 0 0 0 1px var(--gray-a3),
+        inset 0 0 0 1px var(--black-a2),
+        inset 0 1.5px 2px 0 var(--black-a2);
     }
   }
 
@@ -207,14 +216,15 @@
   }
 
   & :where(.rt-SliderRange) {
-    background-image: linear-gradient(var(--accent-a5), var(--accent-a5)),
-      var(--slider-range-high-contrast-background-image);
+    background-image:
+      linear-gradient(var(--accent-a5), var(--accent-a5)), var(--slider-range-high-contrast-background-image);
     background-color: var(--accent-6);
   }
 
   & :where(.rt-SliderThumb) {
-    --slider-thumb-box-shadow: 0 0 0 1px var(--black-a3), 0 0 0 1px var(--gray-a2), 0 0 0 1px var(--accent-a2),
-      0 1px 2px var(--gray-a4), 0 1px 3px -0.5px var(--gray-a3);
+    --slider-thumb-box-shadow:
+      0 0 0 1px var(--black-a3), 0 0 0 1px var(--gray-a2), 0 0 0 1px var(--accent-a2), 0 1px 2px var(--gray-a4),
+      0 1px 3px -0.5px var(--gray-a3);
 
     &:where([data-disabled])::after {
       background-color: var(--gray-1);

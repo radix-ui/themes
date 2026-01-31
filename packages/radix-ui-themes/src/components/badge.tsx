@@ -13,14 +13,12 @@ import type { GetPropDefTypes } from '../props/prop-def.js';
 type BadgeElement = React.ElementRef<'span'>;
 type BadgeOwnProps = GetPropDefTypes<typeof badgePropDefs>;
 interface BadgeProps
-  extends ComponentPropsWithout<'span', RemovedProps>,
-    MarginProps,
-    BadgeOwnProps {}
+  extends ComponentPropsWithout<'span', RemovedProps>, MarginProps, BadgeOwnProps {}
 const Badge = React.forwardRef<BadgeElement, BadgeProps>((props, forwardedRef) => {
   const { asChild, className, color, radius, ...badgeProps } = extractProps(
     props,
     badgePropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   const Comp = asChild ? Slot.Root : 'span';
   return (

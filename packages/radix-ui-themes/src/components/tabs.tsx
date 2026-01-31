@@ -14,7 +14,8 @@ import type { GetPropDefTypes } from '../props/prop-def.js';
 type TabsRootElement = React.ElementRef<typeof TabsPrimitive.Root>;
 type TabsRootOwnProps = GetPropDefTypes<typeof tabsRootPropDefs>;
 interface TabsRootProps
-  extends ComponentPropsWithout<typeof TabsPrimitive.Root, 'asChild' | 'color' | 'defaultChecked'>,
+  extends
+    ComponentPropsWithout<typeof TabsPrimitive.Root, 'asChild' | 'color' | 'defaultChecked'>,
     MarginProps,
     TabsRootOwnProps {}
 const TabsRoot = React.forwardRef<TabsRootElement, TabsRootProps>((props, forwardedRef) => {
@@ -32,7 +33,8 @@ TabsRoot.displayName = 'Tabs.Root';
 type TabsListElement = React.ElementRef<typeof TabsPrimitive.List>;
 type TabsListOwnProps = GetPropDefTypes<typeof tabsListPropDefs>;
 interface TabsListProps
-  extends ComponentPropsWithout<typeof TabsPrimitive.List, RemovedProps>,
+  extends
+    ComponentPropsWithout<typeof TabsPrimitive.List, RemovedProps>,
     MarginProps,
     TabsListOwnProps {}
 const TabsList = React.forwardRef<TabsListElement, TabsListProps>((props, forwardedRef) => {
@@ -50,8 +52,10 @@ const TabsList = React.forwardRef<TabsListElement, TabsListProps>((props, forwar
 TabsList.displayName = 'Tabs.List';
 
 type TabsTriggerElement = React.ElementRef<typeof TabsPrimitive.Trigger>;
-interface TabsTriggerProps
-  extends ComponentPropsWithout<typeof TabsPrimitive.Trigger, RemovedProps> {}
+interface TabsTriggerProps extends ComponentPropsWithout<
+  typeof TabsPrimitive.Trigger,
+  RemovedProps
+> {}
 const TabsTrigger = React.forwardRef<TabsTriggerElement, TabsTriggerProps>(
   (props, forwardedRef) => {
     const { className, children, ...triggerProps } = props;
@@ -68,14 +72,15 @@ const TabsTrigger = React.forwardRef<TabsTriggerElement, TabsTriggerProps>(
         </span>
       </TabsPrimitive.Trigger>
     );
-  }
+  },
 );
 TabsTrigger.displayName = 'Tabs.Trigger';
 
 type TabsContentElement = React.ElementRef<typeof TabsPrimitive.Content>;
 type TabsContentOwnProps = GetPropDefTypes<typeof tabsContentPropDefs>;
 interface TabsContentProps
-  extends ComponentPropsWithout<typeof TabsPrimitive.Content, RemovedProps>,
+  extends
+    ComponentPropsWithout<typeof TabsPrimitive.Content, RemovedProps>,
     MarginProps,
     TabsContentOwnProps {}
 const TabsContent = React.forwardRef<TabsContentElement, TabsContentProps>(
@@ -88,7 +93,7 @@ const TabsContent = React.forwardRef<TabsContentElement, TabsContentProps>(
         className={classNames('rt-TabsContent', className)}
       />
     );
-  }
+  },
 );
 TabsContent.displayName = 'Tabs.Content';
 

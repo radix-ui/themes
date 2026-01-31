@@ -30,10 +30,8 @@ const [RadioGroupProvider, useRadioGroupContext] =
 
 type RadioGroupRootElement = React.ElementRef<typeof RadioGroupPrimitive.Root>;
 interface RadioGroupRootProps
-  extends ComponentPropsWithout<
-      typeof RadioGroupPrimitive.Root,
-      'asChild' | 'color' | 'defaultChecked'
-    >,
+  extends
+    ComponentPropsWithout<typeof RadioGroupPrimitive.Root, 'asChild' | 'color' | 'defaultChecked'>,
     MarginProps,
     RadioGroupRootOwnProps {}
 const RadioGroupRoot = React.forwardRef<RadioGroupRootElement, RadioGroupRootProps>(
@@ -45,7 +43,7 @@ const RadioGroupRoot = React.forwardRef<RadioGroupRootElement, RadioGroupRootPro
       variant = radioGroupRootPropDefs.variant.default,
       ...props
     }: ScopedProps<RadioGroupRootProps>,
-    forwardedRef
+    forwardedRef,
   ) => {
     const { __scopeRadioGroup, className, ...rootProps } = extractProps(props, marginPropDefs);
     const radioGroupScope = useRadioGroupScope(__scopeRadioGroup);
@@ -65,14 +63,13 @@ const RadioGroupRoot = React.forwardRef<RadioGroupRootElement, RadioGroupRootPro
         />
       </RadioGroupProvider>
     );
-  }
+  },
 );
 RadioGroupRoot.displayName = 'RadioGroup.Root';
 
 type RadioGroupItemElement = React.ElementRef<typeof RadioGroupItemRadio>;
 interface RadioGroupItemProps
-  extends ComponentPropsWithout<typeof RadioGroupItemRadio, RemovedProps>,
-    MarginProps {}
+  extends ComponentPropsWithout<typeof RadioGroupItemRadio, RemovedProps>, MarginProps {}
 const RadioGroupItem = React.forwardRef<RadioGroupItemElement, RadioGroupItemProps>(
   (_props: ScopedProps<RadioGroupItemProps>, forwardedRef) => {
     const { __scopeRadioGroup, children, className, style, ...props } = _props;
@@ -107,13 +104,14 @@ const RadioGroupItem = React.forwardRef<RadioGroupItemElement, RadioGroupItemPro
         style={style}
       />
     );
-  }
+  },
 );
 RadioGroupItem.displayName = 'RadioGroup.Item';
 
 type RadioGroupItemRadioElement = React.ElementRef<typeof RadioGroupPrimitive.Item>;
-interface RadioGroupItemRadioProps
-  extends React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item> {}
+interface RadioGroupItemRadioProps extends React.ComponentPropsWithoutRef<
+  typeof RadioGroupPrimitive.Item
+> {}
 const RadioGroupItemRadio = React.forwardRef<
   RadioGroupItemRadioElement,
   ScopedProps<RadioGroupItemRadioProps>
@@ -123,7 +121,7 @@ const RadioGroupItemRadio = React.forwardRef<
   const { color, className } = extractProps(
     { ...props, ...context },
     radioGroupRootPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   return (
     <RadioGroupPrimitive.Item

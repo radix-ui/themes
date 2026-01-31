@@ -13,9 +13,7 @@ import type { GetPropDefTypes } from '../props/prop-def.js';
 type HeadingElement = React.ElementRef<'h1'>;
 type HeadingOwnProps = GetPropDefTypes<typeof headingPropDefs>;
 interface HeadingProps
-  extends ComponentPropsWithout<'h1', RemovedProps>,
-    MarginProps,
-    HeadingOwnProps {}
+  extends ComponentPropsWithout<'h1', RemovedProps>, MarginProps, HeadingOwnProps {}
 
 const Heading = React.forwardRef<HeadingElement, HeadingProps>((props, forwardedRef) => {
   const {

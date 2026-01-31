@@ -9,7 +9,7 @@ import * as React from 'react';
  */
 export function getSubtree(
   options: { asChild: boolean | undefined; children: React.ReactNode },
-  content: React.ReactNode | ((children: React.ReactNode) => React.ReactNode)
+  content: React.ReactNode | ((children: React.ReactNode) => React.ReactNode),
 ) {
   const { asChild, children } = options;
   if (!asChild) return typeof content === 'function' ? content(children) : content;

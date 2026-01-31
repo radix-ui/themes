@@ -355,25 +355,32 @@
     background-clip: content-box;
     border-radius: inherit;
     pointer-events: none;
-    background-image: linear-gradient(var(--black-a1) -20%, transparent, var(--white-a1) 130%),
+    background-image:
+      linear-gradient(var(--black-a1) -20%, transparent, var(--white-a1) 130%),
       linear-gradient(var(--color-surface), transparent);
   }
 
   @media (hover: hover) {
     &:where(:hover) {
-      box-shadow: inset 0 0 0 1px var(--gray-a3), var(--select-trigger-classic-box-shadow);
+      box-shadow:
+        inset 0 0 0 1px var(--gray-a3),
+        var(--select-trigger-classic-box-shadow);
 
       &::before {
-        background-image: linear-gradient(var(--black-a1) -15%, transparent, var(--white-a1) 120%),
+        background-image:
+          linear-gradient(var(--black-a1) -15%, transparent, var(--white-a1) 120%),
           linear-gradient(var(--gray-2), var(--gray-1));
       }
     }
   }
   &:where([data-state='open']) {
-    box-shadow: inset 0 0 0 1px var(--gray-a3), var(--select-trigger-classic-box-shadow);
+    box-shadow:
+      inset 0 0 0 1px var(--gray-a3),
+      var(--select-trigger-classic-box-shadow);
 
     &::before {
-      background-image: linear-gradient(var(--black-a1) -15%, transparent, var(--white-a1) 120%),
+      background-image:
+        linear-gradient(var(--black-a1) -15%, transparent, var(--white-a1) 120%),
         linear-gradient(var(--gray-2), var(--gray-1));
     }
   }

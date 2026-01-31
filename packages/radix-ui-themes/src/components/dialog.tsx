@@ -21,20 +21,23 @@ const DialogRoot: React.FC<DialogRootProps> = (props) => <DialogPrimitive.Root {
 DialogRoot.displayName = 'Dialog.Root';
 
 type DialogTriggerElement = React.ElementRef<typeof DialogPrimitive.Trigger>;
-interface DialogTriggerProps
-  extends ComponentPropsWithout<typeof DialogPrimitive.Trigger, RemovedProps> {}
+interface DialogTriggerProps extends ComponentPropsWithout<
+  typeof DialogPrimitive.Trigger,
+  RemovedProps
+> {}
 const DialogTrigger = React.forwardRef<DialogTriggerElement, DialogTriggerProps>(
   ({ children, ...props }, forwardedRef) => (
     <DialogPrimitive.Trigger {...props} ref={forwardedRef} asChild>
       {requireReactElement(children)}
     </DialogPrimitive.Trigger>
-  )
+  ),
 );
 DialogTrigger.displayName = 'Dialog.Trigger';
 
 type DialogContentElement = React.ElementRef<typeof DialogPrimitive.Content>;
 interface DialogContentProps
-  extends ComponentPropsWithout<typeof DialogPrimitive.Content, RemovedProps>,
+  extends
+    ComponentPropsWithout<typeof DialogPrimitive.Content, RemovedProps>,
     DialogContentOwnProps {
   container?: React.ComponentPropsWithoutRef<typeof DialogPrimitive.Portal>['container'];
 }
@@ -62,7 +65,7 @@ const DialogContent = React.forwardRef<DialogContentElement, DialogContentProps>
         </Theme>
       </DialogPrimitive.Portal>
     );
-  }
+  },
 );
 DialogContent.displayName = 'Dialog.Content';
 
@@ -73,7 +76,7 @@ const DialogTitle = React.forwardRef<DialogTitleElement, DialogTitleProps>(
     <DialogPrimitive.Title asChild>
       <Heading size="5" mb="3" trim="start" {...props} asChild={false} ref={forwardedRef} />
     </DialogPrimitive.Title>
-  )
+  ),
 );
 DialogTitle.displayName = 'Dialog.Title';
 
@@ -84,19 +87,21 @@ const DialogDescription = React.forwardRef<DialogDescriptionElement, DialogDescr
     <DialogPrimitive.Description asChild>
       <Text as="p" size="3" {...props} asChild={false} ref={forwardedRef} />
     </DialogPrimitive.Description>
-  )
+  ),
 );
 DialogDescription.displayName = 'Dialog.Description';
 
 type DialogCloseElement = React.ElementRef<typeof DialogPrimitive.Close>;
-interface DialogCloseProps
-  extends ComponentPropsWithout<typeof DialogPrimitive.Close, RemovedProps> {}
+interface DialogCloseProps extends ComponentPropsWithout<
+  typeof DialogPrimitive.Close,
+  RemovedProps
+> {}
 const DialogClose = React.forwardRef<DialogCloseElement, DialogCloseProps>(
   ({ children, ...props }, forwardedRef) => (
     <DialogPrimitive.Close {...props} ref={forwardedRef} asChild>
       {requireReactElement(children)}
     </DialogPrimitive.Close>
-  )
+  ),
 );
 DialogClose.displayName = 'Dialog.Close';
 
