@@ -2,12 +2,14 @@
 
 ## 3.3.0
 
+- Add `soft` variant to the `Kbd` component ([#774](https://github.com/radix-ui/themes/pull/774))
+- Add new layout props to `Grid` and layout components: `alignContent`, `justifyItems`, `alignSelf`, `justifySelf` ([#744](https://github.com/radix-ui/themes/pull/744))
 - Deprecate `breakpoints` array. In the next major version, it will be replaced with a `Set` for easier lookups and comparisons.
 
 ## 3.2.1
 
-- Added support for `display: contents` to `Box` component
-- Added CSS files to package `sideEffects` field to prevent CSS removal in some bundlers ([#659](https://github.com/radix-ui/themes/pull/659))
+- Add support for `display: contents` to `Box` component
+- Add CSS files to package `sideEffects` field to prevent CSS removal in some bundlers ([#659](https://github.com/radix-ui/themes/pull/659))
 - Updated `radix-ui` minimum dependency to `1.1.3`
 
 ## 3.2.0
