@@ -3,6 +3,7 @@
 ## 3.3.1
 
 - Expand the prop type for `Select`'s `placeholder` prop to accept any `ReactNode` ([#693](https://github.com/radix-ui/themes/pull/693))
+- Fix broken loading state for `Button` and `IconButton` components using `asChild` ([#752](https://github.com/radix-ui/themes/pull/752))
 
 ## 3.3.0
 
