@@ -72,5 +72,5 @@ const themePropDefs = {
 
 type ThemeOwnProps = GetPropDefTypes<typeof themePropDefs & typeof asChildPropDef>;
 
-export { themePropDefs };
+export { themePropDefs, appearances, panelBackgrounds, scalings };
 export type { ThemeOwnProps };
