@@ -31,11 +31,8 @@ jobs:
         with:
           registry-url: 'https://registry.npmjs.org'
 
-      # - name: Lint
-      #   run: pnpm lint
-
-      # - name: Type check
-      #   run: pnpm --filter "@radix-ui/*" typecheck
+      - name: Lint
+        run: pnpm lint
 
       - name: Build packages
         run: pnpm --filter "@radix-ui/*" build
