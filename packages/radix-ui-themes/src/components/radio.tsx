@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import classNames from 'classnames';
-import { composeEventHandlers, composeRefs } from 'radix-ui/internal';
+import { composeEventHandlers } from 'radix-ui/internal';
 
 import { radioPropDefs } from './radio.props.js';
 import { marginPropDefs } from '../props/margin.props.js';
@@ -25,7 +25,6 @@ type RadioInputProps = ComponentPropsWithout<
 interface RadioProps extends RadioInputProps, MarginProps, RadioOwnProps {}
 
 const Radio = React.forwardRef<RadioElement, RadioProps>((props, forwardedRef) => {
-  const ref = React.useRef<RadioElement>(null);
   const { className, color, onChange, onValueChange, ...radioProps } = extractProps(
     props,
     radioPropDefs,
@@ -39,7 +38,7 @@ const Radio = React.forwardRef<RadioElement, RadioProps>((props, forwardedRef) =
       onChange={composeEventHandlers(onChange, (event) =>
         onValueChange?.(event.currentTarget.value),
       )}
-      ref={composeRefs(ref, forwardedRef)}
+      ref={forwardedRef}
       className={classNames('rt-reset', 'rt-BaseRadioRoot', 'rt-RadioRoot', className)}
     />
   );
