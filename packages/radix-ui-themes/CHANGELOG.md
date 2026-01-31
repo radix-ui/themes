@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.3.1
+
+- Expand the prop type for `Select`'s `placeholder` prop to accept any `ReactNode` ([#693](https://github.com/radix-ui/themes/pull/693))
+
 ## 3.3.0
 
 - Add `soft` variant to the `Kbd` component ([#774](https://github.com/radix-ui/themes/pull/774))
