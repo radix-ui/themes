@@ -16,7 +16,8 @@ import type { GetPropDefTypes } from '../props/prop-def.js';
 type SegmentedControlRootOwnProps = GetPropDefTypes<typeof segmentedControlRootPropDefs>;
 
 interface SegmentedControlRootProps
-  extends ComponentPropsWithout<'div', RemovedProps | 'dir'>,
+  extends
+    ComponentPropsWithout<'div', RemovedProps | 'dir'>,
     SegmentedControlRootOwnProps,
     MarginProps {
   value?: string;
@@ -63,7 +64,7 @@ const SegmentedControlRoot = React.forwardRef<HTMLDivElement, SegmentedControlRo
         <div className="rt-SegmentedControlIndicator" />
       </ToggleGroupPrimitive.Root>
     );
-  }
+  },
 );
 
 SegmentedControlRoot.displayName = 'SegmentedControl.Root';
@@ -73,7 +74,8 @@ interface SegmentedControlItemOwnProps {
 }
 
 interface SegmentedControlItemProps
-  extends ComponentPropsWithout<
+  extends
+    ComponentPropsWithout<
       typeof ToggleGroupPrimitive.Item,
       RemovedProps | 'disabled' | 'type' | 'value'
     >,
@@ -96,7 +98,7 @@ const SegmentedControlItem = React.forwardRef<HTMLButtonElement, SegmentedContro
         </span>
       </span>
     </ToggleGroupPrimitive.Item>
-  )
+  ),
 );
 
 SegmentedControlItem.displayName = 'SegmentedControl.Item';

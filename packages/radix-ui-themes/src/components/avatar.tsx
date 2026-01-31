@@ -18,7 +18,7 @@ const Avatar = React.forwardRef<AvatarImplElement, AvatarProps>((props, forwarde
   const { asChild, children, className, style, color, radius, ...imageProps } = extractProps(
     props,
     avatarPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
 
   return (
@@ -40,8 +40,7 @@ type AvatarImplElement = React.ElementRef<typeof AvatarPrimitive.Image>;
 type AvatarOwnProps = GetPropDefTypes<typeof avatarPropDefs>;
 
 interface AvatarImplProps
-  extends ComponentPropsWithout<typeof AvatarPrimitive.Image, RemovedProps>,
-    AvatarOwnProps {
+  extends ComponentPropsWithout<typeof AvatarPrimitive.Image, RemovedProps>, AvatarOwnProps {
   // TODO: See if we can automate making prop defs with `required: true` non nullable
   fallback: NonNullable<AvatarOwnProps['fallback']>;
 }
@@ -76,7 +75,7 @@ const AvatarImpl = React.forwardRef<AvatarImplElement, AvatarImplProps>(
         />
       </>
     );
-  }
+  },
 );
 
 AvatarImpl.displayName = 'AvatarImpl';

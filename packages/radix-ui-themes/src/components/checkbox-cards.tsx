@@ -36,7 +36,8 @@ const [CheckboxCardsProvider, useCheckboxCardsContext] =
 type CheckboxCardsRootElement = React.ElementRef<typeof CheckboxGroupPrimitive.Root>;
 type CheckboxCardsRootOwnProps = GetPropDefTypes<typeof checkboxCardsRootPropDefs>;
 interface CheckboxCardsRootProps
-  extends ComponentPropsWithout<
+  extends
+    ComponentPropsWithout<
       typeof CheckboxGroupPrimitive.Root,
       'asChild' | 'color' | 'defaultChecked'
     >,
@@ -47,7 +48,7 @@ const CheckboxCardsRoot = React.forwardRef<CheckboxCardsRootElement, CheckboxCar
     const { __scopeCheckboxCards, className, color, ...rootProps } = extractProps(
       props,
       checkboxCardsRootPropDefs,
-      marginPropDefs
+      marginPropDefs,
     );
     const checkboxGroupScope = useCheckboxGroupScope(__scopeCheckboxCards);
     return (
@@ -67,14 +68,13 @@ const CheckboxCardsRoot = React.forwardRef<CheckboxCardsRootElement, CheckboxCar
         </Grid>
       </CheckboxCardsProvider>
     );
-  }
+  },
 );
 CheckboxCardsRoot.displayName = 'CheckboxCards.Root';
 
 type CheckboxCardsItemElement = React.ElementRef<typeof CheckboxGroupPrimitive.Item>;
 interface CheckboxCardsItemProps
-  extends ComponentPropsWithout<typeof CheckboxGroupPrimitive.Item, RemovedProps>,
-    MarginProps {}
+  extends ComponentPropsWithout<typeof CheckboxGroupPrimitive.Item, RemovedProps>, MarginProps {}
 const CheckboxCardsItem = React.forwardRef<
   CheckboxCardsItemElement,
   ScopedProps<CheckboxCardsItemProps>
@@ -85,7 +85,7 @@ const CheckboxCardsItem = React.forwardRef<
     // Pass size / highContrast values from the context and static variant to generate styles
     { size: context?.size, variant: 'surface', highContrast: context?.highContrast },
     // Pass size & variant prop defs to allow it to be extracted
-    baseCheckboxPropDefs
+    baseCheckboxPropDefs,
   );
   return (
     <label className={classNames('rt-BaseCard', 'rt-CheckboxCardsItem', className)} style={style}>
@@ -98,7 +98,7 @@ const CheckboxCardsItem = React.forwardRef<
           'rt-reset',
           'rt-BaseCheckboxRoot',
           'rt-CheckboxCardCheckbox',
-          checkboxClassName
+          checkboxClassName,
         )}
       >
         <CheckboxGroupPrimitive.Indicator

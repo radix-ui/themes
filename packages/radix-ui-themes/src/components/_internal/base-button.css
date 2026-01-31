@@ -397,7 +397,9 @@
     outline-offset: -1px;
   }
   &:where(.rt-high-contrast) {
-    box-shadow: inset 0 0 0 1px var(--accent-a7), inset 0 0 0 1px var(--gray-a11);
+    box-shadow:
+      inset 0 0 0 1px var(--accent-a7),
+      inset 0 0 0 1px var(--gray-a11);
     color: var(--accent-12);
   }
   &:where([data-disabled]) {

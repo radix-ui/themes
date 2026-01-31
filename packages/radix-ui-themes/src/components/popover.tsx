@@ -17,20 +17,23 @@ const PopoverRoot: React.FC<PopoverRootProps> = (props: PopoverRootProps) => (
 PopoverRoot.displayName = 'Popover.Root';
 
 type PopoverTriggerElement = React.ElementRef<typeof PopoverPrimitive.Trigger>;
-interface PopoverTriggerProps
-  extends ComponentPropsWithout<typeof PopoverPrimitive.Trigger, RemovedProps> {}
+interface PopoverTriggerProps extends ComponentPropsWithout<
+  typeof PopoverPrimitive.Trigger,
+  RemovedProps
+> {}
 const PopoverTrigger = React.forwardRef<PopoverTriggerElement, PopoverTriggerProps>(
   ({ children, ...props }, forwardedRef) => (
     <PopoverPrimitive.Trigger {...props} ref={forwardedRef} asChild>
       {requireReactElement(children)}
     </PopoverPrimitive.Trigger>
-  )
+  ),
 );
 PopoverTrigger.displayName = 'Popover.Trigger';
 
 type PopoverContentElement = React.ElementRef<typeof PopoverPrimitive.Content>;
 interface PopoverContentProps
-  extends ComponentPropsWithout<typeof PopoverPrimitive.Content, RemovedProps>,
+  extends
+    ComponentPropsWithout<typeof PopoverPrimitive.Content, RemovedProps>,
     PopoverContentOwnProps {
   container?: React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Portal>['container'];
 }
@@ -38,7 +41,7 @@ const PopoverContent = React.forwardRef<PopoverContentElement, PopoverContentPro
   (props, forwardedRef) => {
     const { className, forceMount, container, ...contentProps } = extractProps(
       props,
-      popoverContentPropDefs
+      popoverContentPropDefs,
     );
     return (
       <PopoverPrimitive.Portal container={container} forceMount={forceMount}>
@@ -54,29 +57,32 @@ const PopoverContent = React.forwardRef<PopoverContentElement, PopoverContentPro
         </Theme>
       </PopoverPrimitive.Portal>
     );
-  }
+  },
 );
 PopoverContent.displayName = 'Popover.Content';
 
 type PopoverCloseElement = React.ElementRef<typeof PopoverPrimitive.Close>;
-interface PopoverCloseProps
-  extends ComponentPropsWithout<typeof PopoverPrimitive.Close, RemovedProps> {}
+interface PopoverCloseProps extends ComponentPropsWithout<
+  typeof PopoverPrimitive.Close,
+  RemovedProps
+> {}
 const PopoverClose = React.forwardRef<PopoverCloseElement, PopoverCloseProps>(
   ({ children, ...props }, forwardedRef) => (
     <PopoverPrimitive.Close {...props} ref={forwardedRef} asChild>
       {requireReactElement(children)}
     </PopoverPrimitive.Close>
-  )
+  ),
 );
 PopoverClose.displayName = 'Popover.Close';
 
 type PopoverAnchorElement = React.ElementRef<typeof PopoverPrimitive.Anchor>;
-interface PopoverAnchorProps
-  extends React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Anchor> {}
+interface PopoverAnchorProps extends React.ComponentPropsWithoutRef<
+  typeof PopoverPrimitive.Anchor
+> {}
 const PopoverAnchor = React.forwardRef<PopoverAnchorElement, PopoverAnchorProps>(
   ({ children, ...props }, forwardedRef) => (
     <PopoverPrimitive.Anchor {...props} ref={forwardedRef} />
-  )
+  ),
 );
 
 PopoverAnchor.displayName = 'Popover.Anchor';

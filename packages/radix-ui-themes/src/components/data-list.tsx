@@ -17,15 +17,13 @@ import type { GetPropDefTypes } from '../props/prop-def.js';
 type DataListRootElement = HTMLDListElement;
 type DataListRootOwnProps = GetPropDefTypes<typeof dataListRootPropDefs>;
 interface DataListRootProps
-  extends ComponentPropsWithout<'dl', RemovedProps>,
-    MarginProps,
-    DataListRootOwnProps {}
+  extends ComponentPropsWithout<'dl', RemovedProps>, MarginProps, DataListRootOwnProps {}
 const DataListRoot = React.forwardRef<DataListRootElement, DataListRootProps>(
   (props, forwardedRef) => {
     const { className, ...dataListProps } = extractProps(
       props,
       dataListRootPropDefs,
-      marginPropDefs
+      marginPropDefs,
     );
     return (
       <Text asChild>
@@ -36,30 +34,28 @@ const DataListRoot = React.forwardRef<DataListRootElement, DataListRootProps>(
         />
       </Text>
     );
-  }
+  },
 );
 DataListRoot.displayName = 'DataList.Root';
 
 type DataListItemElement = HTMLDivElement;
 type DataListItemOwnProps = GetPropDefTypes<typeof dataListItemPropDefs>;
 interface DataListItemProps
-  extends ComponentPropsWithout<'div', RemovedProps>,
-    DataListItemOwnProps {}
+  extends ComponentPropsWithout<'div', RemovedProps>, DataListItemOwnProps {}
 const DataListItem = React.forwardRef<DataListItemElement, DataListItemProps>(
   (props, forwardedRef) => {
     const { className, ...itemProps } = extractProps(props, dataListItemPropDefs);
     return (
       <div {...itemProps} ref={forwardedRef} className={classNames('rt-DataListItem', className)} />
     );
-  }
+  },
 );
 DataListItem.displayName = 'DataList.Item';
 
 type DataListLabelElement = React.ElementRef<'dt'>;
 type DataListLabelOwnProps = GetPropDefTypes<typeof dataListLabelPropDefs>;
 interface DataListLabelProps
-  extends ComponentPropsWithout<'dt', RemovedProps>,
-    DataListLabelOwnProps {}
+  extends ComponentPropsWithout<'dt', RemovedProps>, DataListLabelOwnProps {}
 const DataListLabel = React.forwardRef<DataListLabelElement, DataListLabelProps>(
   (props, forwardedRef) => {
     const { className, color, ...labelProps } = extractProps(props, dataListLabelPropDefs);
@@ -71,7 +67,7 @@ const DataListLabel = React.forwardRef<DataListLabelElement, DataListLabelProps>
         className={classNames('rt-DataListLabel', className)}
       />
     );
-  }
+  },
 );
 DataListLabel.displayName = 'DataList.Label';
 
@@ -82,7 +78,7 @@ const DataListValue = React.forwardRef<DataListValueElement, DataListValueProps>
     <dd {...props} ref={forwardedRef} className={classNames(className, 'rt-DataListValue')}>
       {children}
     </dd>
-  )
+  ),
 );
 DataListValue.displayName = 'DataList.Value';
 

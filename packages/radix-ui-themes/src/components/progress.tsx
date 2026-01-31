@@ -14,7 +14,8 @@ import type { GetPropDefTypes } from '../props/prop-def.js';
 type ProgressElement = React.ElementRef<typeof ProgressPrimitive.Root>;
 type ProgressOwnProps = GetPropDefTypes<typeof progressPropDefs>;
 interface ProgressProps
-  extends ComponentPropsWithout<typeof ProgressPrimitive.Root, RemovedProps | 'children'>,
+  extends
+    ComponentPropsWithout<typeof ProgressPrimitive.Root, RemovedProps | 'children'>,
     MarginProps,
     ProgressOwnProps {
   duration?: `${number}s` | `${number}ms`;
@@ -23,7 +24,7 @@ const Progress = React.forwardRef<ProgressElement, ProgressProps>((props, forwar
   const { className, style, color, radius, duration, ...progressProps } = extractProps(
     props,
     progressPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
 
   return (
@@ -38,7 +39,7 @@ const Progress = React.forwardRef<ProgressElement, ProgressProps>((props, forwar
           '--progress-value': 'value' in progressProps ? progressProps.value : undefined,
           '--progress-max': 'max' in progressProps ? progressProps.max : undefined,
         },
-        style
+        style,
       )}
       {...progressProps}
       asChild={false}

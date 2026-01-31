@@ -8,7 +8,7 @@ interface ButtonProps extends React.ComponentPropsWithoutRef<typeof BaseButton> 
 const Button = React.forwardRef<ButtonElement, ButtonProps>(
   ({ className, ...props }, forwardedRef) => (
     <BaseButton {...props} ref={forwardedRef} className={classNames('rt-Button', className)} />
-  )
+  ),
 );
 Button.displayName = 'Button';
 

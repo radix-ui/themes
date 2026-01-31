@@ -17,23 +17,20 @@ import type { ComponentPropsWithout, RemovedProps } from '../helpers/component-p
 
 type ContainerElement = React.ElementRef<'div'>;
 interface ContainerProps
-  extends ComponentPropsWithout<'div', RemovedProps>,
-    MarginProps,
-    LayoutProps,
-    ContainerOwnProps {}
+  extends ComponentPropsWithout<'div', RemovedProps>, MarginProps, LayoutProps, ContainerOwnProps {}
 const Container = React.forwardRef<ContainerElement, ContainerProps>(
   ({ width, minWidth, maxWidth, height, minHeight, maxHeight, ...props }, forwardedRef) => {
     const { asChild, children, className, ...containerProps } = extractProps(
       props,
       containerPropDefs,
       layoutPropDefs,
-      marginPropDefs
+      marginPropDefs,
     );
 
     const { className: innerClassName, style: innerStyle } = extractProps(
       { width, minWidth, maxWidth, height, minHeight, maxHeight },
       widthPropDefs,
-      heightPropDefs
+      heightPropDefs,
     );
 
     const Comp = asChild ? Slot.Root : 'div';
@@ -51,7 +48,7 @@ const Container = React.forwardRef<ContainerElement, ContainerProps>(
         ))}
       </Comp>
     );
-  }
+  },
 );
 Container.displayName = 'Container';
 

@@ -13,7 +13,8 @@ import type { ComponentPropsWithout } from '../helpers/component-props.js';
 type SwitchElement = React.ElementRef<typeof SwitchPrimitive.Root>;
 type SwitchOwnProps = GetPropDefTypes<typeof switchPropDefs>;
 interface SwitchProps
-  extends ComponentPropsWithout<
+  extends
+    ComponentPropsWithout<
       typeof SwitchPrimitive.Root,
       'asChild' | 'color' | 'defaultValue' | 'children'
     >,
@@ -23,7 +24,7 @@ const Switch = React.forwardRef<SwitchElement, SwitchProps>((props, forwardedRef
   const { className, color, radius, ...switchProps } = extractProps(
     props,
     switchPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
   return (
     <SwitchPrimitive.Root

@@ -13,7 +13,8 @@ import type { GetPropDefTypes } from '../props/prop-def.js';
 type TooltipElement = React.ElementRef<typeof TooltipPrimitive.Content>;
 type TooltipOwnProps = GetPropDefTypes<typeof tooltipPropDefs>;
 interface TooltipProps
-  extends React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Root>,
+  extends
+    React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Root>,
     ComponentPropsWithout<typeof TooltipPrimitive.Content, RemovedProps | 'content'>,
     TooltipOwnProps {
   content: React.ReactNode;

@@ -14,10 +14,8 @@ import type { GetPropDefTypes } from '../props/prop-def.js';
 type RadioCardsRootElement = React.ElementRef<typeof RadioGroupPrimitive.Root>;
 type RadioCardsRootOwnProps = GetPropDefTypes<typeof radioCardsRootPropDefs>;
 interface RadioCardsRootProps
-  extends ComponentPropsWithout<
-      typeof RadioGroupPrimitive.Root,
-      'asChild' | 'color' | 'defaultChecked'
-    >,
+  extends
+    ComponentPropsWithout<typeof RadioGroupPrimitive.Root, 'asChild' | 'color' | 'defaultChecked'>,
     MarginProps,
     RadioCardsRootOwnProps {}
 const RadioCardsRoot = React.forwardRef<RadioCardsRootElement, RadioCardsRootProps>(
@@ -25,7 +23,7 @@ const RadioCardsRoot = React.forwardRef<RadioCardsRootElement, RadioCardsRootPro
     const { className, color, ...rootProps } = extractProps(
       props,
       radioCardsRootPropDefs,
-      marginPropDefs
+      marginPropDefs,
     );
     return (
       <Grid asChild>
@@ -37,14 +35,13 @@ const RadioCardsRoot = React.forwardRef<RadioCardsRootElement, RadioCardsRootPro
         />
       </Grid>
     );
-  }
+  },
 );
 RadioCardsRoot.displayName = 'RadioCards.Root';
 
 type RadioCardsItemElement = React.ElementRef<typeof RadioGroupPrimitive.Item>;
 interface RadioCardsItemProps
-  extends ComponentPropsWithout<typeof RadioGroupPrimitive.Item, RemovedProps>,
-    MarginProps {}
+  extends ComponentPropsWithout<typeof RadioGroupPrimitive.Item, RemovedProps>, MarginProps {}
 const RadioCardsItem = React.forwardRef<RadioCardsItemElement, RadioCardsItemProps>(
   ({ className, ...props }, forwardedRef) => (
     <RadioGroupPrimitive.Item
@@ -53,7 +50,7 @@ const RadioCardsItem = React.forwardRef<RadioCardsItemElement, RadioCardsItemPro
       ref={forwardedRef}
       className={classNames('rt-reset', 'rt-BaseCard', 'rt-RadioCardsItem', className)}
     />
-  )
+  ),
 );
 RadioCardsItem.displayName = 'RadioCards.Item';
 

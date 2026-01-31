@@ -38,7 +38,8 @@
   transition: transform 120ms;
 
   &:where([data-state='indeterminate']) {
-    animation-name: rt-progress-indicator-indeterminate-grow, var(--progress-indicator-indeterminate-animation-start),
+    animation-name:
+      rt-progress-indicator-indeterminate-grow, var(--progress-indicator-indeterminate-animation-start),
       var(--progress-indicator-indeterminate-animation-repeat);
     animation-delay: 0s, calc(var(--progress-duration) + 5s), calc(var(--progress-duration) + 7.5s);
     animation-duration: var(--progress-duration), 2.5s, 5s;

@@ -13,14 +13,12 @@ import type { GetPropDefTypes } from '../props/prop-def.js';
 type SpinnerElement = React.ElementRef<'span'>;
 type SpinnerOwnProps = GetPropDefTypes<typeof spinnerPropDefs>;
 interface SpinnerProps
-  extends ComponentPropsWithout<'span', RemovedProps>,
-    MarginProps,
-    SpinnerOwnProps {}
+  extends ComponentPropsWithout<'span', RemovedProps>, MarginProps, SpinnerOwnProps {}
 const Spinner = React.forwardRef<SpinnerElement, SpinnerProps>((props, forwardedRef) => {
   const { className, children, loading, ...spinnerProps } = extractProps(
     props,
     spinnerPropDefs,
-    marginPropDefs
+    marginPropDefs,
   );
 
   if (!loading) return children;

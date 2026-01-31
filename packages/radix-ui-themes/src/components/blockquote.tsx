@@ -12,9 +12,7 @@ import type { GetPropDefTypes } from '../props/prop-def.js';
 type BlockquoteElement = React.ElementRef<'blockquote'>;
 type BlockQuoteOwnProps = GetPropDefTypes<typeof blockquotePropDefs>;
 interface BlockquoteProps
-  extends ComponentPropsWithout<'blockquote', RemovedProps>,
-    MarginProps,
-    BlockQuoteOwnProps {}
+  extends ComponentPropsWithout<'blockquote', RemovedProps>, MarginProps, BlockQuoteOwnProps {}
 const Blockquote = React.forwardRef<BlockquoteElement, BlockquoteProps>((props, forwardedRef) => {
   const { asChild, children, className, ...blockquoteProps } = props;
   const Comp = asChild ? Slot.Root : 'blockquote';

@@ -13,9 +13,7 @@ import type { GetPropDefTypes } from '../props/prop-def.js';
 type InsetElement = React.ElementRef<'div'>;
 type InsetOwnProps = GetPropDefTypes<typeof insetPropDefs>;
 interface InsetProps
-  extends ComponentPropsWithout<'div', RemovedProps>,
-    MarginProps,
-    InsetOwnProps {}
+  extends ComponentPropsWithout<'div', RemovedProps>, MarginProps, InsetOwnProps {}
 
 const Inset = React.forwardRef<InsetElement, InsetProps>((props, forwardedRef) => {
   const { asChild, className, ...insetProps } = extractProps(props, insetPropDefs, marginPropDefs);

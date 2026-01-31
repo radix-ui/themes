@@ -14,7 +14,7 @@ const Reset = React.forwardRef<HTMLElement, ResetProps>(
         {requireReactElement(children)}
       </Slot.Root>
     );
-  }
+  },
 );
 Reset.displayName = 'Reset';
 
