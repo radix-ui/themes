@@ -1,0 +1,44 @@
+name: Publish Package
+
+on:
+  release:
+    types: [created]
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    name: Publish Package
+    if: github.repository == 'radix-ui/themes'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: CI Setup
+        uses: ./.github/actions/ci-setup
+
+      - name: Setup npm registry
+        uses: actions/setup-node@v4
+        with:
+          registry-url: 'https://registry.npmjs.org'
+
+      # - name: Lint
+      #   run: pnpm lint
+
+      # - name: Type check
+      #   run: pnpm --filter "@radix-ui/*" typecheck
+
+      - name: Build packages
+        run: pnpm --filter "@radix-ui/*" build
+
+      - name: Publish packages
+        run: pnpm --filter "@radix-ui/*" publish --access public --provenance --no-git-checks
