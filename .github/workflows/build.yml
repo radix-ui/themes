@@ -1,0 +1,27 @@
+name: Build
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: CI Setup
+        uses: ./.github/actions/ci-setup
+
+      - name: Lint
+        run: pnpm --filter "@radix-ui/*" lint
+
+      - name: Build packages
+        run: pnpm --filter "@radix-ui/*" build

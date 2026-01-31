@@ -64,6 +64,9 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
       onScalingChange,
     } = themeContext;
 
+    const [resolvedAppearance, setResolvedAppearance] = React.useState<'light' | 'dark' | null>(
+      appearance === 'inherit' ? null : appearance,
+    );
     const hasOnAppearanceChangeProp = onAppearanceChangeProp !== undefined;
     const handleAppearanceChangeProp = useCallbackRef(onAppearanceChangeProp);
     const handleAppearanceChange = React.useCallback(
@@ -114,10 +117,6 @@ const ThemePanelImpl = React.forwardRef<ThemePanelImplElement, ThemePanelImplPro
       setCopyState('copied');
       setTimeout(() => setCopyState('idle'), 2000);
     }
-
-    const [resolvedAppearance, setResolvedAppearance] = React.useState<'light' | 'dark' | null>(
-      appearance === 'inherit' ? null : appearance,
-    );
 
     const keyboardInputElement = `
       [contenteditable],
