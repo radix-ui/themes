@@ -21,21 +21,21 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-
-  /* iOS Safari */
-  width: 100%;
-  height: 100%;
 }
 
 .rt-ThemePanelSwatch {
-  width: var(--space-5);
-  height: var(--space-5);
+  width: var(--space-4);
+  height: var(--space-4);
   border-radius: 100%;
+
+  @media (--sm) {
+    width: var(--space-5);
+    height: var(--space-5);
+  }
 }
 
 .rt-ThemePanelSwatchInput {
   outline-offset: 2px;
-
   &:where(:checked) {
     outline-style: solid;
     outline-color: var(--gray-12);

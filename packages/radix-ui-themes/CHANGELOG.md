@@ -4,6 +4,7 @@
 
 - Expand the prop type for `Select`'s `placeholder` prop to accept any `ReactNode` ([#693](https://github.com/radix-ui/themes/pull/693))
 - Fix incorrect Firefox vendor prefix for `:placeholder-shown` pseudo-element ([#783](https://github.com/radix-ui/themes/pull/783), https://github.com/postcss/autoprefixer/pull/1532)
+- Improve responsiveness and consistency of styling in `ThemePanel`
 
 ## 3.3.0
 
