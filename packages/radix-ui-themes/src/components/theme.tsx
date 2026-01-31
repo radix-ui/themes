@@ -218,4 +218,4 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
 ThemeImpl.displayName = 'ThemeImpl';
 
 export { Theme, ThemeContext, useThemeContext };
-export type { ThemeProps };
+export type { ThemeProps, ThemeContextValue };

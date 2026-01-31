@@ -58,7 +58,12 @@ export * as Tabs from './tabs.js';
 export { TextArea, type TextAreaProps } from './text-area.js';
 export * as TextField from './text-field.js';
 export { Text, type TextProps } from './text.js';
-export { ThemePanel, type ThemePanelProps } from './theme-panel.js';
+export {
+  ThemePanel,
+  type ThemePanelProps,
+  ThemePanelContent as unstable_ThemePanelContent,
+  type ThemePanelContentProps as unstable_ThemePanelContentProps,
+} from './theme-panel.js';
 export { Theme, ThemeContext, type ThemeProps, useThemeContext } from './theme.js';
 export { Tooltip, type TooltipProps } from './tooltip.js';
 export { VisuallyHidden, type VisuallyHiddenProps } from './visually-hidden.js';
