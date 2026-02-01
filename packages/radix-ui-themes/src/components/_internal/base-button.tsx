@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import classNames from 'classnames';
 import { Slot } from 'radix-ui';
@@ -30,6 +32,25 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
     ...baseButtonProps
   } = extractProps(props, baseButtonPropDefs, marginPropDefs);
   const Comp = asChild ? Slot.Root : 'button';
+  let child = children;
+  if (props.loading) {
+    // Loading buttons will wrap the contents of the button for hiding them
+    // visually while retaining the button's size. This does not work with the
+    // Radix Slot since the slot root expects the slottable content to be one of
+    // its direct descendants. To get around this we need to clone the child
+    // with its wrapped inner children.
+    if (asChild && React.isValidElement(children)) {
+      const props = children.props as { children?: React.ReactNode };
+      const childNode = props.children;
+      child = React.cloneElement<any>(children, {
+        ...props,
+        children: renderLoadingButtonContents(childNode, size),
+      });
+    } else {
+      child = renderLoadingButtonContents(children, size);
+    }
+  }
+
   return (
     <Comp
       // The `data-disabled` attribute enables correct styles when doing `<Button asChild disabled>`
@@ -41,29 +62,7 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
       className={classNames('rt-reset', 'rt-BaseButton', className)}
       disabled={disabled}
     >
-      {props.loading ? (
-        <>
-          {/**
-           * We need a wrapper to set `visibility: hidden` to hide the button content whilst we show the `Spinner`.
-           * The button is a flex container with a `gap`, so we use `display: contents` to ensure the correct flex layout.
-           *
-           * However, `display: contents` removes the content from the accessibility tree in some browsers,
-           * so we force remove it with `aria-hidden` and re-add it in the tree with `VisuallyHidden`
-           */}
-          <span style={{ display: 'contents', visibility: 'hidden' }} aria-hidden>
-            {children}
-          </span>
-          <VisuallyHidden>{children}</VisuallyHidden>
-
-          <Flex asChild align="center" justify="center" position="absolute" inset="0">
-            <span>
-              <Spinner size={mapResponsiveProp(size, mapButtonSizeToSpinnerSize)} />
-            </span>
-          </Flex>
-        </>
-      ) : (
-        children
-      )}
+      {child}
     </Comp>
   );
 });
@@ -71,3 +70,28 @@ BaseButton.displayName = 'BaseButton';
 
 export { BaseButton };
 export type { BaseButtonProps };
+
+function renderLoadingButtonContents(children: React.ReactNode, size: BaseButtonProps['size']) {
+  return (
+    <>
+      {/*
+       * We need a wrapper to set `visibility: hidden` to hide the button content
+       * whilst we show the `Spinner`. The button is a flex container with a `gap`,
+       * so we use `display: contents` to ensure the correct flex layout.
+       *
+       * However, `display: contents` removes the content from the accessibility
+       * tree in some browsers, so we force remove it with `aria-hidden` and
+       * re-add it in the tree with `VisuallyHidden`
+       */}
+      <span style={{ display: 'contents', visibility: 'hidden' }} aria-hidden>
+        {children}
+      </span>
+      <VisuallyHidden>{children}</VisuallyHidden>
+      <Flex asChild align="center" justify="center" position="absolute" inset="0">
+        <span>
+          <Spinner size={mapResponsiveProp(size, mapButtonSizeToSpinnerSize)} />
+        </span>
+      </Flex>
+    </>
+  );
+}
