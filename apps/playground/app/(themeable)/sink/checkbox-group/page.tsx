@@ -1,0 +1,279 @@
+import { Fragment } from 'react';
+import { CheckboxGroup, Grid, Box, Text, Code, Flex, Separator, Table } from '@radix-ui/themes';
+import { checkboxGroupRootPropDefs } from '@radix-ui/themes/props';
+import { DocsSection, DocsSectionBody, DocsSectionHeading } from '../docs-section';
+import { accentColorsGrouped } from '../_utils';
+
+export default function CheckboxGroupPage() {
+  return (
+    <DocsSection>
+      <DocsSectionHeading>CheckboxGroup</DocsSectionHeading>
+      <DocsSectionBody>
+        <Grid columns="2" gap="9">
+          <div>
+            <Table.Root>
+              <Table.Header>
+                <Table.Row>
+                  <Table.ColumnHeaderCell />
+                  <Table.ColumnHeaderCell>not checked</Table.ColumnHeaderCell>
+                  <Table.ColumnHeaderCell>checked</Table.ColumnHeaderCell>
+                  <Table.ColumnHeaderCell>disabled</Table.ColumnHeaderCell>
+                  <Table.ColumnHeaderCell>disabled checked</Table.ColumnHeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                {checkboxGroupRootPropDefs.variant.values.map((variant) => (
+                  <Fragment key={variant}>
+                    {[variant, '+ high-contrast'].map((label) => (
+                      <Table.Row key={label}>
+                        <Table.RowHeaderCell>{label}</Table.RowHeaderCell>
+                        <Table.Cell>
+                          <CheckboxGroup.Root
+                            variant={variant}
+                            highContrast={label === '+ high-contrast'}
+                          >
+                            <CheckboxGroup.Item value="value" />
+                          </CheckboxGroup.Root>
+                        </Table.Cell>
+                        <Table.Cell>
+                          <CheckboxGroup.Root
+                            variant={variant}
+                            defaultValue={['value']}
+                            highContrast={label === '+ high-contrast'}
+                          >
+                            <CheckboxGroup.Item value="value" />
+                          </CheckboxGroup.Root>
+                        </Table.Cell>
+                        <Table.Cell>
+                          <CheckboxGroup.Root
+                            variant={variant}
+                            highContrast={label === '+ high-contrast'}
+                          >
+                            <CheckboxGroup.Item value="value" disabled />
+                          </CheckboxGroup.Root>
+                        </Table.Cell>
+                        <Table.Cell>
+                          <CheckboxGroup.Root
+                            variant={variant}
+                            highContrast={label === '+ high-contrast'}
+                            disabled
+                            defaultValue={['value']}
+                          >
+                            <CheckboxGroup.Item value="value" />
+                          </CheckboxGroup.Root>
+                        </Table.Cell>
+                      </Table.Row>
+                    ))}
+                  </Fragment>
+                ))}
+              </Table.Body>
+            </Table.Root>
+
+            <Table.Root>
+              <Table.Body>
+                {checkboxGroupRootPropDefs.size.values.map((size) => (
+                  <Table.Row key={size}>
+                    <Table.RowHeaderCell>size {size}</Table.RowHeaderCell>
+                    <Table.Cell style={{ width: '100%' }}>
+                      <CheckboxGroup.Root size={size} defaultValue={['red']}>
+                        <CheckboxGroup.Item value="red">Red</CheckboxGroup.Item>
+                        <CheckboxGroup.Item value="green">Green</CheckboxGroup.Item>
+                        <CheckboxGroup.Item value="blue">Blue</CheckboxGroup.Item>
+                        <CheckboxGroup.Item value="violet">Violet</CheckboxGroup.Item>
+                      </CheckboxGroup.Root>
+                    </Table.Cell>
+                  </Table.Row>
+                ))}
+              </Table.Body>
+            </Table.Root>
+          </div>
+
+          <div>
+            <Box py="4">
+              <Text as="p" size="2">
+                Alignment
+              </Text>
+            </Box>
+
+            <Flex direction="column" gap="5" style={{ maxWidth: 320 }}>
+              <Separator size="4" />
+
+              <CheckboxGroup.Root defaultValue={['1']} size="1">
+                <Flex direction="column" gap="1">
+                  <Text as="label" size="1">
+                    <Flex gap="2">
+                      <CheckboxGroup.Item value="1" />
+                      <Text>Agree to Terms and Conditions</Text>
+                    </Flex>
+                  </Text>
+                  <Text as="label" size="1">
+                    <Flex gap="2">
+                      <CheckboxGroup.Item value="2" />
+                      <Text>Agree to Privacy Policy</Text>
+                    </Flex>
+                  </Text>
+                </Flex>
+              </CheckboxGroup.Root>
+
+              <Separator size="4" />
+
+              <CheckboxGroup.Root defaultValue={['1']} size="1">
+                <Flex direction="column" gap="1">
+                  <Text as="label" size="2">
+                    <Flex gap="2">
+                      <CheckboxGroup.Item value="1" />
+                      <Text>Agree to Terms and Conditions</Text>
+                    </Flex>
+                  </Text>
+                  <Text as="label" size="2">
+                    <Flex gap="2">
+                      <CheckboxGroup.Item value="2" />
+                      <Text>Agree to Privacy Policy</Text>
+                    </Flex>
+                  </Text>
+                </Flex>
+              </CheckboxGroup.Root>
+
+              <Separator size="4" />
+
+              <CheckboxGroup.Root defaultValue={['1']} size="2">
+                <Flex direction="column" gap="1">
+                  <Text as="label" size="2">
+                    <Flex gap="2">
+                      <CheckboxGroup.Item value="1" />
+                      <Text>Agree to Terms and Conditions</Text>
+                    </Flex>
+                  </Text>
+                  <Text as="label" size="2">
+                    <Flex gap="2">
+                      <CheckboxGroup.Item value="2" />
+                      <Text>Agree to Privacy Policy</Text>
+                    </Flex>
+                  </Text>
+                </Flex>
+              </CheckboxGroup.Root>
+
+              <Separator size="4" />
+
+              <CheckboxGroup.Root defaultValue={['1']} size="2">
+                <Flex direction="column" gap="1">
+                  <Text as="label" size="3">
+                    <Flex gap="2">
+                      <CheckboxGroup.Item value="1" />
+                      <Text>Agree to Terms and Conditions</Text>
+                    </Flex>
+                  </Text>
+                  <Text as="label" size="3">
+                    <Flex gap="2">
+                      <CheckboxGroup.Item value="2" />
+                      <Text>Agree to Privacy Policy</Text>
+                    </Flex>
+                  </Text>
+                </Flex>
+              </CheckboxGroup.Root>
+
+              <Separator size="4" />
+
+              <CheckboxGroup.Root defaultValue={['1']} size="3">
+                <Flex direction="column" gap="1">
+                  <Text as="label" size="3">
+                    <Flex gap="2">
+                      <CheckboxGroup.Item value="1" />
+                      <Text>Agree to Terms and Conditions</Text>
+                    </Flex>
+                  </Text>
+                  <Text as="label" size="3">
+                    <Flex gap="2">
+                      <CheckboxGroup.Item value="2" />
+                      <Text>Agree to Privacy Policy</Text>
+                    </Flex>
+                  </Text>
+                </Flex>
+              </CheckboxGroup.Root>
+
+              <Separator size="4" />
+
+              <CheckboxGroup.Root defaultValue={['1']} size="3">
+                <Flex direction="column" gap="1">
+                  <Text as="label" size="4">
+                    <Flex gap="2">
+                      <CheckboxGroup.Item value="1" />
+                      <Text>Agree to Terms and Conditions</Text>
+                    </Flex>
+                  </Text>
+                  <Text as="label" size="4">
+                    <Flex gap="2">
+                      <CheckboxGroup.Item value="2" />
+                      <Text>Agree to Privacy Policy</Text>
+                    </Flex>
+                  </Text>
+                </Flex>
+              </CheckboxGroup.Root>
+
+              <Separator size="4" />
+            </Flex>
+          </div>
+        </Grid>
+
+        <Text as="p" my="5">
+          <Code>color</Code> can be set per instance:
+        </Text>
+
+        <details>
+          <summary>
+            <Text size="2" color="gray">
+              See colors & variants combinations
+            </Text>
+          </summary>
+          {accentColorsGrouped.map(({ label, values }) => (
+            <Fragment key={label}>
+              <Text as="p" weight="bold" mt="6" mb="4">
+                {label}
+              </Text>
+              <Table.Root>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.ColumnHeaderCell />
+                    {checkboxGroupRootPropDefs.variant.values.map((variant) => (
+                      <Table.ColumnHeaderCell key={variant}>{variant}</Table.ColumnHeaderCell>
+                    ))}
+                  </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                  {values.map((color) => (
+                    <Table.Row key={color}>
+                      <Table.RowHeaderCell>{color}</Table.RowHeaderCell>
+                      {checkboxGroupRootPropDefs.variant.values.map((variant) => (
+                        <Table.Cell key={variant}>
+                          <Flex gap="2">
+                            <CheckboxGroup.Root
+                              variant={variant}
+                              color={color}
+                              defaultValue={['value']}
+                            >
+                              <CheckboxGroup.Item value="value" />
+                            </CheckboxGroup.Root>
+                            <CheckboxGroup.Root
+                              variant={variant}
+                              color={color}
+                              defaultValue={['value']}
+                              highContrast
+                            >
+                              <CheckboxGroup.Item value="value" />
+                            </CheckboxGroup.Root>
+                          </Flex>
+                        </Table.Cell>
+                      ))}
+                    </Table.Row>
+                  ))}
+                </Table.Body>
+              </Table.Root>
+            </Fragment>
+          ))}
+        </details>
+
+        <Separator size="3" my="5" />
+      </DocsSectionBody>
+    </DocsSection>
+  );
+}
