@@ -1,16 +1,10 @@
-import { Theme, Box, Container, ThemePanel } from '@radix-ui/themes';
+import { Theme, ThemePanel } from '@radix-ui/themes';
 
 export default function Layout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="en">
-      <body>
-        <Theme asChild appearance="dark">
-          <Container py="8" mx="4">
-            <Box>{children}</Box>
-            <ThemePanel defaultOpen={false} />
-          </Container>
-        </Theme>
-      </body>
-    </html>
+    <Theme appearance="dark" accentColor="violet">
+      {children}
+      <ThemePanel defaultOpen={false} />
+    </Theme>
   );
 }

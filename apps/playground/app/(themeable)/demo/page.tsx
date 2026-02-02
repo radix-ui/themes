@@ -17,7 +17,7 @@ import { users } from './users';
 
 export default function Demo() {
   return (
-    <Container size="1">
+    <Container size="1" py="8" mx="4">
       {users.map((user) => {
         return (
           <React.Fragment key={user.id}>

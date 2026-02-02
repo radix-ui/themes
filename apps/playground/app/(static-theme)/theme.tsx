@@ -6,14 +6,14 @@ import { useSearchParams } from 'next/navigation';
 
 export function Theme(props: ThemeProps) {
   const searchParams = useSearchParams();
-  const appearance = searchParams.get('appearance') ?? 'dark';
+  const appearance = searchParams.get('appearance');
   const accentColor = searchParams.get('accentColor') ?? 'violet';
-  const radius = searchParams.get('radius') ?? 'large';
-  const scaling = searchParams.get('scaling') ?? '110%';
+  const radius = searchParams.get('radius');
+  const scaling = searchParams.get('scaling');
   return (
     <RadixTheme
       appearance={isAppearance(appearance) ? appearance : 'dark'}
-      accentColor={isAccentColor(accentColor) ? accentColor : undefined}
+      accentColor={isAccentColor(accentColor) ? accentColor : 'violet'}
       radius={isRadius(radius) ? radius : undefined}
       scaling={isScaling(scaling) ? scaling : undefined}
       {...props}
@@ -22,17 +22,21 @@ export function Theme(props: ThemeProps) {
 }
 
 function isAppearance(value: unknown): value is (typeof appearances)[number] {
-  return typeof value === 'string' && appearances.includes(value as (typeof appearances)[number]);
+  return isString(value) && appearances.includes(value as (typeof appearances)[number]);
 }
 
 function isAccentColor(value: unknown): value is (typeof accentColors)[number] {
-  return typeof value === 'string' && accentColors.includes(value as (typeof accentColors)[number]);
+  return isString(value) && accentColors.includes(value as (typeof accentColors)[number]);
 }
 
 function isRadius(value: unknown): value is (typeof radii)[number] {
-  return typeof value === 'string' && radii.includes(value as (typeof radii)[number]);
+  return isString(value) && radii.includes(value as (typeof radii)[number]);
 }
 
 function isScaling(value: unknown): value is (typeof scalings)[number] {
-  return typeof value === 'string' && scalings.includes(value as (typeof scalings)[number]);
+  return isString(value) && scalings.includes(value as (typeof scalings)[number]);
+}
+
+function isString(value: unknown): value is string {
+  return typeof value === 'string';
 }

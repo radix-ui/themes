@@ -1,3 +1,9 @@
 body {
   margin: 0;
 }
+
+html,
+body,
+.radix-themes:where([data-is-root-theme='true']) {
+  height: 100%;
+}
