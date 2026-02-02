@@ -1,18 +1,14 @@
 'use client';
-
 import * as React from 'react';
 import NextLink from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { TabNav } from '@radix-ui/themes';
 
-const TabNavDemo = React.forwardRef<
-  React.ComponentRef<typeof TabNav.Root>,
-  React.ComponentPropsWithoutRef<typeof TabNav.Root>
->((props, forwardedRef) => {
+function TabNavDemoImpl(props: React.ComponentPropsWithRef<typeof TabNav.Root>) {
   const params = useSearchParams();
   const tab = params?.get('tab');
   return (
-    <TabNav.Root {...props} ref={forwardedRef}>
+    <TabNav.Root {...props}>
       <TabNav.Link asChild active={tab === 'account' || tab === null}>
         <NextLink href="/sink?tab=account#tab-nav" scroll={false}>
           Account
@@ -31,17 +27,22 @@ const TabNavDemo = React.forwardRef<
 
       {/* without asChild */}
       {/* <TabNav.Link href="/sink?tab=account#tab-nav" active={tab === 'account' || tab === null}>
-        Account
-      </TabNav.Link>
-      <TabNav.Link href="/sink?tab=documents#tab-nav" active={tab === 'documents'}>
-        Documents
-      </TabNav.Link>
-      <TabNav.Link href="/sink?tab=settings#tab-nav" active={tab === 'settings'}>
-        Settings
-      </TabNav.Link> */}
+              Account
+            </TabNav.Link>
+            <TabNav.Link href="/sink?tab=documents#tab-nav" active={tab === 'documents'}>
+              Documents
+            </TabNav.Link>
+            <TabNav.Link href="/sink?tab=settings#tab-nav" active={tab === 'settings'}>
+              Settings
+            </TabNav.Link> */}
     </TabNav.Root>
   );
-});
-TabNavDemo.displayName = 'TabNavDemo';
+}
 
-export { TabNavDemo };
+export function TabNavDemo(props: React.ComponentPropsWithRef<typeof TabNav.Root>) {
+  return (
+    <React.Suspense fallback={null}>
+      <TabNavDemoImpl {...props} />
+    </React.Suspense>
+  );
+}
