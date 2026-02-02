@@ -14,8 +14,8 @@ export default function AlertDialogPage() {
             <Flex direction="column" gap="3">
               <AlertDialog.Title>Revoke setup link</AlertDialog.Title>
               <AlertDialog.Description>
-                The setup link will no longer be accessible and any existing setup
-                sessions will be revoked.
+                The setup link will no longer be accessible and any existing setup sessions will be
+                revoked.
               </AlertDialog.Description>
               <Flex gap="3" mt="4" justify="end">
                 <AlertDialog.Cancel>

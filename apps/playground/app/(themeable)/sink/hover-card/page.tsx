@@ -12,9 +12,8 @@ export default function HoverCardPage() {
           </HoverCard.Trigger>
           <HoverCard.Content width="200px">
             <Text as="p" size="2">
-              Jan Tschichold was a German calligrapher, typographer and book designer.
-              He played a significant role in the development of graphic design in the
-              20th century.
+              Jan Tschichold was a German calligrapher, typographer and book designer. He played a
+              significant role in the development of graphic design in the 20th century.
             </Text>
           </HoverCard.Content>
         </HoverCard.Root>
