@@ -70,7 +70,7 @@ jobs:
           fi
 
   test-vr:
-    name: Tests: Visual regression
+    name: 'Tests: Visual regression'
     needs: build
     runs-on: macos-latest
     steps:
