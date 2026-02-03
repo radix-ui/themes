@@ -3,7 +3,10 @@ body {
 }
 
 html,
-body,
-.radix-themes:where([data-is-root-theme='true']) {
+body {
   height: 100%;
+}
+
+.radix-themes:where([data-is-root-theme='true']) {
+  min-height: 100dvh;
 }
