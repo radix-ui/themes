@@ -12,7 +12,7 @@ const selectRootPropDefs = {
   size: PropDef<(typeof sizes)[number]>;
 };
 
-const triggerVariants = ['classic', 'surface', 'soft', 'ghost'] as const;
+const triggerVariants = ['classic', 'surface', 'soft', 'ghost-offset', 'ghost'] as const;
 
 const selectTriggerPropDefs = {
   variant: { type: 'enum', className: 'rt-variant', values: triggerVariants, default: 'surface' },

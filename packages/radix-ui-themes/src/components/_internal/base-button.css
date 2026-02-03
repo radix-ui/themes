@@ -317,7 +317,7 @@
 
 /* soft / ghost */
 
-.rt-BaseButton:where(.rt-variant-soft, .rt-variant-ghost) {
+.rt-BaseButton:where(.rt-variant-soft, .rt-variant-ghost, .rt-variant-ghost-offset) {
   color: var(--accent-a11);
 
   &:where(.rt-high-contrast) {
@@ -353,7 +353,7 @@
   }
 }
 
-.rt-BaseButton:where(.rt-variant-ghost) {
+.rt-BaseButton:where(.rt-variant-ghost, .rt-variant-ghost-offset) {
   @media (hover: hover) {
     &:where(:hover) {
       background-color: var(--accent-a3);
