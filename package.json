@@ -9,7 +9,8 @@
     "test:vr": "pnpm -r test:vr",
     "lint": "turbo run lint",
     "clean": "turbo run clean && rm -rf node_modules .turbo",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
     "@types/node": "^24",

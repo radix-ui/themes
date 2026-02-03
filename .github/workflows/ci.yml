@@ -57,21 +57,8 @@ jobs:
       - name: CI Setup
         uses: ./.github/actions/ci-setup
 
-      - name: Run formatter
-        run: pnpm format
-
-      - name: Check for changes
-        run: |
-          if [[ -n $(git status --porcelain) ]]; then
-            echo "::error::Files are not properly formatted. Please run 'pnpm format' locally and commit the changes."
-            echo ""
-            echo "The following files need formatting:"
-            git status --porcelain
-            echo ""
-            echo "Diff:"
-            git diff
-            exit 1
-          fi
+      - name: Check formatting
+        run: pnpm format:check
 
   test-vr:
     name: 'Tests: Visual regression'
