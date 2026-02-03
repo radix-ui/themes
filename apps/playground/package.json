@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "clean": "rm -rf node_modules .next .turbo",
+    "clean": "rm -rf node_modules .next .turbo playwright-report test-results",
     "lint": "tsc --noEmit",
     "test:vr": "playwright test",
     "test:vr:ui": "playwright test --ui",
