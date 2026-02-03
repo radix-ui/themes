@@ -88,6 +88,7 @@ jobs:
         uses: actions/download-artifact@v7
         with:
           name: build-output
+          path: packages/radix-ui-themes
 
       - name: Install Playwright Browsers
         run: pnpm --filter "playground" exec playwright install --with-deps
