@@ -8,5 +8,5 @@ body {
 }
 
 .radix-themes:where([data-is-root-theme='true']) {
-  min-height: 100%;
+  min-height: 100dvh;
 }

@@ -6,7 +6,7 @@
     "build": "turbo run build",
     "build:pkg": "pnpm --filter \"@radix-ui/*\" build",
     "dev": "turbo run dev --no-cache --continue",
-    "test": "pnpm -r test",
+    "test:vr": "pnpm -r test:vr",
     "lint": "turbo run lint",
     "clean": "turbo run clean && rm -rf node_modules .turbo",
     "format": "prettier --write ."

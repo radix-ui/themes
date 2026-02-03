@@ -8,9 +8,9 @@
     "start": "next start",
     "clean": "rm -rf node_modules .next .turbo",
     "lint": "tsc --noEmit",
-    "test": "playwright test",
-    "test:ui": "playwright test --ui",
-    "test:update": "playwright test --update-snapshots"
+    "test:vr": "playwright test",
+    "test:vr:ui": "playwright test --ui",
+    "test:vr:update": "playwright test --update-snapshots"
   },
   "dependencies": {
     "@radix-ui/react-icons": "^1.3.2",
