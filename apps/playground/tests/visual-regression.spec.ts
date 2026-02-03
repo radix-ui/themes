@@ -6,6 +6,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('appearance.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -14,6 +15,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('as-child.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -22,6 +24,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('avatar.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -30,6 +33,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('checkbox-card.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -38,6 +42,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('classic-button.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -46,6 +51,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('data-list.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -54,6 +60,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('dialog.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -62,6 +69,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('grid-align-content.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -70,6 +78,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('grid-align-self.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -78,6 +87,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('grid-area.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -86,6 +96,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('grid-justify-items.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -94,6 +105,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('grid-justify-self.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -102,6 +114,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('high-contrast.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -110,6 +123,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('inset.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -118,6 +132,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('radio-card.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -126,6 +141,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('reset.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -134,6 +150,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('responsive.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -142,6 +159,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('skeleton.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -150,6 +168,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('tabnav-accounts.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -158,6 +177,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('tabnav-documents.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -166,6 +186,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('tabnav-settings.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -174,6 +195,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('text-wrap.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -182,6 +204,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('textfield.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -190,6 +213,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('webkit-tap-highlight-color.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -198,6 +222,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-alert-dialog.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -206,6 +231,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-aspect-ratio.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -214,6 +240,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-avatar.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -222,6 +249,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-badge.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -230,6 +258,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-blockquote.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -238,6 +267,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-button.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -246,6 +276,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-callout.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -254,6 +285,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-card.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -262,6 +294,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-checkbox.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -270,6 +303,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-checkbox-cards.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -278,6 +312,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-checkbox-group.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -286,6 +321,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-code.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -294,6 +330,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-container.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -302,6 +339,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-context-menu.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -310,6 +348,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-cursors.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -318,6 +357,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-data-list.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -326,6 +366,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-dialog.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -334,6 +375,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-dropdown-menu.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -342,6 +384,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-grid.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -350,6 +393,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-heading.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -358,6 +402,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-hover-card.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -366,6 +411,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-icon-button.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -374,6 +420,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-kbd.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -382,6 +429,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-link.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -390,6 +438,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-mixed-nested-themes-test.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -398,6 +447,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-nested-appearances-test.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -406,6 +456,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-nested-colors-test.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -414,6 +465,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-popover.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -422,6 +474,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-progress.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -430,6 +483,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-radio.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -438,6 +492,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-radio-cards.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -446,6 +501,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-radio-group.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -454,6 +510,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-scroll-area.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -462,6 +519,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-segmented-control.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -470,6 +528,7 @@ test.describe('visual regression', () => {
   //   await page.waitForLoadState('networkidle');
   //   await expect(page).toHaveScreenshot('sink-select.png', {
   //     fullPage: true,
+  //     animations: 'disabled',
   //   });
   // });
 
@@ -478,6 +537,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-separator.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -486,6 +546,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-shadow-tokens.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -494,6 +555,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-skeleton.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -502,6 +564,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-slider.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -510,6 +573,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-spinner.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -518,6 +582,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-switch.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -526,6 +591,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-tab-nav.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -534,6 +600,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-table.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -542,6 +609,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-tabs.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -550,6 +618,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-text.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -558,6 +627,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-text-area.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -566,6 +636,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-text-field.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -574,6 +645,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-tooltip.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 
@@ -582,6 +654,7 @@ test.describe('visual regression', () => {
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveScreenshot('sink-typography.png', {
       fullPage: true,
+      animations: 'disabled',
     });
   });
 });
