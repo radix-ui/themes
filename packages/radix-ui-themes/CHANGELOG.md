@@ -1,8 +1,9 @@
 # Changelog
 
-## 3.3.1
+## 3.4.0
 
 - Expand the prop type for `Select`'s `placeholder` prop to accept any `ReactNode` ([#693](https://github.com/radix-ui/themes/pull/693))
+- Add `ghost-offset` variant to `Button`, `IconButton` and `SelectTrigger` components ([#546](https://github.com/radix-ui/themes/pull/546))
 - Fix broken loading state for `Button` and `IconButton` components using `asChild` ([#752](https://github.com/radix-ui/themes/pull/752))
 - Fix incorrect Firefox vendor prefix for `:placeholder-shown` pseudo-element ([#783](https://github.com/radix-ui/themes/pull/783), https://github.com/postcss/autoprefixer/pull/1532)
 - Improve responsiveness and consistency of styling in `ThemePanel`
