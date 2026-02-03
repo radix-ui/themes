@@ -1,5 +1,7 @@
 import { test, expect } from '@playwright/test';
 
+test.describe.configure({ mode: 'parallel' });
+
 test.describe('visual regression', () => {
   test('/test/appearance', async ({ page }) => {
     await page.goto('/test/appearance');
