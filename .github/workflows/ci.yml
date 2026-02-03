@@ -24,7 +24,7 @@ jobs:
         run: pnpm --filter "@radix-ui/*" build
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: build-output
           path: packages/*/dist
@@ -81,7 +81,7 @@ jobs:
         uses: ./.github/actions/ci-setup
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: build-output
           path: .
@@ -94,7 +94,7 @@ jobs:
 
       - name: Upload test results
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: playwright-report
           path: apps/playground/test-results/
