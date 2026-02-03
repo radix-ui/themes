@@ -84,6 +84,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build-output
+          path: .
 
       - name: Install Playwright Browsers
         run: pnpm --filter "playground" exec playwright install --with-deps
