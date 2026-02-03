@@ -406,7 +406,7 @@
 
 .rt-SelectTrigger:where(.rt-variant-soft),
 .rt-SelectTrigger:where(.rt-variant-ghost),
-.rt-SelectTrigger:where(.rt-variant-borderless) {
+.rt-SelectTrigger:where(.rt-variant-ghost-offset) {
   color: var(--accent-12);
 
   &:where([data-placeholder]) {
@@ -439,7 +439,7 @@
 }
 
 .rt-SelectTrigger:where(.rt-variant-ghost),
-.rt-SelectTrigger:where(.rt-variant-borderless) {
+.rt-SelectTrigger:where(.rt-variant-ghost-offset) {
   @media (hover: hover) {
     &:where(:hover) {
       background-color: var(--accent-a3);
