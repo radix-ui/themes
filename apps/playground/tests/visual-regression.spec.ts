@@ -192,4 +192,396 @@ test.describe('visual regression', () => {
       fullPage: true,
     });
   });
+
+  test('/sink/alert-dialog', async ({ page }) => {
+    await page.goto('/sink/alert-dialog');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-alert-dialog.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/aspect-ratio', async ({ page }) => {
+    await page.goto('/sink/aspect-ratio');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-aspect-ratio.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/avatar', async ({ page }) => {
+    await page.goto('/sink/avatar');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-avatar.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/badge', async ({ page }) => {
+    await page.goto('/sink/badge');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-badge.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/blockquote', async ({ page }) => {
+    await page.goto('/sink/blockquote');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-blockquote.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/button', async ({ page }) => {
+    await page.goto('/sink/button');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-button.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/callout', async ({ page }) => {
+    await page.goto('/sink/callout');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-callout.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/card', async ({ page }) => {
+    await page.goto('/sink/card');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-card.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/checkbox', async ({ page }) => {
+    await page.goto('/sink/checkbox');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-checkbox.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/checkbox-cards', async ({ page }) => {
+    await page.goto('/sink/checkbox-cards');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-checkbox-cards.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/checkbox-group', async ({ page }) => {
+    await page.goto('/sink/checkbox-group');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-checkbox-group.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/code', async ({ page }) => {
+    await page.goto('/sink/code');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-code.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/container', async ({ page }) => {
+    await page.goto('/sink/container');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-container.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/context-menu', async ({ page }) => {
+    await page.goto('/sink/context-menu');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-context-menu.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/cursors', async ({ page }) => {
+    await page.goto('/sink/cursors');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-cursors.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/data-list', async ({ page }) => {
+    await page.goto('/sink/data-list');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-data-list.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/dialog', async ({ page }) => {
+    await page.goto('/sink/dialog');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-dialog.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/dropdown-menu', async ({ page }) => {
+    await page.goto('/sink/dropdown-menu');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-dropdown-menu.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/grid', async ({ page }) => {
+    await page.goto('/sink/grid');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-grid.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/heading', async ({ page }) => {
+    await page.goto('/sink/heading');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-heading.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/hover-card', async ({ page }) => {
+    await page.goto('/sink/hover-card');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-hover-card.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/icon-button', async ({ page }) => {
+    await page.goto('/sink/icon-button');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-icon-button.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/kbd', async ({ page }) => {
+    await page.goto('/sink/kbd');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-kbd.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/link', async ({ page }) => {
+    await page.goto('/sink/link');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-link.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/mixed-nested-themes-test', async ({ page }) => {
+    await page.goto('/sink/mixed-nested-themes-test');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-mixed-nested-themes-test.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/nested-appearances-test', async ({ page }) => {
+    await page.goto('/sink/nested-appearances-test');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-nested-appearances-test.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/nested-colors-test', async ({ page }) => {
+    await page.goto('/sink/nested-colors-test');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-nested-colors-test.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/popover', async ({ page }) => {
+    await page.goto('/sink/popover');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-popover.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/progress', async ({ page }) => {
+    await page.goto('/sink/progress');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-progress.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/radio', async ({ page }) => {
+    await page.goto('/sink/radio');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-radio.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/radio-cards', async ({ page }) => {
+    await page.goto('/sink/radio-cards');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-radio-cards.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/radio-group', async ({ page }) => {
+    await page.goto('/sink/radio-group');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-radio-group.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/scroll-area', async ({ page }) => {
+    await page.goto('/sink/scroll-area');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-scroll-area.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/segmented-control', async ({ page }) => {
+    await page.goto('/sink/segmented-control');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-segmented-control.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/select', async ({ page }) => {
+    await page.goto('/sink/select');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-select.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/separator', async ({ page }) => {
+    await page.goto('/sink/separator');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-separator.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/shadow-tokens', async ({ page }) => {
+    await page.goto('/sink/shadow-tokens');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-shadow-tokens.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/skeleton', async ({ page }) => {
+    await page.goto('/sink/skeleton');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-skeleton.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/slider', async ({ page }) => {
+    await page.goto('/sink/slider');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-slider.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/spinner', async ({ page }) => {
+    await page.goto('/sink/spinner');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-spinner.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/switch', async ({ page }) => {
+    await page.goto('/sink/switch');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-switch.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/tab-nav', async ({ page }) => {
+    await page.goto('/sink/tab-nav');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-tab-nav.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/table', async ({ page }) => {
+    await page.goto('/sink/table');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-table.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/tabs', async ({ page }) => {
+    await page.goto('/sink/tabs');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-tabs.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/text', async ({ page }) => {
+    await page.goto('/sink/text');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-text.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/text-area', async ({ page }) => {
+    await page.goto('/sink/text-area');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-text-area.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/text-field', async ({ page }) => {
+    await page.goto('/sink/text-field');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-text-field.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/tooltip', async ({ page }) => {
+    await page.goto('/sink/tooltip');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-tooltip.png', {
+      fullPage: true,
+    });
+  });
+
+  test('/sink/typography', async ({ page }) => {
+    await page.goto('/sink/typography');
+    await page.waitForLoadState('networkidle');
+    await expect(page).toHaveScreenshot('sink-typography.png', {
+      fullPage: true,
+    });
+  });
 });
