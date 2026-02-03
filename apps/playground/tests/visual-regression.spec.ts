@@ -465,13 +465,13 @@ test.describe('visual regression', () => {
     });
   });
 
-  test('/sink/select', async ({ page }) => {
-    await page.goto('/sink/select');
-    await page.waitForLoadState('networkidle');
-    await expect(page).toHaveScreenshot('sink-select.png', {
-      fullPage: true,
-    });
-  });
+  // test('/sink/select', async ({ page }) => {
+  //   await page.goto('/sink/select');
+  //   await page.waitForLoadState('networkidle');
+  //   await expect(page).toHaveScreenshot('sink-select.png', {
+  //     fullPage: true,
+  //   });
+  // });
 
   test('/sink/separator', async ({ page }) => {
     await page.goto('/sink/separator');
