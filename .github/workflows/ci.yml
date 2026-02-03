@@ -27,7 +27,11 @@ jobs:
         uses: actions/upload-artifact@v6
         with:
           name: build-output
-          path: packages/*/dist
+          path: |
+            packages/radix-ui-themes/dist
+            packages/radix-ui-themes/layout
+            packages/radix-ui-themes/tokens
+            packages/radix-ui-themes/*.css
           retention-days: 1
 
   lint:
@@ -84,7 +88,6 @@ jobs:
         uses: actions/download-artifact@v7
         with:
           name: build-output
-          path: .
 
       - name: Install Playwright Browsers
         run: pnpm --filter "playground" exec playwright install --with-deps
