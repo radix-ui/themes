@@ -12,3 +12,4 @@ packages/radix-ui-themes/utilities.css
 packages/radix-ui-themes/tokens.css
 packages/radix-ui-themes/layout.css
 apps/playground/playwright-report
+apps/playground/test-results

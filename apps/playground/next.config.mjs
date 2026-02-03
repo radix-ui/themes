@@ -1,7 +1,11 @@
+// @ts-check
+import path from 'node:path';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   transpilePackages: ['@radix-ui/themes'],
+  outputFileTracingRoot: path.resolve(import.meta.dirname, '../..'),
   async redirects() {
     return [
       {
@@ -13,4 +17,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;
