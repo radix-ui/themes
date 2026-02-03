@@ -23,9 +23,9 @@ export default defineConfig({
     },
   },
 
-  // Run the local dev server before starting tests
+  // Build and run the production server before starting tests
   webServer: {
-    command: 'pnpm --filter "playground" dev',
+    command: 'pnpm --filter "playground" build && pnpm --filter "playground" start',
     url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,
