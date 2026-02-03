@@ -6,7 +6,7 @@ import { radiusPropDef } from '../../props/radius.prop.js';
 import type { PropDef } from '../../props/prop-def.js';
 
 const sizes = ['1', '2', '3', '4'] as const;
-const variants = ['classic', 'solid', 'soft', 'surface', 'outline', 'ghost'] as const;
+const variants = ['classic', 'solid', 'soft', 'surface', 'outline', 'borderless', 'ghost'] as const;
 
 const baseButtonPropDefs = {
   ...asChildPropDef,
