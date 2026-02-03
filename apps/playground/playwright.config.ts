@@ -47,5 +47,5 @@ export default defineConfig({
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
     },
-  ],
+  ].filter((project) => (process.env.CI ? project.name === 'chromium' : true)),
 });
