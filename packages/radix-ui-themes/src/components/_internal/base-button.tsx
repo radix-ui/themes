@@ -33,6 +33,32 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
   } = extractProps(props, baseButtonPropDefs, marginPropDefs);
   const Comp = asChild ? Slot.Root : 'button';
   let child = children;
+  const buttonRef = React.useRef<HTMLButtonElement>(null);
+
+  React.useEffect(() => {
+    if (disabled && asChild && buttonRef.current) {
+      const element = buttonRef.current;
+      const handleClick = (e: Event) => {
+        e.preventDefault();
+        e.stopPropagation();
+      };
+      element.addEventListener('click', handleClick, true);
+      return () => element.removeEventListener('click', handleClick, true);
+    }
+  }, [disabled, asChild]);
+
+  const mergedRef = React.useCallback(
+    (node: HTMLButtonElement) => {
+      buttonRef.current = node;
+      if (typeof forwardedRef === 'function') {
+        forwardedRef(node);
+      } else if (forwardedRef) {
+        forwardedRef.current = node;
+      }
+    },
+    [forwardedRef]
+  );
+
   if (props.loading) {
     // Loading buttons will wrap the contents of the button for hiding them
     // visually while retaining the button's size. This does not work with the
@@ -58,7 +84,7 @@ const BaseButton = React.forwardRef<BaseButtonElement, BaseButtonProps>((props, 
       data-accent-color={color}
       data-radius={radius}
       {...baseButtonProps}
-      ref={forwardedRef}
+      ref={mergedRef}
       className={classNames('rt-reset', 'rt-BaseButton', className)}
       disabled={disabled}
     >
