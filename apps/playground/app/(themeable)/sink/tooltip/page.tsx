@@ -18,6 +18,12 @@ export default function TooltipPage() {
               Multiline
             </Button>
           </Tooltip>
+
+          <Tooltip content="This tooltip is disabled" disabled>
+            <Button variant="solid" size="1">
+              Disabled
+            </Button>
+          </Tooltip>
         </Flex>
       </DocsSectionBody>
     </DocsSection>
