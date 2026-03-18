@@ -9,6 +9,7 @@
 ## Documentation
 
 For full documentation, visit [radix-ui.com/themes/docs](https://radix-ui.com/themes/docs).
+Additionally, more resources may be available in future iterations.
 
 ## Releases
 
