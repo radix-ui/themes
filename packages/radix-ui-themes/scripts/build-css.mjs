@@ -10,18 +10,7 @@ const require = createRequire(import.meta.url);
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, '..');
 
-// Mirror the plugin pipeline from postcss.config.cjs
-const plugins = [
-  require('postcss-import')({ path: [resolve(root, '..')] }),
-  require('postcss-nesting'),
-  require(resolve(root, 'postcss-breakpoints.cjs')),
-  require('postcss-custom-media'),
-  require('postcss-combine-duplicated-selectors'),
-  require('postcss-discard-empty'),
-  require(resolve(root, 'postcss-whitespace.cjs')),
-  require('autoprefixer'),
-];
-
+const { plugins } = require(resolve(root, 'postcss.config.cjs'));
 const processor = postcss(plugins);
 
 // ---------------------------------------------------------------------------
