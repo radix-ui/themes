@@ -1,7 +1,7 @@
 {
   "name": "@radix-ui/themes",
   "version": "3.3.0",
-  "type": "commonjs",
+  "type": "module",
   "main": "./dist/cjs/index.js",
   "types": "./dist/cjs/index.d.ts",
   "module": "./dist/esm/index.js",

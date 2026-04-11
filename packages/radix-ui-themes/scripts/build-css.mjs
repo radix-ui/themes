@@ -20,6 +20,15 @@ const processor = postcss(plugins);
 //   input/output       – single file → single file
 //   inputDir/outputDir – every *.css in dir → same filename in output dir
 // ---------------------------------------------------------------------------
+
+/**
+ * @typedef {{ inputDir: string; outputDir: string; }} DirTarget
+ * @typedef {{ input: string; output: string; }} FileTarget
+ * @typedef {{ group: string[]; }} GroupTarget
+ * @typedef {DirTarget | FileTarget | GroupTarget} Target
+ */
+
+/** @type {Record<string, Target>} */
 const targets = {
   index: { input: 'src/styles/index.css', output: 'styles.css' },
   components: { input: 'src/components/index.css', output: 'components.css' },
@@ -43,6 +52,11 @@ const defaultTargets = ['index', 'components', 'utilities', 'tokens', 'layout'];
 // Build helpers
 // ---------------------------------------------------------------------------
 
+/**
+ *
+ * @param {string} input
+ * @param {string} output
+ */
 async function processFile(input, output) {
   const inputPath = resolve(root, input);
   const outputPath = resolve(root, output);
@@ -53,6 +67,10 @@ async function processFile(input, output) {
   console.log(`  ${styleText('gray', input)} → ${styleText('blue', output)}`);
 }
 
+/**
+ * @param {string} inputDir
+ * @param {string} outputDir
+ */
 async function processDir(inputDir, outputDir) {
   const absIn = resolve(root, inputDir);
   const files = (await readdir(absIn)).filter((f) => f.endsWith('.css'));
@@ -62,6 +80,9 @@ async function processDir(inputDir, outputDir) {
   }
 }
 
+/**
+ * @param {keyof typeof targets} name
+ */
 async function build(name) {
   const target = targets[name];
   if (!target) {
@@ -69,11 +90,11 @@ async function build(name) {
     console.log(`Available targets: ${Object.keys(targets).join(', ')}`);
     process.exit(1);
   }
-  if (target.group) {
+  if ('group' in target) {
     for (const sub of target.group) {
       await build(sub);
     }
-  } else if (target.inputDir) {
+  } else if ('inputDir' in target) {
     await processDir(target.inputDir, target.outputDir);
   } else {
     await processFile(target.input, target.output);
