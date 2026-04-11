@@ -4,8 +4,9 @@ import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import reactHooks from 'eslint-plugin-react-hooks';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
+import { defineConfig } from 'eslint/config';
 
-export default tseslint.config(
+export default defineConfig([
   { ignores: ['node_modules', 'dist'] },
   {
     extends: [eslint.configs.recommended, ...tseslint.configs.recommended],
@@ -17,6 +18,7 @@ export default tseslint.config(
       },
     },
     plugins: {
+      // @ts-expect-error
       'react-hooks': reactHooks,
       'jsx-a11y': jsxA11y,
     },
@@ -63,4 +65,4 @@ export default tseslint.config(
       'no-irregular-whitespace': 'off',
     },
   },
-);
+]);
