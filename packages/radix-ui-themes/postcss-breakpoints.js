@@ -1,8 +1,7 @@
 // @ts-check
-/* eslint-disable @typescript-eslint/no-require-imports */
-const fs = require('fs');
-const path = require('path');
-const postcssModule = require('postcss');
+import fs from 'node:fs';
+import path from 'node:path';
+import postcssModule from 'postcss';
 
 // Build a list of breakpoints from "@custom media" rules in "breakpoints.css"
 const breakpointsFile = path.resolve('./src/styles/breakpoints.css');
@@ -86,8 +85,11 @@ const plugin = () => ({
   },
 });
 
-module.exports = plugin;
-module.exports.postcss = true;
+/** @type {true} */
+const postcss = true;
+/** @type {import('postcss').PluginCreator<never>} */
+const creator = Object.assign(plugin, { postcss });
+export default creator;
 
 /**
  * @param {AtRule | ChildNode} node

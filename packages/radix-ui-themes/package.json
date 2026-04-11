@@ -47,6 +47,14 @@
         "default": "./dist/esm/props/index.js"
       }
     },
+    "./postcss-breakpoints": {
+      "require": "./postcss-breakpoints.cjs",
+      "import": "./postcss-breakpoints.js"
+    },
+    "./postcss-whitespace": {
+      "require": "./postcss-whitespace.cjs",
+      "import": "./postcss-whitespace.js"
+    },
     "./*": "./*"
   },
   "publishConfig": {
@@ -64,7 +72,9 @@
     "layout/**",
     "*.css",
     "postcss-breakpoints.cjs",
-    "postcss-whitespace.cjs"
+    "postcss-breakpoints.js",
+    "postcss-whitespace.cjs",
+    "postcss-whitespace.js"
   ],
   "scripts": {
     "build": "pnpm build:js && pnpm build:css",

@@ -29,8 +29,11 @@ const plugin = () => ({
   },
 });
 
-module.exports = plugin;
-module.exports.postcss = true;
+/** @type {true} */
+const postcss = true;
+/** @type {import('postcss').PluginCreator<never>} */
+const creator = Object.assign(plugin, { postcss });
+export default creator;
 
 /**
  * @typedef {import('postcss').Plugin} Plugin

@@ -1,16 +1,15 @@
 // @ts-check
 import { readFile, writeFile, mkdir, readdir } from 'node:fs/promises';
-import { createRequire } from 'node:module';
 import { dirname, resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { styleText } from 'node:util';
 import postcss from 'postcss';
+import postcssConfig from '../postcss.config.js';
 
-const require = createRequire(import.meta.url);
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, '..');
 
-const { plugins } = require(resolve(root, 'postcss.config.cjs'));
+const { plugins } = postcssConfig;
 const processor = postcss(plugins);
 
 // ---------------------------------------------------------------------------

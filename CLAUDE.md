@@ -44,7 +44,7 @@ themes/
 │       │   │   └── utilities/    # CSS utility classes (layout, typography)
 │       │   └── index.ts          # Package entry point
 │       ├── scripts/              # Build scripts (esbuild CJS/ESM)
-│       ├── postcss.config.cjs    # PostCSS config with custom plugins
+│       ├── postcss.config.js     # PostCSS config with custom plugins
 │       ├── tsconfig.json
 │       └── package.json
 ├── apps/
