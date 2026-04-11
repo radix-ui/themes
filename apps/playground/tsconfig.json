@@ -2,10 +2,8 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Next.js",
   "compilerOptions": {
-    "composite": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "inlineSources": false,
     "isolatedModules": true,
     "moduleResolution": "Bundler",
     "noUnusedLocals": false,
@@ -14,25 +12,22 @@
     "skipLibCheck": true,
     "plugins": [{ "name": "next" }],
     "allowJs": true,
-    "declaration": false,
-    "declarationMap": false,
     "incremental": true,
     "jsx": "react-jsx",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
     "noEmit": true,
     "resolveJsonModule": true,
-    "strict": false,
-    "target": "ESNext",
-    "strictNullChecks": true
+    "strict": true,
+    "target": "ESNext"
   },
   "include": [
-    "src",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts"
+    ".next/dev/types/**/*.ts",
+    "**/*.mts"
   ],
   "exclude": ["node_modules"]
 }

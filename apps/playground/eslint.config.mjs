@@ -1,14 +1,19 @@
 // @ts-check
-import nextCoreWebVitals from 'eslint-config-next/core-web-vitals';
+import { defineConfig, globalIgnores } from 'eslint/config';
+import nextVitals from 'eslint-config-next/core-web-vitals';
 import nextTypescript from 'eslint-config-next/typescript';
-import { defineConfig } from 'eslint/config';
 
-export default defineConfig([
-  ...nextCoreWebVitals,
+const eslintConfig = defineConfig([
+  ...nextVitals,
   ...nextTypescript,
-  {
-    ignores: ['node_modules/**', '.next/**', 'out/**', 'build/**', 'next-env.d.ts'],
-  },
+  // Override default ignores of eslint-config-next.
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    '.next/**',
+    'out/**',
+    'build/**',
+    'next-env.d.ts',
+  ]),
   {
     rules: {
       '@next/next/no-img-element': 'off',
@@ -25,3 +30,5 @@ export default defineConfig([
     },
   },
 ]);
+
+export default eslintConfig;

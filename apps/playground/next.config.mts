@@ -1,8 +1,8 @@
-// @ts-check
 import path from 'node:path';
+import type { NextConfig } from 'next';
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
+  /* config options here */
   reactStrictMode: true,
   transpilePackages: ['@radix-ui/themes'],
   outputFileTracingRoot: path.resolve(import.meta.dirname, '../..'),

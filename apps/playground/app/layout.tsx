@@ -1,7 +1,7 @@
 import * as React from 'react';
+import type { Metadata } from 'next';
 import './globals.css';
 import '@radix-ui/themes/styles.css';
-import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Radix Themes playground',

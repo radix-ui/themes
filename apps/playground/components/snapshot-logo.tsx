@@ -1,4 +1,4 @@
-export function SnapshotLogo(props: any) {
+export function SnapshotLogo(props: React.ComponentPropsWithRef<'svg'>) {
   return (
     <svg
       width="559"
