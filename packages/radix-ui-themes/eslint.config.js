@@ -17,7 +17,6 @@ export default tseslint.config(
       },
     },
     plugins: {
-      // @ts-expect-error
       'react-hooks': reactHooks,
       'jsx-a11y': jsxA11y,
     },

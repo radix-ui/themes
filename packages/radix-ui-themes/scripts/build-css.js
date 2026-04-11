@@ -104,10 +104,10 @@ async function build(name) {
 // ---------------------------------------------------------------------------
 // CLI – accepts target names as positional args (with optional leading --)
 //
-//   node scripts/build-css.mjs                  # build everything
-//   node scripts/build-css.mjs layout           # build all layout targets
-//   node scripts/build-css.mjs --layout/index   # build a single target
-//   node scripts/build-css.mjs tokens layout    # multiple targets
+//   node scripts/build-css.js                  # build everything
+//   node scripts/build-css.js layout           # build all layout targets
+//   node scripts/build-css.js --layout/index   # build a single target
+//   node scripts/build-css.js tokens layout    # multiple targets
 // ---------------------------------------------------------------------------
 const args = process.argv.slice(2).map((a) => a.replace(/^--/, ''));
 const names = args.length > 0 ? args : defaultTargets;
