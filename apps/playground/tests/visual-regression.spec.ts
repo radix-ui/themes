@@ -651,6 +651,18 @@ test.describe('visual regression', () => {
     });
   });
 
+  test('/sink/tooltip - disabled state', async ({ page }) => {
+    await page.goto('/sink/tooltip');
+    await page.waitForLoadState('networkidle');
+    const disabledButton = page.getByRole('button', { name: 'Disabled' });
+    await disabledButton.hover();
+    await page.waitForTimeout(500);
+    await expect(page).toHaveScreenshot('sink-tooltip-disabled.png', {
+      fullPage: true,
+      animations: 'disabled',
+    });
+  });
+
   test('/sink/typography', async ({ page }) => {
     await page.goto('/sink/typography');
     await page.waitForLoadState('networkidle');

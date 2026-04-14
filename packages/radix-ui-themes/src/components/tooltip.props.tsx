@@ -4,6 +4,7 @@ import type { PropDef, GetPropDefTypes } from '../props/prop-def.js';
 
 const tooltipPropDefs = {
   content: { type: 'ReactNode', required: true },
+  disabled: { type: 'boolean', default: false },
   width: widthPropDefs.width,
   minWidth: widthPropDefs.minWidth,
   maxWidth: { ...widthPropDefs.maxWidth, default: '360px' },
@@ -12,6 +13,7 @@ const tooltipPropDefs = {
   minWidth: PropDef<string>;
   maxWidth: PropDef<string>;
   content: PropDef<React.ReactNode>;
+  disabled: PropDef<boolean>;
 };
 
 type TooltipOwnProps = GetPropDefTypes<typeof tooltipPropDefs & typeof widthPropDefs>;

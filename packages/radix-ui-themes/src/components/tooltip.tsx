@@ -29,6 +29,7 @@ const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, forwarded
     onOpenChange,
     delayDuration,
     disableHoverableContent,
+    disabled,
     content,
     container,
     forceMount,
@@ -38,23 +39,25 @@ const Tooltip = React.forwardRef<TooltipElement, TooltipProps>((props, forwarded
   return (
     <TooltipPrimitive.Root {...rootProps}>
       <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
-      <TooltipPrimitive.Portal container={container} forceMount={forceMount}>
-        <Theme asChild>
-          <TooltipPrimitive.Content
-            sideOffset={4}
-            collisionPadding={10}
-            {...tooltipContentProps}
-            asChild={false}
-            ref={forwardedRef}
-            className={classNames('rt-TooltipContent', className)}
-          >
-            <Text as="p" className="rt-TooltipText" size="1">
-              {content}
-            </Text>
-            <TooltipPrimitive.Arrow className="rt-TooltipArrow" />
-          </TooltipPrimitive.Content>
-        </Theme>
-      </TooltipPrimitive.Portal>
+      {!disabled && (
+        <TooltipPrimitive.Portal container={container} forceMount={forceMount}>
+          <Theme asChild>
+            <TooltipPrimitive.Content
+              sideOffset={4}
+              collisionPadding={10}
+              {...tooltipContentProps}
+              asChild={false}
+              ref={forwardedRef}
+              className={classNames('rt-TooltipContent', className)}
+            >
+              <Text as="p" className="rt-TooltipText" size="1">
+                {content}
+              </Text>
+              <TooltipPrimitive.Arrow className="rt-TooltipArrow" />
+            </TooltipPrimitive.Content>
+          </Theme>
+        </TooltipPrimitive.Portal>
+      )}
     </TooltipPrimitive.Root>
   );
 });
