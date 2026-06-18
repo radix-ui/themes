@@ -1,6 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
+import { inert } from '../helpers/inert.js';
 import { Flex } from './flex.js';
 import { spinnerPropDefs } from './spinner.props.js';
 import { extractProps } from '../helpers/extract-props.js';
@@ -45,7 +46,7 @@ const Spinner = React.forwardRef<SpinnerElement, SpinnerProps>((props, forwarded
          * `display: contents` removes the content from the accessibility tree in some browsers,
          * so we force remove it with `aria-hidden`
          */}
-        <span aria-hidden style={{ display: 'contents', visibility: 'hidden' }} inert={undefined}>
+        <span aria-hidden style={{ display: 'contents', visibility: 'hidden' }} inert={inert}>
           {children}
         </span>
 
