@@ -19,10 +19,12 @@ const Separator = React.forwardRef<SeparatorElement, SeparatorProps>((props, for
     separatorPropDefs,
     marginPropDefs,
   );
+  const orientation = typeof props.orientation === 'string' ? props.orientation : 'horizontal';
   return (
     <span
       data-accent-color={color}
       role={decorative ? undefined : 'separator'}
+      aria-orientation={decorative ? undefined : orientation}
       {...separatorProps}
       ref={forwardedRef}
       className={classNames('rt-Separator', className)}
