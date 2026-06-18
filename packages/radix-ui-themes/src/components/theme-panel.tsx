@@ -226,6 +226,7 @@ const ThemePanelContent = React.forwardRef<ThemePanelContentElement, ThemePanelC
     const resolvedGrayColor = grayColor === 'auto' ? autoMatchedGray : grayColor;
 
     const [copyState, setCopyState] = React.useState<'idle' | 'copying' | 'copied'>('idle');
+    const copyTimeoutRef = React.useRef<ReturnType<typeof setTimeout>>(undefined);
     async function handleCopyThemeConfig() {
       const theme = {
         appearance: appearance === themePropDefs.appearance.default ? undefined : appearance,
@@ -247,7 +248,8 @@ const ThemePanelContent = React.forwardRef<ThemePanelContentElement, ThemePanelC
       setCopyState('copying');
       await navigator.clipboard.writeText(textToCopy);
       setCopyState('copied');
-      setTimeout(() => setCopyState('idle'), 2000);
+      clearTimeout(copyTimeoutRef.current);
+      copyTimeoutRef.current = setTimeout(() => setCopyState('idle'), 2000);
     }
 
     React.useEffect(() => {
