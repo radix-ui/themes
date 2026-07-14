@@ -159,7 +159,9 @@ export default function TextFieldPage() {
           </Table.Body>
         </Table.Root>
 
-        <Separator my="8" />
+        <Text as="p" my="5">
+          Autofill:
+        </Text>
         <Flex align="center" gap="4" mb="9">
           <Box>
             <form action="/">
