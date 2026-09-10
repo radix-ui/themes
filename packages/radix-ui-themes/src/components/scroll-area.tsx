@@ -43,6 +43,7 @@ const ScrollArea = React.forwardRef<ScrollAreaElement, ScrollAreaProps>((props, 
     <ScrollAreaPrimitive.Root
       type={type}
       scrollHideDelay={scrollHideDelay}
+      dir={dir}
       className={classNames('rt-ScrollAreaRoot', marginClassNames, className)}
       style={mergeStyles(marginCustomProperties, style)}
       asChild={asChild}
