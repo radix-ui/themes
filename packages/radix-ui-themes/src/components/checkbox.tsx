@@ -20,7 +20,7 @@ interface CheckboxProps
   extends
     ComponentPropsWithout<
       typeof CheckboxPrimitive.Root,
-      'asChild' | 'color' | 'defaultValue' | 'children'
+      'asChild' | 'color' | 'defaultValue' | 'children' | 'type'
     >,
     MarginProps,
     CheckboxOwnProps {}
@@ -48,6 +48,7 @@ const Checkbox = React.forwardRef<CheckboxElement, CheckboxProps>((props, forwar
       checked={checked}
       onCheckedChange={setChecked}
       asChild={false}
+      type="button"
       ref={forwardedRef}
       className={classNames('rt-reset', 'rt-BaseCheckboxRoot', 'rt-CheckboxRoot', className)}
     >
