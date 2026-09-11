@@ -8,6 +8,7 @@
 - Fix incorrect Firefox vendor prefix for `:placeholder-shown` pseudo-element ([#783](https://github.com/radix-ui/themes/pull/783), https://github.com/postcss/autoprefixer/pull/1532)
 - Improve responsiveness and consistency of styling in `ThemePanel`
 - Fix nested `Container` components not respecting the `size` prop ([#593](https://github.com/radix-ui/themes/pull/593))
+- Fix `readOnly` `TextField` and `TextArea` looking identical to `disabled` ([#764](https://github.com/radix-ui/themes/issues/764))
 
 ## 3.3.0
 
