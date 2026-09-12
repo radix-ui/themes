@@ -44,7 +44,7 @@
       },
       "import": {
         "types": "./dist/esm/props/index.d.ts",
-        "default": "./dist/esm/helpers/index.js"
+        "default": "./dist/esm/props/index.js"
       }
     },
     "./postcss-breakpoints": {
