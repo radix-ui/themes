@@ -44,7 +44,7 @@
       },
       "import": {
         "types": "./dist/esm/props/index.d.ts",
-        "default": "./dist/esm/props/index.js"
+        "default": "./dist/esm/helpers/index.js"
       }
     },
     "./postcss-breakpoints": {
@@ -54,6 +54,10 @@
     "./postcss-whitespace": {
       "require": "./postcss-whitespace.cjs",
       "import": "./postcss-whitespace.js"
+    },
+    "./styles.css": {
+      "types": "./styles.css.d.ts",
+      "default": "./styles.css"
     },
     "./*": "./*"
   },
@@ -71,6 +75,7 @@
     "tokens/**",
     "layout/**",
     "*.css",
+    "*.css.d.ts",
     "postcss-breakpoints.cjs",
     "postcss-breakpoints.js",
     "postcss-whitespace.cjs",
