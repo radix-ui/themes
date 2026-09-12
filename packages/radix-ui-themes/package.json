@@ -55,6 +55,10 @@
       "require": "./postcss-whitespace.cjs",
       "import": "./postcss-whitespace.js"
     },
+    "./styles.css": {
+      "types": "./styles.css.d.ts",
+      "default": "./styles.css"
+    },
     "./*": "./*"
   },
   "publishConfig": {
@@ -71,6 +75,7 @@
     "tokens/**",
     "layout/**",
     "*.css",
+    "*.css.d.ts",
     "postcss-breakpoints.cjs",
     "postcss-breakpoints.js",
     "postcss-whitespace.cjs",
