@@ -2,6 +2,7 @@
 
 ## 3.4.0
 
+- Account for the visual border in `Card` padding so content aligns with an `Inset` using equivalent padding.
 - Expand the prop type for `Select`'s `placeholder` prop to accept any `ReactNode` ([#693](https://github.com/radix-ui/themes/pull/693))
 - Add `ghost-offset` variant to `Button`, `IconButton` and `SelectTrigger` components ([#546](https://github.com/radix-ui/themes/pull/546))
 - Fix broken loading state for `Button` and `IconButton` components using `asChild` ([#752](https://github.com/radix-ui/themes/pull/752))

@@ -5,10 +5,10 @@
 /* Make sure these tags are wrapped in `:where()` for 0 specificity. */
 
 .rt-Card {
-  --base-card-padding-top: var(--card-padding);
-  --base-card-padding-right: var(--card-padding);
-  --base-card-padding-bottom: var(--card-padding);
-  --base-card-padding-left: var(--card-padding);
+  --base-card-padding-top: calc(var(--card-padding) + var(--card-border-width));
+  --base-card-padding-right: calc(var(--card-padding) + var(--card-border-width));
+  --base-card-padding-bottom: calc(var(--card-padding) + var(--card-border-width));
+  --base-card-padding-left: calc(var(--card-padding) + var(--card-border-width));
   --base-card-border-radius: var(--card-border-radius);
   --base-card-border-width: var(--card-border-width);
 
