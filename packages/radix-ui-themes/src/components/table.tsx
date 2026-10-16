@@ -17,7 +17,7 @@ interface TableRootProps
   extends ComponentPropsWithout<'div', RemovedProps>, MarginProps, TableRootOwnProps {}
 const TableRoot = React.forwardRef<TableRootElement, TableRootProps>((props, forwardedRef) => {
   const { layout: layoutPropDef, ...rootPropDefs } = tableRootPropDefs;
-  const { className, children, layout, ...rootProps } = extractProps(
+  const { className, children, layout, nonce, ...rootProps } = extractProps(
     props,
     rootPropDefs,
     marginPropDefs,
@@ -29,7 +29,7 @@ const TableRoot = React.forwardRef<TableRootElement, TableRootProps>((props, for
   });
   return (
     <div ref={forwardedRef} className={classNames('rt-TableRoot', className)} {...rootProps}>
-      <ScrollArea>
+      <ScrollArea nonce={nonce}>
         <table className={classNames('rt-TableRootTable', tableLayoutClassNames)}>{children}</table>
       </ScrollArea>
     </div>
